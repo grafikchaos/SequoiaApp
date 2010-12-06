@@ -1,4 +1,4 @@
-Aaiint::Application.routes.draw do
+Ashint::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
