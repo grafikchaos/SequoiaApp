@@ -14,6 +14,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.xml
   def show
     @client = Client.find(params[:id])
+    @projects = Project.where(:client_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,4 +1,19 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <b>Name:</b>
+  <%= @client.name %>
+</p>
+
+<p>
+  <b>Client code:</b>
+  <%= @client.client_code %>
+</p>
+
+<!-- Print out all of client's projects -->
+<% @projects.each do |project| %>
+  <div class="project">
+    <%= project.name %>
+  </div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_client_path(@client) %> |

@@ -2,14 +2,16 @@
 
 <table>
   <tr>
-    <th></th>
+    <th>Client code</th>
+    <th>Name</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @clients.each do |client| %>
   <tr>
-    <td><%= link_to 'Show', client %></td>
+    <td><%= client.client_code %></td>
+    <td><%= link_to client.name, client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
