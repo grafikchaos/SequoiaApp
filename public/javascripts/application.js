@@ -3,7 +3,6 @@
  * happens here.
  */
 $(document).ready(function() {
-  
 });
 
 /**

@@ -1,1 +1,17 @@
 div.controls { display: none; }
+
+/****************************
+  NOTICES
+****************************/
+div.flash-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: none;
+  font-size: 14pt;
+  padding: 5px 10px;
+}
+div.flash-message.notice { background: green; }
+div.flash-message.error { background: red; color: #fff; }
