@@ -1,20 +1,15 @@
-<p>
-  <b>Name:</b>
-  <%= @client.name %>
-</p>
+<h3><%= @client.name %> (<%= @client.client_code %>)</h3>
+<div class="controls">
+  <%= link_to 'Edit', edit_client_path(@client) %>
+</div>
 
-<p>
-  <b>Client code:</b>
-  <%= @client.client_code %>
-</p>
-
-<!-- Print out all of client's projects -->
+<!-- Put all of client's projects in select -->
+<% options = Array.new(1, ['All', 'all']) %>
 <% @projects.each do |project| %>
-  <div class="project">
-    <%= project.name %>
-  </div>
+    <% options.push([project.name, project.id]) %>
 <% end %>
 
+<%= form_tag('/', :method => "get") do %>
+  <%= select_tag(:project, options_for_select(options, 'all')) %>
+<% end %>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
