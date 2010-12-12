@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   create_table "entities", :force => true do |t|
-    t.integer   "project_id",     :null => false
-    t.integer   "entity_type_id", :null => false
+    t.integer   "project_id",                   :null => false
+    t.integer   "entity_type_id",               :null => false
+    t.string    "name",           :limit => 45, :null => false
     t.timestamp "created_at"
     t.timestamp "updated_at"
   end
