@@ -6,6 +6,7 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'acts_as_eav_model'
 gem 'jquery-rails'
 gem 'tabs_on_rails'
 
