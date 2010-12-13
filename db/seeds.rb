@@ -11,8 +11,11 @@ clients = Client.create([
 ])
 
 entity_types = EntityType.create([
-  { :name => 'MySQL' },
-  { :name => 'SSH' }
+  { :name => 'Database' },
+  { :name => 'SSH' },
+  { :name => 'Website' },
+  { :name => 'API' },
+  { :name => 'FTP' }
 ])
 
 entity_attributes = EntityAttribute.create([
@@ -20,5 +23,12 @@ entity_attributes = EntityAttribute.create([
   { :name => 'Password' },
   { :name => 'Host' },
   { :name => 'Database Name' },
-  { :name => 'URL' }
+  { :name => 'URL' },
+  { :name => 'Token' },
+  { :name => 'API Key' }
+])
+
+users = User.create([
+  { :username => 'jbell', :email => 'jake@augustash.com', :hashed_password => 'TEST', :first_name => 'Jake', :last_name => 'Bell' },
+  { :username => 'jjohnson', :email => 'jjohnson@augustash.com', :hashed_password => 'TEST' }
 ])

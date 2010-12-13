@@ -99,10 +99,12 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "software_versions", ["software_id"], :name => "fk_software_versions_software1"
 
   create_table "users", :force => true do |t|
-    t.string    "role",            :limit => 45,  :null => false
+    t.string    "role",            :limit => 45
     t.string    "username",        :limit => 45,  :null => false
     t.string    "email",           :limit => 45,  :null => false
     t.string    "hashed_password", :limit => 128, :null => false
+    t.string    "first_name",      :limit => 45
+    t.string    "last_name",       :limit => 45
     t.timestamp "created_at"
     t.timestamp "updated_at"
   end
