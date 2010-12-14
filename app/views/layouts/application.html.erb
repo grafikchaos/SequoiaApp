@@ -38,7 +38,11 @@
         </div>
       </div>
       <div id="sidebar">
-        <%= yield :sidebar || render(:partial => 'shared/sidebar') %>
+        <% if content_for?(:sidebar) %>
+          <%= yield :sidebar%>
+        <% else %>
+          <%= render(:partial => 'shared/sidebar') %>
+        <% end %>
       </div>
     </div>
   </div>
