@@ -1,6 +1,7 @@
-<h3><%= @client.name %> (<%= @client.client_code %>)</h3>
+<% content_for :title, @client.name+' ('+@client.client_code+')' %>
+
 <div class="controls">
-  <%= link_to 'Edit', edit_client_path(@client) %>
+  <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link' %>
 </div>
 
 <!-- Put all of client's projects in select -->

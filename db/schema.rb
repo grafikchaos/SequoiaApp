@@ -98,6 +98,17 @@ ActiveRecord::Schema.define(:version => 0) do
 
   add_index "software_versions", ["software_id"], :name => "fk_software_versions_software1"
 
+  create_table "user_bookmarks", :force => true do |t|
+    t.integer   "user_id",                   :null => false
+    t.integer   "client_id",                 :null => false
+    t.integer   "sort_index", :default => 0
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+  end
+
+  add_index "user_bookmarks", ["client_id"], :name => "fk_user_bookmarks_clients1"
+  add_index "user_bookmarks", ["user_id"], :name => "fk_user_bookmarks_users1"
+
   create_table "users", :force => true do |t|
     t.string    "role",            :limit => 45
     t.string    "username",        :limit => 45,  :null => false

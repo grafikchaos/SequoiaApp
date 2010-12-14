@@ -15,17 +15,21 @@ entity_types = EntityType.create([
   { :name => 'SSH' },
   { :name => 'Website' },
   { :name => 'API' },
-  { :name => 'FTP' }
+  { :name => 'FTP' },
+  { :name => 'Application' },
+  { :name => 'Email' }
 ])
 
 entity_attributes = EntityAttribute.create([
   { :name => 'Username' },
   { :name => 'Password' },
+  { :name => 'Email Address' },
   { :name => 'Host' },
   { :name => 'Database Name' },
   { :name => 'URL' },
   { :name => 'Token' },
-  { :name => 'API Key' }
+  { :name => 'API Key' },
+  { :name => 'Port' }
 ])
 
 users = User.create([

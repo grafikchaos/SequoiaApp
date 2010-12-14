@@ -1,21 +1,28 @@
-<h1>Listing clients</h1>
+<% content_for :title, "Clients" %>
 
-<table>
-  <tr>
-    <th>Client code</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-  </tr>
+<table id="client-list" class="data-table">
 
-<% @clients.each do |client| %>
-  <tr>
-    <td><%= client.client_code %></td>
-    <td><%= link_to client.name, client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Client code</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @clients.each do |client| %>
+    <tr>
+      <td><%= link_to client.name, client %></td>
+      <td><%= client.client_code %></td>
+      <td class="controls">
+        <%= link_to 'Edit', edit_client_path(client), :class => 'edit-link' %>
+        <%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+
 </table>
 
 <br />

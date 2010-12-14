@@ -1,4 +1,44 @@
-div.controls { display: none; }
+/****************************
+  DEFAULTS
+****************************/
+th { text-align: left; }
+
+/****************************
+  CONTROL LINKS
+****************************/
+a.edit-link {
+  width: 16px; height: 16px;
+  background: url(/images/icons/pencil.png) no-repeat;
+  display: block;
+  text-indent: -9999px;
+}
+
+a.destroy-link {
+  width: 16px; height: 16px;
+  background: url(/images/icons/delete.png) no-repeat;
+  display: block;
+  text-indent: -9999px;
+}
+
+/****************************
+  FOOTER
+****************************/
+#footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+}
+
+#footer .block {
+  padding: 5px;
+  margin: 0;
+}
+
+#footer .block p {
+  margin: 0;
+}
 
 /****************************
   NOTICES
