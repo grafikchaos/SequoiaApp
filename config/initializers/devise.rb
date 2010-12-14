@@ -20,7 +20,7 @@ Devise.setup do |config|
   # authenticating an user, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
-  # config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :username ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
@@ -46,7 +46,7 @@ Devise.setup do |config|
   config.encryptor = :bcrypt
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "84cf766ab212920c06ed47add77284a85416591ee812adb24edb73e216fcf27042cf65ea27949d412e9f0df7fd1b2b095a5a8701b3887d6cfc1e4d8173d3a5cb"
+  config.pepper = "34a3395ec691bb6d6831b1497aeff2f1a5bbb361e7f589df2e5b04792c0a62dba65fabcee71f2567031e8d03c3b3c41b39d12b1cf364eb1d5b951b31052096f6"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time

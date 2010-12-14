@@ -55,3 +55,28 @@ div.flash-message {
 }
 div.flash-message.notice { background: green; }
 div.flash-message.error { background: red; color: #fff; }
+
+/****************************
+  LOGIN PAGE
+****************************/
+#box.login {
+  width: 300px;
+  padding: 30px;
+  background: #fff;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  -moz-box-shadow: 2px 2px 2px #999;
+  -webkit-box-shadow: 2px 2px 2px #999;
+  box-shadow: 2px 2px 2px #999;
+}
+
+#box.login h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 40px;
+}
+
+#box.login h2 span {
+  font-size: 75%;
+}

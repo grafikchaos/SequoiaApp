@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 
   client_id: 
   name: MyString
 
 two:
+  id: 
   client_id: 
   name: MyString

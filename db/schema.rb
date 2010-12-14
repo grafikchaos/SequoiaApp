@@ -10,114 +10,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20101214204437) do
 
   create_table "clients", :force => true do |t|
-    t.string    "name",        :limit => 128, :null => false
-    t.string    "client_code", :limit => 10,  :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.string   "client_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  create_table "entities", :force => true do |t|
-    t.integer   "project_id",                   :null => false
-    t.integer   "entity_type_id",               :null => false
-    t.string    "name",           :limit => 45, :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  add_index "entities", ["entity_type_id"], :name => "fk_entities_entity_types1"
-  add_index "entities", ["project_id"], :name => "fk_entities_projects1"
-
-  create_table "entity_attributes", :force => true do |t|
-    t.string    "name",       :limit => 45, :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  create_table "entity_types", :force => true do |t|
-    t.string    "name",       :limit => 45, :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  create_table "entity_values", :force => true do |t|
-    t.integer   "entity_id",                         :null => false
-    t.integer   "entity_attribute_id",               :null => false
-    t.string    "value",               :limit => 45
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  add_index "entity_values", ["entity_attribute_id"], :name => "fk_entity_values_entity_attributes1"
-  add_index "entity_values", ["entity_id"], :name => "fk_entity_values_entities1"
-
-  create_table "project_has_software", :force => true do |t|
-    t.integer   "project_id",  :null => false
-    t.integer   "software_id", :null => false
-    t.integer   "version_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  add_index "project_has_software", ["project_id"], :name => "fk_project_has_software_projects1"
-  add_index "project_has_software", ["software_id"], :name => "fk_project_has_software_software"
-  add_index "project_has_software", ["version_id"], :name => "fk_project_has_software_software_versions1"
 
   create_table "projects", :force => true do |t|
-    t.integer   "client_id",                :null => false
-    t.string    "name",       :limit => 45, :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "client_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "projects", ["client_id"], :name => "fk_projects_clients1"
-
-  create_table "software", :force => true do |t|
-    t.integer   "software_type_id",               :null => false
-    t.string    "name",             :limit => 45, :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  add_index "software", ["software_type_id"], :name => "fk_software_software_types1"
-
-  create_table "software_types", :force => true do |t|
-    t.string    "name",       :limit => 45, :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  create_table "software_versions", :force => true do |t|
-    t.integer   "software_id",               :null => false
-    t.string    "version",     :limit => 20, :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  add_index "software_versions", ["software_id"], :name => "fk_software_versions_software1"
-
-  create_table "user_bookmarks", :force => true do |t|
-    t.integer   "user_id",                   :null => false
-    t.integer   "client_id",                 :null => false
-    t.integer   "sort_index", :default => 0
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-  end
-
-  add_index "user_bookmarks", ["client_id"], :name => "fk_user_bookmarks_clients1"
-  add_index "user_bookmarks", ["user_id"], :name => "fk_user_bookmarks_users1"
 
   create_table "users", :force => true do |t|
-    t.string    "role",            :limit => 45
-    t.string    "username",        :limit => 45,  :null => false
-    t.string    "email",           :limit => 45,  :null => false
-    t.string    "hashed_password", :limit => 128, :null => false
-    t.string    "first_name",      :limit => 45
-    t.string    "last_name",       :limit => 45
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "email",                              :default => "", :null => false
+    t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                      :default => "", :null => false
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
