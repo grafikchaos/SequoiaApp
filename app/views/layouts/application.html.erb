@@ -29,20 +29,16 @@
       </div>
       <div id="main">
         <%= yield %>
-        <div id="footer">
-          <div class="block">
-            <p>Copyright &copy; <%= Time.now.year %> August Ash, Inc.</p>
-          </div>
-        </div>
       </div>
       <div id="sidebar">
         <% if content_for?(:sidebar) %>
-          <%= yield :sidebar%>
+          <%= yield :sidebar %>
         <% else %>
-          <%= render(:partial => 'shared/sidebar') %>
+          <%= render 'shared/sidebar' %>
         <% end %>
       </div>
     </div>
+    <%= render 'shared/footer'%>
   </div>
 </body>
 </html>

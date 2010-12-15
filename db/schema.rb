@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101214204437) do
+ActiveRecord::Schema.define(:version => 20101215002538) do
+
+  create_table "bookmarks", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -27,9 +34,12 @@ ActiveRecord::Schema.define(:version => 20101214204437) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "username",                                           :null => false
     t.string   "email",                              :default => "", :null => false
     t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
     t.string   "password_salt",                      :default => "", :null => false
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      :default => 0
@@ -39,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20101214204437) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

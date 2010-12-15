@@ -1,6 +1,5 @@
 <% content_for :title, "Clients" %>
 
-
 <table id="client-list" class="data-table">
 
   <thead>
@@ -17,8 +16,10 @@
       <td><%= link_to client.name, client %></td>
       <td><%= client.client_code %></td>
       <td class="controls">
-        <%= link_to 'Edit', edit_client_path(client), :class => 'edit-link' %>
-        <%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link' %>
+        <ul>
+          <li><%= link_to 'Edit', edit_client_path(client), :class => 'edit-link' %></li>
+          <li><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link' %></li>
+        </ul>
       </td>
     </tr>
   <% end %>
