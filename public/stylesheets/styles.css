@@ -13,14 +13,14 @@ th { text-align: left; }
 
 a.edit-link {
   width: 16px; height: 16px;
-  background: url(/images/icons/pencil.png) no-repeat;
+  background: url(/images/icons/crud-link-edit.png) no-repeat;
   display: block;
   text-indent: -9999px;
 }
 
 a.destroy-link {
   width: 16px; height: 16px;
-  background: url(/images/icons/delete.png) no-repeat;
+  background: url(/images/icons/crud-link-delete.png) no-repeat;
   display: block;
   text-indent: -9999px;
 }

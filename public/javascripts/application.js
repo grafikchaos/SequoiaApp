@@ -83,12 +83,12 @@ var postNotice = function(content, type) {
   
   var type = type ? type : 'notice';
   
-  var html  = '<div class="flash-message">'
+  var html  = '<div class="flash-message '+type+'">'
             + content
             + '</div>';
         
   $('body').append(html);
-  $('.flash-message').addClass(type).fadeIn('slow', function() {
+  $('.flash-message').fadeIn('slow', function() {
     $(this).delay(1500).fadeOut('slow', function() {
       $(this).remove();
     });
