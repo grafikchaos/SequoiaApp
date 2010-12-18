@@ -1,11 +1,6 @@
-<%= form_tag do |f| %>
+<%= form_tag clients_path, :method => 'get', :id => 'client-search' do %>
 
-  <div class="field">
-    <%= f.label :search %><br />
-    <%= f.text_field :search %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Submit", :name => nil %>
 
 <% end %>

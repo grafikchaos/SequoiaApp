@@ -1,17 +1,11 @@
 <%= form_for(@client) do |f| %>
   <% if @client.errors.any? %>
-    <script type="text/javascript">
-      postNotice('<%= pluralize(@client.errors.count, "error") %>', 'error');
-    </script>
-    <div id="error_explanation">
-      <h2>:</h2>
+    <% @client.errors.full_messages.each do |msg| %>
+      <script type="text/javascript">
+        postNotice('<%= msg %>', 'error');
+      </script>
+    <% end %>
 
-      <ul>
-      <% @client.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
   <% end %>
 
   <div class="field">

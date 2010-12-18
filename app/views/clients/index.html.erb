@@ -1,31 +1,26 @@
 <% content_for :title, "Clients" %>
 
-<table id="client-list" class="data-table">
+<%= render 'search' %>
 
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Client code</th>
-      <th></th>
-    </tr>
-  </thead>
+<div id="client-list">
 
-  <tbody>
   <% @clients.each do |client| %>
-    <tr>
-      <td><%= link_to client.name, client %></td>
-      <td><%= client.client_code %></td>
-      <td class="controls">
+    <div class="row">
+      <div class="data">
+        <div class="name"><%= link_to client.name, client %></div>
+        <div class="code"><%= client.client_code %></div>
+      </div>
+      <div class="controls">
         <ul>
           <li><%= link_to 'Edit', edit_client_path(client), :class => 'edit-link' %></li>
           <li><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link' %></li>
         </ul>
-      </td>
-    </tr>
+      </div>
+      <div class="clear"></div>
+    </div>
   <% end %>
-  </tbody>
 
-</table>
+</div>
 
 <br />
 

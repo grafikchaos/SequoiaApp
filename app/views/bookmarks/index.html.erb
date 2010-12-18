@@ -1,9 +1,11 @@
-<ul>
-<% @bookmarks.each do |bookmark| %>
-  <li><%= link_to bookmark.path, bookmark.path %></li>
-<% end %>
-</ul>
+<div id="bookmarks-list">
+  <ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li><%= link_to bookmark.path, bookmark.path %></li>
+  <% end %>
+  </ul>
 
-<br />
+  <br />
 
-<%= link_to 'Bookmark this Client', new_bookmark_path %>
+  <%= link_to 'Bookmark this Client', new_bookmark_path %>
+</div>

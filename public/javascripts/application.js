@@ -3,7 +3,8 @@
  * happens here.
  */
 $(document).ready(function() {
-  
+  clientPageSearch();
+  bookmarksMenuDropDown();
 });
 
 /**
@@ -92,5 +93,33 @@ var postNotice = function(content, type) {
     $(this).delay(1500).fadeOut('slow', function() {
       $(this).remove();
     });
+  });
+};
+
+/**
+ * Client page search form.
+ */
+var clientPageSearch = function() {
+  $('#client-search input').keyup(function() {
+    if ($(this).val().length > 1) {
+      $.get($('#client-search').attr('action'), $('#client-search').serialize(), function(data) {
+        $('#client-list').replaceWith($('#client-list', data));
+      });
+    }
+  });
+};
+
+/**
+ * Bookmarks menu.
+ */
+var bookmarksMenuDropDown = function() {
+  $('#bookmarks-link a').click(function() {
+    if ($('#bookmarks-list').length) {
+      $('#bookmarks-list').remove();
+    } else {
+      $.get('/bookmarks', function(data) {
+        $('body').append($('#bookmarks-list', data));
+      });
+    }
   });
 };

@@ -12,6 +12,7 @@
       <h1><a href="/"><%= yield(:title) %></a></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
+          <li id="bookmarks-link"><a href="javascript:void(0)">Bookmarks</a></li>
           <li><%= link_to 'Logout', destroy_user_session_path %></li>
         </ul>
       </div>
@@ -22,13 +23,6 @@
     <div id="wrapper" class="wat-cf">
       <div id="main">
         <%= yield %>
-      </div>
-      <div id="sidebar">
-        <% if content_for?(:sidebar) %>
-          <%= yield :sidebar %>
-        <% else %>
-          <%= render 'shared/sidebar' %>
-        <% end %>
       </div>
     </div>
     <%= render 'shared/footer'%>

@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
   def index
-    @clients = Client.all
+    @clients = Client.search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,8 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @projects = @client.projects
-
+    # @entities = @client.projects.entities
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @client }

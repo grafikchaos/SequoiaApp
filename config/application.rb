@@ -35,7 +35,6 @@ module Ashint
       %w(
         jquery 
         jquery-ui 
-        jquery.dataTables 
         jquery.colorbox 
         rails
       )
