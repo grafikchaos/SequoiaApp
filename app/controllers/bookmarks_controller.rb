@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.xml
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = current_user.bookmarks.all
 
     respond_to do |format|
       format.html # index.html.erb
