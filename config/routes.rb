@@ -1,12 +1,16 @@
 Ashint::Application.routes.draw do
-
-  resources :projects
-
-  resources :bookmarks
-
+  
+  # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }, :controllers => { :sessions => "session" }
-
-  resources :clients
+  
+  # Defining our nested resources.
+  resources :users do
+    resources :bookmarks
+  end
+  
+  resources :clients do
+    resources :projects
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
