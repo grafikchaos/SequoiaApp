@@ -2,8 +2,9 @@ class Client < ActiveRecord::Base
   
   has_many :projects
   
-  validates_presence_of :name
-  validates_presence_of :client_code
+  validates_presence_of :name, :client_code
+  validates_uniqueness_of :client_code
+  validates_length_of :client_code, :within => 2..20
   
   def self.search(term)
     if term
