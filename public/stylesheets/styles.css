@@ -117,7 +117,8 @@ div.flash-message.error { background: red; color: #fff; }
 /****************************
   BOOKMARKS MENU
 ****************************/
-#bookmarks-list {
+#bookmarks-popup {
+  display: none;
   position: absolute;
   top: 50px;
   right: 60px;
@@ -132,4 +133,8 @@ div.flash-message.error { background: red; color: #fff; }
   -webkit-box-shadow: 2px 2px 2px #999;
   box-shadow: 2px 2px 2px #999;
   opacity: 0.8;
+}
+
+#bookmarks-popup .bookmarks-list ul {
+  list-style-type: none;
 }

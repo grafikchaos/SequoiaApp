@@ -114,11 +114,13 @@ var clientPageSearch = function() {
  */
 var bookmarksMenuDropDown = function() {
   $('#bookmarks-link a').click(function() {
-    if ($('#bookmarks-list').length) {
-      $('#bookmarks-list').remove();
+    if ($('#bookmarks-popup .bookmarks-list').length) {
+			$('#bookmarks-popup').hide();
+      $('#bookmarks-popup .bookmarks-list').remove();
     } else {
+			$('#bookmarks-popup').show();
       $.get('/bookmarks', function(data) {
-        $('body').append($('#bookmarks-list', data));
+        $('#bookmarks-popup').html($('.bookmarks-list', data));
       });
     }
   });
