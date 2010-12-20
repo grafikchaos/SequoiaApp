@@ -11,6 +11,8 @@ Ashint::Application.routes.draw do
   resources :clients do
     resources :projects
   end
+  
+  match '/:username/bookmarks' => 'bookmarks#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

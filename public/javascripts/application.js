@@ -119,7 +119,7 @@ var bookmarksMenuDropDown = function() {
       $('#bookmarks-popup .bookmarks-list').remove();
     } else {
 			$('#bookmarks-popup').show();
-      $.get('/bookmarks', function(data) {
+      $.get('/user/bookmarks', function(data) {
         $('#bookmarks-popup').html($('.bookmarks-list', data));
       });
     }

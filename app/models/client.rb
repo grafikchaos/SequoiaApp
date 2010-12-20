@@ -8,7 +8,7 @@ class Client < ActiveRecord::Base
   
   def self.search(term)
     if term
-      where('name LIKE ? OR client_code LIKE ?', "%#{term}%", "%#{term}%")
+      joins(:projects).where('clients.name LIKE ? OR clients.client_code LIKE ? OR projects.domain LIKE ?', "%#{term}%", "%#{term}%", "%#{term}%")
     else
       all
     end
