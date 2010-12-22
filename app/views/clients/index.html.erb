@@ -2,26 +2,9 @@
 
 <%= render 'search' %>
 
+<%= link_to 'New Client', new_client_path, :class => 'button' %>
+<div class="clear"></div>
+
 <div id="client-list">
-
-  <% @clients.each do |client| %>
-    <div class="row">
-      <div class="data">
-        <div class="name"><%= link_to client.name, client %></div>
-        <div class="code"><%= client.client_code %></div>
-      </div>
-      <div class="controls">
-        <ul>
-          <li><%= link_to 'Edit', edit_client_path(client), :class => 'edit-link' %></li>
-          <li><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link' %></li>
-        </ul>
-      </div>
-      <div class="clear"></div>
-    </div>
-  <% end %>
-
+  <%= render :partial => 'row', :collection => @clients %>
 </div>
-
-<br />
-
-<%= link_to 'New Client', new_client_path %>
