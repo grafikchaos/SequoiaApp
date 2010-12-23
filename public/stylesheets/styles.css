@@ -7,6 +7,11 @@ html, body { height: 100%; }
   HEADER
 ****************************/
 
+/****************************
+  COLORS
+****************************/
+body, #main { background: #fff; }
+
 
 /****************************
   STRUCTURE
@@ -17,25 +22,17 @@ html, body { height: 100%; }
   CLIENT LIST
 ****************************/
 #client-list .row { 
-  background: #fff;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e5e5e5'); /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e5e5e5)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #fff,  #e5e5e5); /* for firefox 3.6+ */
+  background: #F3F8FB;
   margin: 0 0 5px;
-  border: 1px solid #666; 
+  border: 1px solid #B9CAD4; 
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  -moz-box-shadow: 1px 1px 1px #B0B0B0;
-  -webkit-box-shadow: 1px 1px 1px #B0B0B0;
-  box-shadow: 1px 1px 1px #B0B0B0;
 }
+
 #client-list .row .data div { float: left; padding: 0 10px; }
 #client-list .row:hover { 
   background: #ff9; 
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffcc', endColorstr='#ffff99'); /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffc), to(#ff9)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #ffc,  #ff9); /* for firefox 3.6+ */
   margin: 0 0 5px;
 }
 
@@ -77,10 +74,8 @@ a#new-client { float: right; }
 .controls {
   padding: 5px;
   float: right;
-  background: #999;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666'); /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#666)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #999,  #666); /* for firefox 3.6+ */
+  background: #D7E0E5;
+  border-left: 1px solid #C5D3DC;
 }
 
 .controls ul li {

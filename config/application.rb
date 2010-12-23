@@ -36,6 +36,7 @@ module Ashint
         jquery 
         jquery-ui 
         jquery.colorbox 
+        jquery.qtip 
         rails
       )
 

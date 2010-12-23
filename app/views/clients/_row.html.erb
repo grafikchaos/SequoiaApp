@@ -5,8 +5,8 @@
   </div>
   <div class="controls">
     <ul>
-      <li><%= link_to 'Edit', edit_client_path(row), :class => 'edit-link' %></li>
-      <li><%= link_to 'Destroy', row, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link' %></li>
+      <li><%= link_to 'Edit', edit_client_path(row), :class => 'edit-link tooltip', :title => 'Edit' %></li>
+      <li><%= link_to 'Destroy', row, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete' %></li>
     </ul>
   </div>
   <div class="clear"></div>

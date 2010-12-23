@@ -5,6 +5,7 @@
 $(document).ready(function() {
   clientPageSearch();
   bookmarksMenuDropDown();
+	initQtips();
 });
 
 /**
@@ -124,4 +125,24 @@ var bookmarksMenuDropDown = function() {
       });
     }
   });
+};
+
+var initQtips = function() {
+	$('.tooltip').qtip({
+	  show: 'mouseover',
+	  hide: 'mouseout',
+	  position: {
+      corner: {
+        target: 'topMiddle',
+        tooltip: 'bottomMiddle'
+      }
+    },
+    style: {
+      tip: 'bottomMiddle', 
+      name: 'dark',
+      border: {
+        radius: 5
+      }
+    }
+	});
 };
