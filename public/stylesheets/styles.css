@@ -16,10 +16,30 @@ html, body { height: 100%; }
 /****************************
   CLIENT LIST
 ****************************/
-#client-list .row { padding: 5px 0; }
-#client-list .row .data div { display: inline; padding: 0 10px; }
-#client-list .row div.name { padding-left: 0; }
-#client-list .row:hover { background: #ff9; }
+#client-list .row { 
+  background: #fff;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e5e5e5'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e5e5e5)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #fff,  #e5e5e5); /* for firefox 3.6+ */
+  margin: 0 0 5px;
+  border: 1px solid #666; 
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 1px 1px 1px #B0B0B0;
+  -webkit-box-shadow: 1px 1px 1px #B0B0B0;
+  box-shadow: 1px 1px 1px #B0B0B0;
+}
+#client-list .row .data div { float: left; padding: 0 10px; }
+#client-list .row:hover { 
+  background: #ff9; 
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffcc', endColorstr='#ffff99'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffc), to(#ff9)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #ffc,  #ff9); /* for firefox 3.6+ */
+  margin: 0 0 5px;
+}
+
+a#new-client { float: right; }
 
 /****************************
   FOOTER
@@ -54,6 +74,15 @@ html, body { height: 100%; }
 /****************************
   CONTROL LINKS
 ****************************/
+.controls {
+  padding: 5px;
+  float: right;
+  background: #999;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#666)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #999,  #666); /* for firefox 3.6+ */
+}
+
 .controls ul li {
   display: block;
   float: left;
@@ -61,14 +90,14 @@ html, body { height: 100%; }
 
 a.edit-link {
   width: 16px; height: 16px;
-  background: url(/images/icons/crud-link-edit.png) no-repeat;
+  background: url(/images/icons/glyphicons_000_pencil.png) no-repeat;
   display: block;
   text-indent: -9999px;
 }
 
 a.destroy-link {
   width: 16px; height: 16px;
-  background: url(/images/icons/crud-link-delete.png) no-repeat;
+  background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
   display: block;
   text-indent: -9999px;
 }
