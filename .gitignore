@@ -4,3 +4,4 @@ tmp/**/*
 *.lock
 config/database.yml
 *.bak
+db/seeds.private.rb

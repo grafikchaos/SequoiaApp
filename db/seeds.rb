@@ -7,7 +7,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 clients = Client.create([
-  { :name => 'August Ash, Inc.', :client_code => 'AAI' }
+  { :name => 'Test, Inc.', :client_code => 'TEST' }
 ])
 
 entity_types = EntityType.create([
@@ -34,19 +34,11 @@ entity_attributes = EntityAttribute.create([
 
 users = User.create([
   { 
-    :username => 'jbell', 
-    :email => 'jake@augustash.com', 
+    :username => 'testuser', 
+    :email => 'test@test.com', 
     :password => 'password', 
     :password_confirmation => 'password', 
-    :first_name => 'Jake', 
-    :last_name => 'Bell' 
-  },
-  { 
-    :username => 'jjohnson', 
-    :email => 'jjohnson@augustash.com', 
-    :password => 'password',
-    :password_confirmation => 'password',
-    :first_name => 'Josh',
-    :last_name => 'Johnson'
+    :first_name => 'Test', 
+    :last_name => 'User' 
   }
 ])
