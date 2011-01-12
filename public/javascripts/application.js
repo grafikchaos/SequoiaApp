@@ -101,13 +101,15 @@ var postNotice = function(content, type) {
  * Client page search form.
  */
 var clientPageSearch = function() {
-  $('#client-search input').keyup(function() {
+  $('#client-search input#search')
+	.keyup(function() {
     if ($(this).val().length > 1) {
       $.get($('#client-search').attr('action'), $('#client-search').serialize(), function(data) {
         $('#client-list').replaceWith($('#client-list', data));
       });
     }
   });
+
 };
 
 /**
@@ -141,7 +143,7 @@ var initQtips = function() {
       tip: 'bottomMiddle', 
       name: 'dark',
       border: {
-        radius: 5
+        radius: 3
       }
     }
 	});

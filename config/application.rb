@@ -37,6 +37,7 @@ module Ashint
         jquery-ui 
         jquery.colorbox 
         jquery.qtip 
+        jquery.tagsinput 
         rails
       )
 

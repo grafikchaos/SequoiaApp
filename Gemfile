@@ -6,14 +6,12 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-gem 'acts_as_eav_model'
 gem 'jquery-rails'
 gem 'tabs_on_rails'
 gem 'devise'
-gem 'devise_ldap_authenticatable'
 
 group :development, :test do
-  gem 'web-app-theme', '>= 0.6.2'
+  gem 'web-app-theme'
 end
 
 # Use unicorn as the web server

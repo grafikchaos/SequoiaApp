@@ -33,6 +33,20 @@ entity_attributes = EntityAttribute.create([
 ])
 
 users = User.create([
-  { :username => 'jbell', :email => 'jake@augustash.com', :hashed_password => 'TEST', :first_name => 'Jake', :last_name => 'Bell' },
-  { :username => 'jjohnson', :email => 'jjohnson@augustash.com', :hashed_password => 'TEST' }
+  { 
+    :username => 'jbell', 
+    :email => 'jake@augustash.com', 
+    :password => 'password', 
+    :password_confirmation => 'password', 
+    :first_name => 'Jake', 
+    :last_name => 'Bell' 
+  },
+  { 
+    :username => 'jjohnson', 
+    :email => 'jjohnson@augustash.com', 
+    :password => 'password',
+    :password_confirmation => 'password',
+    :first_name => 'Josh',
+    :last_name => 'Johnson'
+  }
 ])
