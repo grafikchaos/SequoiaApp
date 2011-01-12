@@ -6,39 +6,53 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-clients = Client.create([
-  { :name => 'Test, Inc.', :client_code => 'TEST' }
-])
+def class_exists?(class_name)
+  klass = Module.const_get(class_name)
+  return klass.is_a?(Class)
+rescue NameError
+  return false
+end
 
-entity_types = EntityType.create([
-  { :name => 'Database' },
-  { :name => 'SSH' },
-  { :name => 'Website' },
-  { :name => 'API' },
-  { :name => 'FTP' },
-  { :name => 'Application' },
-  { :name => 'Email' }
-])
+if class_exists?('Client')
+  Client.create([
+    { :name => 'Test, Inc.', :client_code => 'TEST' }
+  ])
+end
 
-entity_attributes = EntityAttribute.create([
-  { :name => 'Username' },
-  { :name => 'Password' },
-  { :name => 'Email Address' },
-  { :name => 'Host' },
-  { :name => 'Database Name' },
-  { :name => 'URL' },
-  { :name => 'Token' },
-  { :name => 'API Key' },
-  { :name => 'Port' }
-])
+if class_exists?('EntityType')
+  EntityType.create([
+    { :name => 'Database' },
+    { :name => 'SSH' },
+    { :name => 'Website' },
+    { :name => 'API' },
+    { :name => 'FTP' },
+    { :name => 'Application' },
+    { :name => 'Email' }
+  ])
+end
 
-users = User.create([
-  { 
-    :username => 'testuser', 
-    :email => 'test@test.com', 
-    :password => 'password', 
-    :password_confirmation => 'password', 
-    :first_name => 'Test', 
-    :last_name => 'User' 
-  }
-])
+if class_exists?('EntityAttribute')
+  EntityAttribute.create([
+    { :name => 'Username' },
+    { :name => 'Password' },
+    { :name => 'Email Address' },
+    { :name => 'Host' },
+    { :name => 'Database Name' },
+    { :name => 'URL' },
+    { :name => 'Token' },
+    { :name => 'API Key' },
+    { :name => 'Port' }
+  ])
+end
+
+if class_exists?('User')
+  users = User.create([
+    { 
+      :username => 'testuser', 
+      :email => 'test@test.com', 
+      :password => 'password',  
+      :first_name => 'Test', 
+      :last_name => 'User' 
+    }
+  ])
+end

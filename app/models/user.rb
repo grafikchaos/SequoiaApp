@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
           :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :password, :remember_me
+  attr_accessible :username, :email, :password, :remember_me, :first_name, :last_name
   
   has_many :bookmarks
   
