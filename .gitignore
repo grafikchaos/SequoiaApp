@@ -1,4 +1,5 @@
 .bundle
+.rvmrc
 log/*.log
 tmp/**/*
 *.lock
