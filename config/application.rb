@@ -33,11 +33,12 @@ module Ashint
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = 
       %w(
-        jquery 
-        jquery-ui 
-        jquery.colorbox 
-        jquery.qtip 
-        jquery.tagsinput 
+        jquery/jquery 
+        jquery-ui/jquery-ui 
+        colorbox/jquery.colorbox 
+        qtip/jquery.qtip 
+        tagsinput/jquery.tagsinput
+        mapkey/jquery.mapkey
         rails
       )
 
