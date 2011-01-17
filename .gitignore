@@ -1,8 +1,0 @@
-.bundle
-.rvmrc
-log/*.log
-tmp/**/*
-*.lock
-config/database.yml
-*.bak
-db/seeds.private.rb
