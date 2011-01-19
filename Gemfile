@@ -17,6 +17,7 @@ gem 'cancan'
 group :development, :test do
   gem 'web-app-theme'
   gem 'autotest'
+  gem 'machinist', '>= 2.0.0.beta1'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'webrat'
