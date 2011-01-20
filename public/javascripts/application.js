@@ -5,7 +5,7 @@
 $(document).ready(function() {
   clientPageSearch();
   bookmarksMenuDropDown();
-	initQtips();
+  initQtips();
 });
 
 /**
@@ -102,6 +102,7 @@ var postNotice = function(content, type) {
  */
 var clientPageSearch = function() {
   $('#client-search input#search')
+    .focus()
 	.keyup(function() {
     if ($(this).val().length > 1) {
       $.get($('#client-search').attr('action'), $('#client-search').serialize(), function(data) {
