@@ -1,0 +1,52 @@
+<mockup version="1.0" skin="sketch" measuredW="1360" measuredH="905" mockupW="1280" mockupH="900">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="80" y="5" w="1280" h="900" measuredW="450" measuredH="400" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <text>AAI%20Intranet%20Redeux%0Ahttp%3A//intranet.aai.com</text>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="84" y="76" w="1276" h="53" measuredW="100" measuredH="70" zOrder="1" locked="true" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>3355443</color>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Title" x="109" y="70" w="-1" h="-1" measuredW="127" measuredH="56" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <href>search_idea%26bm%3Bsearch_idea.bmml%26bm%3Bsearch_idea.bmml%26bm%3Bsearch_idea.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2229%2C65%2C156%2C121%22%20href%3D%22search_idea.bmml%22%20alt%3D%22search_idea%22%20id%3D%222%22/%3E</map>
+        <text>cosmos</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::IconLabel" x="264" y="90" w="170" h="-1" measuredW="138" measuredH="24" zOrder="3" locked="true" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <color>16777215</color>
+        <icon>ContactIcon%7Csmall</icon>
+        <labelPosition>right</labelPosition>
+        <text>Johnny%20Appleseed</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="1296" y="93" w="-1" h="-1" measuredW="44" measuredH="23" zOrder="4" locked="true" isInGroup="-1">
+      <controlProperties>
+        <color>15658734</color>
+        <text>Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::SearchBox" x="973" y="91" w="307" h="-1" measuredW="76" measuredH="25" zOrder="5" locked="true" isInGroup="-1">
+      <controlProperties>
+        <text>search...</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::IconLabel" x="865" y="90" w="-1" h="-1" measuredW="94" measuredH="24" zOrder="6" locked="true" isInGroup="-1">
+      <controlProperties>
+        <color>15843890</color>
+        <icon>StarIcon%7Csmall</icon>
+        <labelPosition>right</labelPosition>
+        <text>Bookmarks</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
