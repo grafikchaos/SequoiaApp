@@ -1,4 +1,5 @@
-<% content_for :title, @client.name+' ('+@client.client_code+')' %>
+<% content_for :page_title, page_title(@client) %>
+<% content_for :display_title, display_title(@client) %>
 
 <div class="controls">
   <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link' %>
@@ -7,7 +8,7 @@
 <!-- Put all of client's projects in select -->
 <% options = Array.new(1, ['All', 'all']) %>
 <% @projects.each do |project| %>
-    <% options.push([project.name, project.id]) %>
+  <% options << [project.name, project.id] %>
 <% end %>
 
 <%= form_tag('project#show', :method => 'get', :id => 'proj_selector') do %>

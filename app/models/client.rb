@@ -4,6 +4,8 @@ class Client < ActiveRecord::Base
                   :approximate_ascii => true,
                   :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
+  has_attached_file :logo, :styles => { :mini => "24x24>", :small => "64x64>", :medium => "96x96>", :big => "200x200>" }
+
   has_many :projects
   
   validates_presence_of   :name, :client_code

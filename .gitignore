@@ -6,3 +6,4 @@ tmp/**/*
 config/database.yml
 *.bak
 db/seeds.private.rb
+public/system/logos

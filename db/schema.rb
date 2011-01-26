@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110126063737) do
+ActiveRecord::Schema.define(:version => 20110126184124) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(:version => 20110126063737) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"

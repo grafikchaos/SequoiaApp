@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title) %> | August Ash Intranet</title>
+  <title><%= yield(:page_title) %> | August Ash Intranet</title>
   <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/warehouse/style", "styles", :cache => true %>
   <%= javascript_include_tag :defaults, :cache => true %>
   <%= csrf_meta_tag %>
@@ -9,7 +9,7 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1><a href="/"><%= yield(:title) %></a></h1>
+      <h1><a href="/"><%= yield(:display_title) %></a></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
           <li id="bookmarks-link"><a href="javascript:void(0)">Bookmarks</a></li>
