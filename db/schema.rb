@@ -10,18 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110126191715) do
+ActiveRecord::Schema.define(:version => 20110126204446) do
 
   create_table "bookmarks", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    :default => 0, :null => false
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "clients", :force => true do |t|
-    t.string   "name"
-    t.string   "client_code"
+    t.string   "name",                            :default => "", :null => false
+    t.string   "client_code",       :limit => 10, :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(:version => 20110126191715) do
   add_index "entity_types", ["name"], :name => "index_entity_types_on_name"
 
   create_table "projects", :force => true do |t|
-    t.integer  "client_id"
-    t.string   "name"
+    t.integer  "client_id",  :default => 0,  :null => false
+    t.string   "name",       :default => "", :null => false
     t.string   "domain"
     t.datetime "created_at"
     t.datetime "updated_at"
