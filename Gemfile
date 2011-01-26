@@ -14,6 +14,8 @@ group :development, :test do
   gem 'factory_girl'
   gem 'webrat'
   gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'pickle'
 end
 
 # Deploy with Capistrano
