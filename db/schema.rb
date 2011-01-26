@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110126184124) do
+ActiveRecord::Schema.define(:version => 20110126191715) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,56 @@ ActiveRecord::Schema.define(:version => 20110126184124) do
 
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
 
+  create_table "entities", :force => true do |t|
+    t.integer  "project_id",     :null => false
+    t.integer  "entity_type_id", :null => false
+    t.string   "name",           :null => false
+    t.string   "cached_slug",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entities", ["cached_slug"], :name => "index_entities_on_cached_slug"
+  add_index "entities", ["entity_type_id"], :name => "index_entities_on_entity_type_id"
+  add_index "entities", ["id"], :name => "index_entities_on_id"
+  add_index "entities", ["name"], :name => "index_entities_on_name"
+  add_index "entities", ["project_id"], :name => "index_entities_on_project_id"
+
+  create_table "entity_keys", :force => true do |t|
+    t.string   "name",        :null => false
+    t.string   "cached_slug", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entity_keys", ["cached_slug"], :name => "index_entity_keys_on_cached_slug"
+  add_index "entity_keys", ["id"], :name => "index_entity_keys_on_id"
+  add_index "entity_keys", ["name"], :name => "index_entity_keys_on_name"
+
+  create_table "entity_rows", :force => true do |t|
+    t.integer  "entity_id",     :null => false
+    t.integer  "entity_key_id", :null => false
+    t.string   "value",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entity_rows", ["entity_id"], :name => "index_entity_rows_on_entity_id"
+  add_index "entity_rows", ["entity_key_id"], :name => "index_entity_rows_on_entity_key_id"
+  add_index "entity_rows", ["id"], :name => "index_entity_rows_on_id"
+  add_index "entity_rows", ["value"], :name => "index_entity_rows_on_value"
+
+  create_table "entity_types", :force => true do |t|
+    t.string   "name",        :null => false
+    t.string   "cached_slug", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entity_types", ["cached_slug"], :name => "index_entity_types_on_cached_slug"
+  add_index "entity_types", ["id"], :name => "index_entity_types_on_id"
+  add_index "entity_types", ["name"], :name => "index_entity_types_on_name"
+
   create_table "projects", :force => true do |t|
     t.integer  "client_id"
     t.string   "name"
@@ -40,6 +90,8 @@ ActiveRecord::Schema.define(:version => 20110126184124) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["client_id"], :name => "fk_projects_clients"
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
@@ -72,5 +124,7 @@ ActiveRecord::Schema.define(:version => 20110126184124) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  add_foreign_key "projects", "clients", :name => "fk_projects_clients", :dependent => :delete
 
 end

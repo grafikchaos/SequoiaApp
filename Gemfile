@@ -19,6 +19,7 @@ group :development, :test do
   gem 'cucumber-rails'
   gem 'pickle'
   gem 'database_cleaner'
+  gem 'foreigner'
 end
 
 # Deploy with Capistrano
