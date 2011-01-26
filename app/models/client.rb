@@ -1,4 +1,8 @@
 class Client < ActiveRecord::Base
+  has_friendly_id :client_code, 
+                  :use_slug => true, 
+                  :approximate_ascii => true,
+                  :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
   has_many :projects
   

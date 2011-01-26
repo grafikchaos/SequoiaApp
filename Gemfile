@@ -7,6 +7,8 @@ gem 'jquery-rails'
 gem 'tabs_on_rails'
 gem 'devise'
 gem 'cancan'
+gem "friendly_id", "~> 3.2"
+gem "paperclip", "~> 2.3"
 
 group :development, :test do
   gem 'web-app-theme'
@@ -16,6 +18,7 @@ group :development, :test do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'pickle'
+  gem 'database_cleaner'
 end
 
 # Deploy with Capistrano
