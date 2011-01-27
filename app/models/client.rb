@@ -1,8 +1,4 @@
 class Client < ActiveRecord::Base
-  has_friendly_id :client_code, 
-                  :use_slug => true, 
-                  :approximate_ascii => true,
-                  :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
   has_attached_file :logo, :styles => { :mini => "24x24>", :small => "64x64>", :medium => "96x96>", :big => "200x200>" }
 
@@ -14,6 +10,11 @@ class Client < ActiveRecord::Base
   
   before_save :capitalize_client_code
   
+  has_friendly_id :client_code, 
+                  :use_slug => true, 
+                  :approximate_ascii => true,
+                  :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
+                  
   #------------
   # named scopes 
   #   allows chaining of scopes together
@@ -38,8 +39,8 @@ class Client < ActiveRecord::Base
   ##############################
   protected
 
-    def capitalize_client_code
-       self.client_code.upcase! if self.client_code
-    end
+  def capitalize_client_code
+     self.client_code.upcase! if self.client_code
+  end
   
 end

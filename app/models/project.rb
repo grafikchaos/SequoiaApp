@@ -1,6 +1,5 @@
 class Project < ActiveRecord::Base
   has_many    :entities
-
   belongs_to  :client
   
   validates_presence_of :client_id, :name

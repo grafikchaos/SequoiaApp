@@ -2,6 +2,7 @@
 <% content_for :display_title, display_title(@client) %>
 
 <div class="controls">
+  <%= link_to 'New Project', new_client_project_path(@client), :class => 'button' %>
   <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link' %>
 </div>
 
