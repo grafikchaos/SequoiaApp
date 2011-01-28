@@ -1,4 +1,4 @@
-<%= form_for  @project, :url => client_projects_path do |f| %>
+<%= form_for @project, :url => client_projects_path do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -11,14 +11,14 @@
     </div>
   <% end %>
   
-  <div class="hidden">
-    <!-- TODO: This doesn't work. -->
-    <%= f.hidden_field :client_id %>
-  </div>
-  
-  <div class="field">
+  <div class="field required">
     <%= f.label :name %>
     <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :domain %>
+    <%= f.text_field :domain %>
   </div>
   
   <div class="actions">
