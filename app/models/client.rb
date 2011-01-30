@@ -1,19 +1,26 @@
 class Client < ActiveRecord::Base
-  
+  # paperclip behavior
   has_attached_file :logo, :styles => { :mini => "24x24>", :small => "64x64>", :medium => "96x96>", :big => "200x200>" }
 
   has_many :projects
   
-  validates_presence_of   :name, :client_code
+  # validates_presence_of   :name
+  validates_presence_of :name, :on => :create, :message => "client name can't be blank"
+  
+  validates_presence_of   :client_code
   validates_uniqueness_of :client_code, :case_sensitive => false
   validates_length_of     :client_code, :within => 2..10
   
   before_save :capitalize_client_code
   
-  has_friendly_id :client_code, 
-                  :use_slug => true, 
-                  :approximate_ascii => true,
-                  :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
+  # columns open to mass-assignment
+  attr_accessible :name, :client_code, :logo, :logo_file_name, :logo_content_type, :logo_size, :logo_updated_at
+
+  # friendly_id slug behavior
+  # has_friendly_id :client_code, 
+  #                 :use_slug => true, 
+  #                 :approximate_ascii => true,
+  #                 :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
                   
   #------------
   # named scopes 

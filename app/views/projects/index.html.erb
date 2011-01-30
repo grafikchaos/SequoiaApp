@@ -2,20 +2,22 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Project Name</th>
+    <th>Domain</th>
+    <th colspan="3">Actions</th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= project.name %></td>
+    <td><%= project.domain %></td>
+    <td><%= link_to 'Show', client_project_path(@client, project) %></td>
+    <td><%= link_to 'Edit', edit_client_project_path(@client, project) %></td>
+    <td><%= link_to 'Destroy', [@client, project], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'New Project', new_client_project_path %>
