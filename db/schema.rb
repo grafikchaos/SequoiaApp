@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110126204446) do
+ActiveRecord::Schema.define(:version => 20110130020029) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :default => 0, :null => false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20110126204446) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "bookmarks", ["user_id"], :name => "bookmarks_user_id_fk"
 
   create_table "clients", :force => true do |t|
     t.string   "name",                            :default => "NULL", :null => false
@@ -124,6 +126,14 @@ ActiveRecord::Schema.define(:version => 20110126204446) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  add_foreign_key "bookmarks", "users", :name => "bookmarks_user_id_fk", :dependent => :delete
+
+  add_foreign_key "entities", "entity_types", :name => "entities_entity_type_id_fk"
+  add_foreign_key "entities", "projects", :name => "entities_project_id_fk", :dependent => :delete
+
+  add_foreign_key "entity_rows", "entities", :name => "entity_rows_entity_id_fk", :dependent => :delete
+  add_foreign_key "entity_rows", "entity_keys", :name => "entity_rows_entity_key_id_fk"
 
   add_foreign_key "projects", "clients", :name => "projects_client_id_fk", :dependent => :delete
 
