@@ -17,10 +17,10 @@ class Client < ActiveRecord::Base
   attr_accessible :name, :client_code, :logo, :logo_file_name, :logo_content_type, :logo_size, :logo_updated_at
 
   # friendly_id slug behavior
-  # has_friendly_id :client_code, 
-  #                 :use_slug => true, 
-  #                 :approximate_ascii => true,
-  #                 :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
+  has_friendly_id :client_code, 
+                  :use_slug => true, 
+                  :approximate_ascii => true,
+                  :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
                   
   #------------
   # named scopes 
