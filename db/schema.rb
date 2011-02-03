@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20110130020029) do
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["client_id"], :name => "projects_client_id_fk"
+  add_index "projects", ["client_id"], :name => "fk_projects_clients"
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
@@ -135,6 +135,6 @@ ActiveRecord::Schema.define(:version => 20110130020029) do
   add_foreign_key "entity_rows", "entities", :name => "entity_rows_entity_id_fk", :dependent => :delete
   add_foreign_key "entity_rows", "entity_keys", :name => "entity_rows_entity_key_id_fk"
 
-  add_foreign_key "projects", "clients", :name => "projects_client_id_fk", :dependent => :delete
+  add_foreign_key "projects", "clients", :name => "fk_projects_clients", :dependent => :delete
 
 end
