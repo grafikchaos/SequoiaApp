@@ -20,6 +20,8 @@ group :development, :test do
   gem 'pickle'
   gem 'database_cleaner'
   gem 'foreigner'
+  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 # Deploy with Capistrano

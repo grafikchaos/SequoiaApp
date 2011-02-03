@@ -12,8 +12,29 @@ Feature: Manage Clients
     And I should see "AAA"
     And I should see "AAI"
   
-  @wip
-  Scenario: Create a client
+  @clients @authenticate
+  Scenario: Client form has project subform fields
+    Given I am on the list of clients
+    When I follow "New Client"
+    Then I should see "Name"
+    And I should see "Client code"
+    And I should see "Project Name"
+    And I should see "Project Domain"
+    
+  
+  @wip @clients @staff
+  Scenario: Create a valid client
+    Given the client "ROR" does not exist
+    And I am on the new client page
+    When I fill in "Name" with "Ruby on Rails"
+    And I fill in "Client code" with "ROR"
+    And I fill in "Project Name" with "Shallow Routing"
+    And I fill in "Project Domain" with "Shallow Routing"
+    And I press "Create Client"
+    Then I should see "New Client created"
+    And I should be on the client page for "ROR"
+    And I should see "ROR"
+    
   
 
   @wip
@@ -23,5 +44,6 @@ Feature: Manage Clients
   @wip
   Scenario: Delete a client
   
-
+  
+  
   
