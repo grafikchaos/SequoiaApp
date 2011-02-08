@@ -14,8 +14,12 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.xml
   def show
-    @client = Client.find(params[:id])
-    @projects = @client.projects
+    if params[:scope]
+      @client = Client.find_by_client_code(params[:scope])
+      raise ActiveRecord::RecordNotFound, "Client not found" if @client.nil?
+    else
+      @client = Client.find(params[:id])
+    end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -45,7 +49,7 @@ class ClientsController < ApplicationController
   # POST /clients.xml
   def create
     @client = Client.new(params[:client])
-
+    
     respond_to do |format|
       if @client.save
         format.html { redirect_to(@client, :notice => 'Client was successfully created.') }

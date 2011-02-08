@@ -18,6 +18,8 @@ module NavigationHelpers
     #     user_profile_path(User.find_by_login($1))
     when /^the list of clients$/
       "/clients"
+    when /^the client page for "(.*)"$/i
+      client_path(Client.find_by_client_code($1))
     else
       begin
         page_name =~ /the (.*) page/

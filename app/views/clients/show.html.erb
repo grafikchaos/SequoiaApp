@@ -8,7 +8,7 @@
 
 <!-- Put all of client's projects in select -->
 <% options = Array.new(1, ['All', 'all']) %>
-<% @projects.each do |project| %>
+<% @client.projects.each do |project| %>
   <% options << [project.name, project.id] %>
 <% end %>
 
