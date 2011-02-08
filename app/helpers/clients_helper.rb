@@ -1,4 +1,4 @@
-module ClientsHelper
+module ClientsHelper  
   def page_title(client)
     client.name + ' (' + client.client_code + ')' 
   end

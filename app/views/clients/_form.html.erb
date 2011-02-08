@@ -8,18 +8,13 @@
 
   <% end %>
 
-  <div class="field required">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field required">
-    <%= f.label :client_code %><br />
-    <%= f.text_field :client_code %>
-  </div>
-  <div class="field">
-    <%= f.label :logo %>
-    <%= f.file_field :logo %>
-  <div>
+  <%= render 'form_fields', :f => f %>    
+
+  <% @client.build_projects unless @client.projects %>
+  <%= f.fields_for :projects do |project_form| %>
+    <%= render 'projects/form_fields', :f => project_form %>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

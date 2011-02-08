@@ -11,16 +11,7 @@
     </div>
   <% end %>
   
-  
-  <div class="field required">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :domain %>
-    <%= f.text_field :domain %>
-  </div>
+  <%= render 'form_fields', :locals => { :f => f } %>
   
   <div class="actions">
     <%= f.submit 'Create project', :class => 'button' %>

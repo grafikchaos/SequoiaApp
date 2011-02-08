@@ -17,7 +17,7 @@ Feature: Manage Clients
     Given I am on the list of clients
     When I follow "New Client"
     Then I should see "Name"
-    And I should see "Client code"
+    And I should see "Client Code"
     And I should see "Project Name"
     And I should see "Project Domain"
     

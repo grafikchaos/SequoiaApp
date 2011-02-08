@@ -4,6 +4,9 @@ class Client < ActiveRecord::Base
 
   has_many :projects
   
+  # accept Project form fields/attributes
+  accepts_nested_attributes_for :projects, :reject_if => lambda { |proj| proj[:name].blank? }, :allow_destroy => true
+  
   # validates_presence_of   :name
   validates_presence_of :name, :on => :create, :message => "client name can't be blank"
   
