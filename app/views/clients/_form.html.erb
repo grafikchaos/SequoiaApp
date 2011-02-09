@@ -10,14 +10,15 @@
 
   <%= render 'form_fields', :f => f %>    
 
-  <% @client.build_projects unless @client.projects %>
-  <%= field_set_tag "First Project", :class => "collapsible" do %>
-    <div class="fieldset-wrapper">
-      <%= f.fields_for :projects do |project_form| %>
-        <%= render 'projects/form_fields', :f => project_form %>
-      <% end %>
-    </div>
-  <% end %>
+  <%- if @client.new_record? -%>
+    <%= field_set_tag "First Project", :class => "collapsible" do %>
+      <div class="fieldset-wrapper">
+        <%= f.fields_for :projects do |project_form| %>
+          <%= render 'projects/form_fields', :f => project_form %>
+        <% end %>
+      </div>
+    <% end %>
+  <%- end -%>
   
   <div class="actions">
     <%= f.submit %>
