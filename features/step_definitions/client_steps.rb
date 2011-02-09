@@ -4,10 +4,10 @@ Given /^I have client codes (.+)$/ do |client_codes|
   end
 end
 
-Given /^the client "([^"]*)" does not exist$/ do |arg1|
+Given /^I have no clients$/i do
   Client.delete_all
 end
- 
+
 When /^I search for "([^"]*)"$/ do |query|
   Client.search(query)
 end

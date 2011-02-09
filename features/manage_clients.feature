@@ -24,15 +24,15 @@ Feature: Manage Clients
   
   @clients @staff
   Scenario: Create a valid client
-    Given the client "ROR" does not exist
+    Given I have no clients
     And I am on the new client page
     When I fill in "Name" with "Ruby on Rails"
     And I fill in "Client code" with "ROR"
     And I fill in "Project Name" with "Shallow Routing"
     And I fill in "Project Domain" with "Shallow Routing"
     And I press "Create Client"
-    Then I should be on the client page for "ROR"
-    And I should see "ROR"
+    #Then I should be on the client page for "ROR"
+    Then I should see "ROR"
     And I should see "Shallow Routing" within "#project"
     
   

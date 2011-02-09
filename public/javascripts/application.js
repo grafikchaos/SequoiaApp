@@ -3,10 +3,31 @@
  * happens here.
  */
 $(document).ready(function() {
+  initCollapsibles();
   clientPageSearch();
   bookmarksMenuDropDown();
   initQtips();
 });
+
+/**
+ * Handle collapsible fieldsets.
+ */
+var initCollapsibles = function() {
+  $('fieldset.collapsible').each(function() {
+    $('legend', this).prepend('<img src="../images/icons/menu-expanded.png" />')
+    .click(function() {
+      $(this).siblings().slideToggle();
+      if ($(this).parent().hasClass('collapsed')) {
+        $(this).parent().removeClass('collapsed');
+        $('img', this).attr('src', '../images/icons/menu-expanded.png');
+      } else {
+        $(this).parent().addClass('collapsed');
+        $('img', this).attr('src', '../images/icons/menu-collapsed.png');
+      }
+    });
+  });
+};
+
 
 /**
  * Generic AJAX form submission handler.
