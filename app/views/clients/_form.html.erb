@@ -12,9 +12,11 @@
 
   <% @client.build_projects unless @client.projects %>
   <%= field_set_tag "First Project", :class => "collapsible" do %>
-    <%= f.fields_for :projects do |project_form| %>
-      <%= render 'projects/form_fields', :f => project_form %>
-    <% end %>
+    <div class="fieldset-wrapper">
+      <%= f.fields_for :projects do |project_form| %>
+        <%= render 'projects/form_fields', :f => project_form %>
+      <% end %>
+    </div>
   <% end %>
   
   <div class="actions">

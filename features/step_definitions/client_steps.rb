@@ -11,3 +11,7 @@ end
 When /^I search for "([^"]*)"$/ do |query|
   Client.search(query)
 end
+
+Then /^I should have (\d+) client/ do |count|
+  Client.count.should == count.to_i
+end
