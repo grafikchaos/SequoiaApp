@@ -10,8 +10,7 @@
 
   <%= render 'form_fields', :f => f %>    
 
-  <% if @client.new_record? %>
-    <% @client.build_projects unless @client.projects %>
+  <%- if @client.new_record? -%>
     <%= field_set_tag "First Project", :class => "collapsible" do %>
       <div class="fieldset-wrapper">
         <%= f.fields_for :projects do |project_form| %>
@@ -19,7 +18,7 @@
         <% end %>
       </div>
     <% end %>
-  <% end %>
+  <%- end -%>
   
   <div class="actions">
     <%= f.submit %>
