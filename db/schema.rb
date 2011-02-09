@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20110130020029) do
   add_index "entity_types", ["name"], :name => "index_entity_types_on_name"
 
   create_table "projects", :force => true do |t|
-    t.integer  "client_id",  :null => false
-    t.string   "name",       :null => false
+    t.integer  "client_id",  :default => 0, :null => false
+    t.string   "name",                      :null => false
     t.string   "domain"
     t.datetime "created_at"
     t.datetime "updated_at"
