@@ -162,3 +162,15 @@ div.flash-message.error { background: red; color: #fff; }
 #bookmarks-popup .bookmarks-list ul {
   list-style-type: none;
 }
+
+/****************************
+  FIELDSETS
+****************************/
+fieldset.collapsible legend {
+  background: url(/images/icons/menu-expanded.png) no-repeat left center;
+  padding-left: 10px;
+}
+
+fieldset.collapsible.collapsed legend {
+  background: url(/images/icons/menu-collapsed.png) no-repeat left center;
+}

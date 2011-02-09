@@ -20,6 +20,8 @@ module NavigationHelpers
       "/clients"
     when /^the client page for "(.*)"$/i
       client_path(Client.find_by_client_code($1))
+    when /^the edit page for the client "(.*)"$/i
+      edit_client_path(Client.find_by_client_code($1))
     else
       begin
         page_name =~ /the (.*) page/
