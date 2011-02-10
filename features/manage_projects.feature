@@ -7,15 +7,14 @@ Feature: Manage projects
   Scenario: Create a valid project for a client
     Given client "ROR" exists
     And I am on the client page for "ROR"
-    And the client does not have a project named "Intranet"
+    And the client "ROR" does not have a project named "Intranet"
     When I follow "New Project"
-    And I fill in "Name" with "Intranet"
-    And I fill in "Domain" with "intranet.ror.local"
+    And I fill in "Project Name" with "Intranet"
+    And I fill in "Project Domain" with "intranet.ror.local"
     And I press "Create Project"
     # Then I should see "New Project created"
-    And I should be on "ROR"'s "Intranet" project page
-    And I should see "Intranet"
-  
+    Then I should be on "ROR"'s "Intranet" project page
+    And I should see "Intranet" 
   
   
 

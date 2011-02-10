@@ -52,6 +52,11 @@ class ClientsController < ApplicationController
     
     respond_to do |format|
       if @client.save
+        # Create a new default project if the user did not specify one
+        if @client.projects.empty?
+          project = Project.new(:name => 'Default', :client_id => @client.id)
+          project.save!
+        end
         format.html { redirect_to(@client, :notice => 'Client was successfully created.') }
         format.xml  { render :xml => @client, :status => :created, :location => @client }
       else
