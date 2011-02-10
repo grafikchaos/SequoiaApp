@@ -35,7 +35,7 @@ Feature: Manage Clients
     And I should see "ROR"
     And I should see "Shallow Routing" within "#project"
     And I should have 1 client
-    
+
   @clients @staff @authenticate
   Scenario: Create a client with no custom first project
     Given I have no clients
@@ -59,13 +59,15 @@ Feature: Manage Clients
     Then I should see "Client code is too short"
     And I should have 0 clients
 
-  @wip
+  @clients @staff @authenticate @edit
   Scenario: Edit a client
-
+    Given I have client codes AAI
+    And I am on the edit page for the client "AAI"
+    Then the "Client code" field should contain "AAI"
+    And I should not see "First Project"
+    
 
   @wip
   Scenario: Delete a client
-  
-  
   
   
