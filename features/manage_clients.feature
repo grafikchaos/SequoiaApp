@@ -60,14 +60,21 @@ Feature: Manage Clients
     And I should have 0 clients
 
   @clients @staff @authenticate @edit
-  Scenario: Edit a client
+  Scenario: Check that the project form is hidden when editing a client
     Given I have client codes AAI
     And I am on the edit page for the client "AAI"
     Then the "Client code" field should contain "AAI"
     And I should not see "First Project"
-    
+    When I fill in "Name" with "Mister Mittons"
+    And I press "Update Client"
+    Then I should be on the client page for "AAI"
+    And I should see "Mister Mittons"
 
-  @wip
+  @wip @clients @admin @authenticate @delete
   Scenario: Delete a client
-  
+    Given I have client codes ROR
+    And I am on the client page for "ROR"
+    When I follow "Delete"
+    Then I should be on the list of clients
+    And I should have 0 clients
   

@@ -4,6 +4,7 @@
 <div class="controls">
   <%= link_to 'New Project', new_client_project_path(@client), :class => 'button' %>
   <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link' %>
+  <%= link_to 'Delete', @client, :confirm => 'Are you sure you want to delete this client?', :method => 'delete', :class => 'delete-link tooltip', :title => 'Delete' %>
 </div>
 
 <!-- Put all of client's projects in select -->
