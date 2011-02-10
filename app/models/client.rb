@@ -14,7 +14,9 @@ class Client < ActiveRecord::Base
   validates_uniqueness_of :client_code, :case_sensitive => false
   validates_length_of     :client_code, :within => 2..10
   
+  # callbacks
   before_save :capitalize_client_code
+  after_save :add_default_project
   
   # columns open to mass-assignment
   attr_accessible :name, :client_code, :logo, :logo_file_name, :logo_content_type, :logo_size, :logo_updated_at, :projects_attributes
@@ -51,6 +53,12 @@ class Client < ActiveRecord::Base
 
   def capitalize_client_code
      self.client_code.upcase! if self.client_code
+  end
+
+  def add_default_project
+    if self.projects.empty?
+      Project.new(:name => 'Default', :client_id => self.id).save!
+    end
   end
   
 end
