@@ -70,11 +70,11 @@ Feature: Manage Clients
     Then I should be on the client page for "AAI"
     And I should see "Mister Mittons"
 
-  @wip @clients @admin @authenticate @delete
+  @clients @admin @authenticate @delete
   Scenario: Delete a client
     Given I have client codes ROR
     And I am on the client page for "ROR"
-    When I follow "Delete"
+    When I follow the "Delete" link
     Then I should be on the list of clients
     And I should have 0 clients
   

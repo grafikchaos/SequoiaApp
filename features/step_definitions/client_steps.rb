@@ -12,6 +12,11 @@ When /^I search for "([^"]*)"$/ do |query|
   Client.search(query)
 end
 
+When /^I follow the "([^"]*)" link$/ do |link|
+  browserlink = webrat.current_scope.find_link(link)
+  browserlink.click(:method => link.downcase)
+end
+
 Then /^I should have (\d+) client/ do |count|
   Client.count.should == count.to_i
 end
