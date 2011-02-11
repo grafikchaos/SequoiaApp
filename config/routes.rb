@@ -1,7 +1,7 @@
 Ashint::Application.routes.draw do
   
   # Customizing paths for devise.
-  devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }, :controllers => { :sessions => "session" }
+  devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
   
   # Defining our nested resources.
   resources :users do

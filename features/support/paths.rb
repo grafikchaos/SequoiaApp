@@ -11,24 +11,24 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
     when /^the list of clients$/
       "/clients"
+
     when /^the client page for "(.*)"$/i
       client_path(Client.find_by_client_code($1))
+
     when /^the edit page for the client "(.*)"$/i
       edit_client_path(Client.find_by_client_code($1))
+
     when /"(.*)"'s new project page$/i
       client = Client.find_by_client_code($1)
       new_client_project_path(client)
+
     when /"(.*)"'s "(.*)" project page$/i
       client = Client.find_by_client_code($1)
       project = Project.find_by_name($2)
       client_project_path(client, project)
+
     else
       begin
         page_name =~ /the (.*) page/
@@ -38,6 +38,7 @@ module NavigationHelpers
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
           "Now, go and add a mapping in #{__FILE__}"
       end
+
     end
   end
 end
