@@ -6,13 +6,15 @@ Feature: Manage Clients
   Background: Make sure I'm logged in
     Given I am logged in as a user
 
-  @wip
+  @clients @search
   Scenario: Search Clients by client code
-    Given I have client codes AA, AAA, AAI
-    When I search for "AA"
+    Given I have client codes AA, AAA, AAI, ROR
+    When I fill in "search" with "AA"
+    And I press "Search"
     Then I should see "AA"
     And I should see "AAA"
     And I should see "AAI"
+    And I should not see "ROR"
   
   @clients @authenticate
   Scenario: Client form has project subform fields

@@ -1,5 +1,8 @@
 <%= form_tag clients_path, :method => 'get', :id => 'client-search' do %>
 
     <%= text_field_tag :search, params[:search], :class => 'focus-on-me' %>
+    <noscript>
+      <%= submit_tag "Search" %>
+    </noscript>
 
 <% end %>
