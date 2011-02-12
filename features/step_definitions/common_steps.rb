@@ -3,13 +3,7 @@ Given /^I have no (.*)s$/ do |model|
 end
 
 Given /^I am logged in as a user$/ do
-  # TODO: Move this to a factory.
-  User.new(
-    :username => 'user',
-    :email => 'user@example.com', 
-    :password => 'test1234',
-    :password_confirmation => 'test1234'
-  ).save!
+  Factory.create(:user)
   visit new_user_session_path
   fill_in("Username", :with => 'user' )
   fill_in("Password", :with => 'test1234' )

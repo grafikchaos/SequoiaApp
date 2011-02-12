@@ -13,7 +13,7 @@ gem "paperclip", "~> 2.3"
 group :development, :test do
   gem 'web-app-theme'
   gem 'autotest'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'webrat'
   gem 'cucumber'
   gem 'cucumber-rails'

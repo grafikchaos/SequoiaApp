@@ -1,6 +1,5 @@
 Given /^client "(.*)" exists$/ do |code|
-  client = Client.new(:name => 'Some Client', :client_code => code)
-  client.save!
+  Factory.create(:client, :client_code => code)
 end
 
 Given /^the client "(.*)" does not have a project named "(.*)"$/ do |client, proj|

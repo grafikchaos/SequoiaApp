@@ -5,3 +5,7 @@ Factory.define :user do |u|
   u.password_confirmation 'test1234'
 end
 
+Factory.define :client do |c|
+  c.name 'Ruby on Rails'
+  c.client_code 'ROR'
+end
