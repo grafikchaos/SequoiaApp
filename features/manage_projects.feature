@@ -43,13 +43,12 @@ Feature: Manage projects
     And I should see "A Project"
     And I should see "google.com"
 
-  @wip @projects @staff
+  @projects @staff
   Scenario: Deleting a project
     Given the client "ROR" has a project named "Intranet" with domain "intranet.com"
     And the client "ROR" has 2 projects
     When I follow "Manage projects"
-    # TODO: Find out how to select a link from a list.
-    And I follow "Delete" to delete for the project named "Default" requiring confirmation
+    And I follow "Delete" to delete requiring confirmation
     Then I should be on the list of projects for "ROR"
     And I should not see "Default"
     And the client "ROR" should not have a project named "Default"
