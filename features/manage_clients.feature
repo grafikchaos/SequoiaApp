@@ -3,6 +3,9 @@ Feature: Manage Clients
   As a staff member
   I want to create and manage clients
   
+  Background: Make sure I'm logged in
+    Given I am logged in as a user
+
   @wip
   Scenario: Search Clients by client code
     Given I have client codes AA, AAA, AAI

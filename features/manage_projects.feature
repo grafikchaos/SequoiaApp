@@ -4,7 +4,8 @@ Feature: Manage projects
   I want to have entities attached to projects rather than clients
 
   Background: Make sure the client exists
-    Given client "ROR" exists
+    Given I am logged in as a user
+    And client "ROR" exists
     And I am on the client page for "ROR"
 
   @clients @projects @staff

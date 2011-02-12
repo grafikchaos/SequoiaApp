@@ -11,6 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /^the login page$/
+      new_user_session_path
+
     when /^the list of clients$/
       "/clients"
 
