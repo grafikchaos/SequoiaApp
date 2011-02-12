@@ -16,7 +16,7 @@ Feature: Manage projects
     And I fill in "Project Domain" with "intranet.ror.local"
     And I press "Create Project"
     # Then I should see "New Project created"
-    Then I should be on "ROR"'s "Intranet" project page
+    Then I should be on the list of projects for "ROR"
     And I should see "Intranet"
     # And I should see "intranet.ror.local"
 
@@ -31,8 +31,26 @@ Feature: Manage projects
     And the client "ROR" should not have a project named "Intranet"
     And the client "ROR" should have a project named "Default"
 
-  @wip @projects @staff
+  @projects @staff
   Scenario: Editing a project
+    Given the client "ROR" has a default project named "Intranet" with domain "intranet.com"
+    When I follow "Manage projects"
+    And I follow "Edit"
+    And I fill in "Project Name" with "A Project"
+    And I fill in "Project Domain" with "google.com"
+    And I press "Update project"
+    Then I should be on the list of projects for "ROR"
+    And I should see "A Project"
+    And I should see "google.com"
 
   @wip @projects @staff
   Scenario: Deleting a project
+    Given the client "ROR" has a project named "Intranet" with domain "intranet.com"
+    And the client "ROR" has 2 projects
+    When I follow "Manage projects"
+    # TODO: Find out how to select a link from a list.
+    And I follow "Delete" to delete for the project named "Default" requiring confirmation
+    Then I should be on the list of projects for "ROR"
+    And I should not see "Default"
+    And the client "ROR" should not have a project named "Default"
+    And the client "ROR" should have 1 project

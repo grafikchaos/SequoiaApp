@@ -1,6 +1,6 @@
-<h1>Editing project</h1>
+<%= content_for :page_title, "Editing" %>
+<%= content_for :display_title, "Editing #{@project.name}" %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', client_project_path(@client, @project) %>

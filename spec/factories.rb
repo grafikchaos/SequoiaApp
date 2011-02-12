@@ -9,3 +9,9 @@ Factory.define :client do |c|
   c.name 'Ruby on Rails'
   c.client_code 'ROR'
 end
+
+Factory.define :project do |p|
+  p.name 'Default'
+  p.domain 'example.com'
+  p.client_id 1
+end

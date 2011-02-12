@@ -13,6 +13,8 @@
   <% options << [project.name, project.id] %>
 <% end %>
 
+<%= link_to 'Manage projects', client_projects_path(@client) %>
+
 <%= form_tag('project#show', :method => 'get', :id => 'proj_selector') do %>
   <%= select_tag(:project, options_for_select(options, 'all')) %>
 <% end %>

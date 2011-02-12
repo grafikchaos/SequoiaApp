@@ -27,10 +27,9 @@ module NavigationHelpers
       client = Client.find_by_client_code($1)
       new_client_project_path(client)
 
-    when /"(.*)"'s "(.*)" project page$/i
+    when /the list of projects for "(.*)"$/i
       client = Client.find_by_client_code($1)
-      project = Project.find_by_name($2)
-      client_project_path(client, project)
+      client_projects_path(client)
 
     else
       begin

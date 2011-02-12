@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
   def index
     @client = Client.find(params[:client_id])
-    @projects = Project.all
+    @projects = @client.projects.all 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to(client_project_url(@client, @project), :notice => 'Project was successfully created.') }
+        format.html { redirect_to(client_projects_url(@client), :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
+        format.html { redirect_to(client_projects_url(@client), :notice => 'Project was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -83,7 +83,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to(projects_url) }
+      format.html { redirect_to(client_projects_url) }
       format.xml  { head :ok }
     end
   end
