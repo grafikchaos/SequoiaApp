@@ -1,5 +1,7 @@
 Ashint::Application.routes.draw do
   
+  resources :entities
+
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
   
@@ -8,8 +10,9 @@ Ashint::Application.routes.draw do
     resources :bookmarks
   end
   
-  resources :clients do
-    resources :projects, :shallow => true
+  resources :clients, :shallow => true do
+    resources :projects
+    resources :entities
   end
   
   match '/:username/bookmarks' => 'bookmarks#index'

@@ -1,0 +1,30 @@
+<%= form_for(@entity) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @entity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field required">
+    <%= f.label :project_id %>
+    <%= f.select :project_id, format_for_select(@projects) %>
+  </div>
+
+  <div class="field required">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field required">
+    <%= f.label :entity_type_id %>
+    <%= f.select :entity_type_id, format_for_select(@entity_types) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

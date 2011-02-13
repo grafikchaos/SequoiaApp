@@ -3,19 +3,15 @@
 
 <div class="controls">
   <%= link_to 'New Project', new_client_project_path(@client), :class => 'button' %>
+  <%= link_to 'New Entity', new_client_entity_path(@client), :class => 'button' %>
   <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link' %>
   <%= link_to 'Delete', @client, :confirm => 'Are you sure you want to delete this client?', :method => 'delete', :class => 'delete-link tooltip', :title => 'Delete' %>
 </div>
 
-<!-- Put all of client's projects in select -->
-<% options = Array.new(1, ['All', 'all']) %>
-<% @client.projects.each do |project| %>
-  <% options << [project.name, project.id] %>
-<% end %>
-
 <%= link_to 'Manage projects', client_projects_path(@client) %>
 
 <%= form_tag('project#show', :method => 'get', :id => 'proj_selector') do %>
+  <%- options = format_for_select(@client.projects, 'All') %>
   <%= select_tag(:project, options_for_select(options, 'all')) %>
 <% end %>
 

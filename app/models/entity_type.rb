@@ -1,9 +1,11 @@
 class EntityType < ActiveRecord::Base
-  has_many :entities
+  belongs_to :entities
   
   # validations
   validates_presence_of :name
   
+  attr_accessible :name
+
   # friendly_id slug behavior
   has_friendly_id :name, 
                   :use_slug => true, 
