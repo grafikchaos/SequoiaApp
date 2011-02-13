@@ -36,7 +36,7 @@ Feature: Manage Clients
     And I fill in "Project Domain" with "Shallow Routing"
     And I press "Create Client"
     Then I should be on the client page for "ROR"
-    # And I should see "Client was successfully created"
+    And I should see "Client was successfully created"
     And I should see "ROR"
     And I should see "Shallow Routing" within "#project"
     And I should have 1 client
@@ -49,7 +49,7 @@ Feature: Manage Clients
     And I fill in "Client code" with "ROR"
     And I press "Create Client"
     Then I should be on the client page for "ROR"
-    # And I should see "Client was successfully created"
+    And I should see "Client was successfully created"
     And I should see "ROR"
     And I should see "Default" within "#project"
     And I should have 1 client
