@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110130020029) do
+ActiveRecord::Schema.define(:version => 20110213230436) do
 
   create_table "bookmarks", :force => true do |t|
-    t.integer  "user_id",    :default => 0, :null => false
+    t.integer  "user_id",    :null => false
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(:version => 20110130020029) do
   add_index "bookmarks", ["user_id"], :name => "bookmarks_user_id_fk"
 
   create_table "clients", :force => true do |t|
-    t.string   "name",                            :default => "NULL", :null => false
-    t.string   "client_code",       :limit => 10, :default => "NULL", :null => false
+    t.string   "name",                            :null => false
+    t.string   "client_code",       :limit => 10, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "cached_slug"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110130020029) do
     t.integer  "project_id",     :null => false
     t.integer  "entity_type_id", :null => false
     t.string   "name",           :null => false
-    t.string   "cached_slug",    :null => false
+    t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20110130020029) do
 
   create_table "entity_keys", :force => true do |t|
     t.string   "name",        :null => false
-    t.string   "cached_slug", :null => false
+    t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20110130020029) do
 
   create_table "entity_types", :force => true do |t|
     t.string   "name",        :null => false
-    t.string   "cached_slug", :null => false
+    t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

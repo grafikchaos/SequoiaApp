@@ -1,5 +1,5 @@
 Given /^entity type "([^"]*)" exists$/ do |type|
-  EntityType.new(:name => type).save!
+  EntityType.create! :name => type, :cached_slug => type.downcase
 end
 
 Then /^the project "([^"]*)" for the client "(.*)" should have (\d+) entit/ do |proj, client, count|

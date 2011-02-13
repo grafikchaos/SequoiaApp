@@ -49,7 +49,7 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       if @entity.save
-        format.html { redirect_to(client_entity_url(@client), :notice => 'Entity was successfully created.') }
+        format.html { redirect_to(@client, :notice => 'Entity was successfully created.') }
         format.xml  { render :xml => @entity, :status => :created, :location => @entity }
       else
         format.html { render :action => "new" }
