@@ -9,7 +9,7 @@ Ashint::Application.routes.draw do
   end
   
   resources :clients do
-    resources :projects
+    resources :projects, :shallow => true
   end
   
   match '/:username/bookmarks' => 'bookmarks#index'

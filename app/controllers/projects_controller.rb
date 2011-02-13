@@ -14,8 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @client = Client.find(params[:client_id])
-    @project = @client.projects.find(params[:id])
+    @project = Project.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,8 +36,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @client = Client.find(params[:client_id])
-    @project = @client.projects.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   # POST /projects
@@ -61,12 +59,11 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.xml
   def update
-    @client = Client.find(params[:client_id])
-    @project = @client.projects.find(params[:id])
+    @project = Project.find(params[:id])
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(client_projects_url(@client), :notice => 'Project was successfully updated.') }
+        format.html { redirect_to(client_projects_url(@project.client), :notice => 'Project was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,12 +75,11 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.xml
   def destroy
-    @client = Client.find(params[:client_id])
-    @project = @client.projects.find(params[:id])
+    @project = Project.find(params[:id])
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to(client_projects_url) }
+      format.html { redirect_to(client_projects_url(@project.client)) }
       format.xml  { head :ok }
     end
   end

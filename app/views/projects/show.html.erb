@@ -1,4 +1,4 @@
 <h2><%= @project.name %></h2>
 
-<%= link_to 'Edit', edit_client_project_path(@client, @project) %> |
-<%= link_to 'Back', client_projects_path(@client) %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', client_projects_path(@project.client) %>
