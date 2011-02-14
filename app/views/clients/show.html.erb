@@ -21,7 +21,7 @@
 <div class="entity-list">
   <ul>
     <%- @entities.each do |entity| %>
-      <li><%= entity.name %></li>
+      <%= render 'entity', :entity => entity %>
     <%- end %>
   </ul>
 </div>

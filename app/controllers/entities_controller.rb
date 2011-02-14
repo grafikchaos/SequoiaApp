@@ -38,6 +38,9 @@ class EntitiesController < ApplicationController
   # GET /entities/1/edit
   def edit
     @entity = Entity.find(params[:id])
+    client = @entity.project.client
+    @projects = client.projects
+    @entity_types = EntityType.all
   end
 
   # POST /entities
@@ -61,11 +64,13 @@ class EntitiesController < ApplicationController
   # PUT /entities/1
   # PUT /entities/1.xml
   def update
+    @project = Project.find(params[:entity][:project_id])
+    @client = @project.client
     @entity = Entity.find(params[:id])
 
     respond_to do |format|
       if @entity.update_attributes(params[:entity])
-        format.html { redirect_to(@entity, :notice => 'Entity was successfully updated.') }
+        format.html { redirect_to(@client, :notice => 'Entity was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,10 +83,11 @@ class EntitiesController < ApplicationController
   # DELETE /entities/1.xml
   def destroy
     @entity = Entity.find(params[:id])
+    @client = @entity.project.client
     @entity.destroy
 
     respond_to do |format|
-      format.html { redirect_to(entities_url) }
+      format.html { redirect_to(@client) }
       format.xml  { head :ok }
     end
   end

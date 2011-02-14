@@ -52,3 +52,22 @@ Feature: Manage entities
     Then I should see "User Login"
     And I should not see "SSH Credentials"
     And I should not see "Admin Login"
+
+  @entities
+  Scenario: Deleting an entity
+    Given the client "ROR" has a project named "Client App" with domain "tester.com"
+    And the client "ROR" has a project named "Wordpress Blog" with domain "blog.tester.com"
+    And I am on the client page for "ROR"
+    And the client ROR's project "Wordpress Blog" has an entity named "SSH Credentials" with type "Application"
+    And the client ROR's project "Wordpress Blog" has an entity named "Admin Login" with type "Application"
+    And the client ROR's project "Client App" has an entity named "User Login" with type "Application"
+    When I select "All" from "project"
+    And I press "Filter"
+    When I follow "delete-ssh-credentials" to delete requiring confirmation
+    And I select "All" from "project"
+    And I press "Filter"
+    Then I should see "Admin Login"
+    And I should see "User Login"
+    And I should not see "SSH Credentials"
+
+
