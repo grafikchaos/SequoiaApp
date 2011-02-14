@@ -8,8 +8,10 @@
   </div>
   <div class="entity-rows">
     <%- entity.entity_rows.each do |entity_row| %>
-      <%= entity_row.entity_key.name %>: 
-      <%= entity_row.value %>
+      <div class="entity-row">
+        <%= entity_row.entity_key.name %>: 
+        <%= entity_row.value %>
+      </div>
     <%- end %>
   </div>
 </div>

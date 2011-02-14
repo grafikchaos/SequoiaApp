@@ -66,6 +66,11 @@ a#new-client { float: right; }
   float: left;
 }
 
+#entity-list .group .entity .entity-rows {
+  clear: both;
+  float: left;
+}
+
 
 /****************************
   FOOTER
