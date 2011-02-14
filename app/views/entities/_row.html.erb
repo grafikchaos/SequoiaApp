@@ -6,4 +6,10 @@
       <li><%= link_to 'Destroy', entity, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete this entity', :id => "delete-#{entity.friendly_id}" %></li>
     </ul>
   </div>
+  <div class="entity-rows">
+    <%- entity.entity_rows.each do |entity_row| %>
+      <%= entity_row.entity_key.name %>: 
+      <%= entity_row.value %>
+    <%- end %>
+  </div>
 </div>

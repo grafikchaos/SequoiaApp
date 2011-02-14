@@ -27,7 +27,9 @@ class EntitiesController < ApplicationController
     @client = Client.find(params[:client_id])
     @projects = @client.projects
     @entity_types = EntityType.all
+    @entity_keys = EntityKey.all
     @entity = Entity.new
+    @entity.entity_rows.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +43,7 @@ class EntitiesController < ApplicationController
     @client = @entity.project.client
     @projects = @client.projects
     @entity_types = EntityType.all
+    @entity_keys = EntityKey.all
   end
 
   # POST /entities
