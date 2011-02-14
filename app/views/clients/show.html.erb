@@ -4,8 +4,8 @@
 <div class="controls">
   <%= link_to 'New Project', new_client_project_path(@client), :class => 'button' %>
   <%= link_to 'New Entity', new_client_entity_path(@client), :class => 'button' %>
-  <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link' %>
-  <%= link_to 'Delete', @client, :confirm => 'Are you sure you want to delete this client?', :method => 'delete', :class => 'delete-link tooltip', :title => 'Delete' %>
+  <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link tooltip', :title => 'Edit this client' %>
+  <%= link_to 'Delete', @client, :confirm => 'Are you sure you want to delete this client?', :method => 'delete', :class => 'destroy-link tooltip', :title => 'Delete this client' %>
 </div>
 
 <%= link_to 'Manage projects', client_projects_path(@client) %>
@@ -18,10 +18,8 @@
   </noscript>
 <% end %>
 
-<div class="entity-list">
-  <ul>
-    <%- @entities.each do |entity| %>
-      <%= render 'entities/row', :entity => entity %>
-    <%- end %>
-  </ul>
+<div id="entity-list">
+  <%- @entities.each do |entity| %>
+    <%= render 'entities/row', :entity => entity %>
+  <%- end %>
 </div>

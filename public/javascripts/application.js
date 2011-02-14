@@ -136,15 +136,31 @@ var clientPageSearch = function() {
  * Bookmarks menu.
  */
 var bookmarksMenuDropDown = function() {
-  $('#bookmarks-link a').click(function() {
-    if ($('#bookmarks-popup .bookmarks-list').length) {
-			$('#bookmarks-popup').hide();
-      $('#bookmarks-popup .bookmarks-list').remove();
-    } else {
-			$('#bookmarks-popup').show();
-      $.get('/user/bookmarks', function(data) {
-        $('#bookmarks-popup').html($('.bookmarks-list', data));
-      });
+  $('#bookmarks-link a').qtip({
+    content: 'Loading...',
+    show: 'click',
+    hide: 'unfocus',
+	  position: {
+      corner: {
+        target: 'bottomMiddle',
+        tooltip: 'topMiddle'
+      }
+    },
+    style: {
+      tip: 'topMiddle', 
+      name: 'dark',
+      border: {
+        radius: 3
+      }
+    },
+    api: {
+      onRender: function() 
+      {
+        var self = this
+        $.get('/user/bookmarks', function(data) {
+          self.updateContent($('.bookmarks-list', data));
+        });          
+      }
     }
   });
 };

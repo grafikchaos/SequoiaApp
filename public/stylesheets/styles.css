@@ -6,6 +6,9 @@ html, body { height: 100%; }
 /****************************
   HEADER
 ****************************/
+#header h1 {
+  color: #EAEAEA;
+}
 
 /****************************
   COLORS
@@ -37,6 +40,18 @@ body, #main { background: #fff; }
 }
 
 a#new-client { float: right; }
+
+/****************************
+  ENTITY LIST
+****************************/
+#entity-list .entity {
+  clear: both;
+}
+
+#entity-list .entity .name { 
+  float: left;
+}
+
 
 /****************************
   FOOTER
@@ -80,6 +95,10 @@ a#new-client { float: right; }
 
 .controls ul li {
   display: block;
+  float: left;
+}
+
+.controls a {
   float: left;
 }
 

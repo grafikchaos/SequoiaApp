@@ -1,9 +1,9 @@
 <div class="entity">
   <div class="name"><%= entity.name %></div>
-  <div class="crud-links">
+  <div class="controls">
     <ul>
-      <li><%= link_to 'Edit', edit_entity_path(entity), :class => 'edit-link tooltip', :title => 'Edit' %></li>
-      <li><%= link_to 'Destroy', entity, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete', :id => "delete-#{entity.friendly_id}" %></li>
+      <li><%= link_to 'Edit', edit_entity_path(entity), :class => 'edit-link tooltip', :title => 'Edit this entity' %></li>
+      <li><%= link_to 'Destroy', entity, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete this entity', :id => "delete-#{entity.friendly_id}" %></li>
     </ul>
   </div>
 </div>

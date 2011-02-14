@@ -9,9 +9,10 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1><a href="/"><%= yield(:display_title) %></a></h1>
+      <h1><%= yield(:display_title) %></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
+          <li><%= link_to "Home", root_path %></li>
           <li id="bookmarks-link"><a href="javascript:void(0)">Bookmarks</a></li>
           <li><%= link_to 'Logout', destroy_user_session_path %></li>
         </ul>
