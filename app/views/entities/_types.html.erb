@@ -1,0 +1,10 @@
+<%- types.each do |type| %>
+  <div class="group">
+    <h3><%= type.name %></h3>
+    <%- entities.each do |entity| %>
+      <%- if entity.entity_type_id == type.id %>
+        <%= render 'entities/row', :entity => entity %>
+      <%- end %>
+    <%- end %>
+  </div>
+<%- end %>
