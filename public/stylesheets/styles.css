@@ -15,7 +15,6 @@ html, body { height: 100%; }
 ****************************/
 body, #main { background: #fff; }
 
-
 /****************************
   STRUCTURE
 ****************************/
@@ -144,7 +143,7 @@ div.flash-message {
   font-size: 14pt;
   padding: 5px 10px;
 }
-div.flash-message.notice { background: green; }
+div.flash-message.notice { background: green; color: #fff; }
 div.flash-message.error { background: red; color: #fff; }
 
 /****************************
@@ -175,26 +174,15 @@ div.flash-message.error { background: red; color: #fff; }
 /****************************
   BOOKMARKS MENU
 ****************************/
-#bookmarks-popup {
-  display: none;
-  position: absolute;
-  top: 50px;
-  right: 60px;
-  width: 200px;
-  background: #333;
-  border: 2px solid #000;
-  padding: 10px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: 2px 2px 2px #999;
-  -webkit-box-shadow: 2px 2px 2px #999;
-  box-shadow: 2px 2px 2px #999;
-  opacity: 0.8;
+.bookmarks-list ul {
+  list-style-type: none;
 }
 
-#bookmarks-popup .bookmarks-list ul {
-  list-style-type: none;
+/****************************
+  FORM ELEMENTS
+****************************/
+form .field.required label:after {
+  content: '*';
 }
 
 /****************************

@@ -49,12 +49,11 @@ class Client < ActiveRecord::Base
       project = Project.find(project)
       return project.entities
     else
-      entities = []
+      projects = []
       self.projects.each do |project|
-        project.entities.each do |entity|
-          entities << entity
-        end
+        projects << project.id
       end
+      entities = Entity.find_all_by_project_id(projects)
       return entities
     end
   end
