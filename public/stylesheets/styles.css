@@ -45,11 +45,22 @@ a#new-client { float: right; }
   ENTITY LIST
 ****************************/
 #entity-list .group {
-  clear: both;
+  float: left;
+  width: 25%;
+  margin: 5px;
+  border: 1px solid #000;
+}
+
+#entity-list .group h3 {
+  color: #EAEAEA;
+  background: #232C30;
+  padding: 2px 3px;
+  margin: 0;
 }
 
 #entity-list .group .entity {
   clear: both;
+  padding-left: 3px;
 }
 
 #entity-list .group .entity .name { 
