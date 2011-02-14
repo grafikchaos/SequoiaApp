@@ -29,6 +29,8 @@ class EntitiesController < ApplicationController
     @entity_types = EntityType.all
     @entity_keys = EntityKey.all
     @entity = Entity.new
+    
+    # Start off with 3 empty rows.
     3.times { @entity.entity_rows.build }
 
     respond_to do |format|
@@ -44,6 +46,9 @@ class EntitiesController < ApplicationController
     @projects = @client.projects
     @entity_types = EntityType.all
     @entity_keys = EntityKey.all
+
+    # Create another row for the user to add one
+    @entity.entity_rows.build
   end
 
   # POST /entities

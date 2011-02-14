@@ -71,6 +71,16 @@ a#new-client { float: right; }
   float: left;
 }
 
+/****************************
+  ENTITY FORM
+****************************/
+form .entity-row-field {
+  clear: both;
+}
+
+form .entity-row-field div {
+  float: left;
+}
 
 /****************************
   FOOTER

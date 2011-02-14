@@ -1,7 +1,9 @@
-<div class="field required">
-  <%= f.select :entity_key_id, format_for_select(entity_keys) %>
-</div>
+<div class="entity-row-field">
+  <div class="field key required">
+    <%= f.select :entity_key_id, format_for_select(entity_keys) %>
+  </div>
 
-<div class="field">
-  <%= f.text_field :value %>
+  <div class="field value">
+    <%= f.text_field :value %>
+  </div>
 </div>
