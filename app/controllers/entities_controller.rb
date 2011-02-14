@@ -24,8 +24,8 @@ class EntitiesController < ApplicationController
   # GET /entities/new
   # GET /entities/new.xml
   def new
-    client = Client.find(params[:client_id])
-    @projects = client.projects
+    @client = Client.find(params[:client_id])
+    @projects = @client.projects
     @entity_types = EntityType.all
     @entity = Entity.new
 
@@ -38,8 +38,8 @@ class EntitiesController < ApplicationController
   # GET /entities/1/edit
   def edit
     @entity = Entity.find(params[:id])
-    client = @entity.project.client
-    @projects = client.projects
+    @client = @entity.project.client
+    @projects = @client.projects
     @entity_types = EntityType.all
   end
 

@@ -1,6 +1,6 @@
-<h1>Editing entity</h1>
+<%= content_for :page_title, "Editing Entity" %>
+<%= content_for :display_title, "Editing \"#{@entity.name}\"" %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @entity %> |
-<%= link_to 'Back', entities_path %>
+<%= link_to 'Back', @client %>

@@ -1,25 +1,4 @@
 class EntityRowsController < ApplicationController
-  # GET /entity_rows
-  # GET /entity_rows.xml
-  def index
-    @entity_rows = EntityRow.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @entity_rows }
-    end
-  end
-
-  # GET /entity_rows/1
-  # GET /entity_rows/1.xml
-  def show
-    @entity_row = EntityRow.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @entity_row }
-    end
-  end
 
   # GET /entity_rows/new
   # GET /entity_rows/new.xml
