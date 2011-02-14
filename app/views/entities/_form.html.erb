@@ -27,11 +27,9 @@
   <%= field_set_tag "Entity Rows", :class => "collapsible" do %>
     <div class="fieldset-wrapper">
       <%= f.fields_for :entity_rows do |entity_row_form| %>
-        <%- 3.times do %>
-          <%= render 'entity_rows/form_fields', :f => entity_row_form, :entity_keys => @entity_keys %>
-        <%- end %>
-        <a href="javascript:void(0);" class="entity-row-add">Add another</a>
+        <%= render 'entity_rows/form_fields', :f => entity_row_form, :entity_keys => @entity_keys %>
       <%- end %>
+      <a href="javascript:void(0);" class="entity-row-add">Add another</a>
     </div>
   <%- end %>
 

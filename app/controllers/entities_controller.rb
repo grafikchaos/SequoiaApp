@@ -29,7 +29,7 @@ class EntitiesController < ApplicationController
     @entity_types = EntityType.all
     @entity_keys = EntityKey.all
     @entity = Entity.new
-    @entity.entity_rows.build
+    3.times { @entity.entity_rows.build }
 
     respond_to do |format|
       format.html # new.html.erb

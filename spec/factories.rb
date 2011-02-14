@@ -15,3 +15,7 @@ Factory.define :project do |p|
   p.domain 'example.com'
   p.client_id 1
 end
+
+Factory.define :entity_type do |et|
+  et.name 'Some Entity Type'
+end

@@ -14,7 +14,7 @@ Given /^the client "([^"]*)" has a default project named "([^"]*)" with domain "
 end
 
 Given /^the client "([^"]*)" has a project named "([^"]*)" with domain "([^"]*)"$/ do |client, name, domain|
-  client = Client.find_by_client_code(client)
+  client = Client.find(client)
   Factory.create(:project, :client_id => client.id, :name => name, :domain => domain)
 end
 

@@ -18,17 +18,17 @@ module NavigationHelpers
       "/clients"
 
     when /^the client page for "(.*)"$/i
-      client_path(Client.find_by_client_code($1))
+      client_path(Client.find($1))
 
     when /^the edit page for the client "(.*)"$/i
-      edit_client_path(Client.find_by_client_code($1))
+      edit_client_path(Client.find($1))
 
     when /"(.*)"'s new project page$/i
-      client = Client.find_by_client_code($1)
+      client = Client.find($1)
       new_client_project_path(client)
 
     when /the list of projects for "(.*)"$/i
-      client = Client.find_by_client_code($1)
+      client = Client.find($1)
       client_projects_path(client)
 
     else

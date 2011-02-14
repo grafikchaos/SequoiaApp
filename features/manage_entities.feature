@@ -3,32 +3,62 @@ Feature: Manage entities
   As a staff member
   I want to be able to manage the information for each client and project
   
-  Background: Allowed skills
-      #Given the following Entity Types are allowed
-      #| api             |
-      #| application     |
-      #| computer        |
-      #| database        |
-      #| email           |
-      #| ftp             |
-      #| payment gateway |
-      #| remote desktop  |
-      #| ssh             |
-      #| version control |
-      #| vpn             |
-      #| website         |
-      #| wireless        |
-    Given I have client codes ROR
-    And the client "ROR" has a project named "Intranet" with domain "intranet.com"
-    And I am logged in as a user
-    And entity type "Application" exists
+  Background: Allowed Entity Types and Entity Keys
+      Given the following Entity Types are allowed
+        | name            |
+        | api             |
+        | application     |
+        | computer        |
+        | database        |
+        | email           |
+        | ftp             |
+        | payment gateway |
+        | remote desktop  |
+        | ssh             |
+        | version control |
+        | vpn             |
+        | website         |
+        | wireless        |
+      And the following Entity Keys exist
+        | api key         |
+        | database name   |
+        | domain          |
+        | email address   |
+        | encryption key  |
+        | endpoint url    |
+        | host            |
+        | password        |
+        | port            |
+        | protocol        |
+        | token           |
+        | transaction key |
+        | url             |
+        | username        |
+        | wsdl url        |
+      And I have client codes "ROR"
+      And I am logged in as a user
+      And the client "ROR" has a project named "Intranet" with domain "intranet.com"
+  
+  @entities @authenticate
+  Scenario: New Entity button is present on the client's show template
+    When I go to the client page for "ROR"
+    Then I should see "New Entity"
+
+  @wip @entities @authenticate
+  Scenario: Default Entity form has Entity Row subform fields
+    Given I am on the client page for "ROR"
+    When I follow "New Entity"
+    Then I should see "Entity type"
+    And I should see "Name"
+    And "form#new_entity" should have 3 "/entity[entity_rows_attributes][\d+][entity_key_id]"
+    And "form#new_entity" should have 3 "/entity[entity_rows_attributes][\d+][value]"
 
   @entities 
   Scenario: Add an entity to an existing project
     Given I am on the client page for "ROR"
     When I follow "New Entity"
     And I fill in "Name" with "Application Login"
-    And I select "Application" from "Entity type"
+    And I select "application" from "Entity type"
     And I press "Create Entity"
     Then I should be on the client page for "ROR"
     And I should see "Entity was successfully created"
@@ -39,9 +69,9 @@ Feature: Manage entities
     Given the client "ROR" has a project named "Client App" with domain "tester.com"
     And the client "ROR" has a project named "Wordpress Blog" with domain "blog.tester.com"
     And I am on the client page for "ROR"
-    And the client ROR's project "Wordpress Blog" has an entity named "SSH Credentials" with type "Application"
-    And the client ROR's project "Wordpress Blog" has an entity named "Admin Login" with type "Application"
-    And the client ROR's project "Client App" has an entity named "User Login" with type "Application"
+    And the client "ROR"'s project "Wordpress Blog" has an entity named "SSH Credentials" with type "application"
+    And the client "ROR"'s project "Wordpress Blog" has an entity named "Admin Login" with type "application"
+    And the client "ROR"'s project "Client App" has an entity named "User Login" with type "application"
     When I select "All" from "project"
     And I press "Filter"
     Then I should see "SSH Credentials"
@@ -58,9 +88,9 @@ Feature: Manage entities
     Given the client "ROR" has a project named "Client App" with domain "tester.com"
     And the client "ROR" has a project named "Wordpress Blog" with domain "blog.tester.com"
     And I am on the client page for "ROR"
-    And the client ROR's project "Wordpress Blog" has an entity named "SSH Credentials" with type "Application"
-    And the client ROR's project "Wordpress Blog" has an entity named "Admin Login" with type "Application"
-    And the client ROR's project "Client App" has an entity named "User Login" with type "Application"
+    And the client "ROR"'s project "Wordpress Blog" has an entity named "SSH Credentials" with type "application"
+    And the client "ROR"'s project "Wordpress Blog" has an entity named "Admin Login" with type "application"
+    And the client "ROR"'s project "Client App" has an entity named "User Login" with type "application"
     When I select "All" from "project"
     And I press "Filter"
     When I follow "delete-ssh-credentials" to delete requiring confirmation
@@ -69,5 +99,3 @@ Feature: Manage entities
     Then I should see "Admin Login"
     And I should see "User Login"
     And I should not see "SSH Credentials"
-
-
