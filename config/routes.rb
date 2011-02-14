@@ -1,5 +1,7 @@
 Ashint::Application.routes.draw do
   
+  resources :entity_rows
+
   resources :entities
 
   # Customizing paths for devise.
@@ -11,7 +13,7 @@ Ashint::Application.routes.draw do
   end
   
   resources :clients, :shallow => true do
-    resources :projects
+    resources :projects, :except => 'show'
     resources :entities
   end
   

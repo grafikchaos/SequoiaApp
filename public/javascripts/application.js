@@ -7,6 +7,7 @@ $(document).ready(function() {
   clientPageSearch();
   bookmarksMenuDropDown();
   initQtips();
+  initProjectSelector();
 });
 
 /**
@@ -145,6 +146,15 @@ var bookmarksMenuDropDown = function() {
         $('#bookmarks-popup').html($('.bookmarks-list', data));
       });
     }
+  });
+};
+
+/**
+ * Submitting the project selector form on change
+ */
+var initProjectSelector = function() {
+  $('form#proj_selector select#project').change(function() {
+    $('form#proj_selector').submit();
   });
 };
 

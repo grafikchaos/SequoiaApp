@@ -44,6 +44,21 @@ class Client < ActiveRecord::Base
     @results = (term) ? self.simple_search(term).ordered_by_client_code : nil
   end
 
+  def get_entities(project = nil)
+    if project and project != 'all'
+      project = Project.find(project)
+      return project.entities
+    else
+      entities = []
+      self.projects.each do |project|
+        project.entities.each do |entity|
+          entities << entity
+        end
+      end
+      return entities
+    end
+  end
+
   ##############################
   # PROTECTED METHODS BELOW HERE
   ##############################

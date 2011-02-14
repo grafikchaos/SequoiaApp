@@ -21,6 +21,8 @@ class ClientsController < ApplicationController
       @client = Client.find(params[:id])
     end
     
+    @entities = @client.get_entities(params[:project])
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @client }

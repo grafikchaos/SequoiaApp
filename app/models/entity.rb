@@ -7,7 +7,7 @@ class Entity < ActiveRecord::Base
   validates_presence_of :name, :project_id, :entity_type_id
   
   # accept Entity Row form fields/attributes
-  accepts_nested_attributes_for :entity_rows, :reject_if => lambda { |row| row[:name].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :entity_rows, :reject_if => lambda { |row| row[:value].blank? }, :allow_destroy => true
 
   # friendly_id slug behavior
   has_friendly_id :name, 

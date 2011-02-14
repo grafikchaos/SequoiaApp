@@ -10,8 +10,18 @@
 
 <%= link_to 'Manage projects', client_projects_path(@client) %>
 
-<%= form_tag('project#show', :method => 'get', :id => 'proj_selector') do %>
+<%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
   <%- options = format_for_select(@client.projects, 'All') %>
-  <%= select_tag(:project, options_for_select(options, 'all')) %>
+  <%= select_tag(:project, options_for_select(options, params[:project])) %>
+  <noscript>
+    <%= submit_tag "Filter" %>
+  </noscript>
 <% end %>
 
+<div class="entity-list">
+  <ul>
+    <%- @entities.each do |entity| %>
+      <li><%= entity.name %></li>
+    <%- end %>
+  </ul>
+</div>
