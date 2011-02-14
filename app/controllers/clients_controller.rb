@@ -21,6 +21,7 @@ class ClientsController < ApplicationController
       @client = Client.find(params[:id])
     end
     
+    @entity_types = EntityType.all
     @entities = @client.get_entities(params[:project])
 
     respond_to do |format|

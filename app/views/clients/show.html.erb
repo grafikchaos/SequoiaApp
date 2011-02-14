@@ -19,7 +19,5 @@
 <% end %>
 
 <div id="entity-list">
-  <%- @entities.each do |entity| %>
-    <%= render 'entities/row', :entity => entity %>
-  <%- end %>
+  <%= render 'entities/types', :types => @entity_types, :entities => @entities %>
 </div>

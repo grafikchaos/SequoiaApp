@@ -44,11 +44,15 @@ a#new-client { float: right; }
 /****************************
   ENTITY LIST
 ****************************/
-#entity-list .entity {
+#entity-list .group {
   clear: both;
 }
 
-#entity-list .entity .name { 
+#entity-list .group .entity {
+  clear: both;
+}
+
+#entity-list .group .entity .name { 
   float: left;
 }
 

@@ -15,4 +15,7 @@ class Entity < ActiveRecord::Base
                   :approximate_ascii => true,
                   :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
+  # setting the default scope
+  default_scope order(:project_id)
+
 end
