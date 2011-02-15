@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215001210) do
+ActiveRecord::Schema.define(:version => 20110215070307) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -52,7 +52,8 @@ ActiveRecord::Schema.define(:version => 20110215001210) do
   add_index "entities", ["project_id"], :name => "index_entities_on_project_id"
 
   create_table "entity_keys", :force => true do |t|
-    t.string   "name",        :null => false
+    t.string   "name",                          :null => false
+    t.boolean  "encrypt",     :default => true
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
