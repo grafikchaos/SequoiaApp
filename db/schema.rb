@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215070307) do
+ActiveRecord::Schema.define(:version => 20110215194745) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -63,18 +63,17 @@ ActiveRecord::Schema.define(:version => 20110215070307) do
   add_index "entity_keys", ["name"], :name => "index_entity_keys_on_name"
 
   create_table "entity_rows", :force => true do |t|
-    t.integer  "entity_id",                        :null => false
-    t.integer  "entity_key_id",                    :null => false
-    t.string   "value",                            :null => false
-    t.boolean  "encrypt",       :default => false
+    t.integer  "entity_id",       :null => false
+    t.integer  "entity_key_id",   :null => false
+    t.string   "encrypted_value", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "entity_rows", ["encrypted_value"], :name => "index_entity_rows_on_value"
   add_index "entity_rows", ["entity_id"], :name => "index_entity_rows_on_entity_id"
   add_index "entity_rows", ["entity_key_id"], :name => "index_entity_rows_on_entity_key_id"
   add_index "entity_rows", ["id"], :name => "index_entity_rows_on_id"
-  add_index "entity_rows", ["value"], :name => "index_entity_rows_on_value"
 
   create_table "entity_types", :force => true do |t|
     t.string   "name",        :null => false
