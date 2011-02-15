@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 20110215070307) do
   add_index "entities", ["project_id"], :name => "index_entities_on_project_id"
 
   create_table "entity_keys", :force => true do |t|
-    t.string   "name",                          :null => false
-    t.boolean  "encrypt",     :default => true
+    t.string   "name",                           :null => false
+    t.boolean  "encrypt",     :default => false
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"

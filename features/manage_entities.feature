@@ -36,7 +36,7 @@ Feature: Manage entities
         | username        |
         | wsdl url        |
       And I have client codes "ROR"
-      And I am logged in as a user
+      And I am logged in as a user with Level 2 clearance
       And the client "ROR" has a project named "Intranet" with domain "intranet.com"
   
   @entities @authenticate

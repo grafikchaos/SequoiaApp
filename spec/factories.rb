@@ -3,6 +3,7 @@ Factory.define :user do |u|
   u.email 'user@example.com'
   u.password 'test1234'
   u.password_confirmation 'test1234'
+  u.clearance 3
 end
 
 Factory.define :client do |c|

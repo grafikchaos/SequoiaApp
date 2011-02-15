@@ -10,6 +10,14 @@ Given /^I am logged in as a user$/ do
   click_button("Sign in")
 end
 
+Given /^I am logged in as a user with Level (\d+) clearance$/ do |clearance|
+  Factory.create(:user, :clearance => clearance)
+  visit new_user_session_path
+  fill_in("Username", :with => 'user' )
+  fill_in("Password", :with => 'test1234' )
+  click_button("Sign in")
+end
+
 When /^I follow "([^"]*)" to (.*) requiring confirmation$/ do |link, method|
   link = webrat.current_scope.find_link(link)
   link.click(:method => method)

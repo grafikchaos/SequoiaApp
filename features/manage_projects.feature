@@ -16,9 +16,9 @@ Feature: Manage projects
     And I fill in "Project Domain" with "intranet.ror.local"
     And I press "Create Project"
     Then I should see "Project was successfully created"
-    And I should be on the list of projects for "ROR"
+    And I should be on the client page for "ROR"
     And I should see "Intranet"
-    And I should see "intranet.ror.local"
+    #And I should see "intranet.ror.local"
 
   @clients @projects @staff
   Scenario: Adding a project with no project name
@@ -39,9 +39,9 @@ Feature: Manage projects
     And I fill in "Project Name" with "A Project"
     And I fill in "Project Domain" with "google.com"
     And I press "Update project"
-    Then I should be on the list of projects for "ROR"
+    Then I should be on the client page for "ROR"
     And I should see "A Project"
-    And I should see "google.com"
+    #And I should see "google.com"
 
   @projects @staff
   Scenario: Deleting a project
