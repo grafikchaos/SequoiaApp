@@ -10,7 +10,7 @@
     <%- entity.entity_rows.each do |entity_row| %>
       <div class="entity-row">
         <%= entity_row.entity_key.name %>: 
-        <%= entity_row.value %>
+        <%= decode_password(entity_row) %>
       </div>
     <%- end %>
   </div>
