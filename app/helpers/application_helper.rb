@@ -9,4 +9,12 @@ module ApplicationHelper
     return options
   end
 
+  def format_clearance_select
+    options = []
+    (0..3).each do |number|
+      options << ["Level #{number}", number]
+    end
+    return options
+  end
+
 end

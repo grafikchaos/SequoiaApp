@@ -24,6 +24,11 @@
     <%= f.select :entity_type_id, format_for_select(@entity_types) %>
   </div>
 
+  <div class="field required">
+    <%= f.label :clearance, "Clearance Level" %>
+    <%= f.select :clearance, format_clearance_select %>
+  </div>
+
   <%= field_set_tag "Entity Rows", :class => "collapsible" do %>
     <div class="fieldset-wrapper">
       <%= f.fields_for :entity_rows do |entity_row_form| %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110213230436) do
+ActiveRecord::Schema.define(:version => 20110215001210) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(:version => 20110213230436) do
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
 
   create_table "entities", :force => true do |t|
-    t.integer  "project_id",     :null => false
-    t.integer  "entity_type_id", :null => false
-    t.string   "name",           :null => false
+    t.integer  "project_id",                    :null => false
+    t.integer  "entity_type_id",                :null => false
+    t.string   "name",                          :null => false
+    t.integer  "clearance",      :default => 3, :null => false
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20110213230436) do
     t.string   "password_salt",                      :default => "", :null => false
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "clearance",                          :default => 3,  :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      :default => 0
