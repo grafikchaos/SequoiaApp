@@ -24,6 +24,11 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    can [:read, :update, :destroy], Entity, ["clearance >= ?", user.clearance] do |entity|
+      has_clearance?(user, entity)
+    end
+    can :create, Entity
+    
 
   end
 

@@ -1,8 +1,9 @@
 class EntitiesController < ApplicationController
+  load_and_authorize_resource
+
   # GET /entities
   # GET /entities.xml
   def index
-    @entities = Entity.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,6 @@ class EntitiesController < ApplicationController
   # GET /entities/1
   # GET /entities/1.xml
   def show
-    @entity = Entity.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +28,6 @@ class EntitiesController < ApplicationController
     @projects = @client.projects
     @entity_types = EntityType.all
     @entity_keys = EntityKey.all
-    @entity = Entity.new
     
     # Start off with 3 empty rows.
     3.times { @entity.entity_rows.build }
@@ -41,7 +40,6 @@ class EntitiesController < ApplicationController
 
   # GET /entities/1/edit
   def edit
-    @entity = Entity.find(params[:id])
     @client = @entity.project.client
     @projects = @client.projects
     @entity_types = EntityType.all
@@ -56,7 +54,6 @@ class EntitiesController < ApplicationController
   def create
     @project = Project.find(params[:entity][:project_id])
     @client = @project.client
-    @entity = Entity.new(params[:entity])
 
     respond_to do |format|
       if @entity.save
@@ -74,7 +71,6 @@ class EntitiesController < ApplicationController
   def update
     @project = Project.find(params[:entity][:project_id])
     @client = @project.client
-    @entity = Entity.find(params[:id])
 
     respond_to do |format|
       if @entity.update_attributes(params[:entity])
@@ -90,7 +86,6 @@ class EntitiesController < ApplicationController
   # DELETE /entities/1
   # DELETE /entities/1.xml
   def destroy
-    @entity = Entity.find(params[:id])
     @client = @entity.project.client
     @entity.destroy
 

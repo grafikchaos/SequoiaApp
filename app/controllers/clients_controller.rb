@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
     end
     
     @entity_types = EntityType.all
-    @entities = @client.get_entities(params[:project])
+    @entities = @client.get_entities(current_ability, params[:project])
 
     respond_to do |format|
       format.html # show.html.erb

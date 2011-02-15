@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def format_clearance_select
     options = []
-    (0..3).each do |number|
+    (current_user.clearance..3).each do |number|
       options << ["Level #{number}", number]
     end
     return options

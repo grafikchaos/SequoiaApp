@@ -44,16 +44,16 @@ class Client < ActiveRecord::Base
     @results = (term) ? self.simple_search(term).ordered_by_client_code : nil
   end
 
-  def get_entities(project = nil)
+  def get_entities(ability, project = nil)
     if project and project != 'all'
       project = Project.find(project)
-      return project.entities
+      return project.accessible_by(ability).entities
     else
       projects = []
       self.projects.each do |project|
         projects << project.id
       end
-      entities = Entity.find_all_by_project_id(projects)
+      entities = Entity.accessible_by(ability).find_all_by_project_id(projects)
       return entities
     end
   end
