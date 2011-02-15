@@ -10,6 +10,9 @@ gem 'cancan'
 gem "friendly_id"
 gem "paperclip"
 
+# For encrypting entity rows
+gem "encryptor"
+
 group :development, :test do
   gem 'web-app-theme'
   gem 'autotest'
