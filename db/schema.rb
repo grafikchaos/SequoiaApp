@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215070307) do
+ActiveRecord::Schema.define(:version => 20110215200851) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -110,13 +110,14 @@ ActiveRecord::Schema.define(:version => 20110215070307) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",                                           :null => false
-    t.string   "email",                              :default => "", :null => false
-    t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                      :default => "", :null => false
+    t.string   "username",                                                :null => false
+    t.string   "role",                :limit => 20,  :default => "staff"
+    t.string   "email",                              :default => "",      :null => false
+    t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
+    t.string   "password_salt",                      :default => "",      :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "clearance",                          :default => 3,  :null => false
+    t.integer  "clearance",                          :default => 3,       :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      :default => 0
