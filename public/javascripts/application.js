@@ -175,21 +175,25 @@ var initProjectSelector = function() {
 };
 
 var initQtips = function() {
-	$('.tooltip').qtip({
-	  show: 'mouseover',
-	  hide: 'mouseout',
-	  position: {
-      corner: {
-        target: 'topMiddle',
-        tooltip: 'bottomMiddle'
+  $('.tooltip').each(function() {
+    var tipContent = $(this).attr('data-tooltip') ? $(this).attr('data-tooltip') : $(this).attr('title');
+    $(this).qtip({
+      content: $(this).attr('data-tooltip'),
+      show: 'mouseover',
+      hide: 'mouseout',
+      position: {
+        corner: {
+          target: 'topMiddle',
+          tooltip: 'bottomMiddle'
+        }
+      },
+      style: {
+        tip: 'bottomMiddle', 
+        name: 'dark',
+        border: {
+          radius: 3
+        }
       }
-    },
-    style: {
-      tip: 'bottomMiddle', 
-      name: 'dark',
-      border: {
-        radius: 3
-      }
-    }
-	});
+    });
+  });
 };
