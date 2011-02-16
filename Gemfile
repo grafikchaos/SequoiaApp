@@ -11,7 +11,8 @@ gem "friendly_id"
 gem "paperclip"
 
 # For encrypting entity rows
-gem 'attr_encrypted'
+# Fetching from github for Ruby 1.9 compatibility
+gem 'attr_encrypted', :git => 'git://github.com/cgod/attr_encrypted.git'
 
 group :development, :test do
   gem 'web-app-theme'
