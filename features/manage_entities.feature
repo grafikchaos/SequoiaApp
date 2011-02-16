@@ -90,6 +90,15 @@ Feature: Manage entities
     And I should not see "Level 1"
     And I should not see "Level 0"
 
+  @entities @projects @clearance
+  Scenario: User can't delete project containing entities with higher clearance
+    Given the following Entities exist
+      | client    |  project        | name            | type        | level   |
+      | ROR       |  Intranet       | SSH Credentials | ssh         | 1       |
+    And I am on the client page for "ROR"
+    When I follow "Manage Projects"
+    Then I should only see 1 delete link
+
   @entities
   Scenario: Editing an entity
     Given the following Entities exist

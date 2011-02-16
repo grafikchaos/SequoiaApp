@@ -24,16 +24,20 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-    can [:read, :update, :destroy], Entity, ["clearance >= ?", user.clearance] do |entity|
-      has_clearance?(user, entity)
+
+    # Projects
+    can :destroy, Project do |project|
+      access = true
+      project.entities.each { |ent| access = false if ent.clearance < user.clearance}
+      access
     end
+    can [:create, :read, :update], Project
+
+    # Entities
+    can [:read, :update, :destroy], Entity, :clearance => (user.clearance..3)
     can :create, Entity
     
 
-  end
-
-  def has_clearance?(user, entity)
-    user.clearance <= entity.clearance
   end
 
 end

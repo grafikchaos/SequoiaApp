@@ -35,3 +35,7 @@ Then /^the project "([^"]*)" for the client "(.*)" should have (\d+) entit/ do |
   project.entities.count == count.to_i
 end
 
+Then /^I should only see (\d+) delete link[s]?$/ do |count|
+  assert_have_selector ".destroy-link", :count => 1
+end
+
