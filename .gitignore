@@ -4,3 +4,6 @@ db/
 tmp/
 *.log
 log/
+public
+.rvmrc
+.bundle
