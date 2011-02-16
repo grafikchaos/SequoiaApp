@@ -1,3 +1,10 @@
+Given /^the following (.+) records?$/ do |factory, table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |hash|
+    Factory.create(factory, hash)
+  end
+end
+
 Given /^I have no (.*)s$/ do |model|
   model.camelcase.constantize.delete_all
 end

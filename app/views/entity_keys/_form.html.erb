@@ -1,0 +1,17 @@
+<%= form_for(@entity_key) do |f| %>
+  <% if @entity_key.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entity_key.errors.count, "error") %> prohibited this entity_key from being saved:</h2>
+
+      <ul>
+      <% @entity_key.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

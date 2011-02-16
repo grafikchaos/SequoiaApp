@@ -24,12 +24,32 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-    can [:read, :update, :destroy], Entity, ["clearance >= ?", user.clearance] do |entity|
-      has_clearance?(user, entity)
-    end
-    can :create, Entity
     
+    user ||= User.new # guest user (not logged in)
 
+    if user.role? :staff
+      can [:read, :create, :update], [Client, Project]
+      # can :destroy, Project # only if the project has entities with clearance levels less than or equal to the User's clearance
+      can :manage, EntityRow
+      can :create, Entity
+
+      can [:read, :update, :destroy], Entity, ["clearance >= ?", user.clearance] do |entity|
+        has_clearance?(user, entity)
+      end
+    end
+
+    # Manager inherits abilities from Staff + ability to manage users (:read, :create, :update but no :delete)
+    if user.role? :manager
+      can :manage, User
+      cannot :destroy, User
+    end
+
+    
+    if user.role? :admin
+      can :manage, :all
+    end
+    
+    
   end
 
   def has_clearance?(user, entity)
