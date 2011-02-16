@@ -47,14 +47,13 @@ class Client < ActiveRecord::Base
   def get_entities(ability, project = nil)
     if project and project != 'all'
       project = Project.find(project)
-      return project.accessible_by(ability).entities
+      Entity.accessible_by(ability).find_all_by_project_id(project)
     else
       projects = []
       self.projects.each do |project|
         projects << project.id
       end
-      entities = Entity.accessible_by(ability).find_all_by_project_id(projects)
-      return entities
+      Entity.accessible_by(ability).find_all_by_project_id(projects)
     end
   end
 

@@ -20,3 +20,20 @@ end
 Factory.define :entity_type do |et|
   et.name 'Some Entity Type'
 end
+
+Factory.define :entity_key do |ek|
+  ek.name 'Username'
+end
+
+Factory.define :entity do |e|
+  e.name 'An Entity'
+  e.project_id 1
+  e.entity_type_id 1
+  e.clearance 3
+end
+
+Factory.define :entity_row do |er|
+  er.entity_id 1
+  er.entity_key_id 1
+  er.value 'value'
+end

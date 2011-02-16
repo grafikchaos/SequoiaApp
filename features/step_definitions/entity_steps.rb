@@ -1,4 +1,4 @@
-Given /^the following Entity Types are allowed$/ do |table|
+Given /^the following Entity Types exist$/ do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |et|
     Factory.create(:entity_type, et)
@@ -7,24 +7,26 @@ end
 
 Given /^the following Entity Keys exist$/ do |table|
   # table is a Cucumber::Ast::Table
-  @entity_keys_list = table.raw.flatten.map {|key| EntityKey.new(key) }
-end
-
-Then /^"([^\"]*)" should have (\d+) "([^\"]*)"$/ do |selector1, count, selector2|
-  within(selector1) do |content|
-    content.should have_selector(selector2, :count => count.to_i)
-  end
+  table.hashes.each { |key| Factory.create(:entity_key, key) }
 end
 
 Given /^entity type "([^"]*)" exists$/ do |type|
   EntityType.create! :name => type, :cached_slug => type.downcase
 end
 
-Given /^the client "([^"]*)"'s project "([^"]*)" has an entity named "([^"]*)" with type "(.*)"$/ do |code, proj, entity, type|
-  client = Client.find(code)
-  project = Project.find_by_name_and_client_id(proj, client.id)
-  entity_type = EntityType.find_by_name(type)
-  Entity.create! :name => entity, :project_id => project.id, :entity_type_id => entity_type.id
+Given /^the following Entities exist$/ do |table|
+  table.hashes.each do |row|
+    client = Client.find(row['client'])
+    project = Project.find_by_name_and_client_id(row['project'], client.id)
+    entity_type = EntityType.find_by_name(row['type'])
+    Factory.create(:entity, :name => row['name'], :project_id => project.id, :entity_type_id => entity_type.id, :clearance => row['level'])
+  end
+end
+
+Then /^"([^\"]*)" should have (\d+) "([^\"]*)"$/ do |selector1, count, selector2|
+  within(selector1) do |content|
+    content.should have_selector(selector2, :count => count.to_i)
+  end
 end
 
 Then /^the project "([^"]*)" for the client "(.*)" should have (\d+) entit/ do |proj, client, count|

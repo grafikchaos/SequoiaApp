@@ -4,7 +4,7 @@ Feature: Manage entities
   I want to be able to manage the information for each client and project
   
   Background: Allowed Entity Types and Entity Keys
-      Given the following Entity Types are allowed
+      Given the following Entity Types exist
         | name            |
         | api             |
         | application     |
@@ -19,22 +19,6 @@ Feature: Manage entities
         | vpn             |
         | website         |
         | wireless        |
-      And the following Entity Keys exist
-        | api key         |
-        | database name   |
-        | domain          |
-        | email address   |
-        | encryption key  |
-        | endpoint url    |
-        | host            |
-        | password        |
-        | port            |
-        | protocol        |
-        | token           |
-        | transaction key |
-        | url             |
-        | username        |
-        | wsdl url        |
       And I have client codes "ROR"
       And I am logged in as a user with Level 2 clearance
       And the client "ROR" has a project named "Intranet" with domain "intranet.com"
@@ -69,9 +53,11 @@ Feature: Manage entities
     Given the client "ROR" has a project named "Client App" with domain "tester.com"
     And the client "ROR" has a project named "Wordpress Blog" with domain "blog.tester.com"
     And I am on the client page for "ROR"
-    And the client "ROR"'s project "Wordpress Blog" has an entity named "SSH Credentials" with type "application"
-    And the client "ROR"'s project "Wordpress Blog" has an entity named "Admin Login" with type "application"
-    And the client "ROR"'s project "Client App" has an entity named "User Login" with type "application"
+    And the following Entities exist
+      | client    |  project        | name            | type        | level   |
+      | ROR       |  Wordpress Blog | SSH Credentials | ssh         | 2       |
+      | ROR       |  Wordpress Blog | Admin Login     | application | 3       |
+      | ROR       |  Client App     | User Login      | application | 3       |
     When I select "All" from "project"
     And I press "Filter"
     Then I should see "SSH Credentials"
@@ -83,14 +69,49 @@ Feature: Manage entities
     And I should not see "SSH Credentials"
     And I should not see "Admin Login"
 
+  @entities @clearance
+  Scenario: Restricting access to entities based on clearance level
+    Given the following Entities exist
+      | client    |  project        | name            | type        | level   |
+      | ROR       |  Intranet       | SSH Credentials | ssh         | 1       |
+      | ROR       |  Intranet       | Admin Login     | application | 2       |
+      | ROR       |  Intranet       | User Login      | application | 3       |
+    When I go to the client page for "ROR"
+    Then I should see "Admin Login"
+    And I should see "User Login"
+    And I should not see "SSH Credentials"
+
+  @entities @clearance
+  Scenario: User can't add an entity with a higher clearance
+    Given I am on the client page for "ROR"
+    When I follow "New Entity"
+    Then I should see "Level 3"
+    And I should see "Level 2"
+    And I should not see "Level 1"
+    And I should not see "Level 0"
+
+  @entities
+  Scenario: Editing an entity
+    Given the following Entities exist
+      | client    |  project        | name            | type        | level   |
+      | ROR       |  Intranet       | SSH Credentials | ssh         | 2       |
+    And I am on the client page for "ROR"
+    When I follow "edit-ssh-credentials"
+    And I fill in "Name" with "New SSH Credentials"
+    And I press "Update Entity"
+    Then I should be on the client page for "ROR"
+    And I should see "New SSH Credentials"
+
   @entities
   Scenario: Deleting an entity
     Given the client "ROR" has a project named "Client App" with domain "tester.com"
     And the client "ROR" has a project named "Wordpress Blog" with domain "blog.tester.com"
     And I am on the client page for "ROR"
-    And the client "ROR"'s project "Wordpress Blog" has an entity named "SSH Credentials" with type "application"
-    And the client "ROR"'s project "Wordpress Blog" has an entity named "Admin Login" with type "application"
-    And the client "ROR"'s project "Client App" has an entity named "User Login" with type "application"
+    And the following Entities exist
+      | client    |  project        | name            | type        | level   |
+      | ROR       |  Wordpress Blog | SSH Credentials | ssh         | 2       |
+      | ROR       |  Wordpress Blog | Admin Login     | application | 3       |
+      | ROR       |  Client App     | User Login      | application | 3       |
     When I select "All" from "project"
     And I press "Filter"
     When I follow "delete-ssh-credentials" to delete requiring confirmation
