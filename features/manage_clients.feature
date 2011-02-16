@@ -78,7 +78,4 @@ Feature: Manage Clients
   Scenario: Delete a client
     Given I have client codes ROR
     And I am on the client page for "ROR"
-    When I follow "Delete" to delete requiring confirmation
-    Then I should be on the list of clients
-    And I should have 0 clients
-  
+    Then I should not see "Delete this client" 
