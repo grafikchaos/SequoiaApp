@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(:version => 20110215200851) do
   add_index "entity_keys", ["name"], :name => "index_entity_keys_on_name"
 
   create_table "entity_rows", :force => true do |t|
-    t.integer  "entity_id",                          :null => false
-    t.integer  "entity_key_id",                      :null => false
-    t.string   "encrypted_value",                    :null => false
+    t.integer  "entity_id",       :null => false
+    t.integer  "entity_key_id",   :null => false
+    t.string   "encrypted_value", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

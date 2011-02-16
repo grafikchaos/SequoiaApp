@@ -39,7 +39,6 @@ class Ability
         project.entities.each { |ent| access = false if ent.clearance < user.clearance}
         access
       end
-      can [:create, :read, :update], Project
 
       # Entities
       can [:read, :update, :destroy], Entity, :clearance => (user.clearance..3)

@@ -1,3 +1,4 @@
+@abilities
 Feature: Abilities - Roles and Permissions
   In order to restrict what resources users may create, read, update or delete
   As a fan of flexible ACLs
@@ -17,13 +18,13 @@ Feature: Abilities - Roles and Permissions
       | inigo                  | preparetodie       | admin   | 2         |
       | fezzik                 | anybodywantapeanut | admin   | 3         |
 
-  @admin @entityKeys @create
+  @admin @entityTypes @create
   Scenario: Admins can see create link for Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     When I go to the list of Entity Types
     Then I should see "New Entity Type"
 
-  @admin @entityKeys @create
+  @admin @entityTypes @create
   Scenario: Admins can see create Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I have no entity_types
@@ -35,7 +36,7 @@ Feature: Abilities - Roles and Permissions
     And I should see "API"
     And I should have 1 entity_type
 
-  @admin @entityKeys @edit
+  @admin @entityTypes @edit
   Scenario: Admins can see edit link for Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And entity type "Database" exists
@@ -43,19 +44,19 @@ Feature: Abilities - Roles and Permissions
     When I go to the list of Entity Types
     Then I should see "Edit"
 
-  @wip
+  @wip @entityTypes @edit
   Scenario: Admins can edit Entity Types
     
-  @wip
+  @wip @entityTypes @delete
   Scenario: Admins can delete Entity Types
 
-  @wip
+  @wip @entityKeys @create
   Scenario: Admins can create Entity Keys
 
-  @wip
+  @wip @entityKeys @edit
   Scenario: Admins can edit Entity Keys
 
-  @wip
+  @wip @entityKeys @delete
   Scenario: Admins can delete Entity Keys
 
   @wip
