@@ -19,8 +19,8 @@
   <% end %>
 </div>
 
-<% if can? [:read, :create, :update], Project %>
-<%= link_to 'Manage projects', client_projects_path(@client) %>
+<% if can? :update, Project %>
+  <%= link_to 'Manage projects', client_projects_path(@client) %>
 <% end %>
 
 <%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
