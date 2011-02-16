@@ -25,19 +25,38 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
-    # Projects
-    can :destroy, Project do |project|
-      access = true
-      project.entities.each { |ent| access = false if ent.clearance < user.clearance}
-      access
+    user ||= User.new # guest user (not logged in)
+
+    # Staff
+    if user.role? :staff
+      can [:read, :create, :update], [Client, Project]
+      # can :destroy, Project # only if the project has entities with clearance levels less than or equal to the User's clearance
+      can :manage, EntityRow
+
+      # Projects
+      can :destroy, Project do |project|
+        access = true
+        project.entities.each { |ent| access = false if ent.clearance < user.clearance}
+        access
+      end
+      can [:create, :read, :update], Project
+
+      # Entities
+      can [:read, :update, :destroy], Entity, :clearance => (user.clearance..3)
+      can :create, Entity
     end
-    can [:create, :read, :update], Project
 
-    # Entities
-    can [:read, :update, :destroy], Entity, :clearance => (user.clearance..3)
-    can :create, Entity
-    
+    # Manager inherits abilities from Staff + ability to manage users (:read, :create, :update but no :delete)
+    if user.role? :manager
+      can :manage, User
+      cannot :destroy, User
+    end
 
+    # ADMIN - MANAGES ALL
+    if user.role? :admin
+      can :manage, :all
+    end
+ 
   end
 
 end

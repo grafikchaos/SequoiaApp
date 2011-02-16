@@ -1,0 +1,21 @@
+<h1>Listing entity_keys</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @entity_keys.each do |entity_key| %>
+  <tr>
+    <td><%= link_to 'Show', entity_key %></td>
+    <td><%= link_to 'Edit', edit_entity_key_path(entity_key) %></td>
+    <td><%= link_to 'Destroy', entity_key, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Entity key', new_entity_key_path %>

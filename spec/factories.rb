@@ -1,8 +1,9 @@
 Factory.define :user do |u|
   u.username 'user'
-  u.email 'user@example.com'
   u.password 'test1234'
-  u.password_confirmation 'test1234'
+  u.password_confirmation { |p| "#{p.password}" }
+  u.role 'staff'
+  u.sequence(:email) {|n| "person#{n}@example.com".downcase } # => person1@example.com
   u.clearance 3
 end
 
@@ -21,8 +22,8 @@ Factory.define :entity_type do |et|
   et.name 'Some Entity Type'
 end
 
-Factory.define :entity_key do |ek|
-  ek.name 'Username'
+Factory.define :entity_key do |key|
+  key.name 'Username'
 end
 
 Factory.define :entity do |e|

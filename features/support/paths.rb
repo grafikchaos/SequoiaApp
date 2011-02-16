@@ -14,9 +14,6 @@ module NavigationHelpers
     when /^the login page$/
       new_user_session_path
 
-    when /^the list of clients$/
-      "/clients"
-
     when /^the client page for "(.*)"$/i
       client_path(Client.find($1))
 
@@ -31,6 +28,25 @@ module NavigationHelpers
       client = Client.find($1)
       client_projects_path(client)
 
+    when /the list of (.*)$/i
+      class_name = $1.downcase 
+      case class_name
+      when "entity types"
+        entity_types_path
+      when "clients"
+        clients_path
+      end
+
+    when /the new (.*) page$/i
+      class_name = $1.downcase 
+      case class_name
+      when "entity type"
+        new_entity_type_path
+      when "client"
+        new_client_path
+      end
+      
+      
     else
       begin
         page_name =~ /the (.*) page/

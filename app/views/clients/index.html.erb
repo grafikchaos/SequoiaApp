@@ -3,7 +3,11 @@
 
 <%= render 'search' %>
 
-<%= link_to 'New Client', new_client_path, :class => 'button', :id => 'new-client' %>
+<div class="controls">
+  <%- if can? :create, Client -%>
+    <%= link_to 'New Client', new_client_path, :class => 'button', :id => 'new-client' %>
+  <%- end -%>
+</div>
 <div class="clear"></div>
 
 <div id="client-list">

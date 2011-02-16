@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   # Define which roles will be utilized/authorized in this application. 
   # They will be stored via a bitmap mask, so don't mix up the order, only append
   #
-  ROLES = %w[staff admin]
+  ROLES = %w[staff manager admin]
   
   
   

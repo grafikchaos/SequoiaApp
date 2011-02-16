@@ -1,8 +1,8 @@
 Ashint::Application.routes.draw do
   
   resources :entity_rows
-
-  resources :entities
+  resources :entity_types
+  resources :entity_keys
 
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }

@@ -2,13 +2,26 @@
 <% content_for :display_title, display_title(@client) %>
 
 <div class="controls">
+  <% if can? :create, Project %>
   <%= link_to 'New Project', new_client_project_path(@client), :class => 'button' %>
+  <% end %>
+
+  <% if can? :create, Entity %>
   <%= link_to 'New Entity', new_client_entity_path(@client), :class => 'button' %>
+  <% end %>
+
+  <% if can? :edit, Client %>
   <%= link_to 'Edit', edit_client_path(@client), :class => 'edit-link tooltip', :title => 'Edit this client' %>
+  <% end %>
+
+  <% if can? :delete, Client %>
   <%= link_to 'Delete', @client, :confirm => 'Are you sure you want to delete this client?', :method => 'delete', :class => 'destroy-link tooltip', :title => 'Delete this client' %>
+  <% end %>
 </div>
 
+<% if can? [:read, :create, :update], Project %>
 <%= link_to 'Manage projects', client_projects_path(@client) %>
+<% end %>
 
 <%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
   <%- options = format_for_select(@client.projects, 'All') %>

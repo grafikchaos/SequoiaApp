@@ -1,6 +1,6 @@
 class AddRoleToUserTable < ActiveRecord::Migration
   def self.up
-    add_column('users', 'role', :string, { :limit => 20, :default => 'staff', :after => 'username' } )
+    add_column('users', 'role', :string, { :limit => 20, :default => 'staff', :after => 'username', :null => false } )
   end
 
   def self.down
