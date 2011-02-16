@@ -1,0 +1,6 @@
+Gemfile.lock
+config/
+db/
+tmp/
+*.log
+log/
