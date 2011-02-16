@@ -24,7 +24,6 @@ Feature: Manage Clients
     And I should see "Client Code"
     And I should see "Project Name"
     And I should see "Project Domain"
-    
   
   @clients @staff @authenticate
   Scenario: Create a valid client

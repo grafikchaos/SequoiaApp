@@ -5,7 +5,7 @@ Feature: Manage projects
 
   Background: Make sure the client exists
     Given I am logged in as a user
-    And client "ROR" exists
+    And I have client codes ROR
     And I am on the client page for "ROR"
 
   @clients @projects @staff
@@ -30,6 +30,14 @@ Feature: Manage projects
     And I should have 1 project
     And the client "ROR" should not have a project named "Intranet"
     And the client "ROR" should have a project named "Default"
+
+  @search @projects
+  Scenario: Searching for a client by project domain name
+    Given the client "ROR" has a default project named "Railties" with domain "intranet.com" 
+    When I go to the home page
+    And I fill in "search" with "intran"
+    And I press "Search"
+    Then I should see "ROR"
 
   @projects @staff
   Scenario: Editing a project
