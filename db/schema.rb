@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110215200851) do
 
   create_table "bookmarks", :force => true do |t|
-    t.integer  "user_id",    :default => 0, :null => false
+    t.integer  "user_id",    :null => false
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(:version => 20110215200851) do
   add_index "bookmarks", ["user_id"], :name => "bookmarks_user_id_fk"
 
   create_table "clients", :force => true do |t|
-    t.string   "name",                            :default => "NULL", :null => false
-    t.string   "client_code",       :limit => 10, :default => "NULL", :null => false
+    t.string   "name",                            :null => false
+    t.string   "client_code",       :limit => 10, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "cached_slug"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(:version => 20110215200851) do
   add_index "entity_keys", ["name"], :name => "index_entity_keys_on_name"
 
   create_table "entity_rows", :force => true do |t|
-    t.integer  "entity_id",       :null => false
-    t.integer  "entity_key_id",   :null => false
-    t.string   "encrypted_value", :null => false
+    t.integer  "entity_id",                          :null => false
+    t.integer  "entity_key_id",                      :null => false
+    t.string   "encrypted_value",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(:version => 20110215200851) do
   add_index "entity_types", ["name"], :name => "index_entity_types_on_name"
 
   create_table "projects", :force => true do |t|
-    t.integer  "client_id",  :default => 0,      :null => false
-    t.string   "name",       :default => "NULL", :null => false
+    t.integer  "client_id",  :default => 0, :null => false
+    t.string   "name",                      :null => false
     t.string   "domain"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(:version => 20110215200851) do
 
   create_table "users", :force => true do |t|
     t.string   "username",                                                :null => false
-    t.string   "role",                :limit => 20,  :default => "staff", :null => false
+    t.string   "role",                :limit => 20,  :default => "staff"
     t.string   "email",                              :default => "",      :null => false
     t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
     t.string   "password_salt",                      :default => "",      :null => false
