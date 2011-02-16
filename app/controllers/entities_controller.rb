@@ -1,16 +1,6 @@
 class EntitiesController < ApplicationController
   load_and_authorize_resource
 
-  # GET /entities
-  # GET /entities.xml
-  def index
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @entities }
-    end
-  end
-
   # GET /entities/1
   # GET /entities/1.xml
   def show

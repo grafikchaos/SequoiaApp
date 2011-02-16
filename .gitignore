@@ -4,6 +4,7 @@ log/*.log
 tmp/**/*
 *.lock
 config/database.yml
+config/initializers/secret_token.rb
 *.bak
 db/seeds.private.rb
 public/system/logos
