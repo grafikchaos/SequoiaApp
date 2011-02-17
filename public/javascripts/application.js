@@ -179,18 +179,18 @@ var initRemoveEntityRows = function() {
   $('.entity-row-field .remove a.undo').hide();
   $('.entity-row-field .remove a').click(function() {
     if ($(this).parent().parent().hasClass('will-remove')) {
-      $(this).siblings('input').val('0');
+      $(this).siblings('input[type=hidden]').val(0);
       $(this).parent().parent().removeClass('will-remove');
       $(this).parent().siblings('div.field').each(function() {
-        $('select', this).attr('disabled', false);
-        $('input', this).attr('disabled', false);
+        //$('select', this).attr('disabled', false);
+        //$('input[type=text]', this).attr('disabled', false);
       });
     } else {
-      $(this).siblings('input').val('1');
+      $(this).siblings('input[type=hidden]').val(1);
       $(this).parent().parent().addClass('will-remove');
       $(this).parent().siblings('div.field').each(function() {
-        $('select', this).attr('disabled', true);
-        $('input', this).attr('disabled', true);
+        //$('select', this).attr('disabled', true);
+        //$('input[type=text]', this).attr('disabled', true);
       });
     }
     $(this).hide();
