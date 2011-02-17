@@ -177,21 +177,18 @@ var initProjectSelector = function() {
 
 var initRemoveEntityRows = function() {
   $('.entity-row-field .remove a.undo').hide();
+  $('.entity-row-field .delete-message').hide();
   $('.entity-row-field .remove a').click(function() {
     if ($(this).parent().parent().hasClass('will-remove')) {
       $(this).siblings('input[type=hidden]').val(0);
       $(this).parent().parent().removeClass('will-remove');
-      $(this).parent().siblings('div.field').each(function() {
-        //$('select', this).attr('disabled', false);
-        //$('input[type=text]', this).attr('disabled', false);
-      });
+      $(this).parent().siblings('div.field').show();
+      $(this).parent().siblings('div.delete-message').hide();
     } else {
       $(this).siblings('input[type=hidden]').val(1);
       $(this).parent().parent().addClass('will-remove');
-      $(this).parent().siblings('div.field').each(function() {
-        //$('select', this).attr('disabled', true);
-        //$('input[type=text]', this).attr('disabled', true);
-      });
+      $(this).parent().siblings('div.field').hide();
+      $(this).parent().siblings('div.delete-message').show();
     }
     $(this).hide();
     $(this).siblings('.toggle').show();
