@@ -70,7 +70,7 @@ Feature: Manage entity_rows
     And I should see "67890"
     And I should not see "12345"
 
-  @entity_rows @wip
+  @entity_rows
   Scenario: Delete entity rows from an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |
@@ -80,12 +80,31 @@ Feature: Manage entity_rows
       | ROR       |  Intranet       | Admin Login     | password    | 12345   |
       | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
     And I am on the client page for "ROR"
-    When I follow "delete-admin-login"
-    # Webrat doesn't like hidden fields
-    And I fill in "[entity_rows_attributes][0][_destroy]" with "1"
+    When I follow "edit-admin-login"
+    And I delete the Entity Row "entity_entity_rows_attributes_0__destroy"
     And I press "Update Entity"
     Then I should be on the client page for "ROR"
     And I should not see "password:"
     And I should not see "12345"
+    And I should see "username:"
+    And I should see "fezzik"
+
+  @entity_rows
+  Scenario: Undo delete entity rows from an entity
+    Given the following Entities exist
+      | client    |  project        | name            | type        | level   |
+      | ROR       |  Intranet       | Admin Login     | application | 3       |
+    And the following Entity Rows exist
+      | client    |  project        | entity          | key         | value   |
+      | ROR       |  Intranet       | Admin Login     | password    | 12345   |
+      | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
+    And I am on the client page for "ROR"
+    When I follow "edit-admin-login"
+    And I delete the Entity Row "entity_entity_rows_attributes_0__destroy"
+    And I undelete the Entity Row "entity_entity_rows_attributes_0__destroy"
+    And I press "Update Entity"
+    Then I should be on the client page for "ROR"
+    And I should see "password:"
+    And I should see "12345"
     And I should see "username:"
     And I should see "fezzik"
