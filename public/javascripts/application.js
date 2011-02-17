@@ -8,6 +8,7 @@ $(document).ready(function() {
   bookmarksMenuDropDown();
   initQtips();
   initProjectSelector();
+  initRemoveEntityRows();
 });
 
 /**
@@ -173,6 +174,29 @@ var initProjectSelector = function() {
     $('form#proj_selector').submit();
   });
 };
+
+var initRemoveEntityRows = function() {
+  $('.entity-row-field .remove a.undo').hide();
+  $('.entity-row-field .remove a').click(function() {
+    if ($(this).parent().parent().hasClass('will-remove')) {
+      $(this).siblings('input').val('0');
+      $(this).parent().parent().removeClass('will-remove');
+      $(this).parent().siblings('div.field').each(function() {
+        $('select', this).attr('disabled', false);
+        $('input', this).attr('disabled', false);
+      });
+    } else {
+      $(this).siblings('input').val('1');
+      $(this).parent().parent().addClass('will-remove');
+      $(this).parent().siblings('div.field').each(function() {
+        $('select', this).attr('disabled', true);
+        $('input', this).attr('disabled', true);
+      });
+    }
+    $(this).hide();
+    $(this).siblings('.toggle').show();
+  });
+}
 
 var initQtips = function() {
   $('.tooltip').each(function() {

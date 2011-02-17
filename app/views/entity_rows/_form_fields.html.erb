@@ -6,4 +6,12 @@
   <div class="field value">
     <%= f.text_field :value %>
   </div>
+
+  <%- if !f.object.new_record? %>
+    <div class="field remove">
+      <a href="javascript:void(0);" class="destroy-link tooltip toggle" title="Delete this row">Delete</a>
+      <a href="javascript:void(0);" class="toggle undo tooltip" title="This row will be deleted on save">Undo?</a>
+      <%= f.hidden_field :_destroy %>
+    </div>
+  <%- end %>
 </div>
