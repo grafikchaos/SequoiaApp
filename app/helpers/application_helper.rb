@@ -17,4 +17,12 @@ module ApplicationHelper
     return options
   end
 
+  def link_to_add_fields(name, f, association, keys = nil)
+    new_object = f.object.class.reflect_on_association(association).klass.new
+    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+      render association.to_s + "/form_fields", :f => builder, :entity_keys => keys
+    end
+    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+  end  
+
 end

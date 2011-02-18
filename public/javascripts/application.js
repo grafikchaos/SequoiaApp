@@ -27,7 +27,6 @@ var initCollapsibles = function() {
   });
 };
 
-
 /**
  * Generic AJAX form submission handler.
  */
@@ -67,7 +66,6 @@ var clearForm = function(element) {
     }
   });
 };
-
 
 /**
  * Generic data reload handler.
@@ -130,7 +128,6 @@ var clientPageSearch = function() {
       });
     }
   });
-
 };
 
 /**
@@ -176,8 +173,6 @@ var initProjectSelector = function() {
 };
 
 var initRemoveEntityRows = function() {
-  $('.entity-row-field .remove a.undo').hide();
-  $('.entity-row-field .delete-message').hide();
   $('.entity-row-field .remove a').click(function() {
     if ($(this).parent().parent().hasClass('will-remove')) {
       $(this).siblings('input[type=hidden]').val(0);
@@ -193,6 +188,15 @@ var initRemoveEntityRows = function() {
     $(this).hide();
     $(this).siblings('.toggle').show();
   });
+}
+
+/**
+ * For adding fields to our entity edit page.
+ */
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).before(content.replace(regexp, new_id));
 }
 
 var initQtips = function() {
