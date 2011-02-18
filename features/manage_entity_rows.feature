@@ -4,7 +4,7 @@ Feature: Manage entity_rows
   wants [behaviour]
   
   Background: Entity Keys exist, etc.
-    Given the following Entity Types exist
+    Given the following entity_type records
       | name            |
       | api             |
       | application     |
@@ -19,7 +19,7 @@ Feature: Manage entity_rows
       | vpn             |
       | website         |
       | wireless        |
-    And the following Entity Keys exist
+    And the following entity_key records
       | name            |
       | api key         |
       | database name   |

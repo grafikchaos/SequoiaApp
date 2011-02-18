@@ -17,6 +17,38 @@ Feature: Abilities - Roles and Permissions
       | dreadpirateroberts     | asyouwish          | admin   | 1         |
       | inigo                  | preparetodie       | admin   | 2         |
       | fezzik                 | anybodywantapeanut | admin   | 3         |
+    And the following entity_type records
+      | name            |
+      | api             |
+      | application     |
+      | computer        |
+      | database        |
+      | email           |
+      | ftp             |
+      | payment gateway |
+      | remote desktop  |
+      | ssh             |
+      | version control |
+      | vpn             |
+      | website         |
+      | wireless        |
+    And the following entity_key records
+      | name            |
+      | api key         |
+      | database name   |
+      | domain          |
+      | email address   |
+      | encryption key  |
+      | endpoint url    |
+      | host            |
+      | password        |
+      | port            |
+      | protocol        |
+      | token           |
+      | transaction key |
+      | url             |
+      | username        |
+      | wsdl url        |
 
   @admin @entityTypes @create
   Scenario: Admins can see create link for Entity Types
@@ -44,8 +76,15 @@ Feature: Abilities - Roles and Permissions
     When I go to the list of Entity Types
     Then I should see "Edit"
 
-  @wip @entityTypes @edit
+  @admin @entityTypes @edit
   Scenario: Admins can edit Entity Types
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the edit Entity Type page for "API"
+    When I fill in "Name" with "APES"
+    And I press "Update Entity Type"
+    Then I should see "Entity Type was successfully updated."
+    And I should be on the list of Entity Types
+    And I should see "APES"
     
   @wip @entityTypes @delete
   Scenario: Admins can delete Entity Types

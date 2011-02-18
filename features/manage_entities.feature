@@ -3,8 +3,8 @@ Feature: Manage entities
   As a staff member
   I want to be able to manage the information for each client and project
   
-  Background: Allowed Entity Types and Entity Keys
-      Given the following Entity Types exist
+  Background: Allowed Entity Types
+      Given the following entity_type records
         | name            |
         | api             |
         | application     |
