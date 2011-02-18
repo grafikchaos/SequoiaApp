@@ -46,6 +46,14 @@ module NavigationHelpers
         new_client_path
       end
       
+    when /the edit (.*) page for "(.*)"$/i
+      class_name = $1.downcase
+      case class_name
+      when "entity type"
+        @entity = EntityType.find("#{$2}".downcase)
+        edit_entity_type_path(@entity)
+      end
+      
       
     else
       begin

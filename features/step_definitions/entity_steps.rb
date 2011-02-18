@@ -1,15 +1,3 @@
-Given /^the following Entity Types exist$/ do |table|
-  # table is a Cucumber::Ast::Table
-  table.hashes.each do |et|
-    Factory.create(:entity_type, et)
-  end
-end
-
-Given /^the following Entity Keys exist$/ do |table|
-  # table is a Cucumber::Ast::Table
-  table.hashes.each { |key| Factory.create(:entity_key, key) }
-end
-
 Given /^entity type "([^"]*)" exists$/ do |type|
   EntityType.create! :name => type, :cached_slug => type.downcase
 end
