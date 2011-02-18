@@ -35,8 +35,13 @@ class EntitiesController < ApplicationController
     @entity_types = EntityType.all
     @entity_keys = EntityKey.all
 
-    # Create another row for the user to add one
-    @entity.entity_rows.build
+    # Create more rows for the user to add entity rows
+    count = 3 - @entity.entity_rows.count
+    if count > 1 
+      count.times { @entity.entity_rows.build }
+    else
+      @entity.entity_rows.build
+    end
   end
 
   # POST /entities

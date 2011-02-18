@@ -1,17 +1,12 @@
-<h1>Listing entity_keys</h1>
+<% content_for :page_title, "Entity Keys" %>
+<% content_for :display_title, "Entity Keys" %>
 
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @entity_keys.each do |entity_key| %>
   <tr>
-    <td><%= link_to 'Show', entity_key %></td>
-    <td><%= link_to 'Edit', edit_entity_key_path(entity_key) %></td>
-    <td><%= link_to 'Destroy', entity_key, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= entity_key.name %></td>
+    <td><%= link_to 'Edit', edit_entity_key_path(entity_key), :class => 'tooltip edit-link', :title => 'Edit this entity key' %></td>
+    <td><%= link_to 'Destroy', entity_key, :confirm => 'Are you sure?', :method => :delete, :class => 'tooltip destroy-link', :title => 'Delete this entity key' %></td>
   </tr>
 <% end %>
 </table>

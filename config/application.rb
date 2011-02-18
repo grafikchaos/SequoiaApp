@@ -45,6 +45,14 @@ module Ashint
         rails
       )
 
+    # CSS files to include
+    config.action_view.stylesheet_expansions[:defaults] = 
+      %w(
+        web-app-theme/base 
+        web-app-theme/themes/warehouse/style 
+        styles
+      )
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= yield(:page_title) %> | August Ash Intranet</title>
-  <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/warehouse/style", "styles", :cache => true %>
+  <%= stylesheet_link_tag :defaults, :cache => true %>
   <%= javascript_include_tag :defaults, :cache => true %>
   <%= csrf_meta_tag %>
 </head>
@@ -14,6 +14,9 @@
         <ul class="wat-cf">
           <li><%= link_to "Home", root_path %></li>
           <li id="bookmarks-link"><a href="javascript:void(0)">Bookmarks</a></li>
+          <%- if current_user and current_user.role? :admin %>
+            <li><%= link_to 'Admin', entity_keys_path %></li>
+          <%- end %>
           <li><%= link_to 'Logout', destroy_user_session_path %></li>
         </ul>
       </div>
@@ -28,7 +31,6 @@
     </div>
     <%= render 'shared/footer'%>
   </div>
-  <div id="bookmarks-popup"></div>
   <%- if flash %>
     <%= render 'shared/flash', :flash => flash %>
   <%- end %>

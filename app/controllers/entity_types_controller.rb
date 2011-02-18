@@ -10,17 +10,6 @@ class EntityTypesController < ApplicationController
     end
   end
 
-  # GET /entity_types/1
-  # GET /entity_types/1.xml
-  def show
-    @entity_type = EntityType.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @entity_type }
-    end
-  end
-
   # GET /entity_types/new
   # GET /entity_types/new.xml
   def new

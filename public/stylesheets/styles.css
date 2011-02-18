@@ -7,6 +7,8 @@
   DEFAULTS
 ****************************/
 html, body { height: 100%; }
+#container { min-height: 100%; position: relative; }
+#wrapper { padding-bottom: 32px; }
 
 /****************************
   HEADER
@@ -33,7 +35,7 @@ body, #main { background: #fff; }
   margin: 0 0 5px;
   border: 1px solid #B9CAD4; 
   -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+  -webkit-b}rder-radius: 3px;
   border-radius: 3px;
 }
 
@@ -85,21 +87,23 @@ form .entity-row-field {
 
 form .entity-row-field div {
   float: left;
+  padding: 3px;
 }
 
+form .entity-row-field .remove a.undo { margin-left: 3px; }
 /****************************
   FOOTER
 ****************************/
 #footer {
   width: 100%;
-  position: relative;
+  height: 32px;
+  position: absolute;
   bottom: 0;
   left: 0;
   padding: 0;
 }
 
 #footer .block {
-  width: 50%;
   padding: 5px 0;
   margin: 0;
 }
