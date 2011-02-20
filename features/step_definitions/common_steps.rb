@@ -17,3 +17,7 @@ end
 Then /^I should have (\d*) (.*)$/ do |count, model|
   model.singularize.camelcase.constantize.all.count == count.to_i
 end
+
+Then /^I should see the following (.*)$/ do |model, expected|
+  expected.diff!(tableish("table#" + model + " tr", "td").to_a)
+end

@@ -194,6 +194,26 @@ Feature: Abilities - Roles and Permissions
     Then I should be on the list of Users
     And I should not see "inigo"
 
+  @users @edit
+  Scenario: Admins can set a clearance level for a user
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Users
+    When I follow "edit-inigo"
+    And I select "Level 1" from "Clearance"
+    And I press "Update User"
+    Then I should be on the list of Users
+    And I should see the following users
+      | buttercup              | Level 3  | staff   | Edit  | Destroy |
+      | valerie                | Level 2  | staff   | Edit  | Destroy |
+      | theimpressiveclergyman | Level 1  | staff   | Edit  | Destroy |
+      | humperdinck            | Level 0  | staff   | Edit  | Destroy |
+      | miraclemax             | Level 1  | manager | Edit  | Destroy |
+      | vizzini                | Level 2  | manager | Edit  | Destroy |
+      | sixfingeredman         | Level 3  | manager | Edit  | Destroy |
+      | dreadpirateroberts     | Level 1  | admin   | Edit  |         |
+      | inigo                  | Level 1  | admin   | Edit  | Destroy |
+      | fezzik                 | Level 3  | admin   | Edit  | Destroy |
+
   @users @auth
   Scenario: Only admins can see a list of users
     Given I am logged in as "buttercup" with password "princess"

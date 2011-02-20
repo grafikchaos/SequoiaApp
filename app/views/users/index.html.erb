@@ -10,16 +10,18 @@
 </div>
 <div class='clear'></div>
 
-<table>
+<table id="users">
 <% @users.each do |user| %>
   <tr>
     <td><%= user.username %></td>
     <td>Level <%= user.clearance %></td>
     <td><%= user.role %></td>
     <td><%= link_to 'Edit', edit_user_path(user), :id => "edit-#{user.username}", :class => 'tooltip edit-link', :title => 'Edit this user' %></td>
-    <%- if user != current_user %>
-      <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete, :id => "delete-#{user.username}", :class => 'tooltip destroy-link', :title => 'Delete this user' %></td>
-    <%- end %>
+    <td>
+      <%- if user != current_user %>
+        <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete, :id => "delete-#{user.username}", :class => 'tooltip destroy-link', :title => 'Delete this user' %>
+      <%- end %>
+    </td>
   </tr>
 <% end %>
 </table>
