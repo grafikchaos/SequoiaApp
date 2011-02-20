@@ -1,16 +1,21 @@
 <% content_for :page_title, "Entity Keys" %>
 <% content_for :display_title, "Entity Keys" %>
 
+<%= render 'shared/admin_tabs' %>
+
+<div class="controls">
+  <% if can? :create, EntityKey %>
+    <%= link_to 'New Entity Key', new_entity_key_path, :class => 'button' %>
+  <% end %>
+</div>
+<div class='clear'></div>
+
 <table>
 <% @entity_keys.each do |entity_key| %>
   <tr>
     <td><%= entity_key.name %></td>
-    <td><%= link_to 'Edit', edit_entity_key_path(entity_key), :class => 'tooltip edit-link', :title => 'Edit this entity key' %></td>
-    <td><%= link_to 'Destroy', entity_key, :confirm => 'Are you sure?', :method => :delete, :class => 'tooltip destroy-link', :title => 'Delete this entity key' %></td>
+    <td><%= link_to 'Edit', edit_entity_key_path(entity_key), :id => "edit-#{entity_key.friendly_id}", :class => 'tooltip edit-link', :title => 'Edit this entity key' %></td>
+    <td><%= link_to 'Destroy', entity_key, :confirm => 'Are you sure?', :method => :delete, :id => "delete-#{entity_key.friendly_id}", :class => 'tooltip destroy-link', :title => 'Delete this entity key' %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Entity key', new_entity_key_path %>

@@ -4,7 +4,6 @@ gem 'rails'
 
 gem 'mysql2'
 gem 'jquery-rails'
-gem 'tabs_on_rails'
 gem 'devise'
 gem 'cancan'
 gem "friendly_id"
@@ -26,6 +25,7 @@ group :development, :test do
   gem 'foreigner'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'launchy'
 end
 
 # Deploy with Capistrano

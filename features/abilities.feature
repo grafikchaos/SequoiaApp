@@ -50,6 +50,15 @@ Feature: Abilities - Roles and Permissions
       | username        |
       | wsdl url        |
 
+  @admin @entityTypes @view
+  Scenario: Admins can view a list of Entity Types
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of clients
+    When I follow "Admin"
+    And I follow "Entity Types"
+    Then I should see "ftp"
+    And I should see "wireless"
+
   @admin @entityTypes @create
   Scenario: Admins can see create link for Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
@@ -57,13 +66,13 @@ Feature: Abilities - Roles and Permissions
     Then I should see "New Entity Type"
 
   @admin @entityTypes @create
-  Scenario: Admins can see create Entity Types
+  Scenario: Admins can create Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I have no entity_types
     And I am on the new Entity Type page
     When I fill in "Name" with "API"
     And I press "Create Entity Type"
-    Then I should see "Entity Type was successfully created."
+    Then I should see "Entity Type was successfully created"
     And I should be on the list of Entity Types
     And I should see "API"
     And I should have 1 entity_type
@@ -82,30 +91,114 @@ Feature: Abilities - Roles and Permissions
     And I am on the edit Entity Type page for "API"
     When I fill in "Name" with "APES"
     And I press "Update Entity Type"
-    Then I should see "Entity Type was successfully updated."
+    Then I should see "Entity Type was successfully updated"
     And I should be on the list of Entity Types
     And I should see "APES"
+    And I should not see "API"
     
-  @wip @entityTypes @delete
+  @entityTypes @delete
   Scenario: Admins can delete Entity Types
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Entity Types
+    When I follow "delete-payment-gateway" to delete requiring confirmation
+    Then I should be on the list of Entity Types
+    And I should see "Entity Type was successfully deleted"
+    And I should not see "payment gateway"
 
-  @wip @entityKeys @create
+  @entityTypes @auth
+  Scenario: Only admins can see a list of Entity Types
+    Given I am logged in as "buttercup" with password "princess"
+    When I go to the list of Entity Types
+    Then I should see "Access Denied"
+
+  @admin @entityKeys @view
+  Scenario: Admins can view a list of Entity Keys
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of clients
+    When I follow "Admin"
+    Then I should see "endpoint url"
+    And I should see "encryption key"
+
+  @entityKeys @create
   Scenario: Admins can create Entity Keys
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I have no entity_keys
+    And I am on the list of Entity Keys
+    When I follow "New Entity Key"
+    And I fill in "Name" with "Poison"
+    And I press "Create Entity Key"
+    Then I should see "Entity Key was successfully created"
+    And I should be on the list of Entity Keys
+    And I should see "Poison"
+    And I should have 1 entity_key
 
-  @wip @entityKeys @edit
+  @entityKeys @edit
   Scenario: Admins can edit Entity Keys
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Entity Keys
+    When I follow "edit-database-name"
+    And I fill in "Name" with "Ponytail"
+    And I press "Update Entity Key"
+    Then I should see "Entity Key was successfully updated"
+    And I should be on the list of Entity Keys
+    And I should see "Ponytail"
+    And I should not see "database name"
 
-  @wip @entityKeys @delete
+  @entityKeys @delete
   Scenario: Admins can delete Entity Keys
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Entity Keys
+    When I follow "delete-transaction-key" to delete requiring confirmation
+    Then I should be on the list of Entity Keys
+    And I should see "Entity Key was successfully deleted"
+    And I should not see "transaction key"
+
+  @entityKeys @auth
+  Scenario: Only admins can view Entity Keys
+    Given I am logged in"as "buttercup" with password "princess"
+    When I go to the list of Entity Keys
+    Then I should see "Access Denied"
+
+  @users @view
+  Scenario: Admins can see a list of users
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of clients
+    When I follow "Admin"
+    And I follow "Users"
+    Then I should see "miraclemax"
+    And I should see "fezzik"
 
   @wip
   Scenario: Admins can create Users
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Users
+    When I follow "New User"
 
-  @wip
+
+  @users @edit
   Scenario: Admins can edit Users
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Users
+    When I follow "edit-inigo"
+    And I fill in "Username" with "mandypatinkin"
+    And I press "Update User"
+    Then I should be on the list of Users
+    And I should see "mandypatinkin"
+    And I should not see "inigo"
     
-  @wip
+  @users @delete
   Scenario: Admins can delete Users
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Users
+    When I follow "delete-inigo" to delete requiring confirmation
+    Then I should be on the list of Users
+    And I should not see "inigo"
+
+  @users @auth
+  Scenario: Only admins can see a list of users
+    Given I am logged in as "buttercup" with password "princess"
+    When I go to the list of Users
+    Then I should see "Access Denied"
 
   @wip
   Scenario: Admins can create Entities

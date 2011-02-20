@@ -1,0 +1,8 @@
+<%- links = ['Entity Keys', 'Entity Types', 'Users'] %>
+<div class="admin-tabs">
+  <ul>
+    <%- links.each do |link| %>
+      <li><%= link_to_unless_current link, '/admin/' + link.downcase.gsub(' ', '_') %></li>
+    <%- end %>
+  </ul>
+</div>

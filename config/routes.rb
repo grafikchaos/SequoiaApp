@@ -4,9 +4,7 @@ Ashint::Application.routes.draw do
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
   
   # Defining our nested resources.
-  resources :users do
     resources :bookmarks
-  end
   
   resources :clients, :shallow => true do
     resources :projects, :except => 'show'
@@ -15,7 +13,7 @@ Ashint::Application.routes.draw do
   
   # Administration for entity types and keys
   scope "/admin" do
-    resources :entity_types, :entity_keys, :except => 'show'
+    resources :entity_types, :entity_keys, :users, :except => 'show'
   end
 
   match '/:username/bookmarks' => 'bookmarks#index'
@@ -78,6 +76,6 @@ Ashint::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   
   # Catch everything else and give it to the error controller
-  match '*a', :to => 'errors#routing'
+  match '*a', :to => 'errors#routing', :as => 'error'
 
 end

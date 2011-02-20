@@ -33,6 +33,10 @@ module NavigationHelpers
       case class_name
       when "entity types"
         entity_types_path
+      when "entity keys"
+        entity_keys_path
+      when "users"
+        users_path
       when "clients"
         clients_path
       end

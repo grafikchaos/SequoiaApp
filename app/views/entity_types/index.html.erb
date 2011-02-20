@@ -1,6 +1,8 @@
 <% content_for :page_title, "Entity Types" %>
 <% content_for :display_title, "Entity Types" %>
 
+<%= render 'shared/admin_tabs' %>
+
 <div class="controls">
   <% if can? :create, EntityType %>
     <%= link_to 'New Entity Type', new_entity_type_path, :class => 'button' %>
@@ -15,12 +17,12 @@
     <td><%= entity_type.name %></td>
     <td>
       <%- if can? :edit, EntityType -%>
-        <%= link_to 'Edit', edit_entity_type_path(entity_type), :class => 'tooltip edit-link', :title => 'Edit this entity type' %>
+        <%= link_to 'Edit', edit_entity_type_path(entity_type), :id => "edit-#{entity_type.friendly_id}", :class => 'tooltip edit-link', :title => 'Edit this entity type' %>
       <%- end -%>
     </td>
     <td>
       <%- if can? :destroy, EntityType -%>
-        <%= link_to 'Destroy', entity_type, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete this entity type' %>
+        <%= link_to 'Destroy', entity_type, :confirm => 'Are you sure?', :method => :delete, :id => "delete-#{entity_type.friendly_id}", :class => 'destroy-link tooltip', :title => 'Delete this entity type' %>
       <%- end -%>
     </td>
   </tr>
