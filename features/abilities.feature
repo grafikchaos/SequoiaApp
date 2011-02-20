@@ -214,6 +214,16 @@ Feature: Abilities - Roles and Permissions
       | inigo                  | Level 1  | admin   | Edit  | Destroy |
       | fezzik                 | Level 3  | admin   | Edit  | Destroy |
 
+  @users @clearance
+  Scenario: Admins cannot grant a clearance level greater than their own
+    Given I am logged in as "inigo" with password "preparetodie"
+    And I am on the list of Users
+    When I follow "edit-buttercup"
+    Then I should see "Level 3" within "#user_clearance"
+    And I should see "Level 2" within "#user_clearance"
+    And I should not see "Level 1" within "#user_clearance"
+    And I should not see "Level 0" within "#user_clearance"
+
   @users @auth
   Scenario: Only admins can see a list of users
     Given I am logged in as "buttercup" with password "princess"
