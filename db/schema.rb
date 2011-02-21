@@ -10,13 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221041128) do
+ActiveRecord::Schema.define(:version => 20110221192545) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "client_id"
     t.integer  "project_id"
-    t.string   "path"
+    t.string   "query"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,10 +56,11 @@ ActiveRecord::Schema.define(:version => 20110221041128) do
   add_index "entities", ["project_id"], :name => "index_entities_on_project_id"
 
   create_table "entity_keys", :force => true do |t|
-    t.string   "name",        :null => false
+    t.string   "name",                           :null => false
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "obfuscate",   :default => false
   end
 
   add_index "entity_keys", ["cached_slug"], :name => "index_entity_keys_on_cached_slug"
