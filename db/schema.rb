@@ -10,15 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215200851) do
+ActiveRecord::Schema.define(:version => 20110221041128) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
+    t.integer  "client_id"
+    t.integer  "project_id"
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "bookmarks", ["client_id"], :name => "bookmarks_client_id_fk"
+  add_index "bookmarks", ["project_id"], :name => "bookmarks_project_id_fk"
   add_index "bookmarks", ["user_id"], :name => "bookmarks_user_id_fk"
 
   create_table "clients", :force => true do |t|
@@ -130,6 +134,8 @@ ActiveRecord::Schema.define(:version => 20110215200851) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
+  add_foreign_key "bookmarks", "clients", :name => "bookmarks_client_id_fk", :dependent => :delete
+  add_foreign_key "bookmarks", "projects", :name => "bookmarks_project_id_fk", :dependent => :delete
   add_foreign_key "bookmarks", "users", :name => "bookmarks_user_id_fk", :dependent => :delete
 
   add_foreign_key "entities", "entity_types", :name => "entities_entity_type_id_fk"
