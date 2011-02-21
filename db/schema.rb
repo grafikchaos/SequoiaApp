@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221192545) do
+ActiveRecord::Schema.define(:version => 20110221193752) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(:version => 20110221192545) do
   create_table "entity_keys", :force => true do |t|
     t.string   "name",                           :null => false
     t.string   "cached_slug"
+    t.boolean  "obfuscate",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "obfuscate",   :default => false
   end
 
   add_index "entity_keys", ["cached_slug"], :name => "index_entity_keys_on_cached_slug"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(:version => 20110221192545) do
   add_index "entity_rows", ["entity_id"], :name => "index_entity_rows_on_entity_id"
   add_index "entity_rows", ["entity_key_id"], :name => "index_entity_rows_on_entity_key_id"
   add_index "entity_rows", ["id"], :name => "index_entity_rows_on_id"
+
+  create_table "entity_type_aliases", :force => true do |t|
+    t.string   "name",           :null => false
+    t.integer  "entity_type_id", :null => false
+    t.string   "cached_slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entity_type_aliases", ["entity_type_id"], :name => "entity_type_aliases_entity_type_id_fk"
 
   create_table "entity_types", :force => true do |t|
     t.string   "name",        :null => false
@@ -144,6 +154,8 @@ ActiveRecord::Schema.define(:version => 20110221192545) do
 
   add_foreign_key "entity_rows", "entities", :name => "entity_rows_entity_id_fk", :dependent => :delete
   add_foreign_key "entity_rows", "entity_keys", :name => "entity_rows_entity_key_id_fk"
+
+  add_foreign_key "entity_type_aliases", "entity_types", :name => "entity_type_aliases_entity_type_id_fk", :dependent => :delete
 
   add_foreign_key "projects", "clients", :name => "projects_client_id_fk", :dependent => :delete
 
