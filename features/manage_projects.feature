@@ -31,14 +31,6 @@ Feature: Manage projects
     And the client "ROR" should not have a project named "Intranet"
     And the client "ROR" should have a project named "Default"
 
-  @search @projects
-  Scenario: Searching for a client by project domain name
-    Given the client "ROR" has a default project named "Railties" with domain "intranet.com" 
-    When I go to the home page
-    And I fill in "search" with "intran"
-    And I press "Search"
-    Then I should see "ROR"
-
   @projects @staff
   Scenario: Editing a project
     Given the client "ROR" has a default project named "Intranet" with domain "intranet.com"
