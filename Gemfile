@@ -9,6 +9,9 @@ gem 'cancan'
 gem "friendly_id"
 gem "paperclip"
 
+# For bookmarking
+gem 'acts_as_favable'
+
 # For encrypting entity rows
 # Fetching from github for Ruby 1.9 compatibility
 gem 'attr_encrypted', :git => 'git://github.com/cgod/attr_encrypted.git'

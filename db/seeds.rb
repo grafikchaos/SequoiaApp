@@ -6,110 +6,109 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-def class_exists?(class_name)
-  klass = Module.const_get(class_name)
-  return klass.is_a?(Class)
-rescue NameError
-  return false
-end
+EntityType.create([
+  { :name => 'API' },
+  { :name => 'Application' },
+  { :name => 'Computer' },
+  { :name => 'Database' },
+  { :name => 'Email' },
+  { :name => 'FTP' },
+  { :name => 'Payment Gateway' },
+  { :name => 'Remote Desktop' },
+  { :name => 'SSH' },
+  { :name => 'Version Control' },
+  { :name => 'VPN' },
+  { :name => 'Website' },
+  { :name => 'Wireless' }
+])
 
-if class_exists?('Client')
-  Client.create([
-    { :name => 'Test, Inc.', :client_code => 'TEST' }
-  ])
-end
+EntityKey.create([
+  { :name => 'Username' },
+  { :name => 'Password', :mask => true },
+  { :name => 'Email Address' },
+  { :name => 'Host' },
+  { :name => 'Database Name' },
+  { :name => 'URL' },
+  { :name => 'Token' },
+  { :name => 'API Key' },
+  { :name => 'Port' },
+  { :name => 'Domain' },
+  { :name => 'Protocol' },
+  { :name => 'Encryption Key', :mask => true },
+  { :name => 'Endpoint URL' },
+  { :name => 'Transaction Key', :mask => true },
+  { :name => 'WSDL URL' },
+])
 
-if class_exists?('EntityType')
-  EntityType.create([
-    { :name => 'Database', :cached_slug => 'database' },
-    { :name => 'SSH', :cached_slug => 'ssh' },
-    { :name => 'Website', :cached_slug => 'website' },
-    { :name => 'API', :cached_slug => 'api' },
-    { :name => 'FTP', :cached_slug => 'ftp' },
-    { :name => 'Application', :cached_slug => 'application' },
-    { :name => 'Email', :cached_slug => 'email' }
-  ])
-end
+EntityTypeAlias.create([
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'soap'},
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'web service'},
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'rest'},
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'restful'},
 
-if class_exists?('EntityKey')
-  EntityKey.create([
-    { :name => 'Username', :cached_slug => 'username' },
-    { :name => 'Password', :cached_slug => 'password' },
-    { :name => 'Email Address', :cached_slug => 'email_address' },
-    { :name => 'Host', :cached_slug => 'host' },
-    { :name => 'Database Name', :cached_slug => 'database_name' },
-    { :name => 'URL', :cached_slug => 'url' },
-    { :name => 'Token', :cached_slug => 'token' },
-    { :name => 'API Key', :cached_slug => 'api_key' },
-    { :name => 'Port', :cached_slug => 'port' }
-  ])
-end
+  { :entity_type_id => EntityType.find_by_name('Application').id, :name => 'app'},
 
-if class_exists?('EntityTypeAlias')
-  EntityTypeAlias.create([
-    { :entity_type_id => EntityType.find_by_name('API').id, :name => 'soap'},
-    { :entity_type_id => EntityType.find_by_name('API').id, :name => 'web service'},
-    { :entity_type_id => EntityType.find_by_name('API').id, :name => 'rest'},
-    { :entity_type_id => EntityType.find_by_name('API').id, :name => 'restful'},
-    { :entity_type_id => EntityType.find_by_name('Application').id, :name => 'app'},
+  { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'machine'},
+  { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'pc'},
+  { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'mac'},
+  { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'desktop'},
+  { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'laptop'},
 
-    { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'machine'},
-    { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'pc'},
-    { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'mac'},
-    { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'desktop'},
-    { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'laptop'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'db'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mysql'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sql'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sequel'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mongo'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mongodb'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'ms sql'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mssql'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'cassandra'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mariadb'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'postgre'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'postgresql'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'couch'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'couchdb'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sqllite'},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sql lite'},
 
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'db'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mysql'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sql'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sequel'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mongo'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mongodb'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'ms sql'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mssql'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'cassandra'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'mariadb'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'postgre'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'postgresql'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'couch'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'couchdb'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sqllite'},
-    { :entity_type_id => EntityType.find_by_name('Database').id, :name => 'sql lite'},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'e-mail'},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'mail'},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'outlook'},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'webmail'},
 
-    { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'e-mail'},
-    { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'mail'},
-    { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'outlook'},
-    { :entity_type_id => EntityType.find_by_name('Email').id, :name => 'webmail'},
+  { :entity_type_id => EntityType.find_by_name('FTP').id, :name => 'sftp'},
 
-    { :entity_type_id => EntityType.find_by_name('FTP').id, :name => 'sftp'},
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :name => 'authorize'},
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :name => 'authorize.net'},
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :name => 'paypal'},
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :name => 'paypal.com'},
 
+  { :entity_type_id => EntityType.find_by_name('Remote Desktop').id, :name => 'rdc'},
 
-  ])
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :name => 'terminal'},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :name => 'shell'},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :name => 'console'},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :name => 'bash'},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :name => 'zsh'},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :name => 'iterm'},
 
-sftp                                                                                                            
-authorize, authorize.net, paypal, paypal.com                                                                    
-rdc                                                                                                             
-terminal, shell, bash, zsh, iterm, console                                                                      
-vcs, scm, git, get, svn, dvcs, cvs, subversion                                                                  
-                                                                                                                
-www, url, site, href, http, https                                                                               
-wpa, wep, wifi                                                                                                  
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'vcs'},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'scm'},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'git'},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'get'},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'svn'},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'subversion'},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'dvcs'},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :name => 'cvs'},
 
+  { :entity_type_id => EntityType.find_by_name('Website').id, :name => 'www'},
+  { :entity_type_id => EntityType.find_by_name('Website').id, :name => 'url'},
+  { :entity_type_id => EntityType.find_by_name('Website').id, :name => 'site'},
+  { :entity_type_id => EntityType.find_by_name('Website').id, :name => 'href'},
+  { :entity_type_id => EntityType.find_by_name('Website').id, :name => 'http'},
+  { :entity_type_id => EntityType.find_by_name('Website').id, :name => 'https'},
 
-
-
-  
-
-end
-
-if class_exists?('User')
-  users = User.create([
-    { 
-      :username => 'testuser', 
-      :email => 'test@test.com', 
-      :password => 'password',  
-      :first_name => 'Test', 
-      :last_name => 'User' 
-    }
-  ])
-end
+  { :entity_type_id => EntityType.find_by_name('Wireless').id, :name => 'wpa'},
+  { :entity_type_id => EntityType.find_by_name('Wireless').id, :name => 'wep'},
+  { :entity_type_id => EntityType.find_by_name('Wireless').id, :name => 'wifi'}
+])
