@@ -155,7 +155,7 @@ Feature: Abilities - Roles and Permissions
 
   @entityKeys @auth
   Scenario: Only admins can view Entity Keys
-    Given I am logged in"as "buttercup" with password "princess"
+    Given I am logged in as "buttercup" with password "princess"
     When I go to the list of Entity Keys
     Then I should see "Access Denied"
 

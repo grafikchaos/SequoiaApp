@@ -9,6 +9,7 @@ $(document).ready(function() {
   initQtips();
   initProjectSelector();
   initRemoveEntityRows();
+  initToggleMasked();
 });
 
 /**
@@ -172,6 +173,9 @@ var initProjectSelector = function() {
   });
 };
 
+/**
+ * Toggles removal of an entity row.
+ */
 var initRemoveEntityRows = function() {
   $('.entity-row-field .remove a').click(function() {
     if ($(this).parent().parent().hasClass('will-remove')) {
@@ -187,6 +191,17 @@ var initRemoveEntityRows = function() {
     }
     $(this).hide();
     $(this).siblings('.toggle').show();
+  });
+}
+
+/**
+ * Toggles value field for masked entity rows.
+ */
+var initToggleMasked = function() {
+  $('.entity-row .show-plaintext').live('click', function() {
+    $(this).siblings('span.value').toggle();
+    var text = $(this).text() == 'Show value' ? 'Hide value' : 'Show value';
+    $(this).text(text);
   });
 }
 

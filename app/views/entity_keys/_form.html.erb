@@ -15,7 +15,12 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  
+
+  <div class="checkbox field">
+    <%= f.label :mask, 'Mask these types of entries?' %>
+    <%= f.check_box :mask %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

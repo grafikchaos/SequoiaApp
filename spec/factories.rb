@@ -24,6 +24,7 @@ end
 
 Factory.define :entity_key do |key|
   key.name 'Username'
+  key.mask 0
 end
 
 Factory.define :entity do |e|

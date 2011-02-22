@@ -1,9 +1,9 @@
 class AddObfuscateToEntityKey < ActiveRecord::Migration
   def self.up
-    add_column :entity_keys, :obfuscate, :boolean, :default => false, :after => :cached_slug
+    add_column :entity_keys, :mask, :boolean, :default => false, :after => :cached_slug
   end
 
   def self.down
-    remove_column :entity_keys, :obfuscate
+    remove_column :entity_keys, :mask
   end
 end

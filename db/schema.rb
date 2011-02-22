@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20110221193752) do
   create_table "entity_keys", :force => true do |t|
     t.string   "name",                           :null => false
     t.string   "cached_slug"
-    t.boolean  "obfuscate",   :default => false
+    t.boolean  "mask",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

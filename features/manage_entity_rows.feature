@@ -1,3 +1,4 @@
+@entity_rows
 Feature: Manage entity_rows
   In order to be able to add things to Entities 
   A user
@@ -20,27 +21,27 @@ Feature: Manage entity_rows
       | website         |
       | wireless        |
     And the following entity_key records
-      | name            |
-      | api key         |
-      | database name   |
-      | domain          |
-      | email address   |
-      | encryption key  |
-      | endpoint url    |
-      | host            |
-      | password        |
-      | port            |
-      | protocol        |
-      | token           |
-      | transaction key |
-      | url             |
-      | username        |
-      | wsdl url        |
+      | name            | mask  |
+      | api key         | false |
+      | database name   | false |
+      | domain          | false |
+      | email address   | false |
+      | encryption key  | false |
+      | endpoint url    | false |
+      | host            | false |
+      | password        | false |
+      | port            | true  |
+      | protocol        | true  |
+      | token           | false |
+      | transaction key | false |
+      | url             | false |
+      | username        | false |
+      | wsdl url        | false |
     And I have client codes "ROR"
     And I am logged in as a user with Level 2 clearance
     And the client "ROR" has a project named "Intranet" with domain "intranet.com"
 
-  @entity_rows
+
   Scenario: Add new entity rows when adding a new entity
     Given I am on the client page for "ROR"
     When I follow "New Entity"
@@ -53,7 +54,7 @@ Feature: Manage entity_rows
     And I should see "password:"
     And I should see "iamcool"
 
-  @entity_rows
+
   Scenario: Edit entity rows within an existing entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |
@@ -70,7 +71,7 @@ Feature: Manage entity_rows
     And I should see "67890"
     And I should not see "12345"
 
-  @entity_rows
+ 
   Scenario: Delete entity rows from an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |
@@ -89,7 +90,7 @@ Feature: Manage entity_rows
     And I should see "username:"
     And I should see "fezzik"
 
-  @entity_rows
+  
   Scenario: Undo delete entity rows from an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |
@@ -106,5 +107,20 @@ Feature: Manage entity_rows
     Then I should be on the client page for "ROR"
     And I should see "password:"
     And I should see "12345"
+    And I should see "username:"
+    And I should see "fezzik"
+
+  @masking
+  Scenario: Mask the value for keys so marked
+    Given the following Entities exist
+      | client    |  project        | name            | type        | level   |
+      | ROR       |  Intranet       | Admin Login     | application | 3       |
+    And the following Entity Rows exist
+      | client    |  project        | entity          | key         | value   |
+      | ROR       |  Intranet       | Admin Login     | port        | 12345   |
+      | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
+    When I go to the client page for "ROR"
+    Then I should see "port:"
+    And I should see "*****"
     And I should see "username:"
     And I should see "fezzik"

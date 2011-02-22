@@ -78,6 +78,8 @@ a#new-client { float: right; }
   float: left;
 }
 
+#entity-list .entity-rows span.exposed { display: none; }
+
 /****************************
   ENTITY FORM
 ****************************/
@@ -91,6 +93,7 @@ form .entity-row-field div {
 }
 
 form .entity-row-field .remove a.undo { margin-left: 3px; }
+
 /****************************
   FOOTER
 ****************************/
