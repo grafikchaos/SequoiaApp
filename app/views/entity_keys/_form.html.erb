@@ -17,8 +17,10 @@
   </div>
 
   <div class="checkbox field">
+    <!-- TODO: This doesn't belong in a title attribute. -->
     <%= f.label :mask, 'Mask these types of entries?' %>
     <%= f.check_box :mask %>
+    <div class="description">Masking simply hides these values from view. Useful for passwords, etc.</div>
   </div>
 
   <div class="actions">

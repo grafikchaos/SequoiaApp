@@ -20,16 +20,6 @@
     <%= f.text_field :email %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
   <div class="field required">
     <%= f.label :role %>
     <%= f.select :role, format_roles_select %>
@@ -39,6 +29,22 @@
     <%= f.label :clearance %>
     <%= f.select :clearance, format_clearance_select %>
   </div>
+
+  <%= field_set_tag "Password", :class => "collapsible" do %>
+    <div class="fieldset-wrapper">
+      <%- if !@user.new_record? %>
+        <div class="description">Leave these blank if you don't want to change the password</div>
+      <%- end %>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+  <%- end %>
   
   <div class="actions">
     <%= f.submit %>
