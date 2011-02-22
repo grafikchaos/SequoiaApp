@@ -6,53 +6,36 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-def class_exists?(class_name)
-  klass = Module.const_get(class_name)
-  return klass.is_a?(Class)
-rescue NameError
-  return false
-end
+EntityType.create([
+  { :name => 'Database' },
+  { :name => 'SSH' },
+  { :name => 'Website' },
+  { :name => 'API' },
+  { :name => 'FTP' },
+  { :name => 'Application' },
+  { :name => 'Email' },
+  { :name => 'Computer' },
+  { :name => 'Payment Gateway' },
+  { :name => 'Remote Desktop' },
+  { :name => 'Version Control' },
+  { :name => 'VPN' },
+  { :name => 'Wireless' },
+])
 
-if class_exists?('Client')
-  Client.create([
-    { :name => 'Test, Inc.', :client_code => 'TEST' }
-  ])
-end
-
-if class_exists?('EntityType')
-  EntityType.create([
-    { :name => 'Database', :cached_slug => 'database' },
-    { :name => 'SSH', :cached_slug => 'ssh' },
-    { :name => 'Website', :cached_slug => 'website' },
-    { :name => 'API', :cached_slug => 'api' },
-    { :name => 'FTP', :cached_slug => 'ftp' },
-    { :name => 'Application', :cached_slug => 'application' },
-    { :name => 'Email', :cached_slug => 'email' }
-  ])
-end
-
-if class_exists?('EntityKey')
-  EntityKey.create([
-    { :name => 'Username', :cached_slug => 'username' },
-    { :name => 'Password', :cached_slug => 'password' },
-    { :name => 'Email Address', :cached_slug => 'email_address' },
-    { :name => 'Host', :cached_slug => 'host' },
-    { :name => 'Database Name', :cached_slug => 'database_name' },
-    { :name => 'URL', :cached_slug => 'url' },
-    { :name => 'Token', :cached_slug => 'token' },
-    { :name => 'API Key', :cached_slug => 'api_key' },
-    { :name => 'Port', :cached_slug => 'port' }
-  ])
-end
-
-if class_exists?('User')
-  users = User.create([
-    { 
-      :username => 'testuser', 
-      :email => 'test@test.com', 
-      :password => 'password',  
-      :first_name => 'Test', 
-      :last_name => 'User' 
-    }
-  ])
-end
+EntityKey.create([
+  { :name => 'Username' },
+  { :name => 'Password', :mask => true },
+  { :name => 'Email Address' },
+  { :name => 'Host' },
+  { :name => 'Database Name' },
+  { :name => 'URL' },
+  { :name => 'Token' },
+  { :name => 'API Key' },
+  { :name => 'Port' },
+  { :name => 'Domain' },
+  { :name => 'Protocol' },
+  { :name => 'Encryption Key', :mask => true },
+  { :name => 'Endpoint URL' },
+  { :name => 'Transaction Key', :mask => true },
+  { :name => 'WSDL URL' },
+])
