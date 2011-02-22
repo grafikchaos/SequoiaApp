@@ -65,6 +65,16 @@ Feature: Abilities - Roles and Permissions
     When I go to the list of Entity Types
     Then I should see "New Entity Type"
 
+
+  @admin @entityTypes @aliases
+  Scenario: Entity Type Alias form fields are present in the Entity Type form
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    When I go to the new Entity Type page
+    Then show me the page
+    And I should see "Alias"
+    And I should see "Add another"
+
+
   @admin @entityTypes @create
   Scenario: Admins can create Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
@@ -76,6 +86,20 @@ Feature: Abilities - Roles and Permissions
     And I should be on the list of Entity Types
     And I should see "API"
     And I should have 1 entity_type
+
+
+    @admin @entityTypes @create
+    Scenario: Admins can create Entity Types with known aliases
+      Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+      And I have no entity_types
+      And I am on the new Entity Type page
+      When I fill in "Name" with "API"
+      And I press "Create Entity Type"
+      Then I should see "Entity Type was successfully created"
+      And I should be on the list of Entity Types
+      And I should see "API"
+      And I should have 1 entity_type
+
 
   @admin @entityTypes @edit
   Scenario: Admins can see edit link for Entity Types
@@ -203,16 +227,16 @@ Feature: Abilities - Roles and Permissions
     And I press "Update User"
     Then I should be on the list of Users
     And I should see the following users
-      | buttercup              | Level 3  | staff   | Edit  | Destroy |
-      | valerie                | Level 2  | staff   | Edit  | Destroy |
-      | theimpressiveclergyman | Level 1  | staff   | Edit  | Destroy |
-      | humperdinck            | Level 0  | staff   | Edit  | Destroy |
-      | miraclemax             | Level 1  | manager | Edit  | Destroy |
-      | vizzini                | Level 2  | manager | Edit  | Destroy |
-      | sixfingeredman         | Level 3  | manager | Edit  | Destroy |
-      | dreadpirateroberts     | Level 1  | admin   | Edit  |         |
-      | inigo                  | Level 1  | admin   | Edit  | Destroy |
-      | fezzik                 | Level 3  | admin   | Edit  | Destroy |
+      | buttercup              | Level 3 | staff   | Edit | Destroy |
+      | valerie                | Level 2 | staff   | Edit | Destroy |
+      | theimpressiveclergyman | Level 1 | staff   | Edit | Destroy |
+      | humperdinck            | Level 0 | staff   | Edit | Destroy |
+      | miraclemax             | Level 1 | manager | Edit | Destroy |
+      | vizzini                | Level 2 | manager | Edit | Destroy |
+      | sixfingeredman         | Level 3 | manager | Edit | Destroy |
+      | dreadpirateroberts     | Level 1 | admin   | Edit |         |
+      | inigo                  | Level 1 | admin   | Edit | Destroy |
+      | fezzik                 | Level 3 | admin   | Edit | Destroy |
 
   @users @clearance
   Scenario: Admins cannot grant a clearance level greater than their own
@@ -239,8 +263,6 @@ Feature: Abilities - Roles and Permissions
   @wip
   Scenario: Admins can delete Entities
 
-  @wip
-  Scenario: Admins can create Clients
 
   @wip
   Scenario: Admins can edit Clients
@@ -254,9 +276,6 @@ Feature: Abilities - Roles and Permissions
   @wip
   Scenario: Admins can edit Projects
 
-  @wip
-  Scenario: Admins can delete Projects
-  
   @wip
   Scenario: Only Admins can create Admins
   

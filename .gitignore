@@ -9,3 +9,4 @@ config/initializers/secret_token.rb
 db/seeds.private.rb
 public/system/logos
 webrat.log
+tmp/

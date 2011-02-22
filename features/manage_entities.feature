@@ -129,3 +129,5 @@ Feature: Manage entities
     Then I should see "Admin Login"
     And I should see "User Login"
     And I should not see "SSH Credentials"
+        
+  

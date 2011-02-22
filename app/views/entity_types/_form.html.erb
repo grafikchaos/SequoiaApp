@@ -16,7 +16,16 @@
     <%= f.text_field :name %>
   </div>
   
-
+  <%= field_set_tag "Known Aliases", :class => "collapsible" do %>
+    <div class="fieldset-wrapper">
+      <%= f.fields_for :entity_type_aliases do |alias_form| %>
+        <%= render 'entity_types/alias_form_fields', :f => alias_form %>
+      <% end %>
+      <%= link_to_add_fields "Add another", f, :entity_type_aliases, :nil, 'entity_types/alias_form_fields' %>
+    </div>
+  <% end %>
+  
+  
   <div class="actions">
     <%= f.submit %>
   </div>

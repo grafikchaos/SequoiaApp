@@ -18,6 +18,10 @@ Factory.define :project do |p|
   p.client_id 1
 end
 
+Factory.define :entity_type_alias do |aka|
+  aka.name "alias here"
+end
+
 Factory.define :entity_type do |et|
   et.name 'Some Entity Type'
 end
@@ -39,3 +43,4 @@ Factory.define :entity_row do |er|
   er.entity_key_id 1
   er.value 'value'
 end
+

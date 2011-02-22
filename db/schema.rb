@@ -14,11 +14,11 @@ ActiveRecord::Schema.define(:version => 20110221193752) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
-    t.integer  "client_id"
-    t.integer  "project_id"
     t.string   "query"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "client_id"
+    t.integer  "project_id"
   end
 
   add_index "bookmarks", ["client_id"], :name => "bookmarks_client_id_fk"
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(:version => 20110221193752) do
   add_index "entity_rows", ["id"], :name => "index_entity_rows_on_id"
 
   create_table "entity_type_aliases", :force => true do |t|
-    t.string   "name",           :null => false
     t.integer  "entity_type_id", :null => false
+    t.string   "name",           :null => false
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
