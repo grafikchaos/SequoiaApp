@@ -4,6 +4,9 @@ class Client < ActiveRecord::Base
 
   has_many :projects
   
+  # For bookmarking
+  acts_as_favable
+
   # accept Project form fields/attributes
   accepts_nested_attributes_for :projects, :reject_if => lambda { |proj| proj[:name].blank? }, :allow_destroy => true
   

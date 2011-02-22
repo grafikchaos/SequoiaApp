@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221193752) do
+ActiveRecord::Schema.define(:version => 20110222200828) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -101,6 +101,19 @@ ActiveRecord::Schema.define(:version => 20110221193752) do
   add_index "entity_types", ["id"], :name => "index_entity_types_on_id"
   add_index "entity_types", ["name"], :name => "index_entity_types_on_name"
 
+  create_table "favorites", :force => true do |t|
+    t.string   "note",         :limit => 50, :default => ""
+    t.integer  "favable_id"
+    t.string   "favable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["favable_id"], :name => "index_favorites_on_favable_id"
+  add_index "favorites", ["favable_type"], :name => "index_favorites_on_favable_type"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
+
   create_table "projects", :force => true do |t|
     t.integer  "client_id",  :default => 0, :null => false
     t.string   "name",                      :null => false
@@ -110,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20110221193752) do
   end
 
   add_index "projects", ["client_id"], :name => "projects_client_id_fk"
+
+  create_table "query_strings", :force => true do |t|
+    t.string   "string"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "query_strings", ["string"], :name => "index_query_strings_on_string"
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
