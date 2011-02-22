@@ -40,6 +40,10 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
+    if params[:user][:password].blank?
+      [:password, :password_confirmation].collect{ |p| params[:user].delete(p) }
+    end    
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(users_url, :notice => 'User was successfully updated.') }
