@@ -81,10 +81,8 @@ Feature: Abilities - Roles and Permissions
   Scenario: Entity Type Alias form fields are present in the Entity Type form
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     When I go to the new Entity Type page
-    Then show me the page
-    And I should see "Alias"
+    Then I should see "Alias"
     And I should see "Add another"
-
 
   @admin @entityTypes @create
   Scenario: Admins can create Entity Types
@@ -98,17 +96,19 @@ Feature: Abilities - Roles and Permissions
     And I should see "API"
     And I should have 1 entity_type
 
-  @wip @admin @entityTypes @create @TODO
+  @admin @entityTypes @create @aliases
   Scenario: Admins can create Entity Types with known aliases
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I have no entity_types
+    And I have no entity_type_aliases
     And I am on the new Entity Type page
-    # When I fill in "Name" with "API"
-    # And I press "Create Entity Type"
-    # Then I should see "Entity Type was successfully created"
-    # And I should be on the list of Entity Types
-    # And I should see "API"
-    # And I should have 1 entity_type
+    When I fill in "Name" with "Database"
+    And I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "mysql"
+    And I fill in "entity_type[entity_type_aliases_attributes][1][name]" with "mysql"
+    And I press "Create Entity Type"
+    Then I should see "Entity Type was successfully created"
+    And I should be on the list of Entity Types
+    And I should have 2 entity_type_aliases
 
   @admin @entityTypes @aliases  
   Scenario: Admins cannot create Entity Types where name already exists as alias
@@ -117,6 +117,15 @@ Feature: Abilities - Roles and Permissions
     When I fill in "Name" with "mysql"
     And I press "Create Entity Type"
     Then I should see "Mysql is already an alias of entity type database"
+
+  @admin @entityTypes @aliases
+  Scenario: Admins cannot create Aliases where name is already an Entity Type (reverse of above)
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the new Entity Type page
+    When I fill in "Name" with "Test Entity Type"
+    And I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "Database"
+    And I press "Create Entity Type"
+    Then I should see "database is already an entity type"
 
   @admin @entityTypes @edit
   Scenario: Admins can see edit link for Entity Types

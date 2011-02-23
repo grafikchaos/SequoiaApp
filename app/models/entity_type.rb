@@ -13,7 +13,7 @@ class EntityType < ActiveRecord::Base
     end
   end
   
-  attr_accessible :name
+  attr_accessible :name, :entity_type_aliases_attributes
 
   # accept Entity Type Aliases form fields/attributes
   accepts_nested_attributes_for :entity_type_aliases, :reject_if => lambda { |row| row[:name].blank? }, :allow_destroy => true

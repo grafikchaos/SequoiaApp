@@ -8,7 +8,7 @@ $(document).ready(function() {
   bookmarksMenuDropDown();
   initQtips();
   initProjectSelector();
-  initRemoveEntityRows();
+  initRemoveRows();
   initToggleMasked();
 });
 
@@ -176,8 +176,8 @@ var initProjectSelector = function() {
 /**
  * Toggles removal of an entity row.
  */
-var initRemoveEntityRows = function() {
-  $('.entity-row-field .remove a').click(function() {
+var initRemoveRows = function() {
+  $('.remove a').click(function() {
     if ($(this).parent().parent().hasClass('will-remove')) {
       $(this).siblings('input[type=hidden]').val(0);
       $(this).parent().parent().removeClass('will-remove');
