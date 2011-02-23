@@ -32,6 +32,17 @@ Feature: Abilities - Roles and Permissions
       | vpn             |
       | website         |
       | wireless        |
+    And the following entity_type_alias records
+      | type            | aliases                           |
+      | application     | app                               |
+      | computer        | machine, pc, desktop, laptop, mac |
+      | database        | mysql, mongodb, sql               |
+      | email           | mail                              |
+      | ftp             | sftp                              |
+      | ssh             | shell                             |
+      | version control | vcs, svn, subversion, dvcs, git   |
+      | website         | site                              |
+      | wireless        | wifi, wep, wpa                    |
     And the following entity_key records
       | name            |
       | api key         |
@@ -87,24 +98,29 @@ Feature: Abilities - Roles and Permissions
     And I should see "API"
     And I should have 1 entity_type
 
+  @wip @admin @entityTypes @create @TODO
+  Scenario: Admins can create Entity Types with known aliases
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I have no entity_types
+    And I am on the new Entity Type page
+    # When I fill in "Name" with "API"
+    # And I press "Create Entity Type"
+    # Then I should see "Entity Type was successfully created"
+    # And I should be on the list of Entity Types
+    # And I should see "API"
+    # And I should have 1 entity_type
 
-    @admin @entityTypes @create
-    Scenario: Admins can create Entity Types with known aliases
-      Given I am logged in as "dreadpirateroberts" with password "asyouwish"
-      And I have no entity_types
-      And I am on the new Entity Type page
-      When I fill in "Name" with "API"
-      And I press "Create Entity Type"
-      Then I should see "Entity Type was successfully created"
-      And I should be on the list of Entity Types
-      And I should see "API"
-      And I should have 1 entity_type
-
+  @admin @entityTypes @aliases  
+  Scenario: Admins cannot create Entity Types where name already exists as alias
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the new Entity Type page
+    When I fill in "Name" with "mysql"
+    And I press "Create Entity Type"
+    Then I should see "Mysql is already an alias of entity type database"
 
   @admin @entityTypes @edit
   Scenario: Admins can see edit link for Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
-    And entity type "Database" exists
     And I should have 1 entity_type
     When I go to the list of Entity Types
     Then I should see "Edit"

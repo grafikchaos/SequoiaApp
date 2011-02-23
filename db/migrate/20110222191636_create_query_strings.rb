@@ -5,7 +5,7 @@ class CreateQueryStrings < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index(:query_strings, :string)
+    add_index :query_strings, :string
   end
 
   def self.down
