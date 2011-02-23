@@ -5,6 +5,13 @@ class EntityType < ActiveRecord::Base
   # validations
   validates_presence_of :name
   validates_uniqueness_of :name
+  # Make sure the record is not already an alias of another record
+  validates_each :name do |record, attr, value|
+    a = EntityTypeAlias.find_by_name(value)
+    if a
+      record.errors.add value, "is already an alias of entity type #{a.entity_type.name}"
+    end
+  end
   
   attr_accessible :name
 

@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20110222200828) do
   end
 
   add_index "entity_keys", ["cached_slug"], :name => "index_entity_keys_on_cached_slug"
-  add_index "entity_keys", ["id"], :name => "index_entity_keys_on_id"
-  add_index "entity_keys", ["name"], :name => "index_entity_keys_on_name"
+  add_index "entity_keys", ["id"], :name => "index_entity_keys_on_id", :unique => true
+  add_index "entity_keys", ["name"], :name => "index_entity_keys_on_name", :unique => true
 
   create_table "entity_rows", :force => true do |t|
     t.integer  "entity_id",       :null => false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20110222200828) do
   add_index "entity_rows", ["encrypted_value"], :name => "index_entity_rows_on_value"
   add_index "entity_rows", ["entity_id"], :name => "index_entity_rows_on_entity_id"
   add_index "entity_rows", ["entity_key_id"], :name => "index_entity_rows_on_entity_key_id"
-  add_index "entity_rows", ["id"], :name => "index_entity_rows_on_id"
+  add_index "entity_rows", ["id"], :name => "index_entity_rows_on_id", :unique => true
 
   create_table "entity_type_aliases", :force => true do |t|
     t.integer  "entity_type_id", :null => false
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(:version => 20110222200828) do
   end
 
   add_index "entity_types", ["cached_slug"], :name => "index_entity_types_on_cached_slug"
-  add_index "entity_types", ["id"], :name => "index_entity_types_on_id"
-  add_index "entity_types", ["name"], :name => "index_entity_types_on_name"
+  add_index "entity_types", ["id"], :name => "index_entity_types_on_id", :unique => true
+  add_index "entity_types", ["name"], :name => "index_entity_types_on_name", :unique => true
 
   create_table "favorites", :force => true do |t|
     t.string   "note",         :limit => 50, :default => ""
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20110222200828) do
 
   create_table "users", :force => true do |t|
     t.string   "username",                                                :null => false
-    t.string   "role",                :limit => 20,  :default => "staff"
+    t.string   "role",                :limit => 20,  :default => "staff", :null => false
     t.string   "email",                              :default => "",      :null => false
     t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
     t.string   "password_salt",                      :default => "",      :null => false

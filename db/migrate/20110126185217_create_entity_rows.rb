@@ -7,7 +7,7 @@ class CreateEntityRows < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :entity_rows, :id
+    add_index :entity_rows, :id, :unique => true
     add_index :entity_rows, :entity_id
     add_index :entity_rows, :entity_key_id
     add_index :entity_rows, :value

@@ -5,8 +5,8 @@ class CreateEntityKeys < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :entity_keys, :id
-    add_index :entity_keys, :name
+    add_index :entity_keys, :id, :unique => true
+    add_index :entity_keys, :name, :unique => true
     add_index :entity_keys, :cached_slug
     
   end

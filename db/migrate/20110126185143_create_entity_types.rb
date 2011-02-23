@@ -5,8 +5,8 @@ class CreateEntityTypes < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :entity_types, :id
-    add_index :entity_types, :name
+    add_index :entity_types, :id, :unique => true
+    add_index :entity_types, :name, :unique => true
     add_index :entity_types, :cached_slug
     
   end
