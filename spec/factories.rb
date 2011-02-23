@@ -22,6 +22,11 @@ Factory.define :entity_type do |et|
   et.name 'Some Entity Type'
 end
 
+Factory.define :entity_type_alias do |aka|
+  aka.name 'Some alias'
+  aka.entity_type_id 1
+end
+
 Factory.define :entity_key do |key|
   key.name 'Username'
   key.mask 0
