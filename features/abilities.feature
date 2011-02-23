@@ -80,7 +80,6 @@ Feature: Abilities - Roles and Permissions
   @admin @entityTypes @edit
   Scenario: Admins can see edit link for Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
-    And entity type "Database" exists
     And I should have 1 entity_type
     When I go to the list of Entity Types
     Then I should see "Edit"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110222200828) do
+ActiveRecord::Schema.define(:version => 20110223041038) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -113,6 +113,17 @@ ActiveRecord::Schema.define(:version => 20110222200828) do
   add_index "favorites", ["favable_id"], :name => "index_favorites_on_favable_id"
   add_index "favorites", ["favable_type"], :name => "index_favorites_on_favable_type"
   add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
+
+  create_table "notes", :force => true do |t|
+    t.integer  "notable_id",   :null => false
+    t.string   "notable_type", :null => false
+    t.text     "content",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["notable_id"], :name => "index_notes_on_notable_id"
+  add_index "notes", ["notable_type"], :name => "index_notes_on_notable_type"
 
   create_table "projects", :force => true do |t|
     t.integer  "client_id",  :default => 0, :null => false
