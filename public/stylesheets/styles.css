@@ -81,18 +81,20 @@ a#new-client { float: right; }
 #entity-list .entity-rows span.exposed { display: none; }
 
 /****************************
-  ENTITY FORM
+  ENTITY FORMS
 ****************************/
-form .entity-row-field {
+form .entity-row-field,
+form .entity-type-alias-field {
   clear: both;
 }
 
-form .entity-row-field div {
+form .entity-row-field div,
+form .entity-type-alias-field div {
   float: left;
   padding: 3px;
 }
 
-form .entity-row-field .remove a.undo { margin-left: 3px; }
+form .remove a.undo { margin-left: 3px; }
 
 /****************************
   FOOTER

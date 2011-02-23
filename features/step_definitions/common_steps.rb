@@ -15,8 +15,8 @@ Given /^the following (.+) records?$/ do |factory, table|
   end
 end
 
-Given /^I have no (.*)s$/ do |model|
-  model.camelcase.constantize.delete_all
+Given /^I have no (.*)$/ do |model|
+  model.pluralize.singularize.camelcase.constantize.delete_all
 end
 
 When /^I follow "([^"]*)" to (.*) requiring confirmation$/ do |link, method|
@@ -25,7 +25,7 @@ When /^I follow "([^"]*)" to (.*) requiring confirmation$/ do |link, method|
 end
 
 Then /^I should have (\d*) (.*)$/ do |count, model|
-  model.singularize.camelcase.constantize.all.count == count.to_i
+  model.pluralize.singularize.camelcase.constantize.all.count == count.to_i
 end
 
 Then /^I should see the following (.*)$/ do |model, expected|
