@@ -13,6 +13,8 @@ class EntityTypesController < ApplicationController
   # GET /entity_types/new
   # GET /entity_types/new.xml
   def new
+    3.times { @entity_type.entity_type_aliases.build } 
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @entity_type }
@@ -21,6 +23,7 @@ class EntityTypesController < ApplicationController
 
   # GET /entity_types/1/edit
   def edit
+     @entity_type.entity_type_aliases.build
   end
 
   # POST /entity_types
