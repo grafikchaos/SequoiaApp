@@ -14,7 +14,6 @@ Feature: Notable
     When I follow "New Client"
     Then I should see "Note"
   
-
   @clients
   Scenario: Add a note to a Client
     Given I am on the new client page
@@ -30,13 +29,13 @@ Feature: Notable
     And I should see "It's pretty much my favorite animal. It's like a lion and a tiger mixed... bred for its skills in magic." within "#notes"
 
 
-  @wip @clients
+  @wip @projects
   Scenario: Project form should have a Note text area
   
   @wip @projects
   Scenario: Add a note to a Project
 
-  @wip @clients
+  @wip @entities
   Scenario: Entity form should have a Note text area
 
   @wip @entities
