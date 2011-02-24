@@ -16,6 +16,8 @@ class ProjectsController < ApplicationController
   def new
     @client = Client.find(params[:client_id])
     @project = Project.new
+    
+    1.times { @project.notes.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -26,6 +28,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    1.times { @project.notes.build }
   end
 
   # POST /projects
