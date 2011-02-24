@@ -1,7 +1,9 @@
 class SearchController < ApplicationController
   def index
-    search = Search.new(params[:query], params[:model])
-    @results = search.result
+    if params[:query]
+      search = Search.new(params[:query], params[:model])
+      @results = search.result
+    end
 
     respond_to do |format|
       format.html # index.html.erb

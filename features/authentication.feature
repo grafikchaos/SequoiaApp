@@ -9,7 +9,8 @@ Feature: Manage authentications
     When I fill in "Username" with "user"
     And I fill in "Password" with "test1234"
     And I press "Sign in"
-    Then I should see "New Client"
+    Then I should see "Signed in successfully"
+    And I should be on the home page
     And I should see "Logout"
   
   Scenario: Logout

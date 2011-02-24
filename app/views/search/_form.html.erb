@@ -1,9 +1,7 @@
-<%= form_tag("/search", :remote => true) do %>
+<%= form_tag("/search", :method => :get, :id => 'main-search') do %>
   
-  <%= text_field_tag 'query' %>
+  <%= text_field_tag 'query', params[:query] %>
   
-  <%= hidden_field_tag 'model', model %>
-
   <%= submit_tag 'Search' %>
 
 <% end %>

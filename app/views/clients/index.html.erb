@@ -1,8 +1,6 @@
 <% content_for :page_title, "Clients" %>
 <% content_for :display_title, "Clients" %>
 
-<%= render 'search' %>
-
 <div class="controls">
   <%- if can? :create, Client -%>
     <%= link_to 'New Client', new_client_path, :class => 'button', :id => 'new-client' %>

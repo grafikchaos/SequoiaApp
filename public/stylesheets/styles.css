@@ -28,9 +28,9 @@ body, #main { background: #fff; }
 #main { width: 100%; }
 
 /****************************
-  CLIENT LIST
+  SEARCH RESULTS LIST
 ****************************/
-#client-list .row { 
+#results-list .row { 
   background: #F3F8FB;
   margin: 0 0 5px;
   border: 1px solid #B9CAD4; 
@@ -39,13 +39,11 @@ body, #main { background: #fff; }
   border-radius: 3px;
 }
 
-#client-list .row .data div { float: left; padding: 0 10px; }
-#client-list .row:hover { 
+#results-list .row .data div { float: left; padding: 0 10px; }
+#results-list .row:hover { 
   background: #ff9; 
   margin: 0 0 5px;
 }
-
-a#new-client { float: right; }
 
 /****************************
   ENTITY LIST

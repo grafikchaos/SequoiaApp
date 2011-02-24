@@ -12,7 +12,7 @@ Feature: Searching
   @clients
   Scenario: Search Clients by client code
     Given I am on the home page
-    When I fill in "search" with "AA"
+    When I fill in "query" with "AA"
     And I press "Search"
     Then I should see "AA"
     And I should see "AAA"
@@ -22,6 +22,6 @@ Feature: Searching
   @projects
   Scenario: Searching for a client by project domain name
     Given I am on the home page
-    When I fill in "search" with "intran"
+    When I fill in "query" with "intran"
     And I press "Search"
     Then I should see "ROR"

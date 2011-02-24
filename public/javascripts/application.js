@@ -4,7 +4,7 @@
  */
 $(document).ready(function() {
   initCollapsibles();
-  clientPageSearch();
+  initSearch();
   bookmarksMenuDropDown();
   initQtips();
   initProjectSelector();
@@ -119,13 +119,13 @@ var postNotice = function(content, type) {
 /**
  * Client page search form.
  */
-var clientPageSearch = function() {
-  $('#client-search input#search')
-    .focus()
-	.keyup(function() {
+var initSearch = function() {
+  $('#main-search input#query')
+  .focus()
+  .keyup(function() {
     if ($(this).val().length > 1) {
-      $.get($('#client-search').attr('action'), $('#client-search').serialize(), function(data) {
-        $('#client-list').replaceWith($('#client-list', data));
+      $.get($('#main-search').attr('action'), $('#main-search').serialize(), function(data) {
+        $('#results-list').replaceWith($('#results-list', data));
       });
     }
   });

@@ -1,3 +1,14 @@
-<%- @results.each do |result| %>
-  <%= result.name %>
+<%= render 'form' %>
+
+<div class="controls">
+  <%- if can? :create, Client -%>
+    <%= link_to 'New Client', new_client_path, :class => 'button', :id => 'new-client' %>
+  <%- end -%>
+</div>
+
+<div class="clear"></div>
+<%- if @results %>
+  <div id="results-list">
+    <%= render :partial => 'clients/row', :collection => @results %>
+  </div>
 <%- end %>
