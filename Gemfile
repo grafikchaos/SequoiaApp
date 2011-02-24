@@ -29,6 +29,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'launchy'
+  gem 'slowgrowl'
 end
 
 # Deploy with Capistrano
