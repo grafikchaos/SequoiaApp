@@ -35,6 +35,7 @@ class ClientsController < ApplicationController
   def new
     @client = Client.new
     @client.projects.build
+    1.times { @client.notes.build }
 
     
     respond_to do |format|
@@ -46,6 +47,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
+    1.times { @client.notes.build }
   end
 
   # POST /clients
