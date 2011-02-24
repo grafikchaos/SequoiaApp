@@ -24,6 +24,14 @@ When /^I follow "([^"]*)" to (.*) requiring confirmation$/ do |link, method|
   link.click(:method => method)
 end
 
+When /^I delete the (.*) "([^"]+)"$/ do |model, field|
+  set_hidden_field "#{field}", :to => 1
+end
+
+When /^I undelete the (.*) "([^"]+)"$/ do |model, field|
+  set_hidden_field "#{field}", :to => 0
+end
+
 Then /^I should have (\d*) (.*)$/ do |count, model|
   model.pluralize.singularize.camelcase.constantize.all.count == count.to_i
 end

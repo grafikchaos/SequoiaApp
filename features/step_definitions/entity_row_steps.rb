@@ -7,11 +7,3 @@ Given /^the following Entity Rows exist$/ do |table|
     Factory.create(:entity_row, :entity_id => entity.id, :entity_key_id => key.id, :value => row['value'])
   end
 end
-
-When /^I delete the Entity Row "([^"]+)"$/ do |field|
-  set_hidden_field "#{field}", :to => 1
-end
-
-When /^I undelete the Entity Row "([^"]+)"$/ do |field|
-  set_hidden_field "#{field}", :to => 0
-end

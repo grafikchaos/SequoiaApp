@@ -76,7 +76,6 @@ Feature: Abilities - Roles and Permissions
     When I go to the list of Entity Types
     Then I should see "New Entity Type"
 
-
   @admin @entityTypes @aliases
   Scenario: Entity Type Alias form fields are present in the Entity Type form
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
@@ -104,11 +103,10 @@ Feature: Abilities - Roles and Permissions
     And I am on the new Entity Type page
     When I fill in "Name" with "Database"
     And I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "mysql"
-    And I fill in "entity_type[entity_type_aliases_attributes][1][name]" with "mysql"
     And I press "Create Entity Type"
     Then I should see "Entity Type was successfully created"
     And I should be on the list of Entity Types
-    And I should have 2 entity_type_aliases
+    And I should have 1 entity_type_aliases
 
   @admin @entityTypes @aliases  
   Scenario: Admins cannot create Entity Types where name already exists as alias
@@ -126,6 +124,19 @@ Feature: Abilities - Roles and Permissions
     And I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "Database"
     And I press "Create Entity Type"
     Then I should see "database is already an entity type"
+
+  @admin @entityTypes @aliases
+  Scenario: Admins can delete aliases from an entity type
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I have no entity_type_aliases
+    And I am on the edit Entity Type page for "Database"
+    When I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "MySQL"
+    And I press "Update Entity Type"
+    And I follow "edit-database"
+    And I delete the Entity Type Alias "entity_type_entity_type_aliases_attributes_0__destroy"
+    And I press "Update Entity Type"
+    Then I should be on the list of Entity Types
+    And I should have 0 entity_type_aliases
 
   @admin @entityTypes @edit
   Scenario: Admins can see edit link for Entity Types
