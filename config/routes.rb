@@ -7,7 +7,7 @@ Ashint::Application.routes.draw do
   resources :bookmarks
   
   resources :clients, :has_many => :notes, :shallow => true do
-    resources :projects, :except => 'show', :has_many => :notes
+    resources :projects, :has_many => :notes, :except => 'show'
     resources :entities, :has_many => :notes
   end
   

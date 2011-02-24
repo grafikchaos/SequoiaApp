@@ -36,6 +36,15 @@
       <%= link_to_add_fields "Add another", f, :entity_rows, @entity_keys %>
     </div>
   <%- end %>
+  
+  <%= field_set_tag "Notes", :class => "collapsible" do %>
+    <div class="fieldset-wrapper">
+      <%= f.fields_for :notes do |note_form| %>
+        <%= render 'notes/form_fields', :f => note_form %>
+      <% end %>
+    </div>
+  <% end %>
+  
 
   <div class="actions">
     <%= f.submit %>

@@ -20,7 +20,7 @@ module NavigationHelpers
     when /^the edit page for the client "(.*)"$/i
       edit_client_path(Client.find($1))
 
-    when /"(.*)"'s new project page$/i
+    when /^"(.*)"'s new project page$/i
       client = Client.find($1)
       new_client_project_path(client)
 

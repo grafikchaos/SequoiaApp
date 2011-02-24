@@ -21,6 +21,9 @@ class EntitiesController < ApplicationController
     
     # Start off with 3 empty rows.
     3.times { @entity.entity_rows.build }
+    # Start off with 1 note field
+    1.times { @entity.notes.build }
+    
 
     respond_to do |format|
       format.html # new.html.erb
