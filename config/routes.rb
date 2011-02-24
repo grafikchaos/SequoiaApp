@@ -15,6 +15,7 @@ Ashint::Application.routes.draw do
   scope "/admin" do
     resources :entity_types, :entity_keys, :users, :except => 'show'
   end
+  match '/admin' => redirect('/admin/entity_keys')
 
   match '/:username/bookmarks' => 'bookmarks#index'
 
