@@ -2,15 +2,20 @@ class Client < ActiveRecord::Base
   # paperclip behavior
   has_attached_file :logo, :styles => { :mini => "24x24>", :small => "64x64>", :medium => "96x96>", :big => "200x200>" }
 
-  has_many :projects
+  has_many  :projects
+  has_many  :notes, :as => :notable
+  
   
   # For bookmarking
   acts_as_favable
 
   # accept Project form fields/attributes
   accepts_nested_attributes_for :projects, :reject_if => lambda { |proj| proj[:name].blank? }, :allow_destroy => true
+
+  # accept Note form fields/attributes
+  accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true
   
-  validates_presence_of :name, :on => :create, :message => "client name can't be blank"
+  validates_presence_of   :name, :on => :create, :message => "client name can't be blank"
   validates_presence_of   :client_code
   validates_uniqueness_of :client_code, :case_sensitive => false
   validates_length_of     :client_code, :within => 2..10
@@ -20,7 +25,7 @@ class Client < ActiveRecord::Base
   after_save :add_default_project
   
   # columns open to mass-assignment
-  attr_accessible :name, :client_code, :logo, :logo_file_name, :logo_content_type, :logo_size, :logo_updated_at, :projects_attributes
+  attr_accessible :name, :client_code, :logo, :logo_file_name, :logo_content_type, :logo_size, :logo_updated_at, :projects_attributes, :notes_attributes
 
   # friendly_id slug behavior
   has_friendly_id :client_code, 

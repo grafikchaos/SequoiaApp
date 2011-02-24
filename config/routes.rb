@@ -4,11 +4,11 @@ Ashint::Application.routes.draw do
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
   
   # Defining our nested resources.
-    resources :bookmarks
+  resources :bookmarks
   
-  resources :clients, :shallow => true do
-    resources :projects, :except => 'show'
-    resources :entities
+  resources :clients, :has_many => :notes, :shallow => true do
+    resources :projects, :except => 'show', :has_many => :notes
+    resources :entities, :has_many => :notes
   end
   
   # Administration for entity types and keys

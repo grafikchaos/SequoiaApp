@@ -1,8 +1,8 @@
 class Entity < ActiveRecord::Base
-  belongs_to :project
-  has_one :entity_type
-  has_many :entity_rows
-  has_one :note, :as => :notable
+  belongs_to  :project
+  has_one     :entity_type
+  has_many    :entity_rows
+  has_one     :note, :as => :notable
   
   # validations
   validates_presence_of :name, :project_id, :entity_type_id
