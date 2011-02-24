@@ -2,9 +2,13 @@ class Search
 
   attr_accessor :query, :result
 
-  def initialize(query)
+  def initialize(query, model = nil)
     self.query = query
-    query.starts_with?('$') ? advanced : simple
+    if model.nil?
+      query.starts_with?('$') ? advanced : simple
+    else
+      model_search(model)
+    end
   end
 
   ### PRIVATE METHODS BELOW ###
@@ -24,4 +28,7 @@ class Search
       
   end
 
+  def model_search(model)
+    self.result = model.classify.constantize.find_all_by_name(self.query)
+  end
 end

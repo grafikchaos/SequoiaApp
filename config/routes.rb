@@ -1,10 +1,9 @@
 Ashint::Application.routes.draw do
   
+  get "search/index"
+
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
-  
-  # Defining our nested resources.
-    resources :bookmarks
   
   resources :clients, :shallow => true do
     resources :projects, :except => 'show'
@@ -17,6 +16,8 @@ Ashint::Application.routes.draw do
   end
 
   match '/:username/bookmarks' => 'bookmarks#index'
+
+  match '/search' => 'search#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

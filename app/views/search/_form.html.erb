@@ -1,0 +1,10 @@
+<%= form_tag("/search", :remote => true) do %>
+  
+  <%= text_field_tag 'query' %>
+  
+  <%= hidden_field_tag 'model', model %>
+
+  <%= submit_tag 'Search' %>
+
+<% end %>
+
