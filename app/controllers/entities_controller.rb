@@ -38,6 +38,10 @@ class EntitiesController < ApplicationController
     @entity_types = EntityType.all
     @entity_keys = EntityKey.all
 
+    if @entity.notes.empty?
+      @entity.notes.build
+    end
+
     # Create more rows for the user to add entity rows
     count = 3 - @entity.entity_rows.count
     if count > 1 

@@ -21,7 +21,7 @@ class Entity < ActiveRecord::Base
                   :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
   # define which columns are mass-assignable
-  attr_accessible :name, :project_id, :entity_type_id, :notes_attributes
+  attr_accessible :name, :project_id, :entity_type_id, :entity_rows_attributes, :notes_attributes
   
   # setting the default scope
   default_scope order(:project_id)
