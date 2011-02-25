@@ -3,6 +3,7 @@ class Client < ActiveRecord::Base
   has_attached_file :logo, :styles => { :mini => "24x24>", :small => "64x64>", :medium => "96x96>", :big => "200x200>" }
 
   has_many  :projects
+  has_many  :entities, :through => :projects
   has_many  :notes, :as => :notable
   
   

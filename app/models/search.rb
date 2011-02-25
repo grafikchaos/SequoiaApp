@@ -19,8 +19,18 @@ class Search
   end
 
   def advanced
+    self.result = []
     self.query.split(/\$/).each do |part|
-      split_types(part)
+      if !part.blank?
+        client_code = part.scan(/\w+/).first
+        client = Client.find_by_client_code(client_code)
+        client.projects.each do |proj|
+          proj.entities.each do |ent|
+            puts ent
+            self.result << ent
+          end
+        end
+      end
     end
   end
 
