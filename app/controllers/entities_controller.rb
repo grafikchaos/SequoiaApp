@@ -21,6 +21,9 @@ class EntitiesController < ApplicationController
     
     # Start off with 3 empty rows.
     3.times { @entity.entity_rows.build }
+    # Start off with 1 note field
+    1.times { @entity.notes.build }
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,6 +37,10 @@ class EntitiesController < ApplicationController
     @projects = @client.projects
     @entity_types = EntityType.all
     @entity_keys = EntityKey.all
+
+    if @entity.notes.empty?
+      @entity.notes.build
+    end
 
     # Create more rows for the user to add entity rows
     count = 3 - @entity.entity_rows.count

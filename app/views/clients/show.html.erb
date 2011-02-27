@@ -37,5 +37,13 @@
 
 <div class="clearer"></div>
 <div id="notes">
+  <h2>Client Notes:</h2>
   <%= render @client.notes %>
+</div>
+
+<div id="project-notes">
+  <h2>Project Notes:</h2>
+  <% @client.projects.each do |project| %>
+    <%= render project.notes %>
+  <% end %>
 </div>
