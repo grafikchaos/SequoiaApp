@@ -24,11 +24,8 @@ class Search
       if !part.blank?
         client_code = part.scan(/\w+/).first
         client = Client.find_by_client_code(client_code)
-        client.projects.each do |proj|
-          proj.entities.each do |ent|
-            puts ent
-            self.result << ent
-          end
+        client.entities.each do |ent|
+          self.result << ent
         end
       end
     end

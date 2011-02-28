@@ -6,7 +6,6 @@ class Client < ActiveRecord::Base
   has_many  :entities, :through => :projects
   has_many  :notes, :as => :notable
   
-  
   # For bookmarking
   acts_as_favable
 
