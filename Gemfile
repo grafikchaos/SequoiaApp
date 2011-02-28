@@ -8,6 +8,7 @@ gem 'devise'
 gem 'cancan'
 gem "friendly_id"
 gem "paperclip"
+gem "meta_where"
 
 # For bookmarking
 gem 'acts_as_favable'
