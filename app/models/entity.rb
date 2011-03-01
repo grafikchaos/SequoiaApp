@@ -26,4 +26,9 @@ class Entity < ActiveRecord::Base
   # setting the default scope
   default_scope order(:project_id)
 
+  # Named scopes
+  scope :limit_client, lambda { |code| includes([{:project => :client }]).where(:clients => {:client_code => code }) }
+  #scope :limit_type, lambda { |type| includes(:entity_types).where(:entity_types => { :name => type }) }
+  scope :filter_by_row, lambda { |code, type, value| limit_client(code).includes(:entity_rows).where(:entity_rows => { :encrypted_value => EntityRow.encrypt_value(value) }) }
+
 end
