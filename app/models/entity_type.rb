@@ -1,5 +1,5 @@
 class EntityType < ActiveRecord::Base
-  belongs_to :entities
+  has_many :entitiess
   has_many :entity_type_aliases
   
   # validations

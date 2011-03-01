@@ -1,6 +1,6 @@
 class Entity < ActiveRecord::Base
   belongs_to  :project
-  has_one     :entity_type
+  belongs_to  :entity_type
   has_many    :entity_rows
   has_many    :notes, :as => :notable
   
