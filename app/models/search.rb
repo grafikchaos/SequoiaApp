@@ -22,11 +22,9 @@ class Search
     self.result = []
     self.query.split(/\$/).each do |part|
       if !part.blank?
-        client_code = part.scan(/\w+/).first
-        client = Client.find_by_client_code(client_code)
-        client.entities.each do |ent|
-          self.result << ent
-        end
+        split = part.scan(/[^\s]+/)
+        client_code = split.first
+        self.result.concat(Entity.filter_by_row(client_code, split.values_at(1..split.count).join(' ').rstrip))
       end
     end
   end
