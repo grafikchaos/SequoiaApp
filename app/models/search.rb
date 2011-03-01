@@ -24,7 +24,8 @@ class Search
       if !part.blank?
         split = part.scan(/[^\s]+/)
         client_code = split.first
-        self.result.concat(Entity.filter_by_row(client_code, split.values_at(1..split.count).join(' ').rstrip))
+        row_value = split.values_at(1..split.count).join(' ').rstrip
+        self.result.concat(Entity.advanced_search(client_code, '', row_value))
       end
     end
   end
