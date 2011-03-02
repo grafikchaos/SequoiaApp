@@ -23,6 +23,17 @@ Feature: Searching
       | vpn             |
       | website         |
       | wireless        |
+    And the following entity_type_alias records
+      | type            | aliases                           |
+      | application     | app                               |
+      | computer        | machine, pc, desktop, laptop, mac |
+      | database        | mysql, mongodb, sql               |
+      | email           | mail                              |
+      | ftp             | sftp                              |
+      | ssh             | shell                             |
+      | version control | vcs, svn, subversion, dvcs, git   |
+      | website         | site                              |
+      | wireless        | wifi, wep, wpa                    |
     And the following entity_key records
       | name            | mask  |
       | api key         | false |
@@ -74,7 +85,6 @@ Feature: Searching
     And I press "Search"
     Then I should see "ROR"
 
-
   @advanced_search
   Scenario: Searching for an Entity by client code and Entity.name
     When I fill in "query" with "$ror login"
@@ -82,6 +92,43 @@ Feature: Searching
     Then I should see "ROR"
     And I should see "Admin Login"
     And I should see "User Login"
+
+  @advanced_search @invalid
+  Scenario Outline: Invalid Advanced Search: Searching for an Entity by client code with a symbol other than '$' in front of client code
+    When I fill in "query" with "<search string>"
+    And I press "Search"
+    Then I should not see "ROR"
+    And I should not see "Admin Login"
+    And I should not see "User Login"
+    
+    Examples:
+      | search string |
+      | !ror login    |
+      | #ror login    |
+      | @ror login    |
+      | :ror login    |
+      | :ror login    |
+      | %ror login    |
+      | ^ror login    |
+      | &ror login    |
+      | *ror login    |
+      | (ror login    |
+      | )ror login    |
+      | 'ror login    |
+      | =ror login    |
+      | +ror login    |
+      | -ror login    |
+      | /ror login    |
+      | \ror login    |
+      | [ror login    |
+      | ]ror login    |
+      | {ror login    |
+      | }ror login    |
+      | <ror login    |
+      | >ror login    |
+      | ?ror login    |
+      | ;ror login    |
+
   
   @advanced_search
   Scenario: Searching for an Entity by client code and EntityRow.value (:encrypted_value)
@@ -99,3 +146,27 @@ Feature: Searching
     And I should see "SSH Credentials"
     And I should see "rubyonrails"
   
+  
+  @advanced_search
+  Scenario: Searching for an Entity by client code and EntityTypeAlias.name
+    When I fill in "query" with "$ror #shell"
+    And I press "Search"
+    Then I should see "ROR"
+    And I should see "SSH Credentials"
+    And I should see "rubyonrails"
+  
+  
+  @advanced_search
+  Scenario: Searching for all Entities with multiple client codes
+    When I fill in "query" with "$aai $ror"
+    And I press "Search"
+    Then I should see "AAI"
+    And I should see "ROR"
+    And I should see "external svn user"
+    And I should see "deploy"
+    And I should see "SSH Credentials"
+    And I should see "rubyonrails"
+    And I should see "Admin Login"
+    And I should see "admin"
+    And I should see "User Login"
+    And I should see "roruser"

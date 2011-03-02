@@ -30,7 +30,7 @@ class Entity < ActiveRecord::Base
   scope :limit_client, lambda { |code| includes({:project => :client }).where(:clients => {:client_code => code }) }
   scope :limit_type, lambda { |type| 
     unless type.blank?
-      includes(:entity_type).where(:entity_types => { :name => type }) 
+      includes( { :entity_type  => :entity_type_aliases } ).where({ :entity_types => [ :name => type ] } | { :entity_type_aliases => [ :name => type] } ) 
     end
   }
   scope :filter_by_row, lambda { |value| 
