@@ -20,13 +20,13 @@ class Search
 
   def advanced
     self.result = []
-    self.query.split(/\$/).each do |part|
-      if !part.blank?
-        split = part.scan(/[^\s]+/)
-        client_code = split.first
-        row_value = split.values_at(1..split.count).join(' ').rstrip
-        self.result.concat(Entity.advanced_search(client_code, '', row_value))
-      end
+    # Remove the first $ to make our split cleaner.
+    q = self.query.sub('$', '')
+    q.split(/\$/).each do |clause|
+      split = clause.scan(/[^\s]+/)
+      client_code = split.first
+      row_value = split.values_at(1..split.count).join(' ').rstrip
+      self.result.concat(Entity.advanced_search(client_code, '', row_value))
     end
   end
 
