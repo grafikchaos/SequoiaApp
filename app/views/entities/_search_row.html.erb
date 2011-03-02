@@ -4,7 +4,7 @@
     <div class="client"><%= link_to search_row.project.client.client_code, client_path(search_row.project.client) %></div>
     <%- search_row.entity_rows.each do |ent_row| %>
       <div class="entity-row">
-        <%= ent_row.entity_key.name %>: <%= ent_row.value %>
+        <%= ent_row.entity_key.name %>: <%= render 'entity_rows/value', :entity_row => ent_row %>
       </div>
     <%- end %>
   </div>
