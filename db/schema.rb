@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223041038) do
+ActiveRecord::Schema.define(:version => 20110302200535) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(:version => 20110223041038) do
   create_table "clients", :force => true do |t|
     t.string   "name",                            :null => false
     t.string   "client_code",       :limit => 10, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "cached_slug"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
@@ -89,6 +89,20 @@ ActiveRecord::Schema.define(:version => 20110223041038) do
   end
 
   add_index "entity_type_aliases", ["entity_type_id"], :name => "entity_type_aliases_entity_type_id_fk"
+
+  create_table "entity_type_config_rows", :force => true do |t|
+    t.integer  "entity_type_id",                    :null => false
+    t.integer  "entity_key_id",                     :null => false
+    t.string   "element_type",                      :null => false
+    t.string   "placeholder"
+    t.boolean  "required",       :default => false, :null => false
+    t.integer  "sort_order",     :default => 0,     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entity_type_config_rows", ["entity_key_id"], :name => "entity_type_config_rows_entity_key_id_fk"
+  add_index "entity_type_config_rows", ["entity_type_id"], :name => "entity_type_config_rows_entity_type_id_fk"
 
   create_table "entity_types", :force => true do |t|
     t.string   "name",        :null => false
@@ -188,6 +202,9 @@ ActiveRecord::Schema.define(:version => 20110223041038) do
   add_foreign_key "entity_rows", "entity_keys", :name => "entity_rows_entity_key_id_fk"
 
   add_foreign_key "entity_type_aliases", "entity_types", :name => "entity_type_aliases_entity_type_id_fk", :dependent => :delete
+
+  add_foreign_key "entity_type_config_rows", "entity_keys", :name => "entity_type_config_rows_entity_key_id_fk", :dependent => :delete
+  add_foreign_key "entity_type_config_rows", "entity_types", :name => "entity_type_config_rows_entity_type_id_fk", :dependent => :delete
 
   add_foreign_key "projects", "clients", :name => "projects_client_id_fk", :dependent => :delete
 

@@ -25,7 +25,15 @@
     </div>
   <% end %>
   
-  
+  <%= field_set_tag "Configuration", :class => "collapsible collapsed" do %>
+    <div class="fieldset-wrapper">
+      <%= f.fields_for :entity_type_config_rows do |rows_form| %>
+        <%= render 'entity_types/config_row_form_fields', :f => rows_form %>
+      <% end %>
+      <%= link_to_add_fields "Add another", f, :entity_type_config_rows, :nil, 'entity_types/config_row_form_fields' %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
