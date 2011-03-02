@@ -35,7 +35,7 @@ class Entity < ActiveRecord::Base
   }
   scope :filter_by_row, lambda { |value| 
     unless value.blank?
-      includes({:entity_rows => :entity_key}).where(:entity_rows => { :encrypted_value => EntityRow.encrypt_value(value) })
+      includes({:entity_rows => :entity_key}).where( { :name.matches => "%#{value}%" } | { :entity_rows => [:encrypted_value => EntityRow.encrypt_value(value)] } )
     end
   }
   scope :advanced_search, lambda { |code, type, value| limit_client(code).limit_type(type).filter_by_row(value) }
