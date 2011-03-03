@@ -76,7 +76,7 @@ body, #main { background: #fff; }
   float: left;
 }
 
-#entity-list .entity-rows span.exposed { display: none; }
+span.exposed { display: none; }
 
 /****************************
   ENTITY FORMS

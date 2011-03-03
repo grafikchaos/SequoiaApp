@@ -30,12 +30,12 @@ class Entity < ActiveRecord::Base
   scope :limit_client, lambda { |code| includes({:project => :client }).where(:clients => {:client_code => code }) }
   scope :limit_type, lambda { |type| 
     unless type.blank?
-      includes(:entity_type).where(:entity_types => { :name => type }) 
+      includes( { :entity_type  => :entity_type_aliases } ).where({ :entity_types => [ :name => type ] } | { :entity_type_aliases => [ :name => type] } ) 
     end
   }
   scope :filter_by_row, lambda { |value| 
     unless value.blank?
-      includes({:entity_rows => :entity_key}).where(:entity_rows => { :encrypted_value => EntityRow.encrypt_value(value) })
+      includes({:entity_rows => :entity_key}).where( { :name.matches => "%#{value}%" } | { :entity_rows => [:encrypted_value => EntityRow.encrypt_value(value)] } )
     end
   }
   scope :advanced_search, lambda { |code, type, value| limit_client(code).limit_type(type).filter_by_row(value) }
