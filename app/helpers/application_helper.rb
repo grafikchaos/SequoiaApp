@@ -25,8 +25,9 @@ module ApplicationHelper
     return options
   end
 
-  def format_entity_keys_select
+  def format_entity_keys_select(optional = nil)
     options = []
+    options << [ '- Select a Key -', '--select--'] if optional
     EntityKey.all.each do |item|
       options << [item.name, item.id]
     end
