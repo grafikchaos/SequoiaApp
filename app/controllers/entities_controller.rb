@@ -15,8 +15,6 @@ class EntitiesController < ApplicationController
   # GET /entities/new.xml
   def new
     @client = Client.find(params[:client_id])
-    @projects = @client.projects
-    @entity_types = EntityType.all
     
     # Start off with 3 empty rows.
     3.times { @entity.entity_rows.build }
@@ -33,8 +31,6 @@ class EntitiesController < ApplicationController
   # GET /entities/1/edit
   def edit
     @client = @entity.project.client
-    @projects = @client.projects
-    @entity_types = EntityType.all
 
     if @entity.notes.empty?
       @entity.notes.build
@@ -52,8 +48,7 @@ class EntitiesController < ApplicationController
   # POST /entities
   # POST /entities.xml
   def create
-    @project = Project.find(params[:entity][:project_id])
-    @client = @project.client
+    @client = Client.find(params[:client_id])
 
     respond_to do |format|
       if @entity.save

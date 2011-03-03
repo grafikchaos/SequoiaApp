@@ -1,7 +1,7 @@
 <div class="entity-type-config-row-field">
   <div class="field">
     <%= f.label :entity_key_id, "Key" %>
-    <%= f.select :entity_key_id, format_entity_keys_select(true) %>
+    <%= f.collection_select :entity_key_id, EntityKey.all, :id, :name, :prompt => true %>
   </div>
 
   <div class="field">

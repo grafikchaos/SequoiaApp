@@ -1,14 +1,5 @@
 module ApplicationHelper
 
-  def format_for_select(items, all = nil)
-    options = []
-    options << [all, all.downcase] if all
-    items.each do |item|
-      options << [item.name, item.id]
-    end
-    return options
-  end
-
   def format_clearance_select
     options = []
     (current_user.clearance..3).each do |number|
@@ -22,22 +13,6 @@ module ApplicationHelper
     options << ['Admin', 'admin']
     options << ['Manager', 'manager']
     options << ['Staff', 'staff']
-    return options
-  end
-
-  def format_entity_keys_select(optional = nil)
-    options = []
-    options << [ '- Select a Key -', '--select--'] if optional
-    EntityKey.all.each do |item|
-      options << [item.name, item.id]
-    end
-    return options
-  end
-
-  def format_field_types_select
-    options = []
-    options << ['Textfield', 'text_field']
-    options << ['Textarea', 'text_area']
     return options
   end
 

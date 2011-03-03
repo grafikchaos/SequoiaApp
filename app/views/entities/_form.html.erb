@@ -10,7 +10,7 @@
 
   <div class="field required">
     <%= f.label :project_id %>
-    <%= f.select :project_id, format_for_select(@projects) %>
+    <%= f.collection_select :project_id, @client.projects, :id, :name %>
   </div>
 
   <div class="field required">
@@ -20,7 +20,7 @@
 
   <div class="field required">
     <%= f.label :entity_type_id %>
-    <%= f.select :entity_type_id, format_for_select(@entity_types) %>
+    <%= f.collection_select :entity_type_id, EntityType.all, :id, :name %>
   </div>
 
   <div class="field required">

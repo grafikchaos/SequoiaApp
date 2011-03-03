@@ -24,8 +24,7 @@
 <%- end -%>
 
 <%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
-  <%- options = format_for_select(@client.projects, 'All') %>
-  <%= select_tag(:project, options_for_select(options, params[:project])) %>
+  <%= select_tag 'project', options_from_collection_for_select(@client.projects, :id, :name, params[:project]), :include_blank => 'All' %>
   <noscript>
     <%= submit_tag "Filter" %>
   </noscript>
