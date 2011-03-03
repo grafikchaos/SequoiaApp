@@ -21,7 +21,7 @@
       <%= f.fields_for :entity_type_aliases do |alias_form| %>
         <%= render 'entity_types/alias_form_fields', :f => alias_form %>
       <% end %>
-      <%= link_to_add_fields "Add another", f, :entity_type_aliases, :nil, 'entity_types/alias_form_fields' %>
+      <%= link_to_add_fields "Add another", f, :entity_type_aliases, 'entity_types/alias_form_fields' %>
     </div>
   <% end %>
   
@@ -30,7 +30,7 @@
       <%= f.fields_for :entity_type_config_rows do |rows_form| %>
         <%= render 'entity_types/config_row_form_fields', :f => rows_form %>
       <% end %>
-      <%= link_to_add_fields "Add another", f, :entity_type_config_rows, :nil, 'entity_types/config_row_form_fields' %>
+      <%= link_to_add_fields "Add another", f, :entity_type_config_rows, 'entity_types/config_row_form_fields' %>
     </div>
   <% end %>
 

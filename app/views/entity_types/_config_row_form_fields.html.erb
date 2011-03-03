@@ -1,17 +1,17 @@
 <div class="entity-type-config-row-field">
   <div class="field">
+    <%= f.label :entity_key_id, "Key" %>
+    <%= f.select :entity_key_id, format_entity_keys_select %>
+  </div>
+
+  <div class="field">
     <%= f.label :element_type %>
-    <%= f.text_field :element_type %>
+    <%= f.select :element_type, format_field_types_select %>
   </div>
 
   <div class="field">
     <%= f.label :required, "Required?" %>
     <%= f.check_box :required %>
-  </div>
-
-  <div class="field">
-    <%= f.label :entity_key_id, "Key" %>
-    <%= f.check_box :entity_key_id %>
   </div>
 
   <div class="hide delete-message">

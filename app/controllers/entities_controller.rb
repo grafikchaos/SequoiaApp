@@ -17,7 +17,6 @@ class EntitiesController < ApplicationController
     @client = Client.find(params[:client_id])
     @projects = @client.projects
     @entity_types = EntityType.all
-    @entity_keys = EntityKey.all
     
     # Start off with 3 empty rows.
     3.times { @entity.entity_rows.build }
@@ -36,7 +35,6 @@ class EntitiesController < ApplicationController
     @client = @entity.project.client
     @projects = @client.projects
     @entity_types = EntityType.all
-    @entity_keys = EntityKey.all
 
     if @entity.notes.empty?
       @entity.notes.build
