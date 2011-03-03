@@ -1,7 +1,5 @@
 Ashint::Application.routes.draw do
   
-  get "search/index"
-
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
   
@@ -21,7 +19,13 @@ Ashint::Application.routes.draw do
 
   match '/:username/bookmarks' => 'bookmarks#index'
 
-  match '/search' => 'search#index'
+  # Our root URL is mapped to the search controller
+  root :to => "search#index"
+  
+  # Catch everything else and give it to the error controller
+  match '*a', :to => 'errors#routing', :as => 'error'
+
+  ### DOCUMENTATION/EXAMPLES ###
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -70,17 +74,10 @@ Ashint::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  root :to => "search#index"
-
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
-  # Catch everything else and give it to the error controller
-  match '*a', :to => 'errors#routing', :as => 'error'
-
 end
