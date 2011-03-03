@@ -53,7 +53,7 @@ class Client < ActiveRecord::Base
   end
 
   def get_entities(ability, project = nil)
-    if project and project != 'all'
+    if project and !project.empty?
       project = Project.find(project)
       Entity.accessible_by(ability).find_all_by_project_id(project)
     else

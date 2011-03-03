@@ -1,6 +1,6 @@
 <div class="entity-row-field">
   <div class="field key required">
-    <%= f.select :entity_key_id, format_entity_keys_select %>
+    <%= f.collection_select :entity_key_id, EntityKey.all, :id, :name %>
   </div>
 
   <div class="field value">
