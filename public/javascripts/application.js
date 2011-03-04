@@ -10,6 +10,7 @@ $(document).ready(function() {
   initProjectSelector();
   initRemoveRows();
   initToggleMasked();
+  initEntityTypeFormReloader();
 });
 
 /**
@@ -204,6 +205,25 @@ var initToggleMasked = function() {
     $(this).text(text);
   });
 }
+
+/**
+ * Reloads the entity rows form when a new entity type is selected.
+ */
+var initEntityTypeFormReloader = function() {
+  $('select#entity_entity_type_id').change(function() {
+    var type = $(this).val();
+    $.ajax({
+      url: '',
+      data: {
+        'entity_type_id' : type,
+      },
+      type: 'get',
+      success: function(data) {
+        $('#entity_rows_form').replaceWith($('#entity_rows_form', data));
+      }
+    });
+  });
+};
 
 /**
  * For adding fields to our entity edit page.

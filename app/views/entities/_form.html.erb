@@ -28,7 +28,7 @@
     <%= f.select :clearance, format_clearance_select %>
   </div>
 
-  <%= field_set_tag "Entity Rows", :class => "collapsible" do %>
+  <%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
     <div class="fieldset-wrapper">
       <%= f.fields_for :entity_rows do |entity_row_form| %>
         <%= render 'entity_rows/form_fields', :f => entity_row_form %>

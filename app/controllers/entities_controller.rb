@@ -4,7 +4,6 @@ class EntitiesController < ApplicationController
   # GET /entities/1
   # GET /entities/1.xml
   def show
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @entity }
@@ -17,10 +16,13 @@ class EntitiesController < ApplicationController
     @client = Client.find(params[:client_id])
     
     # Start off with 3 empty rows.
-    3.times { @entity.entity_rows.build }
+    type = params[:entity_type_id] ? EntityType.find(params[:entity_type_id]) : EntityType.first
+    type.entity_type_config_rows.each do |row|
+      @entity.entity_rows.build :entity_key_id => row.entity_key_id
+    end
+
     # Start off with 1 note field
     1.times { @entity.notes.build }
-    
 
     respond_to do |format|
       format.html # new.html.erb
