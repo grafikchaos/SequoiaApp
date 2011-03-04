@@ -1,7 +1,12 @@
 <div class="entity-row-field">
-  <div class="field key required">
-    <%= f.collection_select :entity_key_id, EntityKey.all, :id, :name %>
-  </div>
+    <div class="field key required">
+      <%- if f.object.entity_key_id.nil? %>
+        <%= f.collection_select :entity_key_id, EntityKey.all, :id, :name %>
+      <%- else %>
+        <%= f.hidden_field :entity_key_id %>
+        <div class="predetermined"><%= EntityKey.find(f.object.entity_key_id).name %></div>
+      <%- end %>
+    </div>
 
   <div class="field value">
     <%= f.text_field :value %>
