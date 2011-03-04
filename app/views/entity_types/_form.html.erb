@@ -26,7 +26,7 @@
   <% end %>
   
   <%= field_set_tag "Configuration", :class => "collapsible collapsed" do %>
-    <div class="fieldset-wrapper">
+    <div class="fieldset-wrapper sortable">
       <%= f.fields_for :entity_type_config_rows do |rows_form| %>
         <%= render 'entity_types/config_row_form_fields', :f => rows_form %>
       <% end %>

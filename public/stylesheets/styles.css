@@ -82,12 +82,15 @@ span.exposed { display: none; }
   ENTITY FORMS
 ****************************/
 form .entity-row-field,
-form .entity-type-alias-field {
+form .entity-type-alias-field,
+form .entity-type-config-row-field {
+  overflow: auto;
   clear: both;
 }
 
 form .entity-row-field div,
-form .entity-type-alias-field div {
+form .entity-type-alias-field div,
+form .entity-type-config-row-field div {
   float: left;
   padding: 3px;
 }
@@ -224,4 +227,21 @@ fieldset.collapsible legend {
 
 fieldset.collapsible.collapsed legend {
   background: url(/images/icons/menu-collapsed.png) no-repeat left center;
+}
+
+/****************************
+  SORTABLE LISTS
+****************************/
+.sortable .sort-handle {
+  display: block;
+  width: 16px;
+  height: 20px;
+  background: url(/images/icons/glyphicons_126_move.png) no-repeat;
+  float: left;
+  cursor: row-resize;
+}
+
+.sortable .ui-sortable-placeholder {
+  border: 3px dashed #666;
+  height: 10px;
 }

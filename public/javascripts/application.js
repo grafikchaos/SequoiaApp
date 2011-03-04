@@ -11,6 +11,7 @@ $(document).ready(function() {
   initRemoveRows();
   initToggleMasked();
   initEntityTypeFormReloader();
+  initSortableLists();
 });
 
 /**
@@ -226,6 +227,24 @@ var initEntityTypeFormReloader = function() {
 };
 
 /**
+ * UI Sortable lists.
+ */
+var initSortableLists = function() {
+  $('.sortable').sortable({
+    items: '> div',
+    handle: 'div.sort-handle',
+    placeholder: 'ui-sortable-placeholder',
+    axis: 'y',
+    stop: function(event, ui) {
+      $('> div', this).each(function(index, element) {
+        $('input.sort-order', element).val(index);
+        console.log(index, element);
+      });
+    }
+  });
+}
+
+/**
  * For adding fields to our entity edit page.
  */
 function add_fields(link, association, content) {
@@ -234,8 +253,12 @@ function add_fields(link, association, content) {
   $(link).before(content.replace(regexp, new_id));
 }
 
+/**
+ * Tooltips.
+ */
 var initQtips = function() {
   $('.tooltip').each(function() {
+    // You can either use the 'data-tooltip' attribute or the title.
     var tipContent = $(this).attr('data-tooltip') ? $(this).attr('data-tooltip') : $(this).attr('title');
     $(this).qtip({
       content: $(this).attr('data-tooltip'),

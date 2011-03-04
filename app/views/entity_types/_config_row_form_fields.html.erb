@@ -1,4 +1,5 @@
 <div class="entity-type-config-row-field">
+  <div class="sort-handle"></div>
   <div class="field">
     <%= f.label :entity_key_id, "Key" %>
     <%= f.collection_select :entity_key_id, EntityKey.all, :id, :name, :prompt => true %>
@@ -8,6 +9,8 @@
     <%= f.label :required, "Required?" %>
     <%= f.check_box :required %>
   </div>
+
+  <%= f.hidden_field :sort_order, :class => "sort-order" %>
 
   <div class="hide delete-message">
     <em>This row will be deleted on save</em>
