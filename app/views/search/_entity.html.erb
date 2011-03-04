@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="data">
+    <div class="name"><%= entity.name %></div>
+    <div class="client"><%= link_to entity.project.client.client_code, client_path(entity.project.client) %></div>
+    <%- entity.entity_rows.each do |ent_row| %>
+      <div class="entity-row">
+        <%= ent_row.entity_key.name %>: <%= render 'entity_rows/value', :entity_row => ent_row %>
+      </div>
+    <%- end %>
+  </div>
+  <div class="controls">
+    <ul>
+      <li><%= link_to 'Edit', edit_entity_path(entity), :class => 'edit-link tooltip', :title => 'Edit this entity' %></li>
+      <li><%= link_to 'Destroy', entity, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete this entity' %></li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>

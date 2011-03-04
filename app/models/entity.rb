@@ -27,6 +27,8 @@ class Entity < ActiveRecord::Base
   default_scope order(:project_id)
 
   # Named scopes
+  #scope :nested, lambda { |project| includes(
+  # Scopes for searching
   scope :limit_client, lambda { |code| includes({:project => :client }).where(:clients => {:client_code => code }) }
   scope :limit_type, lambda { |type| 
     unless type.blank?

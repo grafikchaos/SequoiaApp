@@ -8,7 +8,7 @@ Feature: Manage Clients
 
   @clients @authenticate
   Scenario: Client form has project subform fields
-    Given I am on the list of clients
+    Given I am on the home page
     When I follow "New Client"
     Then I should see "Name"
     And I should see "Client Code"

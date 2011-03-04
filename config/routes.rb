@@ -6,7 +6,7 @@ Ashint::Application.routes.draw do
   # Defining our nested resources.
   resources :bookmarks
   
-  resources :clients, :has_many => :notes, :shallow => true do
+  resources :clients, :has_many => :notes, :shallow => true, :except => 'index' do
     resources :projects, :has_many => :notes, :except => 'show'
     resources :entities, :has_many => :notes
   end

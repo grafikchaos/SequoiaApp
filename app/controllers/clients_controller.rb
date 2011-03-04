@@ -1,28 +1,10 @@
 class ClientsController < ApplicationController
   
-  # GET /clients
-  # GET /clients.xml
-  def index
-    @clients = Client.search(params[:search])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @clients }
-    end
-  end
-
   # GET /clients/1
   # GET /clients/1.xml
   def show
-    if params[:scope]
-      @client = Client.find_by_client_code(params[:scope])
-      raise ActiveRecord::RecordNotFound, "Client not found" if @client.nil?
-    else
-      @client = Client.find(params[:id])
-    end
-    
-    @entity_types = EntityType.all
-    @entities = @client.get_entities(current_ability, params[:project])
+    @client = Client.find(params[:id])
+    @entities = @client.sorted_entities(current_ability, params[:project])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +16,7 @@ class ClientsController < ApplicationController
   # GET /clients/new.xml
   def new
     @client = Client.new
-    @client.projects.build
+    1.times { @client.projects.build }
     1.times { @client.notes.build }
 
     

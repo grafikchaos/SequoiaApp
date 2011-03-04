@@ -10,9 +10,9 @@
 <%- if @results %>
   <div id="results-list">
     <%- if params[:query].first == '$' %>
-      <%= render :partial => 'entities/search_row', :collection => @results %>
+      <%= render :partial => 'entity', :collection => @results %>
     <%- else %>
-      <%= render :partial => 'clients/row', :collection => @results %>
+      <%= render :partial => 'client', :collection => @results %>
     <%- end %>
   </div>
 <%- end %>

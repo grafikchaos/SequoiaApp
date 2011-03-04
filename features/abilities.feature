@@ -64,7 +64,7 @@ Feature: Abilities - Roles and Permissions
   @admin @entityTypes @view
   Scenario: Admins can view a list of Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
-    And I am on the list of clients
+    And I am on the home page
     When I follow "Admin"
     And I follow "Entity Types"
     Then I should see "ftp"
@@ -174,7 +174,7 @@ Feature: Abilities - Roles and Permissions
   @admin @entityKeys @view
   Scenario: Admins can view a list of Entity Keys
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
-    And I am on the list of clients
+    And I am on the home page
     When I follow "Admin"
     Then I should see "endpoint url"
     And I should see "encryption key"
@@ -222,7 +222,7 @@ Feature: Abilities - Roles and Permissions
   @users @view
   Scenario: Admins can see a list of users
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
-    And I am on the list of clients
+    And I am on the home page
     When I follow "Admin"
     And I follow "Users"
     Then I should see "miraclemax"

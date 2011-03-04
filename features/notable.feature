@@ -7,10 +7,13 @@ Feature: Notable
   Background: Make sure I'm logged in and a Client has a Project with one or more entities
     Given I am logged in as a user
     And I have client codes ROR
+    And the following entity_type records
+      | name            |
+      | VPN             |
 
   @clients
   Scenario: Client form should have a Note text area
-    Given I am on the list of clients
+    Given I am on the home page
     When I follow "New Client"
     Then I should see "Note"
   
@@ -57,10 +60,7 @@ Feature: Notable
 
   @entities
   Scenario: Add a note to an Entity
-    Given the following entity_type records
-      | name            |
-      | VPN             |
-    And I have client codes "APPL"
+    Given I have client codes "APPL"
     And the client "APPL" has a project named "Liger" with domain "liger.apple.com"
     And I am on the client page for "APPL"
     When I follow "New Entity"
@@ -71,4 +71,3 @@ Feature: Notable
     Then I should be on the client page for "APPL"
     And I should see "Entity was successfully created"
     And the project "Liger" for the client "APPL" should have 1 entity
-  

@@ -31,7 +31,14 @@
 <% end %>
 
 <div id="entity-list">
-  <%= render 'entities/types', :types => @entity_types, :entities => @entities %>
+  <%- @entities.each do |name, rows| %>
+    <div class="group">
+      <h3><%= name %></h3>
+      <%- rows.each do |entity| %>
+        <%= render 'entities/row', :entity => entity %>
+      <%- end %>
+    </div>
+  <%- end %>
 </div>
 
 <div class="clearer"></div>

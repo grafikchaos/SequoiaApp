@@ -52,17 +52,10 @@ class Client < ActiveRecord::Base
     @results = (term) ? self.simple_search(term).ordered_by_client_code : nil
   end
 
-  def get_entities(ability, project = nil)
-    if project and !project.empty?
-      project = Project.find(project)
-      Entity.accessible_by(ability).find_all_by_project_id(project)
-    else
-      projects = []
-      self.projects.each do |project|
-        projects << project.id
-      end
-      Entity.accessible_by(ability).find_all_by_project_id(projects)
-    end
+  def sorted_entities(ability, project = nil)
+    project = project.blank? ? self.projects : project
+    # Also include entity rows and keys for fewer queries.
+    Entity.accessible_by(ability).includes(:entity_type).where(:project_id => project).group_by { |e| e.entity_type.name }
   end
 
   ##############################
