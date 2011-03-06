@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(:version => 20110302200535) do
   create_table "clients", :force => true do |t|
     t.string   "name",                            :null => false
     t.string   "client_code",       :limit => 10, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "cached_slug"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20110302200535) do
   create_table "entity_type_config_rows", :force => true do |t|
     t.integer  "entity_type_id",                    :null => false
     t.integer  "entity_key_id",                     :null => false
-    t.string   "element_type",                      :null => false
+    t.string   "element_type"
     t.string   "placeholder"
     t.boolean  "required",       :default => false, :null => false
     t.integer  "sort_order",     :default => 0,     :null => false

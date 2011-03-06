@@ -3,7 +3,7 @@ class CreateEntityTypeConfigRows < ActiveRecord::Migration
     create_table :entity_type_config_rows do |t|
       t.integer :entity_type_id, :null => false
       t.integer :entity_key_id, :null => false
-      t.string :element_type, :null => false
+      t.string :element_type
       t.string :placeholder
       t.boolean :required, :null => false, :default => 0
       t.column :sort_order, 'integer unsigned', :null => false, :default => 0

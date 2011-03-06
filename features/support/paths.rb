@@ -24,6 +24,10 @@ module NavigationHelpers
       client = Client.find($1)
       new_client_project_path(client)
 
+    when /^"(.*)"'s new entity page for entity type "(.*)"$/i
+      type = EntityType.find_by_name($2)
+      "/clients/#{$1.downcase}/entities/new?entity_type_id=#{type.id}"
+
     when /the list of projects for "(.*)"$/i
       client = Client.find($1)
       client_projects_path(client)
@@ -31,31 +35,29 @@ module NavigationHelpers
     when /the list of (.*)$/i
       class_name = $1.downcase 
       case class_name
-      when "entity types"
-        entity_types_path
-      when "entity keys"
-        entity_keys_path
-      when "users"
-        users_path
-      when "clients"
-        clients_path
+        when "entity types"
+          entity_types_path
+        when "entity keys"
+          entity_keys_path
+        when "users"
+          users_path
       end
 
     when /the new (.*) page$/i
       class_name = $1.downcase 
       case class_name
-      when "entity type"
-        new_entity_type_path
-      when "client"
-        new_client_path
+        when "entity type"
+          new_entity_type_path
+        when "client"
+          new_client_path
       end
       
     when /the edit (.*) page for "(.*)"$/i
       class_name = $1.downcase
       case class_name
-      when "entity type"
-        @entity = EntityType.find("#{$2}".downcase)
-        edit_entity_type_path(@entity)
+        when "entity type"
+          @entity = EntityType.find("#{$2}".downcase)
+          edit_entity_type_path(@entity)
       end
       
       
