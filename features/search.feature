@@ -103,10 +103,12 @@ Feature: Searching
     
     Examples:
       | search string |
+      | $ ror login   |
+      | `ror login    |
+      | ~ror login    |
       | !ror login    |
       | #ror login    |
       | @ror login    |
-      | :ror login    |
       | :ror login    |
       | %ror login    |
       | ^ror login    |
@@ -145,7 +147,42 @@ Feature: Searching
     Then I should see "ROR"
     And I should see "SSH Credentials"
     And I should see "rubyonrails"
+
+  @advanced_search
+  Scenario: Searching for an Entities by one client code and multiple EntityTypes
+    When I fill in "query" with "$ror #ssh #application"
+    And I press "Search"
+    Then I should see "ROR"
+    And I should see "SSH Credentials"
+    And I should see "rubyonrails"
+    And I should see "Admin Login"
+    And I should see "admin"
+    And I should see "User Login"
+    And I should see "roruser"
   
+  @advanced_search
+  Scenario: Searching for an Entities by one client code and multiple EntityTypes and filtering by Entity name of last EntityType
+    When I fill in "query" with "$ror #ssh #application admin"
+    And I press "Search"
+    Then I should see "ROR"
+    And I should see "SSH Credentials"
+    And I should see "rubyonrails"
+    And I should see "Admin Login"
+    And I should see "admin"
+    And I should not see "User Login"
+    And I should not see "roruser"
+
+  @advanced_search
+  Scenario: Searching for an Entities by one client code and multiple EntityTypes and filtering by Entity name of first EntityType
+    When I fill in "query" with "$ror #application admin #ssh"
+    And I press "Search"
+    Then I should see "ROR"
+    And I should see "SSH Credentials"
+    And I should see "rubyonrails"
+    And I should see "Admin Login"
+    And I should see "admin"
+    And I should not see "User Login"
+    And I should not see "roruser"
   
   @advanced_search
   Scenario: Searching for an Entity by client code and EntityTypeAlias.name
