@@ -1,3 +1,4 @@
 <div class="note-content">
-  <%=h note.content %> (UPDATED @ <%= note.updated_at.to_date %>)
+  <em>Updated: <%= note.updated_at.to_date %></em><br />
+  <%= note.content %>
 </div>
