@@ -15,10 +15,16 @@ class EntitiesController < ApplicationController
   def new
     @client = Client.find(params[:client_id])
     
-    # Start off with 3 empty rows.
+    # Load in the config for the given entity type
+    # and build the rows accordingly
     type = params[:entity_type_id] ? EntityType.find(params[:entity_type_id]) : EntityType.first
     type.entity_type_config_rows.each do |row|
       @entity.entity_rows.build :entity_key_id => row.entity_key_id
+    end
+
+    # If the entity type has no config, just load a blank row
+    if type.entity_type_config_rows.empty?
+      @entity.entity_rows.build
     end
 
     # Start off with 1 note field

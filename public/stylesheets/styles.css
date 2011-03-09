@@ -46,6 +46,13 @@ body, #main { background: #fff; }
 }
 
 /****************************
+  NOTES
+****************************/
+.notes {
+  float: right;
+}
+
+/****************************
   ENTITY LIST
 ****************************/
 #entity-list .group {
@@ -211,6 +218,10 @@ div.flash-message.error { background: red; color: #fff; }
 /****************************
   FORM ELEMENTS
 ****************************/
+form .field {
+  margin: 3px 0;
+}
+
 form .field.required label:after {
   content: '*';
 }
@@ -250,6 +261,31 @@ select:active {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sCDwEnBT3jKacAAABaSURBVCjPY2CgA4gC4jQ8OIpokxKBgJmZ+RuQ+R8dg8RB8kQb9v//f4UFCxYsZGNj+4lsEIgPEgfJk+RPdAPJNgjdQD4+vi8UGYRs4Nu3b5soNgjJQFZi1AEAhHNE/wdnPVcAAAAASUVORK5CYII="), -webkit-linear-gradient(#f4f4f4, #efefef 40%, #dcdcdc);
   color: #444;
 }
+
+input[type='password'],
+input[type='text'],
+input[type='url'],
+input:not([type]) {
+  -webkit-border-radius: 2px;
+  border: 1px solid #aaa;
+  font-size: inherit;
+  padding: 3px;
+}
+
+button,
+input[type='submit'] {
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-user-select: none;
+  background: -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
+  border: 1px solid #aaa;
+  color: #444;
+  font-size: inherit;
+  margin-bottom: 0px;
+  min-width: 4em;
+  padding: 3px 12px 3px 12px;
+}
+
 
 /****************************
   FIELDSETS

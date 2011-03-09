@@ -29,7 +29,7 @@ Feature: Notable
     And I should see "Client was successfully created"
     And I should see "APPL"
     And I should see "OS X LIGER" within "#project"
-    And I should see "It's pretty much my favorite animal. It's like a lion and a tiger mixed... bred for its skills in magic." within "#notes"
+    And I should see "It's pretty much my favorite animal. It's like a lion and a tiger mixed... bred for its skills in magic." within ".notes .client-notes"
 
 
   @projects
@@ -48,7 +48,7 @@ Feature: Notable
     Then I should see "Project was successfully created"
     And I should be on the client page for "APPL"
     And I should see "Sabertooth" within "#project"
-    And I should see "Filepath is /var/www/path/to/application" within "#project-notes"
+    And I should see "Filepath is /var/www/path/to/application" within ".notes .project-notes"
 
   @entities
   Scenario: Entity form should have a Note text area
