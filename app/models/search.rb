@@ -25,7 +25,7 @@ class Search
     q.split(/\$/).each do |clause|
 
       # Divide the string on spaces.
-      words = clause.scan(/[^\s]+/)
+      words = clause.split(/\s+/)
 
       # Client code will always be first, so we capture and remove it.
       client_code = words.first
@@ -40,10 +40,9 @@ class Search
         string.split(/#/).each do |type_clause|
 
           # Divide the string on spaces again.
-          words2 = type_clause.scan(/[^\s]+/)
+          words2 = type_clause.split(/\s+/)
           type = words2.first
           words2.delete_at(0)
-          puts "Type: #{type}, cc: #{client_code}"
 
           # Put the rest back together.
           string2 = words2.join(' ').rstrip

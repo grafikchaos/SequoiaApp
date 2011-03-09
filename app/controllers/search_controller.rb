@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    if params[:query]
+    unless params[:query].blank?
       search = Search.new(params[:query], params[:model])
       @results = search.result
     end
