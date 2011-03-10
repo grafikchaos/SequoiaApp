@@ -36,7 +36,7 @@ class Search
 
       if string.include? "#"
         # Remove the first $ to make our split cleaner.
-        string.sub!('#', '')
+        string.sub!('#', '') if string.starts_with?('#')
         string.split(/#/).each do |type_clause|
 
           # Divide the string on spaces again.
@@ -49,7 +49,7 @@ class Search
           self.result.concat(Entity.advanced_search(client_code, type, string2))
         end
       else
-        self.result.concat(Entity.advanced_search(client_code, '', string))
+        self.result.concat(Entity.advanced_search(client_code, nil, string))
       end
     end
   end

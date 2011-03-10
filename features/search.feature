@@ -207,3 +207,15 @@ Feature: Searching
     And I should see "admin"
     And I should see "User Login"
     And I should see "roruser"
+
+  @advanced_search @todo
+    Scenario: Searching for an Entities by one client code and Entity Type second
+      When I fill in "query" with "$ror admin #ssh"
+      And I press "Search"
+      Then I should see "ROR"
+      And I should see "SSH Credentials"
+      And I should see "rubyonrails"
+      And I should see "Admin Login"
+      And I should see "admin"
+      And I should not see "User Login"
+      And I should not see "roruser"
