@@ -123,15 +123,7 @@ var postNotice = function(content, type) {
  * Client page search form.
  */
 var initSearch = function() {
-  $('#main-search input#query')
-  .focus()
-  .keyup(function() {
-    if ($(this).val().length > 1) {
-      $.get($('#main-search').attr('action'), $('#main-search').serialize(), function(data) {
-        $('#results-list').replaceWith($('#results-list', data));
-      });
-    }
-  });
+  $('#main-search input#query').focus();
 };
 
 /**
@@ -287,6 +279,9 @@ var initQtips = function() {
  */
 var initHotKeys = function() {
   $(document)
+  .bind('keyup', 's', function() {
+    $('input#query').focus();
+  })
   .bind('keydown', 'k', function() {
     if ($('#results-list div.row.selected').length == 0) {
       $('#results-list div.row:last-child').addClass('selected');
@@ -302,9 +297,18 @@ var initHotKeys = function() {
     }
   })
   .bind('keyup', 'l', function() {
-    window.location = $('#results-list .row.selected .data .client a').attr('href');
+    if ($('#results-list .row.selected .data .client a').length > 0) {
+      window.location = $('#results-list .row.selected .data .client a').attr('href');
+    }
   })
   .bind('keyup', 'n', function() {
-    window.location = $('a#new-client').attr('href');
+    if ($('a#new-client').length > 0) {
+      window.location = $('a#new-client').attr('href');
+    }
+  })
+  .bind('keyup', 'h', function() {
+    $.colorbox({
+      href: '/static/hotkey-help.html'
+    });
   });
 };
