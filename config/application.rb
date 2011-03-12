@@ -41,7 +41,7 @@ module Ashint
         colorbox/jquery.colorbox 
         qtip/jquery.qtip 
         tagsinput/jquery.tagsinput
-        mapkey/jquery.mapkey
+        hotkeys/jquery.hotkeys
         rails
       )
 

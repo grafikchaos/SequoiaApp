@@ -35,12 +35,13 @@ body, #main { background: #fff; }
   margin: 0 0 5px;
   border: 1px solid #B9CAD4; 
   -moz-border-radius: 3px;
-  -webkit-b}rder-radius: 3px;
+  -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 
-#results-list .row .data div { float: left; padding: 0 10px; }
-#results-list .row:hover { 
+#results-list .row .data { float: left; padding: 0 10px; }
+#results-list .row:hover,
+#results-list .row.selected { 
   background: #ff9; 
   margin: 0 0 5px;
 }

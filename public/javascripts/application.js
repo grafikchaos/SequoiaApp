@@ -12,6 +12,7 @@ $(document).ready(function() {
   initToggleMasked();
   initEntityTypeFormReloader();
   initSortableLists();
+  initHotKeys();
 });
 
 /**
@@ -278,5 +279,32 @@ var initQtips = function() {
         }
       }
     });
+  });
+};
+
+/**
+ * Hotkeys.
+ */
+var initHotKeys = function() {
+  $(document)
+  .bind('keydown', 'k', function() {
+    if ($('#results-list div.row.selected').length == 0) {
+      $('#results-list div.row:last-child').addClass('selected');
+    } else {
+      $('#results-list .row.selected').removeClass('selected').prev('div.row').addClass('selected');
+    }
+  })
+  .bind('keydown', 'j', function() {
+    if ($('#results-list div.row.selected').length == 0) {
+      $('#results-list .row:first-child').addClass('selected');
+    } else {
+      $('#results-list .row.selected').removeClass('selected').next('div.row').addClass('selected');
+    }
+  })
+  .bind('keyup', 'l', function() {
+    window.location = $('#results-list .row.selected .data .client a').attr('href');
+  })
+  .bind('keyup', 'n', function() {
+    window.location = $('a#new-client').attr('href');
   });
 };

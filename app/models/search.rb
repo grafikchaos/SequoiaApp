@@ -25,7 +25,7 @@ class Search
     q.split(/\$/).each do |clause|
 
       # Divide the string on spaces.
-      words = clause.split(/\s+/)
+      words = clause.split
 
       # Client code will always be first, so we capture and remove it.
       client_code = words.first
@@ -40,7 +40,7 @@ class Search
         string.split(/#/).each do |type_clause|
 
           # Divide the string on spaces again.
-          words2 = type_clause.split(/\s+/)
+          words2 = type_clause.split
           type = words2.first
           words2.delete_at(0)
 
@@ -52,10 +52,6 @@ class Search
         self.result.concat(Entity.advanced_search(client_code, nil, string))
       end
     end
-  end
-
-  def split_types(part)
-      
   end
 
   def model_search(model)
