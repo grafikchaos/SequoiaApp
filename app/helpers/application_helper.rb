@@ -29,7 +29,7 @@ module ApplicationHelper
   end  
 
   def favable_link(obj)
-    link_to 'Favorite', favorites_path( :favable_type => obj.class.to_s, :favable_id => obj.id, :user_id => current_user.id ), :remote => true, :method => :post
+    link_to 'Favorite', favorites_path( :favorite => { :favable_type => obj.class.to_s, :favable_id => obj.id, :user_id => current_user.id } ), :remote => true, :method => :post
   end
 
 end
