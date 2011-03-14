@@ -123,7 +123,11 @@ var postNotice = function(content, type) {
  * Client page search form.
  */
 var initSearch = function() {
-  $('#main-search input#query').focus();
+  if ($('#main-search input#query').val() == '') {
+    $('#main-search input#query').focus();
+  } else {
+    $('#results-list .row:first-child').addClass('selected');
+  }
 };
 
 /**
