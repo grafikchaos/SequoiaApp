@@ -28,4 +28,8 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end  
 
+  def favable_link(obj)
+    link_to 'Favorite', favorites_path( :favable_type => obj.class.to_s, :favable_id => obj.id, :user_id => current_user.id ), :remote => true, :method => :post
+  end
+
 end

@@ -33,6 +33,12 @@ class Ability
       # can :destroy, Project # only if the project has entities with clearance levels less than or equal to the User's clearance
       can :manage, EntityRow
 
+      # Favorites
+      can :create, Favorite
+      can [:read, :update, :destroy], Favorite do |favorite|
+        favorite.user_id == user.id
+      end
+
       # Projects
       can :destroy, Project do |project|
         access = true

@@ -1,23 +1,20 @@
 Ashint::Application.routes.draw do
-  
+
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
-  
-  # Defining our nested resources.
-  resources :bookmarks
   
   resources :clients, :has_many => :notes, :shallow => true, :except => 'index' do
     resources :projects, :has_many => :notes, :except => 'show'
     resources :entities, :has_many => :notes
   end
   
+  resources :favorites, :except => 'show'
+
   # Administration for entity types and keys
   scope "/admin" do
     resources :entity_types, :entity_keys, :users, :except => 'show'
   end
   match '/admin' => redirect('/admin/entity_keys')
-
-  match '/:username/bookmarks' => 'bookmarks#index'
 
   # Our root URL is mapped to the search controller
   root :to => "search#index"
