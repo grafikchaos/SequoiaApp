@@ -297,8 +297,8 @@ var initHotKeys = function() {
     }
   })
   .bind('keyup', 'l', function() {
-    if ($('#results-list .row.selected .data .client a').length > 0) {
-      window.location = $('#results-list .row.selected .data .client a').attr('href');
+    if ($('#results-list .row.selected .data a.client').length > 0) {
+      window.location = $('#results-list .row.selected .data a.client').attr('href');
     }
   })
   .bind('keyup', 'n', function() {
