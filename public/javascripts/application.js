@@ -5,7 +5,7 @@
 $(document).ready(function() {
   initCollapsibles();
   initSearch();
-  bookmarksMenuDropDown();
+  initBookmarksMenu();
   initQtips();
   initProjectSelector();
   initRemoveRows();
@@ -100,33 +100,33 @@ var initSearch = function() {
 /**
  * Bookmarks menu.
  */
-var bookmarksMenuDropDown = function() {
-  $('#bookmarks-link a').qtip({
-    content: 'Loading...',
-    show: 'click',
-    hide: 'unfocus',
-	  position: {
-      corner: {
-        target: 'bottomMiddle',
-        tooltip: 'topMiddle'
+var initBookmarksMenu = function() {
+  $('a#bookmarks-menu')
+  .live('ajax:success', function(evt, data, status, xhr) {
+    $(this).qtip({
+      content: {
+        prerender: true,
+        text: data
+      },
+      show: {
+        when: false,      
+      },
+      hide: 'unfocus',
+      position: {
+        corner: {
+          target: 'bottomMiddle',
+          tooltip: 'topMiddle'
+        }
+      },
+      style: {
+        tip: 'topMiddle',
+        name: 'dark',
+        border: {
+          radius: 3
+        }
       }
-    },
-    style: {
-      tip: 'topMiddle', 
-      name: 'dark',
-      border: {
-        radius: 3
-      }
-    },
-    api: {
-      onRender: function() 
-      {
-        var self = this
-        $.get('/favorites', function(data) {
-          self.updateContent(data);
-        });          
-      }
-    }
+    });
+    $(this).qtip('api').show();
   });
 };
 

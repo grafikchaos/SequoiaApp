@@ -13,7 +13,7 @@
       <div id="user-navigation">
         <ul class="wat-cf">
           <li><%= link_to "Home", root_path %></li>
-          <li id="bookmarks-link"><a href="javascript:void(0)">Favorites</a></li>
+          <li><%= link_to "Favorites", favorites_path, :remote => true, :id => 'bookmarks-menu' %></li>
           <%- if current_user and current_user.role? :admin %>
             <li><%= link_to 'Admin', '/admin' %></li>
           <%- end %>
