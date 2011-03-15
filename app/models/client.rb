@@ -58,6 +58,10 @@ class Client < ActiveRecord::Base
     Entity.accessible_by(ability).includes(:entity_type).where(:project_id => project).group_by { |e| e.entity_type.name }
   end
 
+  def to_s
+    self.name
+  end
+
   ##############################
   # PROTECTED METHODS BELOW HERE
   ##############################

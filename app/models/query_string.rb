@@ -5,4 +5,8 @@ class QueryString < ActiveRecord::Base
 
   validates_presence_of :string
 
+  def to_s
+    self.string
+  end
+
 end

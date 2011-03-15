@@ -192,7 +192,6 @@ Feature: Searching
     And I should see "SSH Credentials"
     And I should see "rubyonrails"
   
-  
   @advanced_search
   Scenario: Searching for all Entities with multiple client codes
     When I fill in "query" with "$aai $ror"
@@ -219,3 +218,17 @@ Feature: Searching
       And I should see "admin"
       And I should not see "User Login"
       And I should not see "roruser"
+
+  @advanced_search @now
+    Scenario: Advanced searches should save a QueryString object
+      Given I have no query_strings
+      When I fill in "query" with "$ror #ssh"
+      And I press "Search"
+      Then I should have 1 query_string
+
+  @advanced_search @now
+    Scenario: Regular searches should not save a QueryString object
+      Given I have no query_strings
+      When I fill in "query" with "aai"
+      And I press "Search"
+      Then I should have 0 query_strings

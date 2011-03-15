@@ -12,29 +12,16 @@
 
 ActiveRecord::Schema.define(:version => 20110302200535) do
 
-  create_table "bookmarks", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.string   "query"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "client_id"
-    t.integer  "project_id"
-  end
-
-  add_index "bookmarks", ["client_id"], :name => "bookmarks_client_id_fk"
-  add_index "bookmarks", ["project_id"], :name => "bookmarks_project_id_fk"
-  add_index "bookmarks", ["user_id"], :name => "bookmarks_user_id_fk"
-
   create_table "clients", :force => true do |t|
     t.string   "name",                            :null => false
     t.string   "client_code",       :limit => 10, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "cached_slug"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
@@ -190,10 +177,6 @@ ActiveRecord::Schema.define(:version => 20110302200535) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-
-  add_foreign_key "bookmarks", "clients", :name => "bookmarks_client_id_fk", :dependent => :delete
-  add_foreign_key "bookmarks", "projects", :name => "bookmarks_project_id_fk", :dependent => :delete
-  add_foreign_key "bookmarks", "users", :name => "bookmarks_user_id_fk", :dependent => :delete
 
   add_foreign_key "entities", "entity_types", :name => "entities_entity_type_id_fk"
   add_foreign_key "entities", "projects", :name => "entities_project_id_fk", :dependent => :delete

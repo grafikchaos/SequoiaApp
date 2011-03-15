@@ -19,6 +19,9 @@ class Search
   end
 
   def advanced
+    # First, let's save the QueryString
+    QueryString.create :string => self.query if QueryString.find_by_string(self.query).nil?
+
     self.result = []
     # Remove the first $ to make our split cleaner.
     q = self.query.sub('$', '')

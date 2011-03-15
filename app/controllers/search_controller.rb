@@ -3,6 +3,7 @@ class SearchController < ApplicationController
     unless params[:query].blank?
       search = Search.new(params[:query], params[:model])
       @results = search.result
+      @query_string = QueryString.find_by_string(params[:query])
     end
 
     respond_to do |format|

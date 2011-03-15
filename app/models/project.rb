@@ -15,5 +15,9 @@ class Project < ActiveRecord::Base
 
   # define which columns are mass-assignable
   attr_accessible :name, :client_id, :domain, :notes_attributes
+
+  def to_s
+    self.name
+  end
   
 end
