@@ -182,18 +182,15 @@ a.destroy-link {
 /****************************
   NOTICES
 ****************************/
-div.flash-message {
-  position: fixed;
-  top: 0;
-  left: 0;
+div#flash-messages span {
+  display:block;
   width: 100%;
-  z-index: 1000;
-  display: none;
   font-size: 14pt;
   padding: 5px 10px;
+  margin:10px 0;
 }
-div.flash-message.notice { background: green; color: #fff; }
-div.flash-message.error { background: red; color: #fff; }
+div#flash-messages span.notice { background: green; color: #fff; }
+div#flash-messages span.error { background: red; color: #fff; }
 
 /****************************
   LOGIN PAGE
