@@ -47,6 +47,10 @@ class FavoritesController < ApplicationController
   # DELETE /favorites/1.xml
   def destroy
     @favorite.destroy
-    render 'toggle'
+
+    respond_to do |format|
+      format.js { render 'toggle' }
+      format.html { redirect_to(favorites_path, :notice => 'Favorite was successfully deleted.') }
+    end
   end
 end
