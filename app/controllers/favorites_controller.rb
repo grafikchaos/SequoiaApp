@@ -1,10 +1,13 @@
 class FavoritesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :index
 
   # GET /favorites
   # GET /favorites.xml
   def index
+    @favorites = Favorite.find_all_by_user_id(current_user.id)
+
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.xml  { render :xml => @favorites }
     end

@@ -1,0 +1,13 @@
+<ul>
+<%- @favorites.each do |favorite| %>
+  <%- link = case favorite.favable_type %>
+    <%- when 'Client' %>
+      <li><%= link_to favorite.note, client_path(Client.find(favorite.favable_id)) %></li>
+    <%- when 'Project' %>
+      <%- project = Project.find(favorite.favable_id) %>
+      <li><%= link_to favorite.note, client_path(project.client, :project => project.id) %></li>
+    <%- when 'QueryString' %>
+      <li><%= link_to favorite.note, root_path(:query => QueryString.find(favorite.favable_id).string) %></li>
+  <%- end %>
+<%- end %>
+</ul>

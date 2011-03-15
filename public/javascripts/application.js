@@ -123,7 +123,7 @@ var bookmarksMenuDropDown = function() {
       {
         var self = this
         $.get('/favorites', function(data) {
-          self.updateContent($('.bookmarks-list', data));
+          self.updateContent(data);
         });          
       }
     }
