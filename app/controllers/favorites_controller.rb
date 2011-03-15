@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  load_and_authorize_resource :except => :index
+  load_and_authorize_resource :except => [:index, :create]
 
   # GET /favorites
   # GET /favorites.xml
@@ -25,6 +25,9 @@ class FavoritesController < ApplicationController
   # POST /favorites
   # POST /favorites.xml
   def create
+    fav = params[:favorite]
+    fav[:user_id] = current_user.id
+    @favorite = Favorite.new(fav)
     @favorite.save
     render 'toggle'
   end

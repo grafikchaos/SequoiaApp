@@ -45,3 +45,9 @@ Factory.define :entity_row do |er|
   er.value 'value'
 end
 
+Factory.define :favorite do |fav|
+  fav.favable_type 'Client'
+  fav.favable_id 1
+  fav.note 'Some favorite'
+  fav.user_id 1
+end
