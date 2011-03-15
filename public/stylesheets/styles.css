@@ -154,6 +154,17 @@ form .remove a.undo { margin-left: 3px; }
   float: left;
 }
 
+a.favorite-link {
+  width: 16px; height: 16px;
+  background: url(/images/icons/glyphicons_024_dislikes.png) no-repeat;
+  display: block;
+  text-indent: -9999px;
+}
+
+a.favorite-link.faved {
+  background: url(/images/icons/glyphicons_033_star.png) no-repeat;
+}
+
 a.edit-link {
   width: 16px; height: 16px;
   background: url(/images/icons/glyphicons_000_pencil.png) no-repeat;

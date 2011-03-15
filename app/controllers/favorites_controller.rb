@@ -13,10 +13,6 @@ class FavoritesController < ApplicationController
   # GET /favorites/new
   # GET /favorites/new.xml
   def new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @favorite }
-    end
   end
 
   # GET /favorites/1/edit
@@ -26,15 +22,8 @@ class FavoritesController < ApplicationController
   # POST /favorites
   # POST /favorites.xml
   def create
-    respond_to do |format|
-      if @favorite.save
-        format.html { redirect_to(@favorite, :notice => 'Favorite was successfully created.') }
-        format.xml  { render :xml => @favorite, :status => :created, :location => @favorite }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @favorite.errors, :status => :unprocessable_entity }
-      end
-    end
+    @favorite.save
+    render 'toggle'
   end
 
   # PUT /favorites/1
@@ -55,10 +44,6 @@ class FavoritesController < ApplicationController
   # DELETE /favorites/1.xml
   def destroy
     @favorite.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(favorites_url) }
-      format.xml  { head :ok }
-    end
+    render 'toggle'
   end
 end

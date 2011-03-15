@@ -13,6 +13,7 @@ $(document).ready(function() {
   initEntityTypeFormReloader();
   initSortableLists();
   initHotKeys();
+  initFavableLinks();
 });
 
 /**
@@ -28,25 +29,6 @@ var initCollapsibles = function() {
         $(this).parent().addClass('collapsed');
       }
     });
-  });
-};
-
-/**
- * Generic AJAX form submission handler.
- */
-var handleAjaxFormSubmit = function(form, callback) {
-  form.submit(function() {
-    var url = form.attr('action');
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: form.serialize(),
-      success: function(data) {
-        callback(data);
-        clearForm(form);
-      }
-    });
-    return false;
   });
 };
 
@@ -69,21 +51,6 @@ var clearForm = function(element) {
         break;
     }
   });
-};
-
-/**
- * Generic data reload handler.
- */
-var reloadData = function(element, message) {
-  
-  // Default message.
-  var message = message ? message : 'Loading';
-  startLoading(element, message);
-  
-  switch (element) {
-    // Add elements here.
-  }
-  
 };
 
 /**
@@ -155,7 +122,7 @@ var bookmarksMenuDropDown = function() {
       onRender: function() 
       {
         var self = this
-        $.get('/user/bookmarks', function(data) {
+        $.get('/favorites', function(data) {
           self.updateContent($('.bookmarks-list', data));
         });          
       }
@@ -314,5 +281,15 @@ var initHotKeys = function() {
     $.colorbox({
       href: '/static/hotkey-help.html'
     });
+  });
+};
+
+var initFavableLinks = function() {
+  $('a.favorite-link')
+  .live('ajax:beforeSend', function(evt, xhr, settings) {
+    $(this).replaceWith('<img class="loader" src="/images/ajax-loader.gif" />');
+  })
+  .live('ajax:success', function(evt, data, status, xhr) {
+    $('img.loader').replaceWith(data);
   });
 };
