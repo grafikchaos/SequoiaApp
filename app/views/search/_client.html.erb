@@ -8,8 +8,8 @@
   <div class="controls">
     <ul>
       <li><%= favable_link(client) %></li>
-      <li><%= link_to 'Edit', edit_client_path(client), :class => 'edit-link tooltip', :title => 'Edit this client' %></li>
-      <li><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete this client' %></li>
+      <li><%= edit_link edit_client_path(client), :title => 'Edit this client' %></li>
+      <li><%= destroy_link client, :title => 'Delete this client' %></li>
     </ul>
   </div>
   <div class="clear"></div>

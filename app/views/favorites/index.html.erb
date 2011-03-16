@@ -8,12 +8,12 @@
     <td><%= link_to_favorite favorite %></td>
     <td>
       <%- if can? :edit, favorite -%>
-        <%= link_to 'Edit', edit_favorite_path(favorite), :class => 'tooltip edit-link', :title => 'Edit this favorite' %>
+        <%= edit_link edit_favorite_path(favorite), :title => 'Edit this favorite' %>
       <%- end -%>
     </td>
     <td>
       <%- if can? :destroy, favorite -%>
-        <%= link_to 'Destroy', favorite, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete this favorite' %>
+        <%= destroy_link favorite, :title => 'Delete this favorite' %>
       <%- end -%>
     </td>
   </tr>

@@ -13,9 +13,9 @@
   <tr>
     <td><%= project.name %></td>
     <td><%= project.domain %></td>
-    <td><%= link_to 'Edit', edit_project_path(project), :class => 'edit-link tooltip', :title => 'Edit this project' %></td>
+    <td><%= edit_link edit_project_path(project), :title => 'Edit this project' %></td>
     <%- if is_not_only_project and can? :destroy, project %>
-      <td><%= link_to 'Delete', project, :confirm => 'Are you sure you want to delete this project?', :method => :delete, :class => 'destroy-link tooltip', :title => 'Delete this project' %></td>
+      <td><%= destroy_link project, :title => 'Delete this project' %></td>
     <%- end %>
   </tr>
 <% end %>

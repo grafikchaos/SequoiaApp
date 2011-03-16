@@ -37,4 +37,18 @@ module ApplicationHelper
     end
   end
 
+  def edit_link(path, *args)
+    options = args.first || {}
+    options[:class] = 'edit-link tooltip'
+    link_to 'Edit', path, options
+  end
+
+  def destroy_link(path, *args)
+    options = args.first || {}
+    options[:class] = 'destroy-link tooltip'
+    options[:confirm] = 'Are you sure?'
+    options[:method] = :delete
+    link_to 'Destroy', path, options
+  end
+
 end

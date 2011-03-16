@@ -17,12 +17,12 @@
     <td><%= entity_type.name %></td>
     <td>
       <%- if can? :edit, EntityType -%>
-        <%= link_to 'Edit', edit_entity_type_path(entity_type), :id => "edit-#{entity_type.friendly_id}", :class => 'tooltip edit-link', :title => 'Edit this entity type' %>
+        <%= edit_link edit_entity_type_path(entity_type), :id => "edit-#{entity_type.friendly_id}", :title => 'Edit this entity type' %>
       <%- end -%>
     </td>
     <td>
       <%- if can? :destroy, EntityType -%>
-        <%= link_to 'Destroy', entity_type, :confirm => 'Are you sure?', :method => :delete, :id => "delete-#{entity_type.friendly_id}", :class => 'destroy-link tooltip', :title => 'Delete this entity type' %>
+        <%= destroy_link entity_type, :id => "delete-#{entity_type.friendly_id}", :title => 'Delete this entity type' %>
       <%- end -%>
     </td>
   </tr>

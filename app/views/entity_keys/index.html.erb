@@ -15,8 +15,8 @@
   <tr>
     <td><%= entity_key.name %></td>
     <td><%= entity_key.mask ? "Masked" : "Not masked" %></div>
-    <td><%= link_to 'Edit', edit_entity_key_path(entity_key), :id => "edit-#{entity_key.friendly_id}", :class => 'tooltip edit-link', :title => 'Edit this entity key' %></td>
-    <td><%= link_to 'Destroy', entity_key, :confirm => 'Are you sure?', :method => :delete, :id => "delete-#{entity_key.friendly_id}", :class => 'tooltip destroy-link', :title => 'Delete this entity key' %></td>
+    <td><%= edit_link edit_entity_key_path(entity_key), :id => "edit-#{entity_key.friendly_id}", :title => 'Edit this entity key' %></td>
+    <td><%= destroy_link entity_key, :id => "delete-#{entity_key.friendly_id}", :title => 'Delete this entity key' %></td>
   </tr>
 <% end %>
 </table>
