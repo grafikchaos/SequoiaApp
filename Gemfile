@@ -9,6 +9,7 @@ gem 'cancan'
 gem "friendly_id"
 gem "paperclip"
 gem "meta_where"
+gem 'foreigner'
 
 # For bookmarking
 gem 'acts_as_favable'
@@ -26,7 +27,6 @@ group :development, :test do
   gem 'cucumber-rails'
   gem 'pickle'
   gem 'database_cleaner'
-  gem 'foreigner'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'launchy'
