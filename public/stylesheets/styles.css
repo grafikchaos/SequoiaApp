@@ -306,6 +306,7 @@ input[type='submit'] {
 fieldset.collapsible legend {
   background: url(/images/icons/menu-expanded.png) no-repeat left center;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 fieldset.collapsible.collapsed legend {
