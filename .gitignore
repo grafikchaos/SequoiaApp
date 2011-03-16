@@ -8,6 +8,7 @@ config/environments/demo.rb
 config/initializers/secret_token.rb
 *.bak
 db/seeds.private.rb
+db/seeds.demo.rb
 public/system/logos
 webrat.log
 tmp/
