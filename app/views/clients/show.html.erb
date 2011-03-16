@@ -11,11 +11,11 @@
   <%- end -%>
 
   <%- if can? :edit, Client -%>
-    <%= edit_link edit_client_path(@client), :title => 'Edit this client' %>
+    <%= edit_link @client %>
   <%- end -%>
 
   <%- if can? :delete, Client -%>
-    <%= destroy_link @client, :title => 'Delete this client' %>
+    <%= destroy_link @client %>
   <%- end -%>
 </div>
 

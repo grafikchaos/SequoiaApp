@@ -8,12 +8,12 @@
     <td><%= link_to_favorite favorite %></td>
     <td>
       <%- if can? :edit, favorite -%>
-        <%= edit_link edit_favorite_path(favorite), :title => 'Edit this favorite' %>
+        <%= edit_link favorite %>
       <%- end -%>
     </td>
     <td>
       <%- if can? :destroy, favorite -%>
-        <%= destroy_link favorite, :title => 'Delete this favorite' %>
+        <%= destroy_link favorite %>
       <%- end -%>
     </td>
   </tr>

@@ -13,9 +13,9 @@
   <tr>
     <td><%= project.name %></td>
     <td><%= project.domain %></td>
-    <td><%= edit_link edit_project_path(project), :title => 'Edit this project' %></td>
+    <td><%= edit_link project %></td>
     <%- if is_not_only_project and can? :destroy, project %>
-      <td><%= destroy_link project, :title => 'Delete this project' %></td>
+      <td><%= destroy_link project %></td>
     <%- end %>
   </tr>
 <% end %>

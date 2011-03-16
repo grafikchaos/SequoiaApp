@@ -17,12 +17,12 @@
     <td><%= entity_type.name %></td>
     <td>
       <%- if can? :edit, EntityType -%>
-        <%= edit_link edit_entity_type_path(entity_type), :id => "edit-#{entity_type.friendly_id}", :title => 'Edit this entity type' %>
+        <%= edit_link entity_type, :id => "edit-#{entity_type.friendly_id}" %>
       <%- end -%>
     </td>
     <td>
       <%- if can? :destroy, EntityType -%>
-        <%= destroy_link entity_type, :id => "delete-#{entity_type.friendly_id}", :title => 'Delete this entity type' %>
+        <%= destroy_link entity_type, :id => "delete-#{entity_type.friendly_id}" %>
       <%- end -%>
     </td>
   </tr>

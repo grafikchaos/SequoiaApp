@@ -37,18 +37,21 @@ module ApplicationHelper
     end
   end
 
-  def edit_link(path, *args)
+  def edit_link(obj, *args)
     options = args.first || {}
     options[:class] = 'edit-link tooltip'
-    link_to 'Edit', path, options
+    options[:title] = 'Edit this ' + obj.class.to_s.tableize.gsub('_', ' ').singularize
+    path = 'edit_' + obj.class.to_s.tableize.singularize + '_path'
+    link_to 'Edit', method(path).call(obj), options
   end
 
-  def destroy_link(path, *args)
+  def destroy_link(obj, *args)
     options = args.first || {}
     options[:class] = 'destroy-link tooltip'
+    options[:title] = 'Delete this ' + obj.class.to_s.tableize.gsub('_', ' ').singularize
     options[:confirm] = 'Are you sure?'
     options[:method] = :delete
-    link_to 'Destroy', path, options
+    link_to 'Destroy', obj, options
   end
 
 end
