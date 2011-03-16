@@ -38,7 +38,7 @@ var initCollapsibles = function() {
  */
 var initFlashHide = function() {
   if ($('#flash-messages').length > 0) {
-    $('#flash-messages').delay(1000).slideUp();
+    $('#flash-messages').delay(2000).slideUp();
   }
 }
 
