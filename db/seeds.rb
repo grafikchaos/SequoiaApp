@@ -112,3 +112,56 @@ EntityTypeAlias.create([
   { :entity_type_id => EntityType.find_by_name('Wireless').id, :name => 'wep'},
   { :entity_type_id => EntityType.find_by_name('Wireless').id, :name => 'wifi'}
 ])
+
+EntityTypeConfigRow.create([
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'soap'},
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'web service'},
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'rest'},
+  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'restful'},
+
+  { :entity_type_id => EntityType.find_by_name('Computer').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Computer').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+
+  { :entity_type_id => EntityType.find_by_name('Database').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :entity_key_id => EntityKey.find_by_name('Host').id, :sort_order => 2},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :entity_key_id => EntityKey.find_by_name('Database Name').id, :sort_order => 3},
+  { :entity_type_id => EntityType.find_by_name('Database').id, :entity_key_id => EntityKey.find_by_name('Port').id, :sort_order => 4},
+
+  { :entity_type_id => EntityType.find_by_name('Email').id, :entity_key_id => EntityKey.find_by_name('Email Address').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :entity_key_id => EntityKey.find_by_name('Host').id, :sort_order => 2},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :entity_key_id => EntityKey.find_by_name('Protocol').id, :sort_order => 3},
+  { :entity_type_id => EntityType.find_by_name('Email').id, :entity_key_id => EntityKey.find_by_name('Port').id, :sort_order => 4},
+
+  { :entity_type_id => EntityType.find_by_name('FTP').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('FTP').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('FTP').id, :entity_key_id => EntityKey.find_by_name('Host').id, :sort_order => 2},
+  { :entity_type_id => EntityType.find_by_name('FTP').id, :entity_key_id => EntityKey.find_by_name('Port').id, :sort_order => 3},
+
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :entity_key_id => EntityKey.find_by_name('Transaction Key').id, :sort_order => 2},
+  { :entity_type_id => EntityType.find_by_name('Payment Gateway').id, :entity_key_id => EntityKey.find_by_name('API Key').id, :sort_order => 3},
+
+  { :entity_type_id => EntityType.find_by_name('Remote Desktop').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Remote Desktop').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('Remote Desktop').id, :entity_key_id => EntityKey.find_by_name('Host').id, :sort_order => 2},
+
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :entity_key_id => EntityKey.find_by_name('Host').id, :sort_order => 2},
+  { :entity_type_id => EntityType.find_by_name('SSH').id, :entity_key_id => EntityKey.find_by_name('Port').id, :sort_order => 3},
+
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :entity_key_id => EntityKey.find_by_name('Host').id, :sort_order => 2},
+  { :entity_type_id => EntityType.find_by_name('Version Control').id, :entity_key_id => EntityKey.find_by_name('Protocol').id, :sort_order => 3},
+
+  { :entity_type_id => EntityType.find_by_name('Website').id, :entity_key_id => EntityKey.find_by_name('URL').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Website').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 1},
+  { :entity_type_id => EntityType.find_by_name('Website').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 2},
+
+  { :entity_type_id => EntityType.find_by_name('Wireless').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 0},
+  { :entity_type_id => EntityType.find_by_name('Wireless').id, :entity_key_id => EntityKey.find_by_name('Protocol').id, :sort_order => 1},
+])

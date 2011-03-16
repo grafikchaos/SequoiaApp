@@ -13,8 +13,10 @@ html, body { height: 100%; }
 /****************************
   HEADER
 ****************************/
+#header {padding: 10px 0;}
 #header h1 {
   color: #EAEAEA;
+  padding: 0px 15px;
 }
 
 /****************************
@@ -201,14 +203,14 @@ div#flash-messages span.error { background: red; color: #fff; }
 ****************************/
 #box.login {
   width: 300px;
-  padding: 30px;
+  padding: 20px;
   background: #fff;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  border-radius: 15px;
-  -moz-box-shadow: 2px 2px 2px #999;
-  -webkit-box-shadow: 2px 2px 2px #999;
-  box-shadow: 2px 2px 2px #999;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 2px 1px #999;
+  -webkit-box-shadow: 0 1px 2px 1px #999;
+  box-shadow: 0 1px 2px 1px #999;
 }
 
 #box.login h2 {
@@ -279,24 +281,32 @@ input[type='password'],
 input[type='text'],
 input[type='url'],
 input:not([type]) {
-  -webkit-border-radius: 2px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   border: 1px solid #aaa;
   font-size: inherit;
   padding: 3px;
+  width: 292px;
 }
 
 button,
 input[type='submit'] {
-  -webkit-border-radius: 2px;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 2px 1px #999;
+  -webkit-box-shadow: 0 1px 2px 1px #999;
+  box-shadow: 0 1px 2px 1px #999;
   -webkit-user-select: none;
-  background: -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
-  border: 1px solid #aaa;
-  color: #444;
+  background: #588797;
+  border: 1px solid #222;
+  color: #fff;
   font-size: inherit;
   margin-bottom: 0px;
   min-width: 4em;
   padding: 3px 12px 3px 12px;
+  text-transform: uppercase;
 }
 
 
