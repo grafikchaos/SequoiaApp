@@ -190,6 +190,7 @@ div#flash-messages span {
   margin:10px 0;
 }
 div#flash-messages span.notice { background: green; color: #fff; }
+div#flash-messages span.alert { background: yellow; color: #000; }
 div#flash-messages span.error { background: red; color: #fff; }
 
 /****************************
