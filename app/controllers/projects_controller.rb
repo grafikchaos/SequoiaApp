@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-    1.times { @project.notes.build }
+    1.times { @project.notes.build } if @project.notes.empty?
   end
 
   # POST /projects

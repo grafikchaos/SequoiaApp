@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
-    1.times { @client.notes.build }
+    1.times { @client.notes.build } if @client.notes.empty?
   end
 
   # POST /clients
