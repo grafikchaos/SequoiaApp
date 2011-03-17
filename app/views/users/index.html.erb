@@ -16,10 +16,10 @@
     <td><%= user.username %></td>
     <td>Level <%= user.clearance %></td>
     <td><%= user.role %></td>
-    <td><%= edit_link user, :id => "edit-#{user.username}" %></td>
+    <td><%= edit_link user %></td>
     <td>
       <%- if user != current_user %>
-        <%= destroy_link user, :id => "delete-#{user.username}" %>
+        <%= destroy_link user %>
       <%- end %>
     </td>
   </tr>
