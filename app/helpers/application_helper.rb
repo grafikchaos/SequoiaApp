@@ -65,7 +65,7 @@ module ApplicationHelper
     elsif obj.respond_to?('name')
       obj.name.downcase.gsub(' ', '_')
     else
-      obj.id
+      obj.id.to_s
     end
   end
 
