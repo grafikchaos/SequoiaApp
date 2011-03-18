@@ -33,10 +33,10 @@
       <div class="description">
         Any options you add here will appear as default fields when a user creates a new entity with this type.
       </div>
-      <%= f.fields_for :entity_type_config_rows do |rows_form| %>
-        <%= render 'entity_types/config_row_form_fields', :f => rows_form %>
+      <%= f.fields_for :form_config do |rows_form| %>
+        <%= render 'entity_types/form_config_form_fields', :f => rows_form %>
       <% end %>
-      <%= link_to_add_fields "Add another", f, :entity_type_config_rows, 'entity_types/config_row_form_fields' %>
+      <%= link_to_add_fields "Add another", f, :form_config, 'entity_types/form_config_form_fields' %>
     </div>
   <% end %>
 

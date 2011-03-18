@@ -1,7 +1,6 @@
-<div class="entity-type-config-row-field">
+<div class="form-config-field">
   <div class="sort-handle"></div>
   <div class="field">
-    <%= f.label :entity_key_id, "Key" %>
     <%= f.collection_select :entity_key_id, EntityKey.all, :id, :name, :prompt => true %>
   </div>
 

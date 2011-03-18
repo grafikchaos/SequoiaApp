@@ -50,6 +50,8 @@ body, #main { background: #fff; }
 }
 
 #main-search input[type=submit] {
+  display:block;
+  text-indent:-9999px;
   border: none;
   border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -151,14 +153,14 @@ span.exposed { display: none; }
 ****************************/
 form .entity-row-field,
 form .entity-type-alias-field,
-form .entity-type-config-row-field {
+form .form-config-field {
   overflow: auto;
   clear: both;
 }
 
 form .entity-row-field div,
 form .entity-type-alias-field div,
-form .entity-type-config-row-field div {
+form .form-config-field div {
   float: left;
   padding: 3px;
 }

@@ -9,7 +9,7 @@ class EntitiesController < ApplicationController
     # Load in the config for the given entity type
     # and build the rows accordingly
     type = params[:entity_type_id] ? EntityType.find(params[:entity_type_id]) : EntityType.first
-    type.entity_type_config_rows.each do |row|
+    type.form_configs.each do |row|
       @entity.entity_rows.build :entity_key_id => row.entity_key_id
     end
 

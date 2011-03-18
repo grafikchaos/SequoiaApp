@@ -14,7 +14,7 @@ class EntityTypesController < ApplicationController
   # GET /entity_types/new.xml
   def new
     3.times { @entity_type.entity_type_aliases.build } 
-    3.times { @entity_type.entity_type_config_rows.build }
+    3.times { @entity_type.form_config.build }
     
     respond_to do |format|
       format.html # new.html.erb
