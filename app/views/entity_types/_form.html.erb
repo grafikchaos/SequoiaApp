@@ -36,7 +36,7 @@
       <%= f.fields_for :form_configs do |rows_form| %>
         <%= render 'entity_types/form_config_form_fields', :f => rows_form %>
       <% end %>
-      <%= link_to_add_fields "Add another", f, :form_config, 'entity_types/form_config_form_fields' %>
+      <%= link_to_add_fields "Add another", f, :form_configs, 'entity_types/form_config_form_fields' %>
     </div>
   <% end %>
 

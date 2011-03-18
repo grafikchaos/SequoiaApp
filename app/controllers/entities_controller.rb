@@ -8,13 +8,13 @@ class EntitiesController < ApplicationController
     
     # Load in the config for the given entity type
     # and build the rows accordingly
-    type = params[:entity_type_id] ? EntityType.find(params[:entity_type_id]) : EntityType.first
-    type.form_configs.each do |row|
+    @form_config = FormConfig.get_for_type(params[:entity_type_id])
+    @form_config.each do |row|
       @entity.entity_rows.build :entity_key_id => row.entity_key_id, :form_config_id => row.id.to_s
     end
 
     # If the entity type has no config, just load a blank row
-    if type.form_configs.empty?
+    if @form_config.empty?
       @entity.entity_rows.build
     end
 

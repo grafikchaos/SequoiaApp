@@ -7,4 +7,14 @@ class FormConfig < ActiveRecord::Base
 
   # setting the default scope
   default_scope order(:sort_order)
+
+  # named scopes
+  scope :get_for_type, lambda { |id| 
+    if id.nil?
+      where(:entity_type_id => EntityType.first.id)
+    else
+      where(:entity_type_id => id)
+    end
+  }
+
 end

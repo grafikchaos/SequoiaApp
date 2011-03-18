@@ -30,8 +30,8 @@
 
   <%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
     <div class="fieldset-wrapper">
-      <%= f.fields_for :entity_rows do |entity_row_form| %>
-        <%= render 'entity_rows/form_fields', :f => entity_row_form %>
+      <%= f.fields_for :entity_rows do |row_form| %>
+        <%= render 'entity_rows/form_fields', :f => row_form, :config => @form_config.select { |conf| conf.id == row_form.object.form_config_id }.first %>
       <%- end %>
       <%= link_to_add_fields "Add another", f, :entity_rows %>
     </div>
