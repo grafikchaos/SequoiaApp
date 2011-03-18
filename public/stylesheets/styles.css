@@ -226,8 +226,12 @@ div#flash-messages span.error { background: red; color: #fff; }
 /****************************
   BOOKMARKS MENU
 ****************************/
-.bookmarks-list ul {
+ul.bookmarks-list {
   list-style-type: none;
+}
+
+ul.bookmarks-list a {
+  color: #EAEAEA;
 }
 
 /****************************
