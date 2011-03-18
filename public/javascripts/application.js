@@ -58,11 +58,11 @@ var initSearch = function() {
  */
 var initBookmarksMenu = function() {
   $('a#bookmarks-menu')
-  .live('ajax:success', function(evt, data, status, xhr) {
+  .live('ajax:beforeSend', function() {
     $(this).qtip({
       content: {
         prerender: true,
-        text: data
+        text: '<img src="/images/ajax-loader.gif" />'
       },
       show: {
         when: false,      
@@ -83,6 +83,9 @@ var initBookmarksMenu = function() {
       }
     });
     $(this).qtip('api').show();
+  })
+  .live('ajax:success', function(evt, data, status, xhr) {
+    $(this).qtip('api').updateContent(data);
   });
 };
 
