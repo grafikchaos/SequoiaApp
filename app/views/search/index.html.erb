@@ -1,5 +1,5 @@
 <%= render 'form' %>
-<%= favable_link(@query_string) unless @query_string.nil? %>
+<%= favable_link(@query_string) unless @results.empty? %>
 
 <div class="controls">
   <%- if can? :create, Client -%>
