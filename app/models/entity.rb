@@ -24,10 +24,10 @@ class Entity < ActiveRecord::Base
   attr_accessible :name, :project_id, :entity_type_id, :entity_rows_attributes, :notes_attributes
   
   # setting the default scope
-  default_scope order(:project_id)
+  default_scope includes({:entity_rows => :entity_key}).order(:project_id)
 
   # Named scopes
-  #scope :nested, lambda { |project| includes(
+
   # Scopes for searching
   scope :limit_client, lambda { |code| includes({:project => :client }).where(:clients => {:client_code => code }) }
   scope :limit_type, lambda { |type| 
