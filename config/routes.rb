@@ -17,7 +17,8 @@ Ashint::Application.routes.draw do
   match '/admin' => redirect('/admin/entity_keys')
 
   # Our root URL is mapped to the search controller
-  root :to => "search#index"
+  root :to => "search#start"
+  match '/search' => 'search#results', :as => 'search_results'
   
   # Catch everything else and give it to the error controller
   match '*a', :to => 'errors#routing', :as => 'error'

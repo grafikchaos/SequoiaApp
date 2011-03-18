@@ -1,5 +1,12 @@
 class SearchController < ApplicationController
-  def index
+
+  def start
+    respond_to do |format|
+      format.html # start.html.erb
+    end
+  end
+
+  def results
     unless params[:query].blank?
       search = Search.new(params[:query], params[:model])
       @results = search.result
@@ -7,8 +14,8 @@ class SearchController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @objects }
+      format.html # results.html.erb
     end
   end
+
 end
