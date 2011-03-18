@@ -30,17 +30,29 @@
   </noscript>
 <% end %>
 
+<div class="jump-menu">
+  <span class="jump-hover">Jump to section</span>
+  <span class="links">
+    <%- @entities.each do |name, rows| %>
+      <%= link_to name, :anchor => name.tableize.singularize %>
+    <%- end %>
+  </span>
+</div>
+
 <div id="entity-list">
   <%- @entities.each do |name, rows| %>
-    <div class="group">
-      <h3><%= name %></h3>
+    <div id="<%= name.tableize.singularize %>" class="group">
+      <div class="bar">
+        <h3><%= name %></h3>
+        <%= link_to "Back to top", :anchor => 'wrapper' %>
+      </div>
+      <div class="clear"></div>
       <%- rows.each do |entity| %>
         <%= render 'entities/row', :entity => entity %>
       <%- end %>
     </div>
   <%- end %>
 </div>
-<div class="clearer"></div>
 
 <div class="notes">
   <div class="client-notes">
