@@ -12,6 +12,8 @@
     <%= f.text_field :value %>
   </div>
 
+  <%= f.hidden_field :form_config_id %>
+
   <%- unless f.object.new_record? %>
     <div class="hide delete-message">
       <em>This row will be deleted on save</em>

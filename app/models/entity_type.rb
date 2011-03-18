@@ -1,7 +1,7 @@
 class EntityType < ActiveRecord::Base
   has_many :entities
   has_many :entity_type_aliases
-  has_many :form_config
+  has_many :form_configs
   
   # validations
   validates_presence_of :name
@@ -18,7 +18,7 @@ class EntityType < ActiveRecord::Base
 
   # accept Entity Type Aliases and Config Rows form fields/attributes
   accepts_nested_attributes_for :entity_type_aliases, :reject_if => lambda { |row| row[:name].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :form_config, :reject_if => lambda { |row| row[:entity_key_id].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :form_configs, :reject_if => lambda { |row| row[:entity_key_id].blank? }, :allow_destroy => true
 
   # friendly_id slug behavior
   has_friendly_id :name, 
