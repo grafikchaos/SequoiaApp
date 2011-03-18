@@ -58,23 +58,43 @@ body, #main { background: #fff; }
 /****************************
   ENTITY LIST
 ****************************/
+.jump-menu {
+  background: #232C30;
+  color: #EAEAEA;
+  padding: 5px;
+}
+
+.jump-menu .links {
+  display: none;
+}
+
 #entity-list .group {
-  float: left;
-  width: 25%;
-  margin: 5px;
-  border: 1px solid #000;
+  clear: both;
+  overflow: auto;
+}
+
+#entity-list .group .bar {
+  background: #232C30;
+  overflow: auto;
+  padding: 5px;
+}
+
+#entity-list .group .bar a {
+  float: right;
 }
 
 #entity-list .group h3 {
+  float: left;
   color: #EAEAEA;
-  background: #232C30;
-  padding: 2px 3px;
   margin: 0;
 }
 
 #entity-list .group .entity {
-  clear: both;
+  width: 25%;
+  float: left;
+  border: 1px solid #000;
   padding-left: 3px;
+  margin: 5px 10px 5px 0; 
 }
 
 #entity-list .group .entity .name { 
@@ -83,7 +103,6 @@ body, #main { background: #fff; }
 
 #entity-list .group .entity .entity-rows {
   clear: both;
-  float: left;
 }
 
 span.exposed { display: none; }

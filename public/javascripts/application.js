@@ -15,6 +15,7 @@ $(document).ready(function() {
   initSortableLists();
   initHotKeys();
   initFavableLinks();
+  initJumpLinks();
 });
 
 /**
@@ -252,3 +253,12 @@ var initFavableLinks = function() {
     $('img.loader').replaceWith(data);
   });
 };
+
+var initJumpLinks = function() {
+  $('.jump-menu .jump-hover').mouseenter(function() {
+    $(this).siblings('.links').fadeIn();
+  });
+  $('.jump-menu').mouseleave(function() {
+    $('.links', this).fadeOut();
+  });
+}
