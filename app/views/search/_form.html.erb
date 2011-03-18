@@ -1,10 +1,8 @@
-<%= form_tag("/", :method => :get, :id => 'main-search') do %>
+<%= form_tag(search_results_path, :method => :get, :id => 'main-search') do %>
   
   <%= text_field_tag 'query', params[:query] %>
   
-  <noscript>
-    <%= submit_tag 'Search' %>
-  </noscript>
+  <%= submit_tag '' %>
 
 <% end %>
 

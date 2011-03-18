@@ -30,6 +30,45 @@ body, #main { background: #fff; }
 #main { width: 100%; }
 
 /****************************
+  SEARCH FORM
+****************************/
+#big-search-form {
+  width: 380px;
+  margin: 300px auto;
+}
+
+#main-search input[type=text] {
+  border-right: none;
+  -moz-border-radius: 3px 0 0 3px;
+  -webkit-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+  float: left;
+}
+
+#big-search-form #main-search input[type=text] {
+  font-size: 18pt;
+}
+
+#main-search input[type=submit] {
+  border: none;
+  border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  -webkit-border-radius: 0 3px 3px 0;
+  border: 1px solid #aaa;
+  box-shadow: none;
+  min-width: 0;
+  height: 23px;
+  background: url(/images/icons/glyphicons_007_search_small.png) no-repeat center center;
+  color: #000;
+}
+
+#big-search-form #main-search input[type=submit] {
+  min-width: 4em;
+  height: 38px;
+  background: url(/images/icons/glyphicons_007_search.png) no-repeat center center;
+}
+
+/****************************
   SEARCH RESULTS LIST
 ****************************/
 #results-list .row { 
