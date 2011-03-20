@@ -1,6 +1,6 @@
 <%= form_tag(search_results_path, :method => :get, :id => 'main-search') do %>
   
-  <%= text_field_tag 'query', params[:query] %>
+  <%= text_field_tag 'query', params[:query], :placeholder => 'Search...' %>
   
   <%= submit_tag 'Search' %>
 
