@@ -1,17 +1,11 @@
 class EntitiesController < ApplicationController
   load_and_authorize_resource
+  before_filter :load_form_config, :only => [:new, :edit]
 
   # GET /entities/new
   # GET /entities/new.xml
   def new
     @client = Client.find(params[:client_id])
-    
-    # Load in the config for the given entity type
-    # and build the rows accordingly
-    @form_config = FormConfig.get_for_type(params[:entity_type_id])
-    @form_config.each do |row|
-      @entity.entity_rows.build :entity_key_id => row.entity_key_id, :form_config_id => row.id.to_s
-    end
 
     # If the entity type has no config, just load a blank row
     if @form_config.empty?
@@ -34,14 +28,6 @@ class EntitiesController < ApplicationController
     if @entity.notes.empty?
       @entity.notes.build
     end
-
-    # Create more rows for the user to add entity rows
-    count = 3 - @entity.entity_rows.count
-    if count > 1 
-      count.times { @entity.entity_rows.build }
-    else
-      @entity.entity_rows.build
-    end
   end
 
   # POST /entities
@@ -54,6 +40,7 @@ class EntitiesController < ApplicationController
         format.html { redirect_to(@client, :notice => 'Entity was successfully created.') }
         format.xml  { render :xml => @entity, :status => :created, :location => @entity }
       else
+        load_form_config
         format.html { render :action => "new" }
         format.xml  { render :xml => @entity.errors, :status => :unprocessable_entity }
       end
@@ -71,6 +58,7 @@ class EntitiesController < ApplicationController
         format.html { redirect_to(@client, :notice => 'Entity was successfully updated.') }
         format.xml  { head :ok }
       else
+        load_form_config
         format.html { render :action => "edit" }
         format.xml  { render :xml => @entity.errors, :status => :unprocessable_entity }
       end
@@ -88,4 +76,21 @@ class EntitiesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # Load the form config
+  def load_form_config
+    @form_config = FormConfig.get_for_type(@entity.entity_type_id || params[:entity_type_id])
+
+    confs = []
+    @entity.entity_rows.each do |row|
+      confs << row.form_config_id
+    end
+
+    @form_config.each_with_index do |row, index|
+      if !confs.include?(row.id)
+        @entity.entity_rows.insert(index, EntityRow.new(:entity_id => @entity.id, :entity_key_id => row.entity_key_id, :form_config_id => row.id.to_s))
+      end
+    end
+  end
+
 end
