@@ -18,6 +18,8 @@ gem 'acts_as_favable'
 # Fetching from github for Ruby 1.9 compatibility
 gem 'attr_encrypted', :git => 'git://github.com/cgod/attr_encrypted.git'
 
+gem 'cover_me'
+
 group :development, :test, :demo do
   gem 'web-app-theme'
   gem 'autotest'
