@@ -40,7 +40,9 @@ class EntitiesController < ApplicationController
         format.html { redirect_to(@client, :notice => 'Entity was successfully created.') }
         format.xml  { render :xml => @entity, :status => :created, :location => @entity }
       else
+        # load in the form config so we can re-construct the form
         load_form_config
+
         format.html { render :action => "new" }
         format.xml  { render :xml => @entity.errors, :status => :unprocessable_entity }
       end
@@ -58,7 +60,9 @@ class EntitiesController < ApplicationController
         format.html { redirect_to(@client, :notice => 'Entity was successfully updated.') }
         format.xml  { head :ok }
       else
+        # load in the form config so we can re-construct the form
         load_form_config
+
         format.html { render :action => "edit" }
         format.xml  { render :xml => @entity.errors, :status => :unprocessable_entity }
       end

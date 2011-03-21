@@ -10,11 +10,14 @@ class EntityRow < ActiveRecord::Base
 
   default_scope includes(:entity_key)
 
+  ##############################
   # Private methods below here.
+  ##############################
   private
-
-  def value_required?
-    self.form_config_id.blank? ? false : FormConfig.find(self.form_config_id).required
-  end
+  
+    # Don't require a value if the :form_config_id is blank
+    def value_required?
+      self.form_config_id.blank? ? false : FormConfig.find(self.form_config_id).required
+    end
 
 end
