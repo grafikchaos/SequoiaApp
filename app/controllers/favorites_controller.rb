@@ -27,6 +27,7 @@ class FavoritesController < ApplicationController
   def create
     fav = params[:favorite]
     fav[:user_id] = current_user.id
+    fav[:name] = fav[:note]
     @favorite = Favorite.new(fav)
     @favorite.save
     render 'toggle'
@@ -37,7 +38,7 @@ class FavoritesController < ApplicationController
   def update
     respond_to do |format|
       if @favorite.update_attributes(params[:favorite])
-        format.html { redirect_to(@favorite, :notice => 'Favorite was successfully updated.') }
+        format.html { redirect_to(favorites_path, :notice => 'Favorite was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

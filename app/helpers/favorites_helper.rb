@@ -8,7 +8,11 @@ module FavoritesHelper
         project = Project.find(favorite.favable_id)
         link_to favorite.note, client_path(project.client, :project => project.id)
       when 'QueryString'
-        link_to favorite.note, search_results_path(:query => QueryString.find(favorite.favable_id).string)
+        if favorite.name.present?
+          link_to favorite.name, search_results_path(:query => QueryString.find(favorite.favable_id).string)
+        else
+          link_to favorite.note, search_results_path(:query => QueryString.find(favorite.favable_id).string)
+        end
     end 
   end
 

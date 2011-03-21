@@ -8,5 +8,5 @@ class Favorite < ActiveRecord::Base
   # NOTE: Favorite belongs to a user
   belongs_to :user
 
-  attr_accessible :favable_type, :favable_id, :note, :user_id
+  attr_accessible :favable_type, :favable_id, :note, :name, :user_id
 end

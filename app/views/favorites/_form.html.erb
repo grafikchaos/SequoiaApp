@@ -1,0 +1,18 @@
+  <% if @favorite.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @favorite.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field required">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318185106) do
+ActiveRecord::Schema.define(:version => 20110321021130) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",                            :null => false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20110318185106) do
     t.integer  "entity_id",       :null => false
     t.integer  "form_config_id"
     t.integer  "entity_key_id",   :null => false
-    t.integer  "form_config_id"
     t.string   "encrypted_value", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -91,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20110318185106) do
   add_index "entity_types", ["name"], :name => "index_entity_types_on_name", :unique => true
 
   create_table "favorites", :force => true do |t|
+    t.string   "name"
     t.string   "note",         :limit => 50, :default => ""
     t.integer  "favable_id"
     t.string   "favable_type"
