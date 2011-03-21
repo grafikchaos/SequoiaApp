@@ -11,6 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /^the search results page$/
+      search_results_path
+
     when /^the login page$/
       new_user_session_path
 

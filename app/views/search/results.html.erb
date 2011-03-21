@@ -10,7 +10,7 @@
 <div class="clear"></div>
 <%- if @results %>
   <div id="results-list">
-    <%- if params[:query].first == '$' %>
+    <%- if params[:query] && params[:query].first == '$' %>
       <%= render :partial => 'entity', :collection => @results %>
     <%- else %>
       <%= render :partial => 'client', :collection => @results %>

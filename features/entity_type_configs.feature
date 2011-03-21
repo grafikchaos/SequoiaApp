@@ -56,9 +56,9 @@ Feature: Searching
     Given I am on the list of Entity Types
     When I follow "New Entity Type"
     And I fill in "Name" with "Test Type"
-    And I select "protocol" from "entity_type[entity_type_config_rows_attributes][0][entity_key_id]"
-    And I select "wsdl url" from "entity_type[entity_type_config_rows_attributes][1][entity_key_id]"
-    And I select "token" from "entity_type[entity_type_config_rows_attributes][2][entity_key_id]"
+    And I select "protocol" from "entity_type[form_configs_attributes][0][entity_key_id]"
+    And I select "wsdl url" from "entity_type[form_configs_attributes][1][entity_key_id]"
+    And I select "token" from "entity_type[form_configs_attributes][2][entity_key_id]"
     And I press "Create Entity type"
     And I should see "Entity Type was successfully created"
     And I go to "ROR"'s new Entity page for entity type "Test Type"
