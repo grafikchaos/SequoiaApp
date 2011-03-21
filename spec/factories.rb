@@ -42,6 +42,7 @@ end
 Factory.define :entity_row do |er|
   er.entity_id 1
   er.entity_key_id 1
+  er.form_config_id nil
   er.value 'value'
 end
 

@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(:version => 20110318185106) do
   create_table "entity_rows", :force => true do |t|
     t.integer  "entity_id",       :null => false
     t.integer  "entity_key_id",   :null => false
+    t.integer  "form_config_id"
     t.string   "encrypted_value", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "form_config_id"
   end
 
   add_index "entity_rows", ["encrypted_value"], :name => "index_entity_rows_on_value"

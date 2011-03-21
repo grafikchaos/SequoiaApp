@@ -1,5 +1,6 @@
 class FormConfig < ActiveRecord::Base
   belongs_to :entity_type
+  belongs_to :entity_rows
 
   attr_accessible :entity_type_id, :entity_key_id, :placeholder, :required, :sort_order
 

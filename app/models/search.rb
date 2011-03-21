@@ -38,21 +38,29 @@ class Search
       # Put the rest back together.
       string = words.join(' ').rstrip
 
-      if string.include? "#"
-        # Remove the first $ to make our split cleaner.
-        string.sub!('#', '') if string.starts_with?('#')
-        string.split(/#/).each do |type_clause|
-
-          # Divide the string on spaces again.
-          words2 = type_clause.split
-          type = words2.shift
-
-          # Put the rest back together.
-          string2 = words2.join(' ').rstrip
-          self.result.concat(Entity.advanced_search(client_code, type, string2))
-        end
+      # If the rest is blank, just run the query
+      # otherwise, loop and parse
+      if string.blank?
+        self.result.concat(Entity.advanced_search(client_code, nil, nil))
       else
-        self.result.concat(Entity.advanced_search(client_code, nil, string))
+        string.scan(/(\#?[^#]*)/).each do |type_clause|
+          type_clause = type_clause[0].rstrip
+          next if type_clause.blank?
+          if type_clause.include? "#"
+            # Remove the first $ to make our split cleaner.
+            type_clause.sub!('#', '') if type_clause.starts_with?('#')
+
+            # Divide the string on spaces again.
+            words2 = type_clause.split
+            type = words2.shift
+
+            # Put the rest back together.
+            string2 = words2.join(' ').rstrip
+            self.result.concat(Entity.advanced_search(client_code, type, string2))
+          else
+            self.result.concat(Entity.advanced_search(client_code, nil, type_clause))
+          end
+        end
       end
     end
 

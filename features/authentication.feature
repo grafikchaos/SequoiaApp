@@ -6,8 +6,8 @@ Feature: Manage authentications
   Scenario: Login
     Given a user "user" exists
     And I am on the login page
-    When I fill in "Username" with "user"
-    And I fill in "Password" with "test1234"
+    When I fill in "user_username" with "user"
+    And I fill in "user_password" with "test1234"
     And I press "Sign in"
     Then I should see "Signed in successfully"
     And I should be on the home page
