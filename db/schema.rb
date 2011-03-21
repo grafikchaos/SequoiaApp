@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20110318185106) do
     t.integer  "entity_id",       :null => false
     t.integer  "form_config_id"
     t.integer  "entity_key_id",   :null => false
+    t.integer  "form_config_id"
     t.string   "encrypted_value", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
