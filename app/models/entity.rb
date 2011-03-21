@@ -8,7 +8,7 @@ class Entity < ActiveRecord::Base
   validates_presence_of :name, :project_id, :entity_type_id
   
   # accept Entity Row form fields/attributes
-  accepts_nested_attributes_for :entity_rows, :reject_if => lambda { |row| row[:value].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :entity_rows, :reject_if => :reject_row?, :allow_destroy => true
 
   # accept Note form fields/attributes
   accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true
@@ -21,10 +21,10 @@ class Entity < ActiveRecord::Base
                   :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
   # define which columns are mass-assignable
-  attr_accessible :name, :project_id, :entity_type_id, :entity_rows_attributes, :notes_attributes
+  attr_accessible :name, :project_id, :entity_type_id, :clearance, :entity_rows_attributes, :notes_attributes
   
   # setting the default scope
-  default_scope includes({:entity_rows => :entity_key}).order(:project_id)
+  default_scope includes(:entity_rows).order(:project_id)
 
   # Named scopes
 
@@ -41,5 +41,18 @@ class Entity < ActiveRecord::Base
     end
   }
   scope :advanced_search, lambda { |code, type, value| limit_client(code).limit_type(type).filter_by_row(value) }
+
+  # Private methods below here!
+  private
+
+  # Determine when to reject an entity row
+  def reject_row?(row)
+    if row[:form_config_id].blank?
+      req = true
+    else
+      req = FormConfig.find(row[:form_config_id]).required ? false : true
+    end
+    row[:value].blank? && req
+  end
 
 end

@@ -5,4 +5,16 @@ class EntityRow < ActiveRecord::Base
   
   attr_encrypted :value, :key => Ashint::Application.config.encryption_key, :encode => true
   attr_accessible :value, :encrypted_value, :entity_key_id, :form_config_id
+
+  validates_presence_of :value, :if => :value_required?, :message => "is required"
+
+  default_scope includes(:entity_key)
+
+  # Private methods below here.
+  private
+
+  def value_required?
+    self.form_config_id.blank? ? false : FormConfig.find(self.form_config_id).required
+  end
+
 end
