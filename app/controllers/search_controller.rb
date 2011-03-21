@@ -7,6 +7,7 @@ class SearchController < ApplicationController
   end
 
   def results
+    @results = []
     unless params[:query].blank?
       search = Search.new(params[:query], params[:model])
       @results = search.result

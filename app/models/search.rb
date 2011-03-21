@@ -3,7 +3,8 @@ class Search
   attr_accessor :query, :result
 
   def initialize(query, model = nil)
-    self.query = query
+    @query = query
+    @result = []
     if model.nil?
       query.starts_with?('$') ? advanced : simple
     else
@@ -15,14 +16,13 @@ class Search
   private
 
   def simple
-    self.result = Client.simple_search(self.query)
+    @result = Client.simple_search(self.query)
   end
 
   def advanced
 
-    self.result = []
     # Remove the first $ to make our split cleaner.
-    q = self.query.sub('$', '')
+    q = @query.sub('$', '')
     q.split(/\$/).each do |clause|
 
       # Make sure the client code is nice.
@@ -41,7 +41,7 @@ class Search
       # If the rest is blank, just run the query
       # otherwise, loop and parse
       if string.blank?
-        self.result.concat(Entity.advanced_search(client_code, nil, nil))
+        @result.concat(Entity.advanced_search(client_code, nil, nil))
       else
         string.scan(/(\#?[^#]*)/).each do |type_clause|
           type_clause = type_clause[0].rstrip
@@ -56,9 +56,9 @@ class Search
 
             # Put the rest back together.
             string2 = words2.join(' ').rstrip
-            self.result.concat(Entity.advanced_search(client_code, type, string2))
+            @result.concat(Entity.advanced_search(client_code, type, string2))
           else
-            self.result.concat(Entity.advanced_search(client_code, nil, type_clause))
+            @result.concat(Entity.advanced_search(client_code, nil, type_clause))
           end
         end
       end

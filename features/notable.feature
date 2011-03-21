@@ -13,7 +13,7 @@ Feature: Notable
 
   @clients
   Scenario: Client form should have a Note text area
-    Given I am on the home page
+    Given I am on the search results page
     When I follow "New Client"
     Then I should see "Note"
   
