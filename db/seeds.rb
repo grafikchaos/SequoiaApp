@@ -113,7 +113,7 @@ EntityTypeAlias.create([
   { :entity_type_id => EntityType.find_by_name('Wireless').id, :name => 'wifi'}
 ])
 
-EntityTypeConfigRow.create([
+FormConfig.create([
   { :entity_type_id => EntityType.find_by_name('API').id, :name => 'soap'},
   { :entity_type_id => EntityType.find_by_name('API').id, :name => 'web service'},
   { :entity_type_id => EntityType.find_by_name('API').id, :name => 'rest'},

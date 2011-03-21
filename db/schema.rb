@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(:version => 20110318185106) do
 
   create_table "entity_rows", :force => true do |t|
     t.integer  "entity_id",       :null => false
+    t.integer  "form_config_id"
     t.integer  "entity_key_id",   :null => false
     t.string   "encrypted_value", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "form_config_id"
   end
 
   add_index "entity_rows", ["encrypted_value"], :name => "index_entity_rows_on_value"
@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(:version => 20110318185106) do
     t.datetime "updated_at"
   end
 
-  add_index "form_configs", ["entity_key_id"], :name => "entity_type_config_rows_entity_key_id_fk"
-  add_index "form_configs", ["entity_type_id"], :name => "entity_type_config_rows_entity_type_id_fk"
+  add_index "form_configs", ["entity_key_id"], :name => "form_configs_entity_key_id_fk"
+  add_index "form_configs", ["entity_type_id"], :name => "form_configs_entity_type_id_fk"
 
   create_table "notes", :force => true do |t|
     t.integer  "notable_id",   :null => false
@@ -187,8 +187,8 @@ ActiveRecord::Schema.define(:version => 20110318185106) do
 
   add_foreign_key "entity_type_aliases", "entity_types", :name => "entity_type_aliases_entity_type_id_fk", :dependent => :delete
 
-  add_foreign_key "form_configs", "entity_keys", :name => "entity_type_config_rows_entity_key_id_fk", :dependent => :delete
-  add_foreign_key "form_configs", "entity_types", :name => "entity_type_config_rows_entity_type_id_fk", :dependent => :delete
+  add_foreign_key "form_configs", "entity_keys", :name => "form_configs_entity_key_id_fk", :dependent => :delete
+  add_foreign_key "form_configs", "entity_types", :name => "form_configs_entity_type_id_fk", :dependent => :delete
 
   add_foreign_key "projects", "clients", :name => "projects_client_id_fk", :dependent => :delete
 
