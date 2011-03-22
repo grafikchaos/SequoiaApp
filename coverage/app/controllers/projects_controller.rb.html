@@ -2,8 +2,8 @@
   <head>
     <title>app/controllers/projects_controller.rb</title>
     
-    <link href="../../report.css?0.677650299282269" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.43478830799841595'></script>
+    <link href="../../report.css?0.25643517620481815" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.35960990339979415'></script>
     <script>
       $(function() {
 
@@ -88,7 +88,7 @@
               <td class='code_line'>
                 <pre>class ProjectsController < ApplicationController</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -112,7 +112,7 @@
               <td class='code_line'>
                 <pre>  def index</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -120,7 +120,7 @@
               <td class='code_line'>
                 <pre>    @client = Client.find(params[:client_id])</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -128,7 +128,7 @@
               <td class='code_line'>
                 <pre>    @projects = @client.projects.all </pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -144,7 +144,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -152,7 +152,7 @@
               <td class='code_line'>
                 <pre>      format.html # index.html.erb</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -160,7 +160,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @projects }</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -208,7 +208,7 @@
               <td class='code_line'>
                 <pre>  def new</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -216,7 +216,7 @@
               <td class='code_line'>
                 <pre>    @client = Client.find(params[:client_id])</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -224,7 +224,7 @@
               <td class='code_line'>
                 <pre>    @project = Project.new</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="never" "">
@@ -240,7 +240,7 @@
               <td class='code_line'>
                 <pre>    1.times { @project.notes.build }</pre>
               </td>
-              <td class='hit_number'>32</td>
+              <td class='hit_number'>20</td>
             </tr>
           
             <tr class="never" "">
@@ -256,7 +256,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -264,7 +264,7 @@
               <td class='code_line'>
                 <pre>      format.html # new.html.erb</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -272,7 +272,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @project }</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="never" "">
@@ -312,7 +312,7 @@
               <td class='code_line'>
                 <pre>  def edit</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -320,7 +320,7 @@
               <td class='code_line'>
                 <pre>    @project = Project.find(params[:id])</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -328,7 +328,7 @@
               <td class='code_line'>
                 <pre>    1.times { @project.notes.build } if @project.notes.empty?</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="never" "">
@@ -368,7 +368,7 @@
               <td class='code_line'>
                 <pre>  def create</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -376,7 +376,7 @@
               <td class='code_line'>
                 <pre>    @client   = Client.find(params[:client_id])</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -384,7 +384,7 @@
               <td class='code_line'>
                 <pre>    @project  = @client.projects.build(params[:project])</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="never" "">
@@ -400,7 +400,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -408,7 +408,7 @@
               <td class='code_line'>
                 <pre>      if @project.save</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -416,7 +416,7 @@
               <td class='code_line'>
                 <pre>        format.html { redirect_to(@client, :notice => 'Project was successfully created.') }</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -424,7 +424,7 @@
               <td class='code_line'>
                 <pre>        format.xml  { render :xml => @project, :status => :created, :location => @project }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>5</td>
             </tr>
           
             <tr class="never" "">
@@ -504,7 +504,7 @@
               <td class='code_line'>
                 <pre>  def update</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -512,7 +512,7 @@
               <td class='code_line'>
                 <pre>    @project = Project.find(params[:id])</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -528,7 +528,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -536,7 +536,7 @@
               <td class='code_line'>
                 <pre>      if @project.update_attributes(params[:project])</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -544,7 +544,7 @@
               <td class='code_line'>
                 <pre>        format.html { redirect_to(@project.client, :notice => 'Project was successfully updated.') }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -552,7 +552,7 @@
               <td class='code_line'>
                 <pre>        format.xml  { head :ok }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -632,7 +632,7 @@
               <td class='code_line'>
                 <pre>  def destroy</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -640,7 +640,7 @@
               <td class='code_line'>
                 <pre>    @project = Project.find(params[:id])</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -648,7 +648,7 @@
               <td class='code_line'>
                 <pre>    @project.destroy</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -664,7 +664,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -672,7 +672,7 @@
               <td class='code_line'>
                 <pre>      format.html { redirect_to(client_projects_url(@project.client)) }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -680,7 +680,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { head :ok }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -712,6 +712,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
   </body>
 </html>

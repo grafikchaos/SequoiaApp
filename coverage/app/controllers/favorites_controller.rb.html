@@ -2,8 +2,8 @@
   <head>
     <title>app/controllers/favorites_controller.rb</title>
     
-    <link href="../../report.css?0.49111550767302703" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.04646785312699375'></script>
+    <link href="../../report.css?0.8156108132648784" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.055664313385133'></script>
     <script>
       $(function() {
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class FavoritesController < ApplicationController</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -99,7 +99,7 @@
               <td class='code_line'>
                 <pre>  load_and_authorize_resource :except => [:index, :create]</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>  def index</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,7 +139,7 @@
               <td class='code_line'>
                 <pre>    @favorites = Favorite.find_all_by_user_id(current_user.id)</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -155,7 +155,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -163,7 +163,7 @@
               <td class='code_line'>
                 <pre>      format.js</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -171,7 +171,7 @@
               <td class='code_line'>
                 <pre>      format.html # index.html.erb</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -179,7 +179,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @favorites }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -227,7 +227,7 @@
               <td class='code_line'>
                 <pre>  def new</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -259,7 +259,7 @@
               <td class='code_line'>
                 <pre>  def edit</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -299,7 +299,7 @@
               <td class='code_line'>
                 <pre>  def create</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="miss" data-hits='#{cov}'"">
@@ -387,7 +387,7 @@
               <td class='code_line'>
                 <pre>  def update</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="miss" data-hits='#{cov}'"">
@@ -499,7 +499,7 @@
               <td class='code_line'>
                 <pre>  def destroy</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="miss" data-hits='#{cov}'"">
@@ -1578,6 +1578,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
   </body>
 </html>

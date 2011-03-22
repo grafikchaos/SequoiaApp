@@ -44,14 +44,6 @@ class Client < ActiveRecord::Base
   scope :simple_search, lambda { |query| includes(:projects).where('clients.name LIKE ? OR clients.client_code LIKE ? OR projects.domain LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%") }
   scope :ordered_by_client_code, order('clients.client_code ASC')
   
-  #------------
-  # search by client's name, client code or project domain name 
-  # or return nil if no search term provided
-  #------------
-  def self.search(term)
-    @results = (term) ? self.simple_search(term).ordered_by_client_code : nil
-  end
-
   def sorted_entities(ability, project = nil)
     project = project.blank? ? self.projects : project
     # Also include entity rows and keys for fewer queries.

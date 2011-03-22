@@ -3,7 +3,7 @@ Ashint::Application.routes.draw do
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
   
-  resources :clients, :has_many => :notes, :shallow => true, :except => 'index' do
+  resources :clients, :shallow => true, :except => 'index' do
     resources :projects, :has_many => :notes, :except => 'show'
     resources :entities, :has_many => :notes, :except => 'show'
   end

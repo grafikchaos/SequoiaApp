@@ -2,8 +2,8 @@
   <head>
     <title>app/controllers/entity_types_controller.rb</title>
     
-    <link href="../../report.css?0.06866843909044984" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.4861532360140973'></script>
+    <link href="../../report.css?0.619538203563666" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.4820453582236216'></script>
     <script>
       $(function() {
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class EntityTypesController < ApplicationController</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -99,7 +99,7 @@
               <td class='code_line'>
                 <pre>  load_and_authorize_resource</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>  def index</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,7 +139,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>48</td>
+              <td class='hit_number'>12</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -147,7 +147,7 @@
               <td class='code_line'>
                 <pre>      format.html # index.html.erb</pre>
               </td>
-              <td class='hit_number'>48</td>
+              <td class='hit_number'>12</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -155,7 +155,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @entity_types }</pre>
               </td>
-              <td class='hit_number'>48</td>
+              <td class='hit_number'>12</td>
             </tr>
           
             <tr class="never" "">
@@ -203,7 +203,7 @@
               <td class='code_line'>
                 <pre>  def new</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -211,7 +211,7 @@
               <td class='code_line'>
                 <pre>    3.times { @entity_type.entity_type_aliases.build } </pre>
               </td>
-              <td class='hit_number'>96</td>
+              <td class='hit_number'>24</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -219,7 +219,7 @@
               <td class='code_line'>
                 <pre>    3.times { @entity_type.form_configs.build }</pre>
               </td>
-              <td class='hit_number'>96</td>
+              <td class='hit_number'>24</td>
             </tr>
           
             <tr class="never" "">
@@ -235,7 +235,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>6</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -243,7 +243,7 @@
               <td class='code_line'>
                 <pre>      format.html # new.html.erb</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>6</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -251,7 +251,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @entity_type }</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>6</td>
             </tr>
           
             <tr class="never" "">
@@ -291,7 +291,7 @@
               <td class='code_line'>
                 <pre>  def edit</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -299,7 +299,7 @@
               <td class='code_line'>
                 <pre>     @entity_type.entity_type_aliases.build</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="never" "">
@@ -339,7 +339,7 @@
               <td class='code_line'>
                 <pre>  def create</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -347,7 +347,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>20</td>
+              <td class='hit_number'>5</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -355,7 +355,7 @@
               <td class='code_line'>
                 <pre>      if @entity_type.save</pre>
               </td>
-              <td class='hit_number'>20</td>
+              <td class='hit_number'>5</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -363,7 +363,7 @@
               <td class='code_line'>
                 <pre>        format.html { redirect_to(entity_types_path, :notice => 'Entity Type was successfully created') }</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>6</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -371,7 +371,7 @@
               <td class='code_line'>
                 <pre>        format.xml  { render :xml => @entity_type, :status => :created, :location => @entity_type }</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="never" "">
@@ -387,7 +387,7 @@
               <td class='code_line'>
                 <pre>        format.html { render :action => "new" }</pre>
               </td>
-              <td class='hit_number'>16</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -395,7 +395,7 @@
               <td class='code_line'>
                 <pre>        format.xml  { render :xml => @entity_type.errors, :status => :unprocessable_entity }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="never" "">
@@ -451,7 +451,7 @@
               <td class='code_line'>
                 <pre>  def update</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -459,7 +459,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -467,7 +467,7 @@
               <td class='code_line'>
                 <pre>      if @entity_type.update_attributes(params[:entity_type])</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -475,7 +475,7 @@
               <td class='code_line'>
                 <pre>        format.html { redirect_to(entity_types_path, :notice => 'Entity Type was successfully updated') }</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>6</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -483,7 +483,7 @@
               <td class='code_line'>
                 <pre>        format.xml  { head :ok }</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="never" "">
@@ -563,7 +563,7 @@
               <td class='code_line'>
                 <pre>  def destroy</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -571,7 +571,7 @@
               <td class='code_line'>
                 <pre>    @entity_type.destroy</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -587,7 +587,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -595,7 +595,7 @@
               <td class='code_line'>
                 <pre>      format.html { redirect_to(entity_types_url, :notice => 'Entity Type was successfully deleted') }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -603,7 +603,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { head :ok }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -1642,6 +1642,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
   </body>
 </html>

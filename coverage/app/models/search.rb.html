@@ -2,8 +2,8 @@
   <head>
     <title>app/models/search.rb</title>
     
-    <link href="../../report.css?0.1627072567601794" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.16937983370367748'></script>
+    <link href="../../report.css?0.44861657998052784" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.8929260589851651'></script>
     <script>
       $(function() {
 
@@ -57,9 +57,9 @@
             <a href='#' id='toggle_test_file'>spec/models/search_spec.rb</a>
           
         </td>
-        <td>77</td>
-        <td>34</td>
-        <td>94.1%</td>
+        <td>70</td>
+        <td>30</td>
+        <td>100.0%</td>
       </tr>
     </table>
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class Search</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -107,7 +107,7 @@
               <td class='code_line'>
                 <pre>  attr_accessor :query, :result</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -123,7 +123,7 @@
               <td class='code_line'>
                 <pre>  def initialize(query, model = nil)</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>    @query = query</pre>
               </td>
-              <td class='hit_number'>160</td>
+              <td class='hit_number'>43</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,51 +139,19 @@
               <td class='code_line'>
                 <pre>    @result = []</pre>
               </td>
-              <td class='hit_number'>160</td>
+              <td class='hit_number'>43</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>8</td>
               <td class='code_line'>
-                <pre>    if model.nil?</pre>
+                <pre>    query.starts_with?('$') ? advanced : simple</pre>
               </td>
-              <td class='hit_number'>160</td>
+              <td class='hit_number'>43</td>
             </tr>
           
-            <tr class="hit" data-hits='#{cov}'"">
+            <tr class="never" "">
               <td class='line_number'>9</td>
-              <td class='code_line'>
-                <pre>      query.starts_with?('$') ? advanced : simple</pre>
-              </td>
-              <td class='hit_number'>160</td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>10</td>
-              <td class='code_line'>
-                <pre>    else</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="miss" data-hits='#{cov}'"">
-              <td class='line_number'>11</td>
-              <td class='code_line'>
-                <pre>      model_search(model)</pre>
-              </td>
-              <td class='hit_number'>0</td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>12</td>
-              <td class='code_line'>
-                <pre>    end</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>13</td>
               <td class='code_line'>
                 <pre>  end</pre>
               </td>
@@ -191,7 +159,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>14</td>
+              <td class='line_number'>10</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
@@ -199,7 +167,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>15</td>
+              <td class='line_number'>11</td>
               <td class='code_line'>
                 <pre>  ### PRIVATE METHODS BELOW ###</pre>
               </td>
@@ -207,11 +175,43 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>16</td>
+              <td class='line_number'>12</td>
               <td class='code_line'>
                 <pre>  private</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>13</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>14</td>
+              <td class='code_line'>
+                <pre>  def simple</pre>
+              </td>
+              <td class='hit_number'>8</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>15</td>
+              <td class='code_line'>
+                <pre>    @result = Client.simple_search(self.query)</pre>
+              </td>
+              <td class='hit_number'>32</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>16</td>
+              <td class='code_line'>
+                <pre>  end</pre>
+              </td>
+              <td class='hit_number'></td>
             </tr>
           
             <tr class="never" "">
@@ -225,41 +225,41 @@
             <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>18</td>
               <td class='code_line'>
-                <pre>  def simple</pre>
+                <pre>  def advanced</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
-            <tr class="hit" data-hits='#{cov}'"">
+            <tr class="never" "">
               <td class='line_number'>19</td>
-              <td class='code_line'>
-                <pre>    @result = Client.simple_search(self.query)</pre>
-              </td>
-              <td class='hit_number'>116</td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>20</td>
-              <td class='code_line'>
-                <pre>  end</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>21</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
+            <tr class="never" "">
+              <td class='line_number'>20</td>
+              <td class='code_line'>
+                <pre>    # Remove the first $ to make our split cleaner.</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>21</td>
+              <td class='code_line'>
+                <pre>    q = @query.sub('$', '')</pre>
+              </td>
+              <td class='hit_number'>11</td>
+            </tr>
+          
             <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>22</td>
               <td class='code_line'>
-                <pre>  def advanced</pre>
+                <pre>    q.split(/\$/).each do |clause|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="never" "">
@@ -273,25 +273,25 @@
             <tr class="never" "">
               <td class='line_number'>24</td>
               <td class='code_line'>
-                <pre>    # Remove the first $ to make our split cleaner.</pre>
+                <pre>      # Make sure the client code is nice.</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>25</td>
+              <td class='code_line'>
+                <pre>      # Kind of hacky.</pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>25</td>
-              <td class='code_line'>
-                <pre>    q = @query.sub('$', '')</pre>
-              </td>
-              <td class='hit_number'>44</td>
-            </tr>
-          
-            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>26</td>
               <td class='code_line'>
-                <pre>    q.split(/\$/).each do |clause|</pre>
+                <pre>      next if clause.starts_with?(' ')</pre>
               </td>
-              <td class='hit_number'>44</td>
+              <td class='hit_number'>12</td>
             </tr>
           
             <tr class="never" "">
@@ -305,53 +305,21 @@
             <tr class="never" "">
               <td class='line_number'>28</td>
               <td class='code_line'>
-                <pre>      # Make sure the client code is nice.</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>29</td>
-              <td class='code_line'>
-                <pre>      # Kind of hacky.</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>30</td>
-              <td class='code_line'>
-                <pre>      next if clause.starts_with?(' ')</pre>
-              </td>
-              <td class='hit_number'>48</td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>31</td>
-              <td class='code_line'>
-                <pre></pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>32</td>
-              <td class='code_line'>
                 <pre>      # Divide the string on spaces.</pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>33</td>
+              <td class='line_number'>29</td>
               <td class='code_line'>
                 <pre>      words = clause.split</pre>
               </td>
-              <td class='hit_number'>44</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>34</td>
+              <td class='line_number'>30</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
@@ -359,7 +327,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>35</td>
+              <td class='line_number'>31</td>
               <td class='code_line'>
                 <pre>      # Client code will always be first, so we capture and remove it.</pre>
               </td>
@@ -367,15 +335,15 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>36</td>
+              <td class='line_number'>32</td>
               <td class='code_line'>
                 <pre>      client_code = words.shift</pre>
               </td>
-              <td class='hit_number'>44</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>37</td>
+              <td class='line_number'>33</td>
               <td class='code_line'>
                 <pre>      </pre>
               </td>
@@ -383,7 +351,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>38</td>
+              <td class='line_number'>34</td>
               <td class='code_line'>
                 <pre>      # Put the rest back together.</pre>
               </td>
@@ -391,15 +359,15 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>39</td>
+              <td class='line_number'>35</td>
               <td class='code_line'>
                 <pre>      string = words.join(' ').rstrip</pre>
               </td>
-              <td class='hit_number'>44</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>40</td>
+              <td class='line_number'>36</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
@@ -407,7 +375,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>41</td>
+              <td class='line_number'>37</td>
               <td class='code_line'>
                 <pre>      # If the rest is blank, just run the query</pre>
               </td>
@@ -415,7 +383,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>42</td>
+              <td class='line_number'>38</td>
               <td class='code_line'>
                 <pre>      # otherwise, loop and parse</pre>
               </td>
@@ -423,23 +391,23 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>43</td>
+              <td class='line_number'>39</td>
               <td class='code_line'>
                 <pre>      if string.blank?</pre>
               </td>
-              <td class='hit_number'>44</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>44</td>
+              <td class='line_number'>40</td>
               <td class='code_line'>
                 <pre>        @result.concat(Entity.advanced_search(client_code, nil, nil))</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>45</td>
+              <td class='line_number'>41</td>
               <td class='code_line'>
                 <pre>      else</pre>
               </td>
@@ -447,39 +415,39 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>46</td>
+              <td class='line_number'>42</td>
               <td class='code_line'>
                 <pre>        string.scan(/(\#?[^#]*)/).each do |type_clause|</pre>
               </td>
-              <td class='hit_number'>36</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>47</td>
+              <td class='line_number'>43</td>
               <td class='code_line'>
                 <pre>          type_clause = type_clause[0].rstrip</pre>
               </td>
-              <td class='hit_number'>88</td>
+              <td class='hit_number'>22</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>48</td>
+              <td class='line_number'>44</td>
               <td class='code_line'>
                 <pre>          next if type_clause.blank?</pre>
               </td>
-              <td class='hit_number'>88</td>
+              <td class='hit_number'>22</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>49</td>
+              <td class='line_number'>45</td>
               <td class='code_line'>
                 <pre>          if type_clause.include? "#"</pre>
               </td>
-              <td class='hit_number'>52</td>
+              <td class='hit_number'>13</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>50</td>
+              <td class='line_number'>46</td>
               <td class='code_line'>
                 <pre>            # Remove the first $ to make our split cleaner.</pre>
               </td>
@@ -487,11 +455,43 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>51</td>
+              <td class='line_number'>47</td>
               <td class='code_line'>
                 <pre>            type_clause.sub!('#', '') if type_clause.starts_with?('#')</pre>
               </td>
-              <td class='hit_number'>40</td>
+              <td class='hit_number'>10</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>48</td>
+              <td class='code_line'>
+                <pre></pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>49</td>
+              <td class='code_line'>
+                <pre>            # Divide the string on spaces again.</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>50</td>
+              <td class='code_line'>
+                <pre>            words2 = type_clause.split</pre>
+              </td>
+              <td class='hit_number'>10</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>51</td>
+              <td class='code_line'>
+                <pre>            type = words2.shift</pre>
+              </td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="never" "">
@@ -505,7 +505,7 @@
             <tr class="never" "">
               <td class='line_number'>53</td>
               <td class='code_line'>
-                <pre>            # Divide the string on spaces again.</pre>
+                <pre>            # Put the rest back together.</pre>
               </td>
               <td class='hit_number'></td>
             </tr>
@@ -513,53 +513,21 @@
             <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>54</td>
               <td class='code_line'>
-                <pre>            words2 = type_clause.split</pre>
+                <pre>            string2 = words2.join(' ').rstrip</pre>
               </td>
-              <td class='hit_number'>40</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>55</td>
               <td class='code_line'>
-                <pre>            type = words2.shift</pre>
+                <pre>            @result.concat(Entity.advanced_search(client_code, type, string2))</pre>
               </td>
-              <td class='hit_number'>40</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="never" "">
               <td class='line_number'>56</td>
-              <td class='code_line'>
-                <pre></pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>57</td>
-              <td class='code_line'>
-                <pre>            # Put the rest back together.</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>58</td>
-              <td class='code_line'>
-                <pre>            string2 = words2.join(' ').rstrip</pre>
-              </td>
-              <td class='hit_number'>40</td>
-            </tr>
-          
-            <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>59</td>
-              <td class='code_line'>
-                <pre>            @result.concat(Entity.advanced_search(client_code, type, string2))</pre>
-              </td>
-              <td class='hit_number'>40</td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>60</td>
               <td class='code_line'>
                 <pre>          else</pre>
               </td>
@@ -567,15 +535,15 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>61</td>
+              <td class='line_number'>57</td>
               <td class='code_line'>
                 <pre>            @result.concat(Entity.advanced_search(client_code, nil, type_clause))</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>62</td>
+              <td class='line_number'>58</td>
               <td class='code_line'>
                 <pre>          end</pre>
               </td>
@@ -583,7 +551,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>63</td>
+              <td class='line_number'>59</td>
               <td class='code_line'>
                 <pre>        end</pre>
               </td>
@@ -591,7 +559,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>64</td>
+              <td class='line_number'>60</td>
               <td class='code_line'>
                 <pre>      end</pre>
               </td>
@@ -599,7 +567,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>65</td>
+              <td class='line_number'>61</td>
               <td class='code_line'>
                 <pre>    end</pre>
               </td>
@@ -607,7 +575,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>66</td>
+              <td class='line_number'>62</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
@@ -615,7 +583,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>67</td>
+              <td class='line_number'>63</td>
               <td class='code_line'>
                 <pre>    # Save the query string if it returns some results.</pre>
               </td>
@@ -623,23 +591,23 @@
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>68</td>
+              <td class='line_number'>64</td>
               <td class='code_line'>
                 <pre>    if self.result</pre>
               </td>
-              <td class='hit_number'>44</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>69</td>
+              <td class='line_number'>65</td>
               <td class='code_line'>
                 <pre>      QueryString.create :string => self.query if QueryString.find_by_string(self.query).nil?</pre>
               </td>
-              <td class='hit_number'>44</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>70</td>
+              <td class='line_number'>66</td>
               <td class='code_line'>
                 <pre>    end</pre>
               </td>
@@ -647,7 +615,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>71</td>
+              <td class='line_number'>67</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
@@ -655,7 +623,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>72</td>
+              <td class='line_number'>68</td>
               <td class='code_line'>
                 <pre>  end</pre>
               </td>
@@ -663,39 +631,15 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>73</td>
+              <td class='line_number'>69</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
-            <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>74</td>
-              <td class='code_line'>
-                <pre>  def model_search(model)</pre>
-              </td>
-              <td class='hit_number'>4</td>
-            </tr>
-          
-            <tr class="miss" data-hits='#{cov}'"">
-              <td class='line_number'>75</td>
-              <td class='code_line'>
-                <pre>    self.result = model.classify.constantize.find_all_by_name(self.query)</pre>
-              </td>
-              <td class='hit_number'>0</td>
-            </tr>
-          
             <tr class="never" "">
-              <td class='line_number'>76</td>
-              <td class='code_line'>
-                <pre>  end</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>77</td>
+              <td class='line_number'>70</td>
               <td class='code_line'>
                 <pre>end</pre>
               </td>
@@ -754,6 +698,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
   </body>
 </html>

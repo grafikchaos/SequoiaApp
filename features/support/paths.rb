@@ -63,6 +63,8 @@ module NavigationHelpers
           edit_entity_type_path(@entity)
       end
       
+    when /^a non-existent page$/i
+      '/iehrgoinboiuubewuoebfouwbdinv'
       
     else
       begin

@@ -2,8 +2,8 @@
   <head>
     <title>app/models/form_config.rb</title>
     
-    <link href="../../report.css?0.5354716974482687" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.7971392354070855'></script>
+    <link href="../../report.css?0.9800044531114798" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.8721646904546755'></script>
     <script>
       $(function() {
 
@@ -88,7 +88,7 @@
               <td class='code_line'>
                 <pre>class FormConfig < ActiveRecord::Base</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -96,7 +96,7 @@
               <td class='code_line'>
                 <pre>  belongs_to :entity_type</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -104,7 +104,7 @@
               <td class='code_line'>
                 <pre>  belongs_to :entity_rows</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -120,7 +120,7 @@
               <td class='code_line'>
                 <pre>  attr_accessible :entity_type_id, :entity_key_id, :placeholder, :required, :sort_order</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -136,7 +136,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of :entity_key_id, :sort_order</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -160,7 +160,7 @@
               <td class='code_line'>
                 <pre>  default_scope order(:sort_order)</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -184,7 +184,7 @@
               <td class='code_line'>
                 <pre>  scope :get_for_type, lambda { |id| </pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -192,7 +192,7 @@
               <td class='code_line'>
                 <pre>    if id.nil?</pre>
               </td>
-              <td class='hit_number'>40</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -200,7 +200,7 @@
               <td class='code_line'>
                 <pre>      where(:entity_type_id => EntityType.first.id)</pre>
               </td>
-              <td class='hit_number'>20</td>
+              <td class='hit_number'>5</td>
             </tr>
           
             <tr class="never" "">
@@ -216,7 +216,7 @@
               <td class='code_line'>
                 <pre>      where(:entity_type_id => id)</pre>
               </td>
-              <td class='hit_number'>20</td>
+              <td class='hit_number'>5</td>
             </tr>
           
             <tr class="never" "">
@@ -256,6 +256,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
   </body>
 </html>

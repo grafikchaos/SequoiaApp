@@ -2,8 +2,8 @@
   <head>
     <title>app/models/user.rb</title>
     
-    <link href="../../report.css?0.8007883361247359" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.047217444783359874'></script>
+    <link href="../../report.css?0.6525949431026102" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.7254720566646461'></script>
     <script>
       $(function() {
 
@@ -88,7 +88,7 @@
               <td class='code_line'>
                 <pre>class User < ActiveRecord::Base</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -96,7 +96,7 @@
               <td class='code_line'>
                 <pre>  has_many :bookmarks</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="never" "">
@@ -128,7 +128,7 @@
               <td class='code_line'>
                 <pre>  devise  :database_authenticatable, :rememberable, </pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="never" "">
@@ -160,7 +160,7 @@
               <td class='code_line'>
                 <pre>  attr_accessible :username, :role, :email, :password, :clearance, :remember_me, :first_name, :last_name</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="never" "">
@@ -208,7 +208,7 @@
               <td class='code_line'>
                 <pre>  ROLES = %w[staff manager admin]</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="never" "">
@@ -248,7 +248,7 @@
               <td class='code_line'>
                 <pre>  def role?(base_role)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -256,7 +256,7 @@
               <td class='code_line'>
                 <pre>    ROLES.index(base_role.to_s) <= ROLES.index(role)</pre>
               </td>
-              <td class='hit_number'>3144</td>
+              <td class='hit_number'>1037</td>
             </tr>
           
             <tr class="never" "">
@@ -296,6 +296,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:11 -0500</p>
   </body>
 </html>

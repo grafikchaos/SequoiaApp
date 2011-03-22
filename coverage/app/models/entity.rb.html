@@ -2,8 +2,8 @@
   <head>
     <title>app/models/entity.rb</title>
     
-    <link href="../../report.css?0.5101942691032889" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.7938326082223717'></script>
+    <link href="../../report.css?0.21156375485105672" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.22389691272956957'></script>
     <script>
       $(function() {
 
@@ -57,7 +57,7 @@
             <a href='#' id='toggle_test_file'>spec/models/entity_spec.rb</a>
           
         </td>
-        <td>58</td>
+        <td>69</td>
         <td>25</td>
         <td>96.0%</td>
       </tr>
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class Entity < ActiveRecord::Base</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -99,7 +99,7 @@
               <td class='code_line'>
                 <pre>  belongs_to  :project</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -107,7 +107,7 @@
               <td class='code_line'>
                 <pre>  belongs_to  :entity_type</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -115,7 +115,7 @@
               <td class='code_line'>
                 <pre>  has_many    :entity_rows</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -123,7 +123,7 @@
               <td class='code_line'>
                 <pre>  has_many    :notes, :as => :notable</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -147,7 +147,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of :name, :project_id, :entity_type_id</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -169,9 +169,9 @@
             <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>11</td>
               <td class='code_line'>
-                <pre>  accepts_nested_attributes_for :entity_rows, :reject_if => :reject_row?, :allow_destroy => true</pre>
+                <pre>  accepts_nested_attributes_for :entity_rows, :reject_if => :should_not_save_or_validate_row?, :allow_destroy => true</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -195,7 +195,7 @@
               <td class='code_line'>
                 <pre>  accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true</pre>
               </td>
-              <td class='hit_number'>32</td>
+              <td class='hit_number'>15</td>
             </tr>
           
             <tr class="never" "">
@@ -227,7 +227,7 @@
               <td class='code_line'>
                 <pre>  has_friendly_id :name, </pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -275,7 +275,7 @@
               <td class='code_line'>
                 <pre>  attr_accessible :name, :project_id, :entity_type_id, :clearance, :entity_rows_attributes, :notes_attributes</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -299,7 +299,7 @@
               <td class='code_line'>
                 <pre>  default_scope includes(:entity_rows).order(:project_id)</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -339,7 +339,7 @@
               <td class='code_line'>
                 <pre>  scope :limit_client, lambda { |code| includes({:project => :client }).where(:clients => {:client_code => code }) }</pre>
               </td>
-              <td class='hit_number'>64</td>
+              <td class='hit_number'>23</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -347,7 +347,7 @@
               <td class='code_line'>
                 <pre>  scope :limit_type, lambda { |type| </pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -355,7 +355,7 @@
               <td class='code_line'>
                 <pre>    unless type.blank?</pre>
               </td>
-              <td class='hit_number'>60</td>
+              <td class='hit_number'>15</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -363,7 +363,7 @@
               <td class='code_line'>
                 <pre>      includes( { :entity_type  => :entity_type_aliases } ).where({ :entity_types => [ :name => type ] } | { :entity_type_aliases => [ :name => type] } ) </pre>
               </td>
-              <td class='hit_number'>40</td>
+              <td class='hit_number'>10</td>
             </tr>
           
             <tr class="never" "">
@@ -387,7 +387,7 @@
               <td class='code_line'>
                 <pre>  scope :filter_by_row, lambda { |value| </pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -395,7 +395,7 @@
               <td class='code_line'>
                 <pre>    unless value.blank?</pre>
               </td>
-              <td class='hit_number'>60</td>
+              <td class='hit_number'>15</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -403,7 +403,7 @@
               <td class='code_line'>
                 <pre>      includes({:entity_rows => :entity_key}).where( { :name.matches => "%#{value}%" } | { :entity_rows => [:encrypted_value => EntityRow.encrypt_value(value)] } )</pre>
               </td>
-              <td class='hit_number'>20</td>
+              <td class='hit_number'>5</td>
             </tr>
           
             <tr class="never" "">
@@ -427,7 +427,7 @@
               <td class='code_line'>
                 <pre>  scope :advanced_search, lambda { |code, type, value| limit_client(code).limit_type(type).filter_by_row(value) }</pre>
               </td>
-              <td class='hit_number'>64</td>
+              <td class='hit_number'>23</td>
             </tr>
           
             <tr class="never" "">
@@ -441,21 +441,37 @@
             <tr class="never" "">
               <td class='line_number'>45</td>
               <td class='code_line'>
+                <pre>  ##############################</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>46</td>
+              <td class='code_line'>
                 <pre>  # Private methods below here!</pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
+            <tr class="never" "">
+              <td class='line_number'>47</td>
+              <td class='code_line'>
+                <pre>  ##############################</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
             <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>46</td>
+              <td class='line_number'>48</td>
               <td class='code_line'>
                 <pre>  private</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>47</td>
+              <td class='line_number'>49</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
@@ -463,79 +479,151 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>48</td>
+              <td class='line_number'>50</td>
               <td class='code_line'>
-                <pre>  # Determine when to reject an entity row</pre>
+                <pre>    # </pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
-            <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>49</td>
-              <td class='code_line'>
-                <pre>  def reject_row?(row)</pre>
-              </td>
-              <td class='hit_number'>4</td>
-            </tr>
-          
-            <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>50</td>
-              <td class='code_line'>
-                <pre>    if row[:form_config_id].blank?</pre>
-              </td>
-              <td class='hit_number'>12</td>
-            </tr>
-          
-            <tr class="hit" data-hits='#{cov}'"">
+            <tr class="never" "">
               <td class='line_number'>51</td>
               <td class='code_line'>
-                <pre>      req = true</pre>
+                <pre>    # Determine when to reject an entity row</pre>
               </td>
-              <td class='hit_number'>12</td>
+              <td class='hit_number'></td>
             </tr>
           
             <tr class="never" "">
               <td class='line_number'>52</td>
               <td class='code_line'>
-                <pre>    else</pre>
+                <pre>    # </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>53</td>
+              <td class='code_line'>
+                <pre>    # EntityRow should NOT be saved if the :value is blank AND</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>54</td>
+              <td class='code_line'>
+                <pre>    # EntityRow should NOT be rejected if the :form_config_id is present OR </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>55</td>
+              <td class='code_line'>
+                <pre>    #   the FormConfig says the the row is NOT REQUIRED</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>56</td>
+              <td class='code_line'>
+                <pre>    #   </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>57</td>
+              <td class='code_line'>
+                <pre>    def should_not_save_or_validate_row?(row)</pre>
+              </td>
+              <td class='hit_number'>8</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>58</td>
+              <td class='code_line'>
+                <pre>      if row[:form_config_id].blank?</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>59</td>
+              <td class='code_line'>
+                <pre>        reject = true</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>60</td>
+              <td class='code_line'>
+                <pre>      else</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>61</td>
+              <td class='code_line'>
+                <pre>        # set reject to FALSE if the FormConfig says the row is REQUIRED</pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
             <tr class="miss" data-hits='#{cov}'"">
-              <td class='line_number'>53</td>
+              <td class='line_number'>62</td>
               <td class='code_line'>
-                <pre>      req = FormConfig.find(row[:form_config_id]).required ? false : true</pre>
+                <pre>        reject = FormConfig.find(row[:form_config_id]).required ? false : true</pre>
               </td>
               <td class='hit_number'>0</td>
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>54</td>
+              <td class='line_number'>63</td>
+              <td class='code_line'>
+                <pre>      end</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>64</td>
+              <td class='code_line'>
+                <pre>    </pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>65</td>
+              <td class='code_line'>
+                <pre>      # REJECT if the :value.blank? = true AND reject = true; otherwise let it be validated</pre>
+              </td>
+              <td class='hit_number'></td>
+            </tr>
+          
+            <tr class="hit" data-hits='#{cov}'"">
+              <td class='line_number'>66</td>
+              <td class='code_line'>
+                <pre>      row[:value].blank? && reject</pre>
+              </td>
+              <td class='hit_number'>3</td>
+            </tr>
+          
+            <tr class="never" "">
+              <td class='line_number'>67</td>
               <td class='code_line'>
                 <pre>    end</pre>
               </td>
               <td class='hit_number'></td>
             </tr>
           
-            <tr class="hit" data-hits='#{cov}'"">
-              <td class='line_number'>55</td>
-              <td class='code_line'>
-                <pre>    row[:value].blank? && req</pre>
-              </td>
-              <td class='hit_number'>12</td>
-            </tr>
-          
             <tr class="never" "">
-              <td class='line_number'>56</td>
-              <td class='code_line'>
-                <pre>  end</pre>
-              </td>
-              <td class='hit_number'></td>
-            </tr>
-          
-            <tr class="never" "">
-              <td class='line_number'>57</td>
+              <td class='line_number'>68</td>
               <td class='code_line'>
                 <pre></pre>
               </td>
@@ -543,7 +631,7 @@
             </tr>
           
             <tr class="never" "">
-              <td class='line_number'>58</td>
+              <td class='line_number'>69</td>
               <td class='code_line'>
                 <pre>end</pre>
               </td>
@@ -602,6 +690,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
   </body>
 </html>

@@ -2,8 +2,8 @@
   <head>
     <title>app/controllers/entity_keys_controller.rb</title>
     
-    <link href="../../report.css?0.07843304238688265" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.6932850222302398'></script>
+    <link href="../../report.css?0.1035616700711175" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.8944417789647976'></script>
     <script>
       $(function() {
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class EntityKeysController < ApplicationController</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -99,7 +99,7 @@
               <td class='code_line'>
                 <pre>  load_and_authorize_resource</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>  def index</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,7 +139,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>36</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -147,7 +147,7 @@
               <td class='code_line'>
                 <pre>      format.html # index.html.erb</pre>
               </td>
-              <td class='hit_number'>36</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -155,7 +155,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @entity_keys }</pre>
               </td>
-              <td class='hit_number'>36</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="never" "">
@@ -203,7 +203,7 @@
               <td class='code_line'>
                 <pre>  def new</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -211,7 +211,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -219,7 +219,7 @@
               <td class='code_line'>
                 <pre>      format.html # new.html.erb</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -227,7 +227,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @entity_key }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -267,7 +267,7 @@
               <td class='code_line'>
                 <pre>  def edit</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -307,7 +307,7 @@
               <td class='code_line'>
                 <pre>  def create</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -315,7 +315,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -323,7 +323,7 @@
               <td class='code_line'>
                 <pre>      if @entity_key.save</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -331,7 +331,7 @@
               <td class='code_line'>
                 <pre>        format.html { redirect_to(entity_keys_path, :notice => 'Entity Key was successfully created') }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -339,7 +339,7 @@
               <td class='code_line'>
                 <pre>        format.xml  { render :xml => @entity_key, :status => :created, :location => @entity_key }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -419,7 +419,7 @@
               <td class='code_line'>
                 <pre>  def update</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -427,7 +427,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -435,7 +435,7 @@
               <td class='code_line'>
                 <pre>      if @entity_key.update_attributes(params[:entity_key])</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -443,7 +443,7 @@
               <td class='code_line'>
                 <pre>        format.html { redirect_to(entity_keys_path, :notice => 'Entity Key was successfully updated') }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -451,7 +451,7 @@
               <td class='code_line'>
                 <pre>        format.xml  { head :ok }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -531,7 +531,7 @@
               <td class='code_line'>
                 <pre>  def destroy</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -539,7 +539,7 @@
               <td class='code_line'>
                 <pre>    @entity_key.destroy</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -555,7 +555,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -563,7 +563,7 @@
               <td class='code_line'>
                 <pre>      format.html { redirect_to(entity_keys_url, :notice => 'Entity Key was successfully deleted') }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -571,7 +571,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { head :ok }</pre>
               </td>
-              <td class='hit_number'>4</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -1610,6 +1610,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 18:14:45 -0500</p>
+    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
   </body>
 </html>

@@ -303,8 +303,14 @@ Feature: Abilities - Roles and Permissions
   @wip
   Scenario: Admins can edit Clients
     
-  @wip
+  @clients
   Scenario: Admins can delete Clients
+    Given I am logged in as "inigo" with password "preparetodie"
+    And I have client codes ROR
+    And I am on the client page for "ROR"
+    When I follow "delete-ror" to delete requiring confirmation
+    Then I should be on the search results page
+    And I should have 0 clients
 
   @wip
   Scenario: Admins can create Projects

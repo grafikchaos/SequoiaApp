@@ -5,11 +5,7 @@ class Search
   def initialize(query, model = nil)
     @query = query
     @result = []
-    if model.nil?
-      query.starts_with?('$') ? advanced : simple
-    else
-      model_search(model)
-    end
+    query.starts_with?('$') ? advanced : simple
   end
 
   ### PRIVATE METHODS BELOW ###
@@ -71,7 +67,4 @@ class Search
 
   end
 
-  def model_search(model)
-    self.result = model.classify.constantize.find_all_by_name(self.query)
-  end
 end
