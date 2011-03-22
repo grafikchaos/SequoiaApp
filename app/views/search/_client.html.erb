@@ -1,6 +1,7 @@
 <div class="row">
   <div class="data">
     <%= link_to(client, :class => 'client') do %>
+        <div class="logo"><%= image_tag client.logo.url(:small) %></div>
         <div class="code"><%= client.client_code %></div>
         <div class="name"><%= client.name %></div>
     <%- end %>

@@ -82,12 +82,13 @@ body, #main { background: #fff; }
   border-radius: 3px;
 }
 
-#results-list .row .data { float: left; padding: 0 10px; }
+#results-list .row .data { float: left; padding: 5px 10px; width: 90%; }
+#results-list .row .data a.client { display: block; overflow: hidden; }
 #results-list .row:hover,
 #results-list .row.selected { 
   background: #ff9; 
-  margin: 0 0 5px;
 }
+#results-list .row .data .logo { float: left; margin-right: 10px; width: 64px; height: 64px; }
 
 /****************************
   NOTES
