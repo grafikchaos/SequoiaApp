@@ -1,7 +1,0 @@
-<%- if entity_row.entity_key.mask %>
-  <span class="value exposed"><%= entity_row.value %></span>
-  <span class="value masked"><%= entity_row.value.gsub(/./, "*") %></span>
-  <a href="javascript:void(0);" class="show-plaintext">Show value</a>
-<%- else %>
-  <%= entity_row.value %>
-<%- end %>
