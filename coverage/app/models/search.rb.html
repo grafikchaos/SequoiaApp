@@ -2,8 +2,8 @@
   <head>
     <title>app/models/search.rb</title>
     
-    <link href="../../report.css?0.44861657998052784" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.8929260589851651'></script>
+    <link href="../../report.css?0.021207535088712204" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.303783596181314'></script>
     <script>
       $(function() {
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class Search</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -107,7 +107,7 @@
               <td class='code_line'>
                 <pre>  attr_accessor :query, :result</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -123,7 +123,7 @@
               <td class='code_line'>
                 <pre>  def initialize(query, model = nil)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>    @query = query</pre>
               </td>
-              <td class='hit_number'>43</td>
+              <td class='hit_number'>40</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,7 +139,7 @@
               <td class='code_line'>
                 <pre>    @result = []</pre>
               </td>
-              <td class='hit_number'>43</td>
+              <td class='hit_number'>40</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -147,7 +147,7 @@
               <td class='code_line'>
                 <pre>    query.starts_with?('$') ? advanced : simple</pre>
               </td>
-              <td class='hit_number'>43</td>
+              <td class='hit_number'>40</td>
             </tr>
           
             <tr class="never" "">
@@ -179,7 +179,7 @@
               <td class='code_line'>
                 <pre>  private</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -195,7 +195,7 @@
               <td class='code_line'>
                 <pre>  def simple</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -203,7 +203,7 @@
               <td class='code_line'>
                 <pre>    @result = Client.simple_search(self.query)</pre>
               </td>
-              <td class='hit_number'>32</td>
+              <td class='hit_number'>29</td>
             </tr>
           
             <tr class="never" "">
@@ -227,7 +227,7 @@
               <td class='code_line'>
                 <pre>  def advanced</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -698,6 +698,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
+    <p>Generated on: 2011-03-23 13:08:18 -0500</p>
   </body>
 </html>

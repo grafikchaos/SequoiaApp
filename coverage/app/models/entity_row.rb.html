@@ -2,8 +2,8 @@
   <head>
     <title>app/models/entity_row.rb</title>
     
-    <link href="../../report.css?0.1313200330271479" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.27380371927397795'></script>
+    <link href="../../report.css?0.8314229404343366" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.7443251835670962'></script>
     <script>
       $(function() {
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class EntityRow < ActiveRecord::Base</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -99,7 +99,7 @@
               <td class='code_line'>
                 <pre>  belongs_to :entity_key</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -107,7 +107,7 @@
               <td class='code_line'>
                 <pre>  belongs_to :entity</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -115,7 +115,7 @@
               <td class='code_line'>
                 <pre>  has_one :form_config</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>  attr_encrypted :value, :key => Ashint::Application.config.encryption_key, :encode => true</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,7 +139,7 @@
               <td class='code_line'>
                 <pre>  attr_accessible :value, :encrypted_value, :entity_key_id, :form_config_id</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -155,7 +155,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of :value, :if => :value_required?, :message => "is required"</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -171,7 +171,7 @@
               <td class='code_line'>
                 <pre>  default_scope includes(:entity_key)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -211,7 +211,7 @@
               <td class='code_line'>
                 <pre>  private</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -235,7 +235,7 @@
               <td class='code_line'>
                 <pre>    def value_required?</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -243,7 +243,7 @@
               <td class='code_line'>
                 <pre>      self.form_config_id.blank? ? false : FormConfig.find(self.form_config_id).required</pre>
               </td>
-              <td class='hit_number'>353</td>
+              <td class='hit_number'>329</td>
             </tr>
           
             <tr class="never" "">
@@ -322,6 +322,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
+    <p>Generated on: 2011-03-23 13:08:18 -0500</p>
   </body>
 </html>

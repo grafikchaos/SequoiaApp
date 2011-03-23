@@ -2,8 +2,8 @@
   <head>
     <title>app/helpers/application_helper.rb</title>
     
-    <link href="../../report.css?0.18801816855474462" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.7231937936622069'></script>
+    <link href="../../report.css?0.8087902783387704" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.5052759708765325'></script>
     <script>
       $(function() {
 
@@ -88,7 +88,7 @@
               <td class='code_line'>
                 <pre>module ApplicationHelper</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -104,7 +104,7 @@
               <td class='code_line'>
                 <pre>  def format_clearance_select</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -112,7 +112,7 @@
               <td class='code_line'>
                 <pre>    options = []</pre>
               </td>
-              <td class='hit_number'>13</td>
+              <td class='hit_number'>18</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -120,7 +120,7 @@
               <td class='code_line'>
                 <pre>    (current_user.clearance..3).each do |number|</pre>
               </td>
-              <td class='hit_number'>13</td>
+              <td class='hit_number'>18</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -128,7 +128,7 @@
               <td class='code_line'>
                 <pre>      options << ["Level #{number}", number]</pre>
               </td>
-              <td class='hit_number'>27</td>
+              <td class='hit_number'>42</td>
             </tr>
           
             <tr class="never" "">
@@ -144,7 +144,7 @@
               <td class='code_line'>
                 <pre>    return options</pre>
               </td>
-              <td class='hit_number'>13</td>
+              <td class='hit_number'>18</td>
             </tr>
           
             <tr class="never" "">
@@ -168,7 +168,7 @@
               <td class='code_line'>
                 <pre>  def format_roles_select</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -176,7 +176,7 @@
               <td class='code_line'>
                 <pre>    options = []</pre>
               </td>
-              <td class='hit_number'>3</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -184,7 +184,7 @@
               <td class='code_line'>
                 <pre>    options << ['Admin', 'admin']</pre>
               </td>
-              <td class='hit_number'>3</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -192,7 +192,7 @@
               <td class='code_line'>
                 <pre>    options << ['Manager', 'manager']</pre>
               </td>
-              <td class='hit_number'>3</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -200,7 +200,7 @@
               <td class='code_line'>
                 <pre>    options << ['Staff', 'staff']</pre>
               </td>
-              <td class='hit_number'>3</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -208,7 +208,7 @@
               <td class='code_line'>
                 <pre>    return options</pre>
               </td>
-              <td class='hit_number'>3</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -232,7 +232,7 @@
               <td class='code_line'>
                 <pre>  def link_to_add_fields(name, f, association, partial_name = nil)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -328,7 +328,7 @@
               <td class='code_line'>
                 <pre>  def favable_link(obj)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -336,7 +336,7 @@
               <td class='code_line'>
                 <pre>    fav = Favorite.find_by_user_id_and_favable_id_and_favable_type(current_user.id, obj.id, obj.class.to_s)</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>15</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -344,7 +344,7 @@
               <td class='code_line'>
                 <pre>    if fav.nil?</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>15</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -352,7 +352,7 @@
               <td class='code_line'>
                 <pre>      link_to 'Favorite', favorites_path( :favorite => { :note => obj.to_s, :favable_type => obj.class.to_s, :favable_id => obj.id } ), :remote => true, :method => :post, :class => 'favorite-link tooltip', :title => 'Add as favorite'</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>15</td>
             </tr>
           
             <tr class="never" "">
@@ -400,7 +400,7 @@
               <td class='code_line'>
                 <pre>  def edit_link(obj, *args)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -408,7 +408,7 @@
               <td class='code_line'>
                 <pre>    options         = args.first || {}</pre>
               </td>
-              <td class='hit_number'>447</td>
+              <td class='hit_number'>453</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -416,7 +416,7 @@
               <td class='code_line'>
                 <pre>    options[:id]    = 'edit-' + link_id(obj)</pre>
               </td>
-              <td class='hit_number'>447</td>
+              <td class='hit_number'>453</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -424,7 +424,7 @@
               <td class='code_line'>
                 <pre>    options[:class] = 'edit-link tooltip'</pre>
               </td>
-              <td class='hit_number'>447</td>
+              <td class='hit_number'>453</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -432,7 +432,7 @@
               <td class='code_line'>
                 <pre>    options[:title] = 'Edit this ' + obj.class.to_s.tableize.gsub('_', ' ').singularize</pre>
               </td>
-              <td class='hit_number'>447</td>
+              <td class='hit_number'>453</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -440,7 +440,7 @@
               <td class='code_line'>
                 <pre>    path = 'edit_' + obj.class.to_s.tableize.singularize + '_path'</pre>
               </td>
-              <td class='hit_number'>447</td>
+              <td class='hit_number'>453</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -448,7 +448,7 @@
               <td class='code_line'>
                 <pre>    link_to 'Edit', method(path).call(obj), options</pre>
               </td>
-              <td class='hit_number'>447</td>
+              <td class='hit_number'>453</td>
             </tr>
           
             <tr class="never" "">
@@ -472,7 +472,7 @@
               <td class='code_line'>
                 <pre>  def destroy_link(obj, *args)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -480,7 +480,7 @@
               <td class='code_line'>
                 <pre>    options           = args.first || {}</pre>
               </td>
-              <td class='hit_number'>372</td>
+              <td class='hit_number'>398</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -488,7 +488,7 @@
               <td class='code_line'>
                 <pre>    options[:id]      = 'delete-' + link_id(obj)</pre>
               </td>
-              <td class='hit_number'>372</td>
+              <td class='hit_number'>398</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -496,7 +496,7 @@
               <td class='code_line'>
                 <pre>    options[:class]   = 'destroy-link tooltip'</pre>
               </td>
-              <td class='hit_number'>372</td>
+              <td class='hit_number'>398</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -504,7 +504,7 @@
               <td class='code_line'>
                 <pre>    options[:title]   = 'Delete this ' + obj.class.to_s.tableize.gsub('_', ' ').singularize</pre>
               </td>
-              <td class='hit_number'>372</td>
+              <td class='hit_number'>398</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -512,7 +512,7 @@
               <td class='code_line'>
                 <pre>    options[:confirm] = 'Are you sure?'</pre>
               </td>
-              <td class='hit_number'>372</td>
+              <td class='hit_number'>398</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -520,7 +520,7 @@
               <td class='code_line'>
                 <pre>    options[:method]  = :delete</pre>
               </td>
-              <td class='hit_number'>372</td>
+              <td class='hit_number'>398</td>
             </tr>
           
             <tr class="never" "">
@@ -536,7 +536,7 @@
               <td class='code_line'>
                 <pre>    link_to 'Destroy', obj, options</pre>
               </td>
-              <td class='hit_number'>372</td>
+              <td class='hit_number'>398</td>
             </tr>
           
             <tr class="never" "">
@@ -560,7 +560,7 @@
               <td class='code_line'>
                 <pre>  def link_id(obj)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -568,7 +568,7 @@
               <td class='code_line'>
                 <pre>    if obj.respond_to?('friendly_id')</pre>
               </td>
-              <td class='hit_number'>819</td>
+              <td class='hit_number'>851</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -576,7 +576,7 @@
               <td class='code_line'>
                 <pre>      obj.friendly_id</pre>
               </td>
-              <td class='hit_number'>660</td>
+              <td class='hit_number'>614</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -584,7 +584,7 @@
               <td class='code_line'>
                 <pre>    elsif obj.respond_to?('username')</pre>
               </td>
-              <td class='hit_number'>159</td>
+              <td class='hit_number'>237</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -592,7 +592,7 @@
               <td class='code_line'>
                 <pre>      obj.username.downcase</pre>
               </td>
-              <td class='hit_number'>150</td>
+              <td class='hit_number'>228</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -664,6 +664,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
+    <p>Generated on: 2011-03-23 13:08:18 -0500</p>
   </body>
 </html>

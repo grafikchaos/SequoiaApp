@@ -228,12 +228,39 @@ Feature: Abilities - Roles and Permissions
     Then I should see "miraclemax"
     And I should see "fezzik"
 
-  @wip
+  @users @create
   Scenario: Admins can create Users
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the list of Users
     When I follow "New User"
+    And I fill in "Username" with "tester"
+    And I fill in "Email" with "tester@tester.com"
+    And I select "Staff" from "Role"
+    And I select "Level 3" from "Clearance"
+    And I fill in "Password" with "tester2"
+    And I fill in "Password confirmation" with "tester2"
+    And I press "Create User"
+    Then I should be on the list of Users
+    And I should see "tester"
 
+  @users @fail
+  Scenario: Form re-renders correctly when the create fails
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Users
+    When I follow "New User"
+    And I fill in "Username" with "tester"
+    And I select "Staff" from "Role"
+    And I select "Level 3" from "Clearance"
+    And I fill in "Password" with "tester2"
+    And I fill in "Password confirmation" with "tester2"
+    And I press "Create User"
+    Then I should see "Email can't be blank"
+    And I should see "Username"
+    And I should see "Email"
+    And I should see "Role"
+    And I should see "Clearance"
+    And I should see "Password"
+    And I should see "Password confirmation"
 
   @users @edit
   Scenario: Admins can edit Users
@@ -246,6 +273,21 @@ Feature: Abilities - Roles and Permissions
     And I should see "mandypatinkin"
     And I should not see "inigo"
     
+  @users @fail
+  Scenario: Form re-renders correctly when the create fails
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Users
+    And I follow "edit-fezzik"
+    When I fill in "Email" with ""
+    And I press "Update User"
+    Then I should see "Email can't be blank"
+    And I should see "Username"
+    And I should see "Email"
+    And I should see "Role"
+    And I should see "Clearance"
+    And I should see "Password"
+    And I should see "Password confirmation"
+
   @users @delete
   Scenario: Admins can delete Users
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
