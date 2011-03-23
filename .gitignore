@@ -12,3 +12,4 @@ db/seeds.demo.rb
 public/system/logos
 webrat.log
 tmp/
+coverage.data

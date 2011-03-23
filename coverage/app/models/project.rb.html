@@ -2,8 +2,8 @@
   <head>
     <title>app/models/project.rb</title>
     
-    <link href="../../report.css?0.9076868311861479" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.6733962436281916'></script>
+    <link href="../../report.css?0.3256790054099812" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.7169423055772073'></script>
     <script>
       $(function() {
 
@@ -88,7 +88,7 @@
               <td class='code_line'>
                 <pre>class Project < ActiveRecord::Base</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -96,7 +96,7 @@
               <td class='code_line'>
                 <pre>  has_many    :entities</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -104,7 +104,7 @@
               <td class='code_line'>
                 <pre>  belongs_to  :client</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -112,7 +112,7 @@
               <td class='code_line'>
                 <pre>  has_many    :notes, :as => :notable</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -136,7 +136,7 @@
               <td class='code_line'>
                 <pre>  acts_as_favable</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -152,7 +152,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of   :client_id</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -160,7 +160,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of   :name</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -168,7 +168,7 @@
               <td class='code_line'>
                 <pre>  validates_uniqueness_of :name, :scope => [:client_id], :case_sensitive => false</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -192,7 +192,7 @@
               <td class='code_line'>
                 <pre>  accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true</pre>
               </td>
-              <td class='hit_number'>18</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -216,7 +216,7 @@
               <td class='code_line'>
                 <pre>  attr_accessible :name, :client_id, :domain, :notes_attributes</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -232,7 +232,7 @@
               <td class='code_line'>
                 <pre>  def to_s</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="miss" data-hits='#{cov}'"">
@@ -272,6 +272,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
+    <p>Generated on: 2011-03-23 13:08:18 -0500</p>
   </body>
 </html>

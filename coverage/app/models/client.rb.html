@@ -2,8 +2,8 @@
   <head>
     <title>app/models/client.rb</title>
     
-    <link href="../../report.css?0.2925335303502391" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.22259479074469513'></script>
+    <link href="../../report.css?0.27967296770127925" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.6837606463002075'></script>
     <script>
       $(function() {
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class Client < ActiveRecord::Base</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -107,7 +107,7 @@
               <td class='code_line'>
                 <pre>  has_attached_file :logo, :styles => { :mini => "24x24>", :small => "64x64>", :medium => "96x96>", :big => "200x200>" }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -123,7 +123,7 @@
               <td class='code_line'>
                 <pre>  has_many  :projects</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>  has_many  :entities, :through => :projects</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,7 +139,7 @@
               <td class='code_line'>
                 <pre>  has_many  :notes, :as => :notable</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -163,7 +163,7 @@
               <td class='code_line'>
                 <pre>  acts_as_favable</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -187,7 +187,7 @@
               <td class='code_line'>
                 <pre>  accepts_nested_attributes_for :projects, :reject_if => lambda { |proj| proj[:name].blank? }, :allow_destroy => true</pre>
               </td>
-              <td class='hit_number'>24</td>
+              <td class='hit_number'>8</td>
             </tr>
           
             <tr class="never" "">
@@ -211,7 +211,7 @@
               <td class='code_line'>
                 <pre>  accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true</pre>
               </td>
-              <td class='hit_number'>28</td>
+              <td class='hit_number'>13</td>
             </tr>
           
             <tr class="never" "">
@@ -227,7 +227,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of   :name, :on => :create, :message => "client name can't be blank"</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -235,7 +235,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of   :client_code</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -243,7 +243,7 @@
               <td class='code_line'>
                 <pre>  validates_uniqueness_of :client_code, :case_sensitive => false</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -251,7 +251,7 @@
               <td class='code_line'>
                 <pre>  validates_length_of     :client_code, :within => 2..10</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -275,7 +275,7 @@
               <td class='code_line'>
                 <pre>  before_save :capitalize_client_code</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -283,7 +283,7 @@
               <td class='code_line'>
                 <pre>  after_save :add_default_project</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -307,7 +307,7 @@
               <td class='code_line'>
                 <pre>  attr_accessible :name, :client_code, :logo, :logo_file_name, :logo_content_type, :logo_size, :logo_updated_at, :projects_attributes, :notes_attributes</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -331,7 +331,7 @@
               <td class='code_line'>
                 <pre>  has_friendly_id :client_code, </pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -411,7 +411,7 @@
               <td class='code_line'>
                 <pre>  scope :client_name_like, lambda { |name| where('clients.name LIKE ?', "%#{name}%") }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -419,7 +419,7 @@
               <td class='code_line'>
                 <pre>  scope :client_code_like, lambda { |code| where('clients.client_code LIKE ?', "%#{code}%") }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -427,7 +427,7 @@
               <td class='code_line'>
                 <pre>  scope :project_domain_like, lambda { |domain| where('projects.domain LIKE ?', "%#{domain}%") }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -435,7 +435,7 @@
               <td class='code_line'>
                 <pre>  scope :simple_search, lambda { |query| includes(:projects).where('clients.name LIKE ? OR clients.client_code LIKE ? OR projects.domain LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%") }</pre>
               </td>
-              <td class='hit_number'>40</td>
+              <td class='hit_number'>33</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -443,7 +443,7 @@
               <td class='code_line'>
                 <pre>  scope :ordered_by_client_code, order('clients.client_code ASC')</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -459,7 +459,7 @@
               <td class='code_line'>
                 <pre>  def sorted_entities(ability, project = nil)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -467,7 +467,7 @@
               <td class='code_line'>
                 <pre>    project = project.blank? ? self.projects : project</pre>
               </td>
-              <td class='hit_number'>67</td>
+              <td class='hit_number'>41</td>
             </tr>
           
             <tr class="never" "">
@@ -483,7 +483,7 @@
               <td class='code_line'>
                 <pre>    Entity.accessible_by(ability).includes(:entity_type).where(:project_id => project).group_by { |e| e.entity_type.name }</pre>
               </td>
-              <td class='hit_number'>92</td>
+              <td class='hit_number'>66</td>
             </tr>
           
             <tr class="never" "">
@@ -507,7 +507,7 @@
               <td class='code_line'>
                 <pre>  def to_s</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -515,7 +515,7 @@
               <td class='code_line'>
                 <pre>    self.name</pre>
               </td>
-              <td class='hit_number'>20</td>
+              <td class='hit_number'>11</td>
             </tr>
           
             <tr class="never" "">
@@ -563,7 +563,7 @@
               <td class='code_line'>
                 <pre>  protected</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -579,7 +579,7 @@
               <td class='code_line'>
                 <pre>  def capitalize_client_code</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -587,7 +587,7 @@
               <td class='code_line'>
                 <pre>     self.client_code.upcase! if self.client_code</pre>
               </td>
-              <td class='hit_number'>246</td>
+              <td class='hit_number'>205</td>
             </tr>
           
             <tr class="never" "">
@@ -611,7 +611,7 @@
               <td class='code_line'>
                 <pre>  def add_default_project</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -619,7 +619,7 @@
               <td class='code_line'>
                 <pre>    if self.projects.empty?</pre>
               </td>
-              <td class='hit_number'>246</td>
+              <td class='hit_number'>205</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -627,7 +627,7 @@
               <td class='code_line'>
                 <pre>      Project.new(:name => 'Default', :client_id => self.id).save!</pre>
               </td>
-              <td class='hit_number'>234</td>
+              <td class='hit_number'>202</td>
             </tr>
           
             <tr class="never" "">
@@ -714,6 +714,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
+    <p>Generated on: 2011-03-23 13:08:18 -0500</p>
   </body>
 </html>

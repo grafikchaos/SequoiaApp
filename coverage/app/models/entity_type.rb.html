@@ -2,8 +2,8 @@
   <head>
     <title>app/models/entity_type.rb</title>
     
-    <link href="../../report.css?0.3877687732164026" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.5753547179767798'></script>
+    <link href="../../report.css?0.12228323628200377" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.44976124513768756'></script>
     <script>
       $(function() {
 
@@ -88,7 +88,7 @@
               <td class='code_line'>
                 <pre>class EntityType < ActiveRecord::Base</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -96,7 +96,7 @@
               <td class='code_line'>
                 <pre>  has_many :entities</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -104,7 +104,7 @@
               <td class='code_line'>
                 <pre>  has_many :entity_type_aliases</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -112,7 +112,7 @@
               <td class='code_line'>
                 <pre>  has_many :form_configs</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -136,7 +136,7 @@
               <td class='code_line'>
                 <pre>  validates_presence_of :name</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -144,7 +144,7 @@
               <td class='code_line'>
                 <pre>  validates_uniqueness_of :name</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -160,7 +160,7 @@
               <td class='code_line'>
                 <pre>  validates_each :name do |record, attr, value|</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -168,7 +168,7 @@
               <td class='code_line'>
                 <pre>    a = EntityTypeAlias.find_by_name(value)</pre>
               </td>
-              <td class='hit_number'>1112</td>
+              <td class='hit_number'>1067</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -176,7 +176,7 @@
               <td class='code_line'>
                 <pre>    if a</pre>
               </td>
-              <td class='hit_number'>1112</td>
+              <td class='hit_number'>1067</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -216,7 +216,7 @@
               <td class='code_line'>
                 <pre>  attr_accessible :name, :entity_type_aliases_attributes, :form_configs_attributes</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -240,7 +240,7 @@
               <td class='code_line'>
                 <pre>  accepts_nested_attributes_for :entity_type_aliases, :reject_if => lambda { |row| row[:name].blank? }, :allow_destroy => true</pre>
               </td>
-              <td class='hit_number'>27</td>
+              <td class='hit_number'>23</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -248,7 +248,7 @@
               <td class='code_line'>
                 <pre>  accepts_nested_attributes_for :form_configs, :reject_if => lambda { |row| row[:entity_key_id].blank? }, :allow_destroy => true</pre>
               </td>
-              <td class='hit_number'>23</td>
+              <td class='hit_number'>19</td>
             </tr>
           
             <tr class="never" "">
@@ -272,7 +272,7 @@
               <td class='code_line'>
                 <pre>  has_friendly_id :name, </pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -312,7 +312,7 @@
               <td class='code_line'>
                 <pre>  default_scope order(:name)</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -336,6 +336,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
+    <p>Generated on: 2011-03-23 13:08:18 -0500</p>
   </body>
 </html>

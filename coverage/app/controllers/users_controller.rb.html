@@ -2,8 +2,8 @@
   <head>
     <title>app/controllers/users_controller.rb</title>
     
-    <link href="../../report.css?0.6770443060399032" media="screen" rel="stylesheet" type="text/css" />
-    <script src='../../jquery.js?0.7117638124603546'></script>
+    <link href="../../report.css?0.10633377612868722" media="screen" rel="stylesheet" type="text/css" />
+    <script src='../../jquery.js?0.1785171573380625'></script>
     <script>
       $(function() {
 
@@ -59,7 +59,7 @@
         </td>
         <td>68</td>
         <td>32</td>
-        <td>65.6%</td>
+        <td>100.0%</td>
       </tr>
     </table>
 
@@ -91,7 +91,7 @@
               <td class='code_line'>
                 <pre>class UsersController < ApplicationController</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -99,7 +99,7 @@
               <td class='code_line'>
                 <pre>  load_and_authorize_resource</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -131,7 +131,7 @@
               <td class='code_line'>
                 <pre>  def index</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -139,7 +139,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>12</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -147,7 +147,7 @@
               <td class='code_line'>
                 <pre>      format.html # index.html.erb</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>12</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -155,7 +155,7 @@
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @users }</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>12</td>
             </tr>
           
             <tr class="never" "">
@@ -203,31 +203,31 @@
               <td class='code_line'>
                 <pre>  def new</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>16</td>
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>17</td>
               <td class='code_line'>
                 <pre>      format.html # new.html.erb</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>18</td>
               <td class='code_line'>
                 <pre>      format.xml  { render :xml => @user }</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
             <tr class="never" "">
@@ -267,7 +267,7 @@
               <td class='code_line'>
                 <pre>  def edit</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="never" "">
@@ -307,39 +307,39 @@
               <td class='code_line'>
                 <pre>  def create</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>29</td>
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>30</td>
               <td class='code_line'>
                 <pre>      if @user.save</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>31</td>
               <td class='code_line'>
                 <pre>        format.html { redirect_to(users_url, :notice => 'User was successfully created.') }</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>32</td>
               <td class='code_line'>
                 <pre>        format.xml  { render :xml => @user, :status => :created, :location => @user }</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -350,20 +350,20 @@
               <td class='hit_number'></td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>34</td>
               <td class='code_line'>
                 <pre>        format.html { render :action => "new" }</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>35</td>
               <td class='code_line'>
                 <pre>        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -419,7 +419,7 @@
               <td class='code_line'>
                 <pre>  def update</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -427,7 +427,7 @@
               <td class='code_line'>
                 <pre>    if params[:user][:password].blank?</pre>
               </td>
-              <td class='hit_number'>2</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -435,7 +435,7 @@
               <td class='code_line'>
                 <pre>      [:password, :password_confirmation].collect{ |p| params[:user].delete(p) }</pre>
               </td>
-              <td class='hit_number'>6</td>
+              <td class='hit_number'>9</td>
             </tr>
           
             <tr class="never" "">
@@ -459,7 +459,7 @@
               <td class='code_line'>
                 <pre>    respond_to do |format|</pre>
               </td>
-              <td class='hit_number'>2</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -467,7 +467,7 @@
               <td class='code_line'>
                 <pre>      if @user.update_attributes(params[:user])</pre>
               </td>
-              <td class='hit_number'>2</td>
+              <td class='hit_number'>3</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -494,20 +494,20 @@
               <td class='hit_number'></td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>52</td>
               <td class='code_line'>
                 <pre>        format.html { render :action => "edit" }</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>2</td>
             </tr>
           
-            <tr class="miss" data-hits='#{cov}'"">
+            <tr class="hit" data-hits='#{cov}'"">
               <td class='line_number'>53</td>
               <td class='code_line'>
                 <pre>        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }</pre>
               </td>
-              <td class='hit_number'>0</td>
+              <td class='hit_number'>1</td>
             </tr>
           
             <tr class="never" "">
@@ -563,7 +563,7 @@
               <td class='code_line'>
                 <pre>  def destroy</pre>
               </td>
-              <td class='hit_number'>8</td>
+              <td class='hit_number'>4</td>
             </tr>
           
             <tr class="hit" data-hits='#{cov}'"">
@@ -682,6 +682,6 @@
       
     </div>
     
-    <p>Generated on: 2011-03-21 19:31:12 -0500</p>
+    <p>Generated on: 2011-03-23 13:08:18 -0500</p>
   </body>
 </html>

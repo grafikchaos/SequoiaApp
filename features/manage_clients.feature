@@ -64,6 +64,20 @@ Feature: Manage Clients
     Then I should be on the client page for "AAI"
     And I should see "Mister Mittons"
 
+  @clients @edit @fail
+  Scenario: Check that the form re-renders properly when edit fails
+    Given I have client codes AAI
+    And I am on the edit page for the client "AAI"
+    When I fill in "Client Code" with ""
+    And I press "Update Client"
+    Then I should see "Client code can't be blank"
+    And I should see "Name"
+    And I should see "Client Code"
+    And I should see "Logo"
+    And I should see "Notes"
+    And I should not see "Project Name"
+    And I should not see "Project Domain"
+
   @clients @admin @authenticate @delete
   Scenario: Delete a client
     Given I have client codes ROR
