@@ -192,6 +192,39 @@ Feature: Abilities - Roles and Permissions
     And I should see "Poison"
     And I should have 1 entity_key
 
+
+  @entityKeys @create @fail
+  Scenario: Validate presence of the name attribute for EntityKey
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I have no entity_keys
+    And I am on the list of Entity Keys
+    When I follow "New Entity Key"
+    And I fill in "Name" with ""
+    And I press "Create Entity Key"
+    Then I should see "1 error prohibited this entity_key from being saved:"
+    And I should see "Name can't be blank"
+    
+  @entityKeys @create @fail
+  Scenario: Validate uniqueness of the name attribute for EntityKey with matching case
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Entity Keys
+    When I follow "New Entity Key"
+    And I fill in "Name" with "Username"
+    And I press "Create Entity Key"
+    Then I should see "1 error prohibited this entity_key from being saved:"
+    And I should see "Name has already been taken"
+
+  @entityKeys @create @fail
+  Scenario: Validate uniqueness of the name attribute for EntityKey with non-matching case
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And I am on the list of Entity Keys
+    When I follow "New Entity Key"
+    And I fill in "Name" with "username"
+    And I press "Create Entity Key"
+    Then I should see "1 error prohibited this entity_key from being saved:"
+    And I should see "Name has already been taken"
+  
+
   @entityKeys @edit
   Scenario: Admins can edit Entity Keys
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"

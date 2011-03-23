@@ -4,7 +4,6 @@
  */
 $(document).ready(function() {
   initCollapsibles();
-  initFlashHide();
   initSearch();
   initBookmarksMenu();
   initQtips();
@@ -33,15 +32,6 @@ var initCollapsibles = function() {
     });
   });
 };
-
-/**
- * Hide flash messages after a specified time.
- */
-var initFlashHide = function() {
-  if ($('#flash-messages').length > 0) {
-    $('#flash-messages').delay(2000).slideUp();
-  }
-}
 
 /**
  * Client page search form.

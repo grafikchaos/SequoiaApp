@@ -2,7 +2,8 @@ class EntityKey < ActiveRecord::Base
   has_many :entity_rows
   
   # validation
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
+  validates_presence_of   :name
 
   # friendly_id slug behavior
   has_friendly_id :name, 
