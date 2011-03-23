@@ -1,0 +1,30 @@
+<div class="form-config-field">
+  <div class="sort-handle"></div>
+  <div class="field">
+    <%= f.collection_select :entity_key_id, EntityKey.all, :id, :name, :prompt => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :placeholder, "Placeholder" %>
+    <%= f.text_field :placeholder %>
+  </div>
+
+  <div class="field">
+    <%= f.label :required, "Required?" %>
+    <%= f.check_box :required %>
+  </div>
+
+  <%= f.hidden_field :sort_order, :class => "sort-order" %>
+
+  <div class="hide delete-message">
+    <em>This row will be deleted on save</em>
+  </div>
+
+  <%- unless f.object.new_record? %>
+    <div class="remove">
+      <a href="javascript:void(0);" class="destroy-link tooltip toggle" title="Delete this row">Delete</a>
+      <a href="javascript:void(0);" class="hide toggle undo tooltip" title="This row will be deleted on save"><em>Undo?</em></a>
+      <%= f.hidden_field :_destroy %>
+    </div>
+  <%- end %>
+</div>

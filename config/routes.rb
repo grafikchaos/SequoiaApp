@@ -4,8 +4,8 @@ Ashint::Application.routes.draw do
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
   
   resources :clients, :shallow => true, :except => 'index' do
-    resources :projects, :has_many => :notes, :except => 'show'
-    resources :entities, :has_many => :notes, :except => 'show'
+    resources :projects, :except => 'show'
+    resources :entities, :except => 'show'
   end
   
   resources :favorites, :except => 'show'
@@ -14,7 +14,7 @@ Ashint::Application.routes.draw do
   scope "/admin" do
     resources :entity_types, :entity_keys, :users, :except => 'show'
   end
-  match '/admin' => redirect('/admin/entity_keys')
+  match '/admin' => redirect('/admin/entity_keys'), :as => 'admin'
 
   # Our root URL is mapped to the search controller
   root :to => "search#start"

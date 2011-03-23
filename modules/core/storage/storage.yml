@@ -1,0 +1,5 @@
+name: Entity Storage
+tabs:
+  entities:
+    name: Entities
+    path: client/%/entities

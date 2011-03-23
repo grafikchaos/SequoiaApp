@@ -1,0 +1,22 @@
+<% content_for :page_title, "Entity Keys" %>
+<% content_for :display_title, "Entity Keys" %>
+
+<%= render 'shared/admin_tabs' %>
+
+<div class="controls">
+  <% if can? :create, EntityKey %>
+    <%= link_to 'New Entity Key', new_entity_key_path, :class => 'button' %>
+  <% end %>
+</div>
+<div class='clear'></div>
+
+<table>
+<% @entity_keys.each do |entity_key| %>
+  <tr>
+    <td><%= entity_key.name %></td>
+    <td><%= entity_key.mask ? "Masked" : "Not masked" %></div>
+    <td><%= edit_link entity_key %></td>
+    <td><%= destroy_link entity_key %></td>
+  </tr>
+<% end %>
+</table>
