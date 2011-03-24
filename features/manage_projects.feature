@@ -48,7 +48,7 @@ Feature: Manage projects
     Given the client "ROR" has a project named "Intranet" with domain "intranet.com"
     And the client "ROR" has 2 projects
     When I follow "Manage projects"
-    And I follow "Delete" to delete requiring confirmation
+    And I follow "Delete"
     Then I should be on the list of projects for "ROR"
     And I should not see "Default"
     And the client "ROR" should not have a project named "Default"

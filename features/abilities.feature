@@ -186,7 +186,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with "Poison"
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "Entity Key was successfully created"
     And I should be on the list of Entity Keys
     And I should see "Poison"
@@ -200,7 +200,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with ""
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "1 error prohibited this entity_key from being saved:"
     And I should see "Name can't be blank"
     
@@ -210,7 +210,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with "Username"
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "1 error prohibited this entity_key from being saved:"
     And I should see "Name has already been taken"
 
@@ -220,7 +220,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with "username"
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "1 error prohibited this entity_key from being saved:"
     And I should see "Name has already been taken"
   
@@ -241,7 +241,7 @@ Feature: Abilities - Roles and Permissions
   Scenario: Admins can delete Entity Keys
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the list of Entity Keys
-    When I follow "delete-transaction-key" to delete requiring confirmation
+    When I follow "delete-transaction-key"
     Then I should be on the list of Entity Keys
     And I should see "Entity Key was successfully deleted"
     And I should not see "transaction key"
@@ -325,7 +325,7 @@ Feature: Abilities - Roles and Permissions
   Scenario: Admins can delete Users
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the list of Users
-    When I follow "delete-inigo" to delete requiring confirmation
+    When I follow "delete-inigo"
     Then I should be on the list of Users
     And I should not see "inigo"
 
@@ -383,7 +383,7 @@ Feature: Abilities - Roles and Permissions
     Given I am logged in as "inigo" with password "preparetodie"
     And I have client codes ROR
     And I am on the client page for "ROR"
-    When I follow "delete-ror" to delete requiring confirmation
+    When I follow "delete-ror"
     Then I should be on the search results page
     And I should have 0 clients
 
