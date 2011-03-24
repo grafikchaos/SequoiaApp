@@ -1,5 +1,7 @@
 Gemfile.lock
 config/
+coverage.data
+coverage
 db/
 tmp/
 *.log
