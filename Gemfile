@@ -18,15 +18,16 @@ gem 'acts_as_favable'
 # Fetching from github for Ruby 1.9 compatibility
 gem 'attr_encrypted', :git => 'git://github.com/cgod/attr_encrypted.git'
 
-gem 'cover_me'
-
 group :development, :test, :demo do
+  gem 'cover_me'
   gem 'web-app-theme'
   gem 'autotest'
   gem 'factory_girl_rails'
-  gem 'webrat'
   gem 'cucumber'
   gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'culerity'
+  gem 'celerity', :require => nil # JRuby only. Make it available but don't require it in any environment.
   gem 'pickle'
   gem 'database_cleaner'
   gem 'rspec'
