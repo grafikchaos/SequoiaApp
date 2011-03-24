@@ -23,8 +23,7 @@ group :development, :test, :demo do
   gem 'web-app-theme'
   gem 'autotest'
   gem 'factory_girl_rails'
-  gem 'cucumber'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :git => 'git://github.com/aslakhellesoy/cucumber-rails.git'
   gem 'capybara'
   gem 'culerity'
   gem 'celerity', :require => nil # JRuby only. Make it available but don't require it in any environment.
