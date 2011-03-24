@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Ashint
+module SequoiaApp
   class Application < Rails::Application
     # Setting our encryption key
     config.encryption_key = 'fezzik'

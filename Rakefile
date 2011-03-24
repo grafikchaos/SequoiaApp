@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Ashint::Application.load_tasks
+SequoiaApp::Application.load_tasks

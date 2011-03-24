@@ -1,4 +1,4 @@
-Ashint::Application.configure do
+SequoiaApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Setting our encryption key
