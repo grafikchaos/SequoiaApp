@@ -1,4 +1,4 @@
-Ashint::Application.routes.draw do
+SequoiaApp::Application.routes.draw do
 
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
