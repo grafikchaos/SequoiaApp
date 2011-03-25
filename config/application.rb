@@ -49,7 +49,7 @@ module SequoiaApp
     config.action_view.stylesheet_expansions[:defaults] = 
       %w(
         web-app-theme/base 
-        web-app-theme/themes/warehouse/style 
+        web-app-theme/themes/drastic-dark/style 
         styles
       )
 

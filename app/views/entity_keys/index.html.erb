@@ -1,22 +1,35 @@
 <% content_for :page_title, "Entity Keys" %>
-<% content_for :display_title, "Entity Keys" %>
 
-<%= render 'shared/admin_tabs' %>
+<div class="block">
+  <%= render 'shared/admin_tabs' %>
 
-<div class="controls">
-  <% if can? :create, EntityKey %>
-    <%= link_to 'New Entity Key', new_entity_key_path, :class => 'button' %>
-  <% end %>
+  <div class="controls">
+    <% if can? :create, EntityKey %>
+      <%= link_to 'New Entity Key', new_entity_key_path, :class => 'button' %>
+    <% end %>
+  </div>
+  <div class='clear'></div>
+
+  <div class="content">
+    <h2 class="title">Entity Keys</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>Name</th>
+          <th>Masked</th>
+          <th class="last"></th>
+        </tr>
+      <% @entity_keys.each do |entity_key| %>
+        <tr class="<%= cycle "odd", "even" -%>">
+          <td><%= entity_key.id %></td>
+          <td><%= entity_key.name %></td>
+          <td><%= entity_key.mask ? "Yes" : "No" %></div>
+          <td><%= edit_link entity_key %>
+          <%= destroy_link entity_key %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
 </div>
-<div class='clear'></div>
-
-<table>
-<% @entity_keys.each do |entity_key| %>
-  <tr>
-    <td><%= entity_key.name %></td>
-    <td><%= entity_key.mask ? "Masked" : "Not masked" %></div>
-    <td><%= edit_link entity_key %></td>
-    <td><%= destroy_link entity_key %></td>
-  </tr>
-<% end %>
-</table>

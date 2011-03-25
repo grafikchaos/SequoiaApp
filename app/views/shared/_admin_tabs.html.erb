@@ -1,8 +1,8 @@
 <%- links = ['Entity Keys', 'Entity Types', 'Users'] %>
-<div class="admin-tabs">
-  <ul>
+<div class="secondary-navigation">
+  <ul class="wat-cf">
     <%- links.each do |link| %>
-      <li><%= link_to_unless_current link, '/admin/' + link.downcase.gsub(' ', '_') %></li>
+      <li class="<%= cycle_with_first_last(link, links) %>"><%= active_link_to link, '/admin/' + link.downcase.gsub(' ', '_') %></li>
     <%- end %>
   </ul>
 </div>
