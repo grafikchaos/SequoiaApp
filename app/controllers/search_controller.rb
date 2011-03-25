@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  layout :layout
+  #layout :layout
 
   def start
     respond_to do |format|
