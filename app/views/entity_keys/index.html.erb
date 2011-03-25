@@ -1,14 +1,13 @@
 <% content_for :page_title, "Entity Keys" %>
+<% content_for :sidebar do %>
+  <% if can? :create, EntityKey %>
+    <%= link_to 'New Entity Key', new_entity_key_path, :class => 'button' %>
+  <% end %>
+<%- end %>
 
 <div class="block">
   <%= render 'shared/admin_tabs' %>
 
-  <div class="controls">
-    <% if can? :create, EntityKey %>
-      <%= link_to 'New Entity Key', new_entity_key_path, :class => 'button' %>
-    <% end %>
-  </div>
-  <div class='clear'></div>
 
   <div class="content">
     <h2 class="title">Entity Keys</h2>

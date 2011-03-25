@@ -1,14 +1,12 @@
 <% content_for :page_title, "Users" %>
+<% content_for :sidebar do %>
+  <% if can? :create, User %>
+    <%= link_to 'New User', new_user_path, :class => 'button' %>
+  <% end %>
+<%- end %>
 
 <div class="block">
   <%= render 'shared/admin_tabs' %>
-
-  <div class="controls">
-    <% if can? :create, User %>
-      <%= link_to 'New User', new_user_path, :class => 'button' %>
-    <% end %>
-  </div>
-  <div class='clear'></div>
 
   <div class="content">
     <h2 class="title">Users</h2>
