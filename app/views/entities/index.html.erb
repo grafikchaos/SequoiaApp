@@ -1,12 +1,16 @@
 <% content_for :page_title, page_title(@client) %>
-<% content_for :sidebar do %>
-  <%- if can? :create, Project -%>
-    <%= link_to 'New Project', new_client_project_path(@client), :class => 'button' %>
-  <%- end -%>
-
+<% content_for :actions do %>
   <%- if can? :create, Entity -%>
-    <%= link_to 'New Entity', new_client_entity_path(@client), :class => 'button' %>
+    <li><%= link_to 'New Entity', new_client_entity_path(@client) %></li>
   <%- end -%>
+  <%- if can? :create, Project -%>
+    <li><%= link_to 'New Project', new_client_project_path(@client) %></li>
+  <%- end -%>
+  <%- if can? :update, Project %>
+    <li><%= link_to 'Manage Projects', client_projects_path(@client) %></li>
+  <%- end -%>
+<% end %>
+<% content_for :sidebar do %>
 
   <%- if can? :edit, Client -%>
     <%= edit_link @client %>
@@ -29,22 +33,20 @@
   </div>
 <% end %>
 
+<h2 class="title"><%= @client.name %></h2>
+<%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
+  <%= select_tag 'project', options_from_collection_for_select(@client.projects, :id, :name, params[:project]), :include_blank => 'All' %>
+  <noscript>
+    <%= submit_tag "Filter" %>
+  </noscript>
+<% end %>
+
 <div class="block">
-  <%= render 'clients/client_global_nav' %>
+  <%= render 'clients/client_global_nav', :client => @client %>
   
   <div class="content">
-    <h2 class="title"><%= @client.name %></h2>
+    <h2 class="title">Entities</h2>
     <div class="inner">
-      <%- if can? :update, Project -%>
-        <%= link_to 'Manage projects', client_projects_path(@client) %>
-      <%- end -%>
-
-      <%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
-        <%= select_tag 'project', options_from_collection_for_select(@client.projects, :id, :name, params[:project]), :include_blank => 'All' %>
-        <noscript>
-          <%= submit_tag "Filter" %>
-        </noscript>
-      <% end %>
 
       <div class="jump-menu">
         <span class="jump-hover">Jump to section</span>
@@ -64,7 +66,7 @@
             </div>
             <div class="clear"></div>
             <%- rows.each do |entity| %>
-              <%= render 'entities/row', :entity => entity %>
+              <%= render 'row', :entity => entity %>
             <%- end %>
           </div>
         <%- end %>

@@ -1,6 +1,15 @@
 class EntitiesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :index
   before_filter :load_form_config, :only => [:new, :edit]
+
+  def index
+    @client = Client.find(params[:client_id])
+    @entities = @client.sorted_entities(current_ability, params[:project])
+
+    respond_to do |format|
+      format.html
+    end
+  end
 
   # GET /entities/new
   # GET /entities/new.xml
@@ -37,7 +46,7 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       if @entity.save
-        format.html { redirect_to(@client, :notice => 'Entity was successfully created.') }
+        format.html { redirect_to(client_entities_url(@client), :notice => 'Entity was successfully created.') }
         format.xml  { render :xml => @entity, :status => :created, :location => @entity }
       else
         # load in the form config so we can re-construct the form
@@ -57,7 +66,7 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       if @entity.update_attributes(params[:entity])
-        format.html { redirect_to(@client, :notice => 'Entity was successfully updated.') }
+        format.html { redirect_to(client_entities_url(@client), :notice => 'Entity was successfully updated.') }
         format.xml  { head :ok }
       else
         # load in the form config so we can re-construct the form
@@ -76,7 +85,7 @@ class EntitiesController < ApplicationController
     @entity.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@client) }
+      format.html { redirect_to(client_entities_url(@client)) }
       format.xml  { head :ok }
     end
   end

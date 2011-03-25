@@ -1,17 +1,5 @@
 class ClientsController < ApplicationController
   
-  # GET /clients/1
-  # GET /clients/1.xml
-  def show
-    @client = Client.find(params[:id])
-    @entities = @client.sorted_entities(current_ability, params[:project])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @client }
-    end
-  end
-
   # GET /clients/new
   # GET /clients/new.xml
   def new
