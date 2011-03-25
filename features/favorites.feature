@@ -10,11 +10,11 @@ Feature: Favorites
     And the client "ROR" has a default project named "Intranet" with domain "intranet.com" 
     And I am on the home page
     And I have no favorites
-    And I have bookmarked clients AAI, ROR
 
-  @delete
+  @delete @focus @selenium
   Scenario: Viewing my bookmarks
     When I follow "Favorites"
+    And I follow "View favorites"
     Then I should have 2 favorites
     And I should see "AAI Company Name Here"
     And I should see "ROR Company Name Here"
