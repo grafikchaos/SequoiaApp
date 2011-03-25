@@ -1,0 +1,12 @@
+<%- if content_for? :actions %>
+  <section class="block">
+    <header><h3>Actions</h3></header>
+    <section class="content">
+      <ul class="navigation">
+        <%= yield :actions %>
+      </ul>
+    </section>
+  </section>
+<%- end %>
+
+<%= yield :sidebar %>

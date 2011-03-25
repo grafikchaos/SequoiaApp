@@ -17,8 +17,7 @@ pre.example { font-size:16px; font-weight:bold; color:#39c;}
 /****************************
   DEFAULTS
 ****************************/
-/*html, body { height: 100%; }*/
-/*#container { min-height: 100%; position: relative; }*/
+html, body { height: 100%; }
 blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #ddd; border-width:0 0 0 3px; }
 
 /****************************
@@ -28,11 +27,10 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
 /****************************
   STRUCTURE
 ****************************/
+#container { min-height: 100%; position: relative; }
 #main.no-sidebar {
   width: 100%;
 }
-
-#footer { padding-bottom:20px; clear:both; /*width:70%;*/ width:100%; }
 
 /****************************
   SEARCH FORM
@@ -97,23 +95,12 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
 #results-list .row .data .logo { float: left; margin-right: 10px; width: 64px; height: 64px; }
 
 /****************************
-<<<<<<< HEAD
   TABLES
 ****************************/
 th.crud-actions-header { text-align:right; }
 td.crud-actions { text-align:right; width:60px; text-indent:-9999px; font-size:0%; }
 
-
 /****************************
-  NOTES
-****************************/
-.notes {
-  float: right;
-}
-
-/****************************
-=======
->>>>>>> 2ea1fbfe417cb33348e9ca38fbc6f6fbba76e9d6
   ENTITY LIST
 ****************************/
 .jump-menu {
@@ -187,14 +174,14 @@ form .remove a.undo { margin-left: 3px; }
 /****************************
   FOOTER
 ****************************/
-/*#footer {
+#footer {
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
   padding: 0;
 }
-*/
+
 #footer .block {
   margin: 0;
   border-radius: 0;
@@ -261,8 +248,10 @@ a.destroy-link {
 ****************************/
 .flash .message .close {
   display: block;
+  float: right;
+  width: 16px; height: 16px;
   text-indent: -9999px;
-  background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
+  background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat center center;
   opacity: 0.4;
 }
 

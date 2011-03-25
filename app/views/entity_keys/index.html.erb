@@ -1,5 +1,9 @@
 <% content_for :page_title, "Entity Keys" %>
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
+<% content_for :actions do %>
+  <% if can? :create, EntityKey %>
+    <li><%= link_to 'New Entity Key', new_entity_key_path, :class => '' %></li>
+  <% end %>
+<% end %>
 
 <div class="block">
   <%= render 'shared/admin_tabs' %>
