@@ -5,6 +5,7 @@
 $(document).ready(function() {
   initCollapsibles();
   initSearch();
+  initMessageCloseButton();
   initBookmarksMenu();
   initQtips();
   initProjectSelector();
@@ -41,6 +42,17 @@ var initSearch = function() {
     $('#main-search input#query').focus();
   } else {
     $('#results-list .row:first-child').addClass('selected');
+  }
+};
+
+/**
+ * Close button for flash messages.
+ */
+var initMessageCloseButton = function() {
+  if ($('.flash').length > 0) {
+    $('.flash .message a.close').click(function() {
+      $(this).parent('.message').fadeOut();
+    });
   }
 };
 

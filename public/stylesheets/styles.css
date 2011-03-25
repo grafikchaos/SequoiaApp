@@ -97,13 +97,6 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
 #results-list .row .data .logo { float: left; margin-right: 10px; width: 64px; height: 64px; }
 
 /****************************
-  NOTES
-****************************/
-.notes {
-  float: right;
-}
-
-/****************************
   ENTITY LIST
 ****************************/
 .jump-menu {
@@ -202,6 +195,22 @@ form .remove a.undo { margin-left: 3px; }
 /****************************
   CONTROL LINKS
 ****************************/
+.controls {
+  padding: 5px;
+  float: right;
+  background: #D7E0E5;
+  border-left: 1px solid #C5D3DC;
+}
+
+.controls ul li {
+  display: block;
+  float: left;
+}
+
+.controls a {
+  float: left;
+}
+
 a.favorite-link {
   width: 16px; height: 16px;
   background: url(/images/icons/glyphicons_024_dislikes.png) no-repeat;
@@ -225,6 +234,16 @@ a.destroy-link {
   background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
   display: inline-block;
   text-indent: -9999px;
+}
+
+/****************************
+  FLASH MESSAGES
+****************************/
+.flash .message .close {
+  display: block;
+  text-indent: -9999px;
+  background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
+  opacity: 0.4;
 }
 
 /****************************
