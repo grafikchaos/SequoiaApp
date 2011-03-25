@@ -1,7 +1,7 @@
 <% content_for :page_title, "Entity Types" %>
-<% content_for :sidebar do %>
+<% content_for :actions do %>
   <% if can? :create, EntityType %>
-    <%= link_to 'New Entity Type', new_entity_type_path, :class => 'button' %>
+    <li><%= link_to 'New Entity Type', new_entity_type_path %></li>
   <% end %>
 <%- end %>
 
