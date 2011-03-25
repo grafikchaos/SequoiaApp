@@ -8,35 +8,29 @@
 </head>
 <body>
   <div id="container">
-    <div id="header">
+    <header id="header">
       <h1><%= link_to "Sequoia", root_path %></h1>
       <%- if current_user %>
         <%= render 'shared/navigation' %>
       <%- end %>
-      <div id="main-navigation">
-        <ul class="wat-cf"></ul>
-      </div>
-    </div>    
+    </header>    
+
     <div id="wrapper" class="wat-cf">
-      <div class="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
-      </div>
-      <div id="main" class="no-sidebar">
+      <%- unless flash.empty? %>
+        <%= render 'shared/flash', :flash => flash %>
+      <%- end %>
+
+      <section id="main" class="no-sidebar">
         <%= yield %>
-        <div id="footer">
-          <div class="block">
-            <p>Copyright &copy; <%= Time.now.year %> Sequoia.</p>
-          </div>      
-        </div>
-      </div>
-      <div id="sidebar">
-        <%= yield :sidebar %>
-      </div>
-    </div>    
+      </section>
+      
+      <footer id="footer">
+        <section class="block">
+          <p>Copyright &copy; <%= Time.now.year %> Sequoia App.</p>
+        </section>      
+      </footer>
+    </div>
+
   </div>
 </body>
 </html>

@@ -1,4 +1,10 @@
 /****************************
+  HTML5
+****************************/
+section, article, header, footer, nav, aside, hgroup { display: block; }
+
+
+/****************************
   TEXT
 ****************************/
 pre.example { font-size:16px; font-weight:bold; color:#39c;}
@@ -11,8 +17,8 @@ pre.example { font-size:16px; font-weight:bold; color:#39c;}
 /****************************
   DEFAULTS
 ****************************/
-html, body { height: 100%; }
-#container { min-height: 100%; position: relative; }
+/*html, body { height: 100%; }*/
+/*#container { min-height: 100%; position: relative; }*/
 blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #ddd; border-width:0 0 0 3px; }
 
 /****************************
@@ -26,12 +32,14 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
   width: 100%;
 }
 
+#footer { padding-bottom:20px; clear:both; /*width:70%;*/ width:100%; }
+
 /****************************
   SEARCH FORM
 ****************************/
 #big-search-form {
   width: 380px;
-  margin: 29% auto;
+  margin: 21% auto;
 /*  margin: 0 auto;*/
 }
 
