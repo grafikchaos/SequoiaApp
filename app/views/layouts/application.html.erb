@@ -23,26 +23,28 @@
         </ul>
       </nav>
     </header>    
+
     <div id="wrapper" class="wat-cf">
-      <div class="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
-      </div>
+      <%- unless flash.empty? %>
+        <%= render 'shared/flash', :flash => flash %>
+      <%- end %>
+      
+
       <section id="main">
         <%= yield %>
-        <footer id="footer">
-          <section class="block">
-            <p>Copyright &copy; <%= Time.now.year %> Sequoia App.</p>
-          </section>      
-        </footer>
       </section>
-      <section id="sidebar">
+
+      <aside id="sidebar">
         <%= yield :sidebar %>
-      </section>
-    </div>    
+      </aside>
+
+      <footer id="footer">
+        <section class="block">
+          <p>Copyright &copy; <%= Time.now.year %> Sequoia App.</p>
+        </section>      
+      </footer>
+
+    </div>
   </div>
 </body>
 </html>

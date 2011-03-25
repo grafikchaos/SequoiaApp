@@ -1,4 +1,9 @@
 /****************************
+  TEXT
+****************************/
+pre.example { font-size:16px; font-weight:bold; color:#39c;}
+
+/****************************
   UTILITIES
 ****************************/
 .hide { display: none; }
@@ -8,7 +13,7 @@
 ****************************/
 html, body { height: 100%; }
 #container { min-height: 100%; position: relative; }
-#wrapper { padding-bottom: 32px; }
+blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #ddd; border-width:0 0 0 3px; }
 
 
 /****************************
@@ -16,7 +21,7 @@ html, body { height: 100%; }
 ****************************/
 #big-search-form {
   width: 380px;
-  margin: 300px auto;
+  margin: 29% auto;
 }
 
 #main-search input[type=text] {
