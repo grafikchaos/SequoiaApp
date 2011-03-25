@@ -51,7 +51,7 @@ var initSearch = function() {
 var initMessageCloseButton = function() {
   if ($('.flash').length > 0) {
     $('.flash .message a.close').click(function() {
-      $(this).parent('.message').fadeOut();
+      $(this).parent().parent('.message').fadeOut();
     });
   }
 };
