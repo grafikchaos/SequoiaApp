@@ -69,4 +69,15 @@ module ApplicationHelper
     end
   end
 
+  def cycle_with_first_last(object, collection, options = { })
+    options[:first] = options[:blank] || 'first'
+    options[:last] = options[:last] || 'last'
+    options[:odd] = options[:odd] || 'odd'
+    options[:even] = options[:even] || 'even'
+    addition = ""
+    addition += " #{options[:first]}" if object == collection.first
+    addition += " #{options[:last]}"if object == collection.last
+    cycle(options[:odd], options[:even]) + addition
+  end
+
 end

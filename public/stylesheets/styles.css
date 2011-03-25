@@ -15,6 +15,16 @@ html, body { height: 100%; }
 #container { min-height: 100%; position: relative; }
 blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #ddd; border-width:0 0 0 3px; }
 
+/****************************
+  COLORS
+****************************/
+
+/****************************
+  STRUCTURE
+****************************/
+#main.no-sidebar {
+  width: 100%;
+}
 
 /****************************
   SEARCH FORM
@@ -22,6 +32,7 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
 #big-search-form {
   width: 380px;
   margin: 29% auto;
+/*  margin: 0 auto;*/
 }
 
 #main-search input[type=text] {
@@ -160,7 +171,6 @@ form .remove a.undo { margin-left: 3px; }
 ****************************/
 /*#footer {
   width: 100%;
-  height: 32px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -168,8 +178,8 @@ form .remove a.undo { margin-left: 3px; }
 }
 */
 #footer .block {
-  padding: 5px 0;
   margin: 0;
+  border-radius: 0;
 }
 
 #footer .block.left {
@@ -180,30 +190,10 @@ form .remove a.undo { margin-left: 3px; }
   float: right;
 }
 
-#footer .block p {
-  margin: 0;
-  padding: 0 10px;
-}
 
 /****************************
   CONTROL LINKS
 ****************************/
-.controls {
-  padding: 5px;
-  float: right;
-  background: #D7E0E5;
-  border-left: 1px solid #C5D3DC;
-}
-
-.controls ul li {
-  display: block;
-  float: left;
-}
-
-.controls a {
-  float: left;
-}
-
 a.favorite-link {
   width: 16px; height: 16px;
   background: url(/images/icons/glyphicons_024_dislikes.png) no-repeat;
@@ -218,33 +208,16 @@ a.favorite-link.faved {
 a.edit-link {
   width: 16px; height: 16px;
   background: url(/images/icons/glyphicons_000_pencil.png) no-repeat;
-  display: block;
+  display: inline-block;
   text-indent: -9999px;
 }
 
 a.destroy-link {
   width: 16px; height: 16px;
   background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
-  display: block;
+  display: inline-block;
   text-indent: -9999px;
 }
-
-/****************************
-  NOTICES
-****************************/
-div#flash-messages {
-  width: 100%;
-}
-
-div#flash-messages span {
-  display:block;
-  padding: 5px 10px;
-  margin:10px 0;
-}
-
-div#flash-messages span.notice { background: green; color: #fff; }
-div#flash-messages span.alert { background: yellow; color: #000; }
-div#flash-messages span.error { background: red; color: #fff; }
 
 /****************************
   LOGIN PAGE
@@ -285,15 +258,9 @@ ul.bookmarks-list a {
 /****************************
   FORM ELEMENTS
 ****************************/
-form .field {
-  margin: 3px 0;
-}
-
 form .field.required label:after {
   content: '*';
 }
-
-form .description { font-style: italic; }
 
 /* Pulled from Google Chrome's source. Pretty, huh? */
 select {
@@ -341,26 +308,6 @@ input:not([type]) {
   padding: 3px;
   width: 292px;
 }
-
-button,
-input[type='submit'] {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  -moz-box-shadow: 0 1px 2px 1px #999;
-  -webkit-box-shadow: 0 1px 2px 1px #999;
-  box-shadow: 0 1px 2px 1px #999;
-  -webkit-user-select: none;
-  background: #588797;
-  border: 1px solid #222;
-  color: #fff;
-  font-size: inherit;
-  margin-bottom: 0px;
-  min-width: 4em;
-  padding: 3px 12px 3px 12px;
-  text-transform: uppercase;
-}
-
 
 /****************************
   FIELDSETS

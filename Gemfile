@@ -10,6 +10,7 @@ gem "friendly_id"
 gem "paperclip"
 gem "meta_where"
 gem 'foreigner'
+gem 'active_link_to'
 
 # For bookmarking
 gem 'acts_as_favable'

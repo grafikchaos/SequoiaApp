@@ -1,11 +1,13 @@
-<%= render 'form' %>
-<%= favable_link(@query_string) unless @results.empty? || @query_string.nil? %>
-
-<div class="controls">
+<% content_for :page_title, "Results for #{truncate params[:query]}" %>
+<% content_for :sidebar do %>
   <%- if can? :create, Client -%>
     <%= link_to 'New Client', new_client_path, :class => 'button', :id => 'new-client' %>
   <%- end -%>
-</div>
+<% end %>
+
+<%= render 'form' %>
+<%= favable_link(@query_string) unless @results.empty? || @query_string.nil? %>
+
 
 <div class="clear"></div>
 <%- if @results %>

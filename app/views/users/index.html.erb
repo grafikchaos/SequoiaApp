@@ -1,27 +1,39 @@
 <% content_for :page_title, "Users" %>
-<% content_for :display_title, "Users" %>
-
-<%= render 'shared/admin_tabs' %>
-
-<div class="controls">
+<% content_for :sidebar do %>
   <% if can? :create, User %>
     <%= link_to 'New User', new_user_path, :class => 'button' %>
   <% end %>
-</div>
-<div class='clear'></div>
+<%- end %>
 
-<table id="users">
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td>Level <%= user.clearance %></td>
-    <td><%= user.role %></td>
-    <td><%= edit_link user %></td>
-    <td>
-      <%- if user != current_user %>
-        <%= destroy_link user %>
-      <%- end %>
-    </td>
-  </tr>
-<% end %>
-</table>
+<div class="block">
+  <%= render 'shared/admin_tabs' %>
+
+  <div class="content">
+    <h2 class="title">Users</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>Username</th>
+          <th>Clearance</th>
+          <th>Role</th>
+          <th class="last"></th>
+        </tr>
+      <% @users.each do |user| %>
+        <tr class="<%= cycle "odd", "even" -%>">
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td>Level <%= user.clearance %></td>
+          <td><%= user.role %></td>
+          <td>
+            <%= edit_link user %>
+            <%- if user != current_user %>
+              <%= destroy_link user %>
+            <%- end %>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

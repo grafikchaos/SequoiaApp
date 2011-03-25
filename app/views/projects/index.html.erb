@@ -1,26 +1,35 @@
-<%= content_for :page_title, "Projects for #{@client.name}" %>
-<%= content_for :display_title, "Projects for #{@client.name}" %>
-
-<table>
-  <tr>
-    <th>Project Name</th>
-    <th>Domain</th>
-    <th colspan="2">Actions</th>
-  </tr>
-
-<%- is_not_only_project = @projects.count > 1 ? true : false %>
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= project.domain %></td>
-    <td><%= edit_link project %></td>
-    <%- if is_not_only_project and can? :destroy, project %>
-      <td><%= destroy_link project %></td>
-    <%- end %>
-  </tr>
+<% content_for :page_title, "Projects for #{@client.name}" %>
+<% content_for :sidebar do %>
+  <%= link_to "New Project", new_client_project_path(@client), :class => 'button' %>
 <% end %>
-</table>
 
-<br />
+<div class="block">
+  <div class="content">
+    <h2 class="title">Projects for <%= @client.name %></h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"></th>
+          <th>Project Name</th>
+          <th>Domain</th>
+          <th class="last"></th>
+        </tr>
 
-<%= link_to 'New Project', new_client_project_path %>
+      <%- is_not_only_project = @projects.count > 1 ? true : false %>
+      <% @projects.each do |project| %>
+        <tr class="<%= cycle "odd", "even" %>">
+          <td><%= project.id %></td>
+          <td><%= project.name %></td>
+          <td><%= project.domain %></td>
+          <td>
+            <%= edit_link project %>
+            <%- if is_not_only_project and can? :destroy, project %>
+              <%= destroy_link project %>
+            <%- end %>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

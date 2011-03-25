@@ -1,0 +1,14 @@
+/* SEQUOIA TEAM */
+	Chef: Josh Johnson
+	Contact: josh@grafikchaos.com
+	From: Minneapolis, Minnesota
+
+	Chef: Jake Bell
+	Email: jake@theunraveler.com
+  Web: http://theunraveler.com
+	From: Minneapolis, Minnesota
+
+/* SITE */
+	Doctype: HTML5 with CSS3
+	Tools: Ruby on Rails
+	IDE: Textmate (Josh) and Vim (Jake)

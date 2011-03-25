@@ -1,7 +1,5 @@
 <% content_for :page_title, page_title(@client) %>
-<% content_for :display_title, display_title(@client) %>
-
-<div class="controls">
+<% content_for :sidebar do %>
   <%- if can? :create, Project -%>
     <%= link_to 'New Project', new_client_project_path(@client), :class => 'button' %>
   <%- end -%>
@@ -17,44 +15,7 @@
   <%- if can? :delete, Client -%>
     <%= destroy_link @client %>
   <%- end -%>
-</div>
 
-<%- if can? :update, Project -%>
-  <%= link_to 'Manage projects', client_projects_path(@client) %>
-<%- end -%>
-
-<%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
-  <%= select_tag 'project', options_from_collection_for_select(@client.projects, :id, :name, params[:project]), :include_blank => 'All' %>
-  <noscript>
-    <%= submit_tag "Filter" %>
-  </noscript>
-<% end %>
-
-<div class="jump-menu">
-  <span class="jump-hover">Jump to section</span>
-  <span class="links">
-    <%- @entities.each do |name, rows| %>
-      <%= link_to name, :anchor => name.tableize.singularize %>
-    <%- end %>
-  </span>
-</div>
-
-<div id="entity-list">
-  <%- @entities.each do |name, rows| %>
-    <div id="<%= name.tableize.singularize %>" class="group">
-      <div class="bar">
-        <h3><%= name %></h3>
-        <%= link_to "Back to top", :anchor => 'wrapper' %>
-      </div>
-      <div class="clear"></div>
-      <%- rows.each do |entity| %>
-        <%= render 'entities/row', :entity => entity %>
-      <%- end %>
-    </div>
-  <%- end %>
-</div>
-
-<div class="notes">
   <div class="client-notes">
     <h2>Client Notes:</h2>
     <%= render @client.notes %>
@@ -65,5 +26,47 @@
     <% @client.projects.each do |project| %>
       <%= render project.notes %>
     <% end %>
+  </div>
+<% end %>
+
+<div class="block">
+  <div class="content">
+    <h2 class="title"><%= @client.name %></h2>
+    <div class="inner">
+      <%- if can? :update, Project -%>
+        <%= link_to 'Manage projects', client_projects_path(@client) %>
+      <%- end -%>
+
+      <%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
+        <%= select_tag 'project', options_from_collection_for_select(@client.projects, :id, :name, params[:project]), :include_blank => 'All' %>
+        <noscript>
+          <%= submit_tag "Filter" %>
+        </noscript>
+      <% end %>
+
+      <div class="jump-menu">
+        <span class="jump-hover">Jump to section</span>
+        <span class="links">
+          <%- @entities.each do |name, rows| %>
+            <%= link_to name, :anchor => name.tableize.singularize %>
+          <%- end %>
+        </span>
+      </div>
+
+      <div id="entity-list">
+        <%- @entities.each do |name, rows| %>
+          <div id="<%= name.tableize.singularize %>" class="group">
+            <div class="bar">
+              <h3><%= name %></h3>
+              <%= link_to "Back to top", :anchor => 'wrapper' %>
+            </div>
+            <div class="clear"></div>
+            <%- rows.each do |entity| %>
+              <%= render 'entities/row', :entity => entity %>
+            <%- end %>
+          </div>
+        <%- end %>
+      </div>
+    </div>
   </div>
 </div>

@@ -196,7 +196,8 @@ hr {
   border-bottom-color: #1a1a1a;
 }
 
-.secondary-navigation ul li.active, .secondary-navigation ul li.active a:hover {
+.secondary-navigation ul li.active, .secondary-navigation ul li.active a:hover,
+.secondary-navigation ul li a.active {
   background-color: #1a1a1a;
 }
 
@@ -303,7 +304,8 @@ hr {
   border: 1px solid #fffaaa;
   background-color: #ffffcc;
 }
-.flash .notice {
+.flash .notice,
+.flash .alert {
   border: 1px solid #1FDF00;
   background-color: #BBFFB6;
 }
