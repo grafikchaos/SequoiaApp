@@ -89,7 +89,7 @@ Feature: Abilities - Roles and Permissions
     And I have no entity_types
     And I am on the new Entity Type page
     When I fill in "Name" with "API"
-    And I press "Create Entity Type"
+    And I press "Create Entity type"
     Then I should see "Entity Type was successfully created"
     And I should be on the list of Entity Types
     And I should see "API"
@@ -103,7 +103,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the new Entity Type page
     When I fill in "Name" with "Database"
     And I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "mysql"
-    And I press "Create Entity Type"
+    And I press "Create Entity type"
     Then I should see "Entity Type was successfully created"
     And I should be on the list of Entity Types
     And I should have 1 entity_type_aliases
@@ -113,7 +113,7 @@ Feature: Abilities - Roles and Permissions
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the new Entity Type page
     When I fill in "Name" with "mysql"
-    And I press "Create Entity Type"
+    And I press "Create Entity type"
     Then I should see "Mysql is already an alias of entity type database"
 
   @admin @entityTypes @aliases
@@ -122,7 +122,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the new Entity Type page
     When I fill in "Name" with "Test Entity Type"
     And I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "Database"
-    And I press "Create Entity Type"
+    And I press "Create Entity type"
     Then I should see "database is already an entity type"
 
   @admin @entityTypes @aliases
@@ -131,10 +131,10 @@ Feature: Abilities - Roles and Permissions
     And I have no entity_type_aliases
     And I am on the edit Entity Type page for "Database"
     When I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "MySQL"
-    And I press "Update Entity Type"
+    And I press "Update Entity type"
     And I follow "edit-database"
     And I delete the Entity Type Alias "entity_type_entity_type_aliases_attributes_0__destroy"
-    And I press "Update Entity Type"
+    And I press "Update Entity type"
     Then I should be on the list of Entity Types
     And I should have 0 entity_type_aliases
 
@@ -150,7 +150,7 @@ Feature: Abilities - Roles and Permissions
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the edit Entity Type page for "API"
     When I fill in "Name" with "APES"
-    And I press "Update Entity Type"
+    And I press "Update Entity type"
     Then I should see "Entity Type was successfully updated"
     And I should be on the list of Entity Types
     And I should see "APES"
@@ -160,7 +160,7 @@ Feature: Abilities - Roles and Permissions
   Scenario: Admins can delete Entity Types
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the list of Entity Types
-    When I follow "delete-payment-gateway" to delete requiring confirmation
+    When I follow "delete-payment-gateway"
     Then I should be on the list of Entity Types
     And I should see "Entity Type was successfully deleted"
     And I should not see "payment gateway"
@@ -186,7 +186,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with "Poison"
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "Entity Key was successfully created"
     And I should be on the list of Entity Keys
     And I should see "Poison"
@@ -200,7 +200,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with ""
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "1 error prohibited this entity_key from being saved:"
     And I should see "Name can't be blank"
     
@@ -210,7 +210,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with "Username"
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "1 error prohibited this entity_key from being saved:"
     And I should see "Name has already been taken"
 
@@ -220,7 +220,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "New Entity Key"
     And I fill in "Name" with "username"
-    And I press "Create Entity Key"
+    And I press "Create Entity key"
     Then I should see "1 error prohibited this entity_key from being saved:"
     And I should see "Name has already been taken"
   
@@ -241,7 +241,7 @@ Feature: Abilities - Roles and Permissions
   Scenario: Admins can delete Entity Keys
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the list of Entity Keys
-    When I follow "delete-transaction-key" to delete requiring confirmation
+    When I follow "delete-transaction-key"
     Then I should be on the list of Entity Keys
     And I should see "Entity Key was successfully deleted"
     And I should not see "transaction key"
@@ -325,7 +325,7 @@ Feature: Abilities - Roles and Permissions
   Scenario: Admins can delete Users
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the list of Users
-    When I follow "delete-inigo" to delete requiring confirmation
+    When I follow "delete-inigo"
     Then I should be on the list of Users
     And I should not see "inigo"
 
@@ -383,7 +383,7 @@ Feature: Abilities - Roles and Permissions
     Given I am logged in as "inigo" with password "preparetodie"
     And I have client codes ROR
     And I am on the client page for "ROR"
-    When I follow "delete-ror" to delete requiring confirmation
+    When I follow "delete-ror"
     Then I should be on the search results page
     And I should have 0 clients
 

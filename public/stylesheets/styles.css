@@ -1,4 +1,15 @@
 /****************************
+  HTML5
+****************************/
+section, article, header, footer, nav, aside, hgroup { display: block; }
+
+
+/****************************
+  TEXT
+****************************/
+pre.example { font-size:16px; font-weight:bold; color:#39c;}
+
+/****************************
   UTILITIES
 ****************************/
 .hide { display: none; }
@@ -6,35 +17,30 @@
 /****************************
   DEFAULTS
 ****************************/
-html, body { height: 100%; }
-#container { min-height: 100%; position: relative; }
-#wrapper { padding-bottom: 32px; }
-
-/****************************
-  HEADER
-****************************/
-#header {padding: 10px 0;}
-#header h1 {
-  color: #EAEAEA;
-  padding: 0px 15px;
-}
+/*html, body { height: 100%; }*/
+/*#container { min-height: 100%; position: relative; }*/
+blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #ddd; border-width:0 0 0 3px; }
 
 /****************************
   COLORS
 ****************************/
-body, #main { background: #fff; }
 
 /****************************
   STRUCTURE
 ****************************/
-#main { width: 100%; }
+#main.no-sidebar {
+  width: 100%;
+}
+
+#footer { padding-bottom:20px; clear:both; /*width:70%;*/ width:100%; }
 
 /****************************
   SEARCH FORM
 ****************************/
 #big-search-form {
   width: 380px;
-  margin: 300px auto;
+  margin: 21% auto;
+/*  margin: 0 auto;*/
 }
 
 #main-search input[type=text] {
@@ -91,6 +97,14 @@ body, #main { background: #fff; }
 #results-list .row .data .logo { float: left; margin-right: 10px; width: 64px; height: 64px; }
 
 /****************************
+<<<<<<< HEAD
+  TABLES
+****************************/
+th.crud-actions-header { text-align:right; }
+td.crud-actions { text-align:right; width:60px; text-indent:-9999px; font-size:0%; }
+
+
+/****************************
   NOTES
 ****************************/
 .notes {
@@ -98,6 +112,8 @@ body, #main { background: #fff; }
 }
 
 /****************************
+=======
+>>>>>>> 2ea1fbfe417cb33348e9ca38fbc6f6fbba76e9d6
   ENTITY LIST
 ****************************/
 .jump-menu {
@@ -171,18 +187,17 @@ form .remove a.undo { margin-left: 3px; }
 /****************************
   FOOTER
 ****************************/
-#footer {
+/*#footer {
   width: 100%;
-  height: 32px;
   position: absolute;
   bottom: 0;
   left: 0;
   padding: 0;
 }
-
+*/
 #footer .block {
-  padding: 5px 0;
   margin: 0;
+  border-radius: 0;
 }
 
 #footer .block.left {
@@ -193,10 +208,6 @@ form .remove a.undo { margin-left: 3px; }
   float: right;
 }
 
-#footer .block p {
-  margin: 0;
-  padding: 0 10px;
-}
 
 /****************************
   CONTROL LINKS
@@ -229,35 +240,31 @@ a.favorite-link.faved {
 }
 
 a.edit-link {
-  width: 16px; height: 16px;
+  width: 16px; 
+  height: 16px;
+  margin:0 16px 0 0;
   background: url(/images/icons/glyphicons_000_pencil.png) no-repeat;
-  display: block;
+  display: inline-block;
   text-indent: -9999px;
 }
 
 a.destroy-link {
-  width: 16px; height: 16px;
+  width: 16px; 
+  height: 16px;
   background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
-  display: block;
+  display: inline-block;
   text-indent: -9999px;
 }
 
 /****************************
-  NOTICES
+  FLASH MESSAGES
 ****************************/
-div#flash-messages {
-  width: 100%;
+.flash .message .close {
+  display: block;
+  text-indent: -9999px;
+  background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
+  opacity: 0.4;
 }
-
-div#flash-messages span {
-  display:block;
-  padding: 5px 10px;
-  margin:10px 0;
-}
-
-div#flash-messages span.notice { background: green; color: #fff; }
-div#flash-messages span.alert { background: yellow; color: #000; }
-div#flash-messages span.error { background: red; color: #fff; }
 
 /****************************
   LOGIN PAGE
@@ -298,15 +305,9 @@ ul.bookmarks-list a {
 /****************************
   FORM ELEMENTS
 ****************************/
-form .field {
-  margin: 3px 0;
-}
-
 form .field.required label:after {
   content: '*';
 }
-
-form .description { font-style: italic; }
 
 /* Pulled from Google Chrome's source. Pretty, huh? */
 select {
@@ -354,26 +355,6 @@ input:not([type]) {
   padding: 3px;
   width: 292px;
 }
-
-button,
-input[type='submit'] {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  -moz-box-shadow: 0 1px 2px 1px #999;
-  -webkit-box-shadow: 0 1px 2px 1px #999;
-  box-shadow: 0 1px 2px 1px #999;
-  -webkit-user-select: none;
-  background: #588797;
-  border: 1px solid #222;
-  color: #fff;
-  font-size: inherit;
-  margin-bottom: 0px;
-  min-width: 4em;
-  padding: 3px 12px 3px 12px;
-  text-transform: uppercase;
-}
-
 
 /****************************
   FIELDSETS

@@ -1,7 +1,7 @@
 SequoiaApp::Application.routes.draw do
 
   # Customizing paths for devise.
-  devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }
+  devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }, :controllers => { :sessions => 'sessions' }
   
   resources :clients, :shallow => true, :except => 'index' do
     resources :projects, :has_many => :notes, :except => 'show'

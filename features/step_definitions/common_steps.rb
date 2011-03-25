@@ -19,11 +19,6 @@ Given /^I have no (.*)$/ do |model|
   model.pluralize.singularize.camelcase.constantize.delete_all
 end
 
-When /^I follow "([^"]*)" to (.*) requiring confirmation$/ do |link, method|
-  link = webrat.current_scope.find_link(link)
-  link.click(:method => method)
-end
-
 When /^I delete the (.*) "([^"]+)"$/ do |model, field|
   set_hidden_field "#{field}", :to => 1
 end

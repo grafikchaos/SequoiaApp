@@ -1,13 +1,12 @@
-<div id="user-navigation">
+<nav id="user-navigation">
   <ul class="wat-cf">
-    <li><%= link_to "Home", root_path %></li>
     <li><%= link_to "Favorites", favorites_path, :remote => true, :id => 'bookmarks-menu' %></li>
     <%- if current_user.role? :admin %>
       <li><%= link_to 'Admin', '/admin' %></li>
     <%- end %>
-    <li><%= link_to 'Logout', destroy_user_session_path %></li>
+    <li><%= link_to 'Logout', destroy_user_session_path, :class => 'logout' %></li>
   </ul>
-</div>
-<div id="main-navigation">
+</nav>
+<nav id="main-navigation">
   <ul class="wat-cf"></ul>
-</div>
+</nav>

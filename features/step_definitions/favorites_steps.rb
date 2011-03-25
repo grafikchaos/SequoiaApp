@@ -4,4 +4,3 @@ Given /^I have bookmarked clients (.*)$/ do |codes|
     Factory.create(:favorite, :favable_type => client.class.to_s, :favable_id => client.id, :note => client.name)
   end
 end
-

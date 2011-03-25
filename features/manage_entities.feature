@@ -123,7 +123,7 @@ Feature: Manage entities
       | ROR       |  Client App     | User Login      | application | 3       |
     When I select "All" from "project"
     And I press "Filter"
-    When I follow "delete-ssh-credentials" to delete requiring confirmation
+    When I follow "delete-ssh-credentials"
     And I select "All" from "project"
     And I press "Filter"
     Then I should see "Admin Login"

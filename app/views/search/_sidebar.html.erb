@@ -1,0 +1,47 @@
+<section class="block">
+  <header>
+    <h3>Simple Search</h3>
+  </header>
+  <section class="content">
+    <p>Search for information by one of these criteria:</p>
+    <ul class="navigation">
+      <li>Client Code</li>
+      <li>Client Name</li>
+      <li>Project Name</li>
+      <li>Domain Name</li>
+    </ul>
+  </section>
+</section>
+
+<section class="block">
+  <header>
+    <h3>Advanced Search</h3>
+  </header>
+  <section class="content">
+    <p>For those of you who consider yourself power users, you can search for specific Entities from multiple Clients by following the simple rules:  
+      <ol class="navigation">
+        <li>Client codes must be begin with a "<strong>$</strong>" in front of the code, i.e. <strong>$acme</strong></li>
+        <li>Entity Types should always begin with a "<strong>#</strong>" before the Entity Type name (i.e., <strong>#database, #ssh, #ftp, #web</strong>)</li>
+        <li>The search query must <strong>always</strong> begin a client code</li>
+      </ol>
+    </p>
+    <p>Examples: 
+      <blockquote>
+        <pre class="example">$acme #ssh #db #svn</pre>
+        will give all of the records that are either SSH, DB (database), or SVN (Version Control) for the client ACME
+      </blockquote>
+
+      <blockquote>
+        <pre class="example">$acme #ssh $tnt </pre>
+        will give all of the SSH records for ACME and <strong>all</strong> records for client TNT
+      </blockquote>
+
+      <blockquote>
+        <pre class="example">$acme admin $tnt magento</pre>
+        will give all of the ACME-related records that contain the word "admin" (case insensitive) and all TNT-related records that contain "magento" (case insensitive)
+      </blockquote>
+
+    </p>
+    
+  </section>
+</section>

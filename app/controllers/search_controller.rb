@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  layout :layout
 
   def start
     respond_to do |format|
@@ -18,5 +19,10 @@ class SearchController < ApplicationController
       format.html # results.html.erb
     end
   end
+
+  def layout    
+    action_name == 'start' ? 'no_sidebar' : 'application'
+  end
+  
 
 end
