@@ -8,15 +8,17 @@
 </head>
 <body>
   <div id="container">
-    <div id="header">
+    <header id="header">
       <h1><%= link_to "Sequoia", root_path %></h1>
       <%- if current_user %>
         <%= render 'shared/navigation' %>
       <%- end %>
-      <div id="main-navigation">
-        <ul class="wat-cf"></ul>
-      </div>
-    </div>    
+      <nav id="main-navigation">
+        <ul class="wat-cf">
+          <li><%= link_to "Home", root_url %></li>
+        </ul>
+      </nav>
+    </header>    
     <div id="wrapper" class="wat-cf">
       <div class="flash">
         <% flash.each do |type, message| -%>
@@ -25,17 +27,17 @@
           </div>
         <% end -%>
       </div>
-      <div id="main">
+      <section id="main">
         <%= yield %>
-        <div id="footer">
-          <div class="block">
-            <p>Copyright &copy; <%= Time.now.year %> Sequoia.</p>
-          </div>      
-        </div>
-      </div>
-      <div id="sidebar">
+        <footer id="footer">
+          <section class="block">
+            <p>Copyright &copy; <%= Time.now.year %> Sequoia App.</p>
+          </section>      
+        </footer>
+      </section>
+      <section id="sidebar">
         <%= yield :sidebar %>
-      </div>
+      </section>
     </div>    
   </div>
 </body>

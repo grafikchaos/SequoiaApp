@@ -163,14 +163,14 @@ form .remove a.undo { margin-left: 3px; }
 /****************************
   FOOTER
 ****************************/
-#footer {
+/*#footer {
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
   padding: 0;
 }
-
+*/
 #footer .block {
   margin: 0;
   border-radius: 0;
@@ -188,22 +188,6 @@ form .remove a.undo { margin-left: 3px; }
 /****************************
   CONTROL LINKS
 ****************************/
-.controls {
-  padding: 5px;
-  float: right;
-  background: #D7E0E5;
-  border-left: 1px solid #C5D3DC;
-}
-
-.controls ul li {
-  display: block;
-  float: left;
-}
-
-.controls a {
-  float: left;
-}
-
 a.favorite-link {
   width: 16px; height: 16px;
   background: url(/images/icons/glyphicons_024_dislikes.png) no-repeat;
