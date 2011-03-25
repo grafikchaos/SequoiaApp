@@ -10,24 +10,6 @@ html, body { height: 100%; }
 #container { min-height: 100%; position: relative; }
 #wrapper { padding-bottom: 32px; }
 
-/****************************
-  HEADER
-****************************/
-#header {padding: 10px 0;}
-#header h1 {
-  color: #EAEAEA;
-  padding: 0px 15px;
-}
-
-/****************************
-  COLORS
-****************************/
-body, #main { background: #fff; }
-
-/****************************
-  STRUCTURE
-****************************/
-#main { width: 100%; }
 
 /****************************
   SEARCH FORM
@@ -171,7 +153,7 @@ form .remove a.undo { margin-left: 3px; }
 /****************************
   FOOTER
 ****************************/
-#footer {
+/*#footer {
   width: 100%;
   height: 32px;
   position: absolute;
@@ -179,7 +161,7 @@ form .remove a.undo { margin-left: 3px; }
   left: 0;
   padding: 0;
 }
-
+*/
 #footer .block {
   padding: 5px 0;
   margin: 0;
