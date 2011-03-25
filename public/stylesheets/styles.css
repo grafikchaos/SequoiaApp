@@ -97,6 +97,13 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
 #results-list .row .data .logo { float: left; margin-right: 10px; width: 64px; height: 64px; }
 
 /****************************
+  TABLES
+****************************/
+th.crud-actions-header { text-align:right; }
+td.crud-actions { text-align:right; width:60px; text-indent:-9999px; font-size:0%; }
+
+
+/****************************
   NOTES
 ****************************/
 .notes {

@@ -13,15 +13,29 @@
     <div class="inner">
       <table class="table">
         <tr>
-          <th class="first"></th>
+          <th class="first">ID</th>
           <th>Name</th>
-          <th class="last"></th>
+          <th>Aliases</th>
+          <th>Has a Form Template?</th>
+          <th class="last crud-actions-header">Actions</th>
         </tr>
       <% @entity_types.each do |entity_type| %>
         <tr class="<%= cycle "odd", "even" -%>">
           <td><%= entity_type.id %></td>
-          <td><%= entity_type.name %></td>
+          <td style="width:20%;"><%= entity_type.name %></td>
           <td>
+            <% entity_type.entity_type_aliases.each do |alli| %>
+              <%= alli.name + ", " %>
+            <% end %>
+          </td>
+          <td style="width:20%;">
+            <%- if entity_type.form_configs.count > 1 -%>
+              Yes
+            <%- else -%>
+              No
+            <%- end -%>
+          </td>
+          <td style="width:5%;" class="crud-actions">
             <%- if can? :edit, EntityType -%>
               <%= edit_link entity_type %>
             <%- end -%>
