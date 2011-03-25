@@ -1,0 +1,8 @@
+<%- links = ['Entities', 'Projects'] %>
+<nav class="secondary-navigation">
+  <ul class="wat-cf">
+    <%- links.each do |link| %>
+      <li class="<%= cycle_with_first_last(link, links) %>"><%= active_link_to link, "/clients/#{@client.client_code.downcase}/" + link.downcase.gsub(' ', '_') %></li>
+    <%- end %>
+  </ul>
+</nav>
