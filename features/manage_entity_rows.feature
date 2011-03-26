@@ -49,7 +49,7 @@ Feature: Manage entity_rows
     And I select "password" from "entity[entity_rows_attributes][0][entity_key_id]"
     And I fill in "entity[entity_rows_attributes][0][value]" with "iamcool"
     And I press "Create Entity"
-    Then I should be on the client page for "ROR"
+    Then I should be on the list of entities for "ROR"
     And I should see "Server"
     And I should see "password:"
     And I should see "iamcool"
@@ -66,12 +66,13 @@ Feature: Manage entity_rows
     When I follow "edit-admin-login"
     And I fill in "entity[entity_rows_attributes][0][value]" with "67890"
     And I press "Update Entity"
-    Then I should be on the client page for "ROR"
+    Then I should be on the list of entities for "ROR"
     And I should see "password:"
     And I should see "67890"
     And I should not see "12345"
 
  
+  @focus
   Scenario: Delete entity rows from an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |
@@ -82,9 +83,9 @@ Feature: Manage entity_rows
       | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
     And I am on the client page for "ROR"
     When I follow "edit-admin-login"
-    And I delete the Entity Row "entity_entity_rows_attributes_0__destroy"
+    And I delete the 1st Entity Row
     And I press "Update Entity"
-    Then I should be on the client page for "ROR"
+    Then I should be on the list of entities for "ROR"
     And I should not see "password:"
     And I should not see "12345"
     And I should see "username:"
@@ -101,10 +102,10 @@ Feature: Manage entity_rows
       | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
     And I am on the client page for "ROR"
     When I follow "edit-admin-login"
-    And I delete the Entity Row "entity_entity_rows_attributes_0__destroy"
+    And I delete the 1st Entity Row
     And I undelete the Entity Row "entity_entity_rows_attributes_0__destroy"
     And I press "Update Entity"
-    Then I should be on the client page for "ROR"
+    Then I should be on the list of entities for "ROR"
     And I should see "password:"
     And I should see "12345"
     And I should see "username:"

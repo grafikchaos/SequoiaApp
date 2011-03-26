@@ -231,7 +231,7 @@ Feature: Abilities - Roles and Permissions
     And I am on the list of Entity Keys
     When I follow "edit-database-name"
     And I fill in "Name" with "Ponytail"
-    And I press "Update Entity Key"
+    And I press "Update Entity key"
     Then I should see "Entity Key was successfully updated"
     And I should be on the list of Entity Keys
     And I should see "Ponytail"

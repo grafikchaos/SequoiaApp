@@ -34,7 +34,7 @@ Feature: Manage projects
   @projects @staff
   Scenario: Editing a project
     Given the client "ROR" has a default project named "Intranet" with domain "intranet.com"
-    When I follow "Manage projects"
+    When I follow "Manage Projects"
     And I follow "Edit"
     And I fill in "Project Name" with "A Project"
     And I fill in "Project Domain" with "google.com"
@@ -47,7 +47,7 @@ Feature: Manage projects
   Scenario: Deleting a project
     Given the client "ROR" has a project named "Intranet" with domain "intranet.com"
     And the client "ROR" has 2 projects
-    When I follow "Manage projects"
+    When I follow "Manage Projects"
     And I follow "Delete"
     Then I should be on the list of projects for "ROR"
     And I should not see "Default"

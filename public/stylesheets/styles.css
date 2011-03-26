@@ -235,12 +235,26 @@ a.edit-link {
   text-indent: -9999px;
 }
 
+#sidebar .actions a.edit-link {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  background: url(/images/icons/glyphicons_000_pencil.png) no-repeat left center;
+}
+
 a.destroy-link {
   width: 16px; 
   height: 16px;
   background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
   display: inline-block;
   text-indent: -9999px;
+}
+
+#sidebar .actions a.destroy-link {
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat left center;
 }
 
 /****************************

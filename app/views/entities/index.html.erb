@@ -9,16 +9,15 @@
   <%- if can? :update, Project %>
     <li><%= link_to 'Manage Projects', client_projects_path(@client) %></li>
   <%- end -%>
+  <%- if can? :edit, Client -%>
+    <li><%= edit_link @client %></li>
+  <%- end -%>
+  <%- if can? :delete, Client -%>
+    <li><%= destroy_link @client %></li>
+  <%- end -%>
 <% end %>
 <% content_for :sidebar do %>
 
-  <%- if can? :edit, Client -%>
-    <%= edit_link @client %>
-  <%- end -%>
-
-  <%- if can? :delete, Client -%>
-    <%= destroy_link @client %>
-  <%- end -%>
 
   <div class="client-notes">
     <h2>Client Notes:</h2>

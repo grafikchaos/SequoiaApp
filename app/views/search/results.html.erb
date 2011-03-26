@@ -1,7 +1,7 @@
 <% content_for :page_title, "Results for #{truncate params[:query]}" %>
-<% content_for :sidebar do %>
+<% content_for :actions do %>
   <%- if can? :create, Client -%>
-    <%= link_to 'New Client', new_client_path, :class => 'button', :id => 'new-client' %>
+    <li><%= link_to 'New Client', new_client_path, :id => 'new-client' %></li>
   <%- end -%>
 <% end %>
 

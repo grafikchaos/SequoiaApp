@@ -35,6 +35,10 @@ module NavigationHelpers
       client = Client.find($1)
       client_projects_path(client)
 
+    when /the list of entities for "(.*)"$/i
+      client = Client.find($1)
+      client_entities_path(client)
+
     when /the list of (.*)$/i
       class_name = $1.downcase 
       case class_name

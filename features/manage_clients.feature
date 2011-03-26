@@ -20,7 +20,7 @@ Feature: Manage Clients
     Given I have no clients
     And I am on the new client page
     When I fill in "Name" with "Ruby on Rails"
-    And I fill in "Client code" with "ROR"
+    And I fill in "Client Code" with "ROR"
     And I fill in "Project Name" with "Shallow Routing"
     And I fill in "Project Domain" with "Shallow Routing"
     And I press "Create Client"
@@ -35,7 +35,7 @@ Feature: Manage Clients
     Given I have no clients
     And I am on the new client page
     When I fill in "Name" with "Ruby on Rails"
-    And I fill in "Client code" with "ROR"
+    And I fill in "Client Code" with "ROR"
     And I press "Create Client"
     Then I should be on the client page for "ROR"
     And I should see "Client was successfully created"
@@ -48,7 +48,7 @@ Feature: Manage Clients
     Given I have no clients
     And I am on the new client page
     When I fill in "Name" with "Ruby on Rails"
-    And I fill in "Client code" with "R"
+    And I fill in "Client Code" with "R"
     And I press "Create Client"
     Then I should see "Client code is too short"
     And I should have 0 clients
@@ -57,7 +57,7 @@ Feature: Manage Clients
   Scenario: Check that the project form is hidden when editing a client
     Given I have client codes AAI
     And I am on the edit page for the client "AAI"
-    Then the "Client code" field should contain "AAI"
+    Then the "Client Code" field should contain "AAI"
     And I should not see "First Project"
     When I fill in "Name" with "Mister Mittons"
     And I press "Update Client"

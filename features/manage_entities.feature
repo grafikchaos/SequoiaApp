@@ -44,7 +44,7 @@ Feature: Manage entities
     And I fill in "Name" with "Application Login"
     And I select "application" from "Entity type"
     And I press "Create Entity"
-    Then I should be on the client page for "ROR"
+    Then I should be on the list of entities for "ROR"
     And I should see "Entity was successfully created"
     And the project "Intranet" for the client "ROR" should have 1 entity
 
@@ -108,7 +108,7 @@ Feature: Manage entities
     When I follow "edit-ssh-credentials"
     And I fill in "Name" with "New SSH Credentials"
     And I press "Update Entity"
-    Then I should be on the client page for "ROR"
+    Then I should be on the list of entities for "ROR"
     And I should see "New SSH Credentials"
 
   @entities
@@ -129,5 +129,3 @@ Feature: Manage entities
     Then I should see "Admin Login"
     And I should see "User Login"
     And I should not see "SSH Credentials"
-        
-  

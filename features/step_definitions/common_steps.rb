@@ -19,8 +19,10 @@ Given /^I have no (.*)$/ do |model|
   model.pluralize.singularize.camelcase.constantize.delete_all
 end
 
-When /^I delete the (.*) "([^"]+)"$/ do |model, field|
-  set_hidden_field "#{field}", :to => 1
+When /^I delete the (\d+)\w{2} Entity Row$/ do |number|
+  within("#entity_rows_form .fieldset-wrapper .entity-row-field:nth-child(#{number})") do
+    click_link('Delete')
+  end
 end
 
 When /^I undelete the (.*) "([^"]+)"$/ do |model, field|
