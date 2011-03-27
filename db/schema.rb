@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321021130) do
+ActiveRecord::Schema.define(:version => 20110327053659) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",                            :null => false
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20110321021130) do
     t.integer  "notable_id",   :null => false
     t.string   "notable_type", :null => false
     t.text     "content",      :null => false
+    t.string   "markup",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,8 +1,18 @@
 class Note < ActiveRecord::Base
   belongs_to :notable, :polymorphic => true
 
-  # validates_presence_of :notable_id, :notable_type, :content
-  # validates_length_of :content, :minimum => 1
-  
-  attr_accessible :notable_id, :notable_type, :content
+  attr_accessible :notable_id, :notable_type, :content, :markup
+
+  # For determining markup language
+  def to_markup
+    case self.markup
+      when 'Markdown'
+        require 'rdiscount'
+        RDiscount.new(self.content).to_html
+      when 'Textile'
+        require 'RedCloth'
+        RedCloth.new(self.content).to_html
+    end
+  end
+
 end

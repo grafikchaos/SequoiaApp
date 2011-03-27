@@ -1,3 +1,4 @@
 <div class="group">
+  <%= f.select :markup, options_for_select(['Markdown','Textile']) %>
   <%= f.text_area :content, :class => 'note-field' %>
 </div>
