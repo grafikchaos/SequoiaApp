@@ -1,21 +1,32 @@
 <% content_for :page_title, "Favorites" %>
-<% content_for :display_title, "Favorites" %>
 
-<table>
-
-<% @favorites.each do |favorite| %>
-  <tr>
-    <td><%= link_to_favorite favorite %></td>
-    <td>
-      <%- if can? :edit, favorite -%>
-        <%= edit_link favorite %>
-      <%- end -%>
-    </td>
-    <td>
-      <%- if can? :destroy, favorite -%>
-        <%= destroy_link favorite %>
-      <%- end -%>
-    </td>
-  </tr>
-<% end %>
-</table>
+<div class="block">
+  <div class="content">
+    <h2 class="title">Favorites</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first">ID</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th class="last crud-actions-header">Actions</th>
+        </tr>
+      <% @favorites.each do |favorite| %>
+        <tr class="<%= cycle_with_first_last(favorite, @favorites) %>">
+          <td><%= favorite.id %></li>
+          <td><%= link_to_favorite favorite %></td>
+          <td><%= favorite.favable_type == 'QueryString' ? 'Query' : favorite.favable_type %></td>
+          <td class="crud-actions">
+            <%- if can? :edit, favorite -%>
+              <%= edit_link favorite %>
+            <%- end -%>
+            <%- if can? :destroy, favorite -%>
+              <%= destroy_link favorite %>
+            <%- end -%>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

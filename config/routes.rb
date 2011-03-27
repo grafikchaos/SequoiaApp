@@ -7,7 +7,7 @@ SequoiaApp::Application.routes.draw do
     resources :projects, :except => 'show'
     resources :entities, :except => 'show'
   end
-  match "/clients/:client_id" => "entities#index"
+  match "/clients/:client_id" => redirect("/clients/%{client_id}/entities")
   
   resources :favorites, :except => 'show'
 
@@ -17,9 +17,10 @@ SequoiaApp::Application.routes.draw do
   end
   match '/admin' => redirect('/admin/entity_keys')
 
+  match '/search' => 'search#results', :as => 'search_results'
+
   # Our root URL is mapped to the search controller
   root :to => "search#start"
-  match '/search' => 'search#results', :as => 'search_results'
   
   # Catch everything else and give it to the error controller
   match '*a', :to => 'errors#routing', :as => 'error'

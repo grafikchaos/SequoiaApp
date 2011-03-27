@@ -10,9 +10,10 @@ Feature: Favorites
     And the client "ROR" has a default project named "Intranet" with domain "intranet.com" 
     And I have no favorites
 
-  @delete @focus @selenium
+  @delete @focus @javascript
   Scenario: Viewing my bookmarks
     Given I am on the home page
+    Then I should see "Logout"
     When I follow "Favorites"
     And I follow "View favorites"
     Then I should have 2 favorites

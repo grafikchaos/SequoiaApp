@@ -1,6 +1,6 @@
 <% content_for :page_title, "Projects for #{@client.name}" %>
-<% content_for :sidebar do %>
-  <%= link_to "New Project", new_client_project_path(@client), :class => 'button' %>
+<% content_for :actions do %>
+  <li><%= link_to "New Project", new_client_project_path(@client) %></li>
 <% end %>
 
 <div class="block">
@@ -9,10 +9,10 @@
     <div class="inner">
       <table class="table">
         <tr>
-          <th class="first"></th>
+          <th class="first">ID</th>
           <th>Project Name</th>
           <th>Domain</th>
-          <th class="last"></th>
+          <th class="last crud-actions-header">Actions</th>
         </tr>
 
       <%- is_not_only_project = @projects.count > 1 ? true : false %>
@@ -21,7 +21,7 @@
           <td><%= project.id %></td>
           <td><%= project.name %></td>
           <td><%= project.domain %></td>
-          <td>
+          <td class="crud-actions">
             <%= edit_link project %>
             <%- if is_not_only_project and can? :destroy, project %>
               <%= destroy_link project %>

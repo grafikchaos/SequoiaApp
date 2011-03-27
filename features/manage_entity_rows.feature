@@ -72,7 +72,7 @@ Feature: Manage entity_rows
     And I should not see "12345"
 
  
-  @focus
+  @focus @javascript
   Scenario: Delete entity rows from an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |

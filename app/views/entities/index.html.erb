@@ -17,8 +17,6 @@
   <%- end -%>
 <% end %>
 <% content_for :sidebar do %>
-
-
   <div class="client-notes">
     <h2>Client Notes:</h2>
     <%= render @client.notes %>
@@ -41,7 +39,7 @@
 <% end %>
 
 <div class="block">
-  <%= render 'clients/client_global_nav', :client => @client %>
+  <%= render 'clients/tabs', :client => @client %>
   
   <div class="content">
     <h2 class="title">Entities</h2>

@@ -37,6 +37,22 @@ module ApplicationHelper
     end
   end
 
+  def link_to_favorite(favorite)
+    case favorite.favable_type
+      when 'Client'
+        link_to favorite.note, client_path(Client.find(favorite.favable_id))
+      when 'Project'
+        project = Project.find(favorite.favable_id)
+        link_to favorite.note, client_path(project.client, :project => project.id)
+      when 'QueryString'
+        if favorite.name.present?
+          link_to favorite.name, search_results_path(:query => QueryString.find(favorite.favable_id).string)
+        else
+          link_to favorite.note, search_results_path(:query => QueryString.find(favorite.favable_id).string)
+        end
+    end 
+  end
+
   def edit_link(obj, *args)
     sane            = obj.class.to_s.tableize.gsub('_', ' ').singularize.titleize
     options         = args.first || {}

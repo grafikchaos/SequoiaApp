@@ -1,4 +1,11 @@
 /**
+ * Adding a case-insensitive :contains selector
+ */
+jQuery.expr[':'].icontains = function(a,i,m){
+    return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+};
+
+/**
  * Document ready stuff. All pageload functionality
  * happens here.
  */
@@ -15,6 +22,7 @@ $(document).ready(function() {
   initSortableLists();
   initHotKeys();
   initFavableLinks();
+  initFavFilter();
   initJumpLinks();
 });
 
@@ -253,6 +261,17 @@ var initFavableLinks = function() {
   })
   .live('ajax:success', function(evt, data, status, xhr) {
     $('img.loader').replaceWith(data);
+  });
+};
+
+var initFavFilter = function() {
+  $('.favorites input#fav-filter').bind('keyup', function() {
+    var string = $(this).val();
+
+    $(this).siblings('ul').children('li').each(function() {
+      $('*:not(:icontains("'+string+'"))', this).hide();
+      $('*:icontains("'+string+'")', this).show();
+    });
   });
 };
 
