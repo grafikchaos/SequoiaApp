@@ -1,4 +1,4 @@
 <div class="note-content">
   <em>Updated: <%= note.updated_at.to_date %></em><br />
-  <%= raw note.to_markup %>
+  <%= sanitize note.to_markup %>
 </div>
