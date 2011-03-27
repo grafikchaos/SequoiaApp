@@ -202,6 +202,12 @@ form .remove a.undo { margin-left: 3px; }
   float: right;
 }
 
+/****************************
+  NOTES
+****************************/
+textarea.note-field {
+  width: 100%;
+}
 
 /****************************
   CONTROL LINKS
@@ -368,10 +374,17 @@ input:not([type]) {
 /****************************
   FIELDSETS
 ****************************/
+fieldset .fieldset-wrapper {
+  padding: 10px;
+}
+
 fieldset.collapsible legend {
   background: url(/images/icons/menu-expanded.png) no-repeat left center;
   padding-left: 10px;
   cursor: pointer;
+  color: #666666;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 fieldset.collapsible.collapsed legend {
