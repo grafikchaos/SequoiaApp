@@ -15,7 +15,7 @@ Feature: Notable
   Scenario: Client form should have a Note text area
     Given I am on the search results page
     When I follow "New Client"
-    Then I should see "Note"
+    Then I should see "Notes"
   
   @clients
   Scenario: Add a note to a Client
@@ -23,38 +23,38 @@ Feature: Notable
     When I fill in "Name" with "Apple"
     And I fill in "Client Code" with "APPL"
     And I fill in "Project Name" with "OS X LIGER"
-    And I fill in "Note" with "It's pretty much my favorite animal. It's like a lion and a tiger mixed... bred for its skills in magic."
+    And I fill in "client_notes_attributes_0_content" with "It's pretty much my favorite animal."
     And I press "Create Client"
     Then I should be on the client page for "APPL"
     And I should see "Client was successfully created"
     And I should see "APPL"
     And I should see "OS X LIGER" within "#project"
-    And I should see "It's pretty much my favorite animal. It's like a lion and a tiger mixed... bred for its skills in magic." within ".notes .client-notes"
+    And I should see "It's pretty much my favorite animal." within "#sidebar"
 
   @projects
   Scenario: Project form should have a Note text area
     Given I am on the client page for "ROR"
     When I follow "New Project"
-    Then I should see "Note"
+    Then I should see "Notes"
   
   @projects
   Scenario: Add a note to a Project
     Given I have client codes "APPL"
     And I am on "APPL"'s new project page
     When I fill in "Project Name" with "Sabertooth"
-    And I fill in "Note" with "Filepath is /var/www/path/to/application"
+    And I fill in "project_notes_attributes_0_content" with "Filepath is /var/www/path/to/application"
     And I press "Create Project"
     Then I should see "Project was successfully created"
     And I should be on the client page for "APPL"
     And I should see "Sabertooth" within "#project"
-    And I should see "Filepath is /var/www/path/to/application" within ".notes .project-notes"
+    And I should see "Filepath is /var/www/path/to/application" within "#sidebar"
 
   @entities
   Scenario: Entity form should have a Note text area
     Given I have client codes "APPL"
     And I am on the client page for "APPL"
     When I follow "New Entity"
-    Then I should see "Note"
+    Then I should see "Notes"
 
   @entities
   Scenario: Add a note to an Entity
@@ -64,8 +64,39 @@ Feature: Notable
     When I follow "New Entity"
     And I fill in "Name" with "VPN Login"
     And I select "VPN" from "Entity type"
-    And I fill in "Note" with "Must use Safari for VPN client connection"
+    And I fill in "entity_notes_attributes_0_content" with "Must use Safari for VPN client connection"
     And I press "Create Entity"
     Then I should be on the list of entities for "APPL"
     And I should see "Entity was successfully created"
     And the project "Liger" for the client "APPL" should have 1 entity
+
+  @clients @markdown
+  Scenario: Notes render markdown correctly
+    Given I am on the new client page
+    When I fill in "Name" with "Apple"
+    And I fill in "Client Code" with "APPL"
+    And I fill in "Project Name" with "OS X LIGER"
+    And I fill in "client_notes_attributes_0_content" with "**bold text**"
+    And I press "Create Client"
+    Then I should be on the client page for "APPL"
+    And I should see "Client was successfully created"
+    And I should see "APPL"
+    And I should see "OS X LIGER" within "#project"
+    And I should see "bold text" within "#sidebar"
+    And I should not see "**bold text**" within "#sidebar"
+
+  @clients @textile
+  Scenario: Notes render textile correctly
+    Given I am on the new client page
+    When I fill in "Name" with "Apple"
+    And I fill in "Client Code" with "APPL"
+    And I fill in "Project Name" with "OS X LIGER"
+    And I select "Textile" from "client_notes_attributes_0_markup"
+    And I fill in "client_notes_attributes_0_content" with "^Superscript^"
+    And I press "Create Client"
+    Then I should be on the client page for "APPL"
+    And I should see "Client was successfully created"
+    And I should see "APPL"
+    And I should see "OS X LIGER" within "#project"
+    And I should see "Superscript" within "#sidebar"
+    And I should not see "^Superscript^" within "#sidebar"

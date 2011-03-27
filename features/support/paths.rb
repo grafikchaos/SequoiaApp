@@ -18,7 +18,7 @@ module NavigationHelpers
       new_user_session_path
 
     when /^the client page for "(.*)"$/i
-      client_path(Client.find($1))
+      client_entities_path(Client.find($1))
 
     when /^the edit page for the client "(.*)"$/i
       edit_client_path(Client.find($1))

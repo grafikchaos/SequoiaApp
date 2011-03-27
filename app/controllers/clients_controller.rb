@@ -1,5 +1,12 @@
 class ClientsController < ApplicationController
   
+  # Just redirects to the clients entity index page.
+  # The action is here so that we can keep the flash messages.
+  def show
+    flash.keep
+    redirect_to client_entities_path(:client_id => params[:id])
+  end
+
   # GET /clients/new
   # GET /clients/new.xml
   def new

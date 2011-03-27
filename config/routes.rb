@@ -3,11 +3,10 @@ SequoiaApp::Application.routes.draw do
   # Customizing paths for devise.
   devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => 'logout' }, :controllers => { :sessions => 'sessions' }
   
-  resources :clients, :shallow => true, :except => ['index', 'show'] do
+  resources :clients, :shallow => true, :except => 'index' do
     resources :projects, :except => 'show'
     resources :entities, :except => 'show'
   end
-  match "/clients/:client_id" => redirect("/clients/%{client_id}/entities")
   
   resources :favorites, :except => 'show'
 
