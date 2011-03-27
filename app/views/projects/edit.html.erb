@@ -1,6 +1,10 @@
-<%= content_for :page_title, "Editing" %>
-<%= content_for :display_title, "Editing #{@project.name}" %>
+<%= content_for :page_title, "Editing #{@project.name}" %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', project_path(@project) %>
+<section class="block">
+  <section class="content">
+  <header><h2>Editing <%= @project.name %></h3></header>
+    <section class="inner">
+      <%= render 'form' %>
+    </section>
+  </section>
+</section>

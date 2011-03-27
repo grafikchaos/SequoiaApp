@@ -1,18 +1,18 @@
-  <% if @favorite.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @favorite.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field required">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<% if @favorite.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @favorite.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
+<% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="group required">
+  <%= f.label :name, :class => 'label' %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="group">
+  <%= f.submit :class => 'button' %>
+</div>

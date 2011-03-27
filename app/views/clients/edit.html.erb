@@ -1,6 +1,10 @@
-<% content_for :title, "Editing " + @client.name %>
+<% content_for :page_title, "Editing " + @client.name %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+<section class="block">
+  <section class="content">
+    <header><h2 class="title">Editing <%= @client.name %></h2></header>
+    <section class="inner">
+      <%= render 'form' %>
+    </section>
+  </section>
+</section>

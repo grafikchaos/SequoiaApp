@@ -1,7 +1,10 @@
 <%= content_for :page_title, "New Project" %>
-<%= content_for :display_title, "New Project" %>
 
-
-<%= render 'form' %>
-
-<%= link_to 'Back', client_path(@client) %>
+<section class="block">
+  <section class="content">
+    <header><h2>New Project</h3></header>
+    <section class="inner">
+      <%= render 'form' %>
+    </section>
+  </section>
+</section>

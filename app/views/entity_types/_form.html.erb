@@ -1,8 +1,7 @@
-<%= form_for(@entity_type) do |f| %>
+<%= form_for(@entity_type, :html => { :class => 'form' }) do |f| %>
   <% if @entity_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entity_type.errors.count, "error") %> prohibited this entity_type from being saved:</h2>
-
       <ul>
       <% @entity_type.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,8 +10,8 @@
     </div>
   <% end %>
   
-  <div class="field required">
-    <%= f.label :name, "Name" %>
+  <div class="group required">
+    <%= f.label :name, "Name", :class => 'label' %>
     <%= f.text_field :name %>
   </div>
   
@@ -40,7 +39,7 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="group">
+    <%= f.submit :class => 'button' %>
   </div>
 <% end %>

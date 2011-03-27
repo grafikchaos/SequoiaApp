@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :html => { :class => 'form' }) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,23 +10,23 @@
     </div>
   <% end %>
 
-  <div class="field required">
-    <%= f.label :username %>
+  <div class="group required">
+    <%= f.label :username, :class=> 'label' %>
     <%= f.text_field :username %>
   </div>
 
-  <div class="field required">
-    <%= f.label :email %>
+  <div class="group required">
+    <%= f.label :email, :class => 'label' %>
     <%= f.text_field :email %>
   </div>
 
-  <div class="field required">
-    <%= f.label :role %>
+  <div class="group required">
+    <%= f.label :role, :class => 'label' %>
     <%= f.select :role, format_roles_select %>
   </div>
 
-  <div class="field required">
-    <%= f.label :clearance %>
+  <div class="group required">
+    <%= f.label :clearance, :class => 'label' %>
     <%= f.select :clearance, format_clearance_select %>
   </div>
 
@@ -35,18 +35,16 @@
       <%- if !@user.new_record? %>
         <div class="description">Leave these blank if you don't want to change the user's password.</div>
       <%- end %>
-      <div class="field">
-        <%= f.label :password %>
+      <div class="group">
+        <%= f.label :password, :class => 'label' %>
         <%= f.password_field :password %>
-      </div>
-      <div class="field">
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, :class => 'label' %>
         <%= f.password_field :password_confirmation %>
       </div>
     </div>
   <%- end %>
   
-  <div class="actions">
-    <%= f.submit %>
+  <div class="group">
+    <%= f.submit :class => 'button' %>
   </div>
 <% end %>

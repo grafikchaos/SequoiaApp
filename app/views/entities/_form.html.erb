@@ -1,51 +1,50 @@
-  <% if @entity.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @entity.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field required">
-    <%= f.label :project_id %>
-    <%= f.collection_select :project_id, @client.projects, :id, :name %>
+<% if @entity.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @entity.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
+<% end %>
 
-  <div class="field required">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="group required">
+  <%= f.label :project_id, :class => 'label' %>
+  <%= f.collection_select :project_id, @client.projects, :id, :name %>
+</div>
+
+<div class="group required">
+  <%= f.label :name, :class => 'label' %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="group required">
+  <%= f.label :entity_type_id, :class => 'label' %>
+  <%= f.collection_select :entity_type_id, EntityType.all, :id, :name %>
+</div>
+
+<div class="group required">
+  <%= f.label :clearance, "Clearance Level", :class => 'label' %>
+  <%= f.select :clearance, format_clearance_select %>
+</div>
+
+<%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
+  <div class="fieldset-wrapper">
+    <%= f.fields_for :entity_rows do |row_form| %>
+      <%= render 'entity_rows/form_fields', :f => row_form, :config => @form_config.select { |conf| conf.id == row_form.object.form_config_id }.first %>
+    <%- end %>
+    <%= link_to_add_fields "Add another", f, :entity_rows %>
   </div>
+<%- end %>
 
-  <div class="field required">
-    <%= f.label :entity_type_id %>
-    <%= f.collection_select :entity_type_id, EntityType.all, :id, :name %>
+<%= field_set_tag "Notes", :class => "collapsible" do %>
+  <div class="fieldset-wrapper">
+    <%= f.fields_for :notes do |note_form| %>
+      <%= render 'notes/form_fields', :f => note_form %>
+    <% end %>
   </div>
+<% end %>
 
-  <div class="field required">
-    <%= f.label :clearance, "Clearance Level" %>
-    <%= f.select :clearance, format_clearance_select %>
-  </div>
-
-  <%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
-    <div class="fieldset-wrapper">
-      <%= f.fields_for :entity_rows do |row_form| %>
-        <%= render 'entity_rows/form_fields', :f => row_form, :config => @form_config.select { |conf| conf.id == row_form.object.form_config_id }.first %>
-      <%- end %>
-      <%= link_to_add_fields "Add another", f, :entity_rows %>
-    </div>
-  <%- end %>
-  
-  <%= field_set_tag "Notes", :class => "collapsible" do %>
-    <div class="fieldset-wrapper">
-      <%= f.fields_for :notes do |note_form| %>
-        <%= render 'notes/form_fields', :f => note_form %>
-      <% end %>
-    </div>
-  <% end %>
-  
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="group">
+  <%= f.submit :class => 'button' %>
+</div>

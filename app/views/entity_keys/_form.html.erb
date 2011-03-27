@@ -1,8 +1,7 @@
-<%= form_for(@entity_key) do |f| %>
+<%= form_for(@entity_key, :html => { :class => 'form' }) do |f| %>
   <% if @entity_key.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entity_key.errors.count, "error") %> prohibited this entity_key from being saved:</h2>
-
       <ul>
       <% @entity_key.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,17 +10,17 @@
     </div>
   <% end %>
 
-  <div class="field required">
-    <%= f.label :name %>
+  <div class="group required">
+    <%= f.label :name, :class => 'label' %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="checkbox field">
-    <%= f.label :mask, 'Mask these types of entries?', :class => 'tooltip', 'data-tooltip' => 'Masking simply hides these values from view. Useful for passwords, etc.' %>
+  <div class="checkbox group">
+    <%= f.label :mask, 'Mask these types of entries?', :class => 'tooltip label', 'data-tooltip' => 'Masking simply hides these values from view. Useful for passwords, etc.' %>
     <%= f.check_box :mask %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="group">
+    <%= f.submit :class => 'button' %>
   </div>
 <% end %>

@@ -25,7 +25,7 @@ Feature: Manage projects
     Given the client "ROR" does not have a project named "Intranet"
     When I follow "New Project"
     And I fill in "Project Domain" with "intranet.ror.local"
-    And I press "Create project"
+    And I press "Create Project"
     Then I should see "Name can't be blank"
     And I should have 1 project
     And the client "ROR" should not have a project named "Intranet"

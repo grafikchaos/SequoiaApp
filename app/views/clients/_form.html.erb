@@ -1,7 +1,7 @@
-<%= form_for(@client, :html => { :multipart => true }) do |f| %>
+<%= form_for(@client, :html => { :multipart => true, :class => 'form' }) do |f| %>
   <% if @client.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
       <ul>
       <% @client.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -32,6 +32,6 @@
   
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'button' %>
   </div>
 <% end %>

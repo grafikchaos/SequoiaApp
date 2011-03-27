@@ -43,7 +43,7 @@ Feature: Notable
     And I am on "APPL"'s new project page
     When I fill in "Project Name" with "Sabertooth"
     And I fill in "Note" with "Filepath is /var/www/path/to/application"
-    And I press "Create project"
+    And I press "Create Project"
     Then I should see "Project was successfully created"
     And I should be on the client page for "APPL"
     And I should see "Sabertooth" within "#project"

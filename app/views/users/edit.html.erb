@@ -1,5 +1,10 @@
-<h1>Editing <%= @user.username %></h1>
+<% content_for :page_title, "Editing #{@user.username}" %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', users_path %>
+<section class="block">
+  <section class="content">
+    <header><h2>Editing <%= @user.username %></h2></header>
+    <section class="inner">
+      <%= render 'form' %>
+    </section>
+  </section>
+</section>
