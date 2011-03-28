@@ -9,8 +9,8 @@
 
   <%- unless f.object.new_record? %>
     <div class="remove">
-      <a href="javascript:void(0);" class="destroy-link tooltip toggle" title="Delete this row">Delete</a>
-      <a href="javascript:void(0);" class="hide toggle undo tooltip" title="This row will be deleted on save"><em>Undo?</em></a>
+      <a href="javascript:void(0);" id="delete-alias-<%= f.object.name.to_s.downcase %>" class="destroy-link tooltip toggle" title="Delete '<%= f.object.name.to_s %>'">Delete <%= f.object.name.to_s.downcase %></a>
+      <a href="javascript:void(0);" class="hide toggle undo tooltip" title="Alias <%= f.object.name.to_s.downcase %> will be deleted on save"><em>Undo?</em></a>
       <%= f.hidden_field :_destroy %>
     </div>
   <%- end %>
