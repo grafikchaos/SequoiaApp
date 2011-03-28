@@ -393,6 +393,10 @@ input:not([type]) {
 /****************************
   FIELDSETS
 ****************************/
+fieldset {
+  margin: 10px 0;
+}
+
 fieldset .fieldset-wrapper {
   padding: 10px;
 }
