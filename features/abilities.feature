@@ -125,18 +125,24 @@ Feature: Abilities - Roles and Permissions
     And I press "Create Entity type"
     Then I should see "database is already an entity type"
 
-  @admin @entityTypes @aliases
+  @admin @entityTypes @aliases @debug @javascript
   Scenario: Admins can delete aliases from an entity type
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
-    And I have no entity_type_aliases
+    # And I have no entity_type_aliases
     And I am on the edit Entity Type page for "Database"
-    When I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "MySQL"
-    And I press "Update Entity type"
-    And I follow "edit-database"
-    And I delete the Entity Type Alias "entity_type_entity_type_aliases_attributes_0__destroy"
+    # When I fill in "entity_type[entity_type_aliases_attributes][0][name]" with "MySQL"
+    # And I press "Update Entity type"
+    # And I follow "edit-database"
+    # Then show me the page
+    # Then I should see "Delete mysql"
+    # When I follow "//a[@id='delete-alias-mysql']"
+    When I follow "Delete mysql"
+    # Then show me the page
+    # And I delete the Entity Type Alias "entity_type_entity_type_aliases_attributes_0__destroy"
     And I press "Update Entity type"
     Then I should be on the list of Entity Types
-    And I should have 0 entity_type_aliases
+    And I should not see "mysql"
+    # And I should have 0 entity_type_aliases
 
   @admin @entityTypes @edit
   Scenario: Admins can see edit link for Entity Types
