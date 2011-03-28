@@ -12,26 +12,33 @@
   }
   
   function passGen(params) {
+    // Determine the pool of characters to choose from.
     var letters = '';
-    letters += 'abcdefghijklmnopqrstuvwxyz';
+    letters += params.allowLowercase ? 'abcdefghijklmnopqrstuvwxyz' : '';
     letters += params.allowUppercase ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : '';
+    letters = params.allowUnfriendly ? letters : letters.replace(/[iIoOl]/g, '');
     var numbers = '0123456789';
-    var chars = '!@#$%^&*?+';
+    numbers = params.allowUnfriendly ? numbers : numbers.replace(/[01]/g, '');
+    var chars = '!@#$%^&(){}[]-_<>?';
+    chars = params.allowUnfriendly ? chars : chars.replace(/[!]/g, '');
+
+    // Do some looping.
     var output = '';
     var size = params.size - params.specialchars - params.numbers;
-
     for (i = 0; i < params.specialchars; i++) {
       rand = Math.floor(Math.random() * chars.length);
       output += chars[rand];
     }
     for (i = 0; i < params.numbers; i++) {
-      rand = Math.floor(Math.random() * chars.length);
+      rand = Math.floor(Math.random() * numbers.length);
       output += numbers[rand];
     }
     for (i = 0; i < size; i++) {
       rand = Math.floor(Math.random() * letters.length);
       output += letters[rand];
     }
+
+    // Randomize and return the output.
     return randomize(output);
   }
 
@@ -41,7 +48,9 @@
         size: $('#passgen-size').val(),
         numbers: $('#passgen-numbers').val(),
         specialchars: $('#passgen-specialchar').val(),
-        allowUppercase: $('#passgen-allow-uppercase').attr('checked')
+        allowUppercase: $('#passgen-allow-uppercase').attr('checked'),
+        allowLowercase: true,
+        allowUnfriendly: false
       })
     );
   }
