@@ -12,7 +12,9 @@
   }
   
   function passGen(params) {
-    var letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var letters = '';
+    letters += 'abcdefghijklmnopqrstuvwxyz';
+    letters += params.allowUppercase ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : '';
     var numbers = '0123456789';
     var chars = '!@#$%^&*?+';
     var output = '';
@@ -38,7 +40,8 @@
       passGen({
         size: $('#passgen-size').val(),
         numbers: $('#passgen-numbers').val(),
-        specialchars: $('#passgen-specialchar').val()
+        specialchars: $('#passgen-specialchar').val(),
+        allowUppercase: $('#passgen-allow-uppercase').attr('checked')
       })
     );
   }
@@ -72,6 +75,11 @@
   </div>
 
   <div class="group">
-    <a href="javascript:void(0);" id="passgen-generate">Regenerate</a>
+    <label for="passgen-allow-uppercase">Allow uppercase?</label>
+    <input type="checkbox" id="passgen-allow-uppercase" checked="yes" />
+  </div>
+
+  <div class="group">
+    <button type="button" id="passgen-generate">Regenerate</button>
   </div>
 </div>
