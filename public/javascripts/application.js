@@ -2,7 +2,7 @@
  * Adding a case-insensitive :contains selector
  */
 jQuery.expr[':'].icontains = function(a,i,m){
-    return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+  return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
 };
 
 /**
@@ -24,6 +24,7 @@ $(document).ready(function() {
   initFavableLinks();
   initFavFilter();
   initJumpLinks();
+  initPassGen();
 });
 
 /**
@@ -281,5 +282,13 @@ var initJumpLinks = function() {
   });
   $('.jump-menu').mouseleave(function() {
     $('.links', this).fadeOut();
+  });
+}
+
+var initPassGen = function() {
+  $('a#passgen-link').click(function() {
+    $.colorbox({
+      href: '/static/passgen.html'
+    });
   });
 }
