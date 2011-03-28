@@ -319,6 +319,25 @@ ul.bookmarks-list a {
 }
 
 /****************************
+  PASSWORD GENERATOR
+****************************/
+#passgen-link {
+  float: right;
+}
+
+.passgen-container {
+  padding: 20px;
+  width: 300px;
+}
+
+#passgen-placeholder {
+  margin: 10px auto;
+  text-align: center;
+  font-size: 1.5em;
+  overflow: auto;
+}
+
+/****************************
   FORM ELEMENTS
 ****************************/
 form .field.required label:after {

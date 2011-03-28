@@ -1,4 +1,12 @@
 <script type="text/javascript">
+  function randomize(str) {
+    str = str.split('');
+    for (i = 0; i < 10; i++) {
+      str = str.reverse().sort(randomSort);
+    }
+    return str.join('');
+  }
+
   function randomSort(a, b) {
     return( parseInt( Math.random()*500 ) %2 );
   }
@@ -22,7 +30,7 @@
       rand = Math.floor(Math.random() * letters.length);
       output += letters[rand];
     }
-    return output.split('').sort(randomSort).join('');
+    return randomize(output);
   }
 
   function passGenReplace() {
@@ -43,8 +51,8 @@
   });
 </script>
 
-<div style="padding: 20px; width: 300px;">
-  <div id="passgen-placeholder" style="margin: 10px auto; text-align: center;">
+<div class="passgen-container">
+  <div id="passgen-placeholder">
     <div id="passgen-placeholder-inner"><pre></pre></div>
   </div>
 
