@@ -1,16 +1,69 @@
 <script type="text/javascript">
+  function randomSort(a, b) {
+    return( parseInt( Math.random()*500 ) %2 );
+  }
   
+  function passGen(params) {
+    var letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var numbers = '0123456789';
+    var chars = '!@#$%^&*?+';
+    var output = '';
+    var size = params.size - params.specialchars - params.numbers;
+
+    for (i = 0; i < params.specialchars; i++) {
+      rand = Math.floor(Math.random() * chars.length);
+      output += chars[rand];
+    }
+    for (i = 0; i < params.numbers; i++) {
+      rand = Math.floor(Math.random() * chars.length);
+      output += numbers[rand];
+    }
+    for (i = 0; i < size; i++) {
+      rand = Math.floor(Math.random() * letters.length);
+      output += letters[rand];
+    }
+    return output.split('').sort(randomSort).join('');
+  }
+
+  function passGenReplace() {
+    $('#passgen-placeholder-inner pre').text(
+      passGen({
+        size: $('#passgen-size').val(),
+        numbers: $('#passgen-numbers').val(),
+        specialchars: $('#passgen-specialchar').val()
+      })
+    );
+  }
+
+  $(document).ready(function() {
+    passGenReplace();
+    $('#passgen-generate').click(function() {
+      passGenReplace();
+    });
+  });
 </script>
 
-<div id="passgen-placeholder">
-  <div class="passgen-placeholder-inner"></div>
+<div style="padding: 20px; width: 300px;">
+  <div id="passgen-placeholder" style="margin: 10px auto; text-align: center;">
+    <div id="passgen-placeholder-inner"><pre></pre></div>
+  </div>
+
+  <div class="group">
+    <label for="passgen-size">Length</label>
+    <input type="number" id="passgen-size" value="15" />
+  </div>
+
+  <div class="group">
+    <label for="passgen-numbers">Numbers</label>
+    <input type="number" id="passgen-numbers" value="3" />
+  </div>
+
+  <div class="group">
+    <label for="passgen-specialchar">Special Characters</label>
+    <input type="number" id="passgen-specialchar" value="3" />
+  </div>
+
+  <div class="group">
+    <a href="javascript:void(0);" id="passgen-generate">Regenerate</a>
+  </div>
 </div>
-
-<label for="passgen-length">Length</label>
-<input type="number" name="passgen[length]" id="passgen-length" />
-
-<label for="passgen-numbers">Numbers</label>
-<input type="number" name="passgen[numbers]" id="passgen-numbers" />
-
-<label for="passgen-specialchar">Special Characters</label>
-<input type="number" name="passgen[specialchar]" id="passgen-specialchar" />

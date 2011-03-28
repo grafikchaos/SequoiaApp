@@ -30,6 +30,7 @@
 
 <%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
   <div class="fieldset-wrapper">
+    <a href="javascript:void(0);" id="passgen-link">Generate a Random Password</a>
     <%= f.fields_for :entity_rows do |row_form| %>
       <%= render 'entity_rows/form_fields', :f => row_form, :config => @form_config.select { |conf| conf.id == row_form.object.form_config_id }.first %>
     <%- end %>
