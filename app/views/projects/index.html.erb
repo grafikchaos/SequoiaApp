@@ -1,6 +1,6 @@
 <% content_for :page_title, "Projects for #{@client.name}" %>
-<% content_for :actions do %>
-  <li><%= link_to "New Project", new_client_project_path(@client) %></li>
+<% content_for :main_action do %>
+  <%= link_to "New Project", new_client_project_path(@client), :class => 'button' %>
 <% end %>
 
 <div class="block">

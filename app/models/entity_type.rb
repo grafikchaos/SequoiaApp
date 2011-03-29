@@ -27,5 +27,4 @@ class EntityType < ActiveRecord::Base
                   :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
   default_scope includes(:entity_type_aliases, :form_configs).order(:name)
-  # default_scope order(:name)
 end

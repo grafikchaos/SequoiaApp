@@ -1,0 +1,30 @@
+<% content_for :main_action do %>
+  <%- if can? :create, Entity -%>
+    <%= link_to 'New Entity', new_client_entity_path(client), :class => 'button' %>
+  <%- end -%>
+<% end %>
+
+<% content_for :actions do %>
+  <%- if can? :update, Project %>
+    <li><%= link_to 'Manage Projects', client_projects_path(client) %></li>
+  <%- end -%>
+  <%- if can? :edit, Client -%>
+    <li><%= edit_link client %></li>
+  <%- end -%>
+  <%- if can? :delete, Client -%>
+    <li><%= destroy_link client %></li>
+  <%- end -%>
+<% end %>
+<% content_for :sidebar do %>
+  <div class="client-notes">
+    <h2>Client Notes:</h2>
+    <%= render client.notes %>
+  </div>
+
+  <div class="project-notes">
+    <h2>Project Notes:</h2>
+    <% client.projects.each do |project| %>
+      <%= render project.notes %>
+    <% end %>
+  </div>
+<% end %>

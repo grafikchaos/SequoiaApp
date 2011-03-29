@@ -1,7 +1,7 @@
 <% content_for :page_title, "Entity Keys" %>
-<% content_for :actions do %>
+<% content_for :main_action do %>
   <% if can? :create, EntityKey %>
-    <li><%= link_to 'New Entity Key', new_entity_key_path, :class => '' %></li>
+    <%= link_to 'New Entity Key', new_entity_key_path, :class => 'button' %>
   <% end %>
 <% end %>
 

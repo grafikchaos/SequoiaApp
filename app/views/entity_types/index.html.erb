@@ -1,7 +1,7 @@
 <% content_for :page_title, "Entity Types" %>
-<% content_for :actions do %>
+<% content_for :main_action do %>
   <% if can? :create, EntityType %>
-    <li><%= link_to 'New Entity Type', new_entity_type_path %></li>
+    <%= link_to 'New Entity Type', new_entity_type_path, :class => 'button' %>
   <% end %>
 <%- end %>
 
@@ -29,11 +29,7 @@
             <% end %>
           </td>
           <td style="width:20%;">
-            <%- if entity_type.form_configs.count > 1 -%>
-              Yes
-            <%- else -%>
-              No
-            <%- end -%>
+            <%= entity_type.form_configs.count > 0 ? 'Yes' : 'No' -%>
           </td>
           <td style="width:5%;" class="crud-actions">
             <%- if can? :edit, EntityType -%>
