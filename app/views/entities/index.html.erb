@@ -1,34 +1,5 @@
 <% content_for :page_title, page_title(@client) %>
-<% content_for :actions do %>
-  <%- if can? :create, Entity -%>
-    <li><%= link_to 'New Entity', new_client_entity_path(@client) %></li>
-  <%- end -%>
-  <%- if can? :create, Project -%>
-    <li><%= link_to 'New Project', new_client_project_path(@client) %></li>
-  <%- end -%>
-  <%- if can? :update, Project %>
-    <li><%= link_to 'Manage Projects', client_projects_path(@client) %></li>
-  <%- end -%>
-  <%- if can? :edit, Client -%>
-    <li><%= edit_link @client %></li>
-  <%- end -%>
-  <%- if can? :delete, Client -%>
-    <li><%= destroy_link @client %></li>
-  <%- end -%>
-<% end %>
-<% content_for :sidebar do %>
-  <div class="client-notes">
-    <h2>Client Notes:</h2>
-    <%= render @client.notes %>
-  </div>
-
-  <div class="project-notes">
-    <h2>Project Notes:</h2>
-    <% @client.projects.each do |project| %>
-      <%= render project.notes %>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'sidebar', :client => @client %>
 
 <h2 class="title"><%= @client.name %></h2>
 <%= form_tag('', :method => 'get', :id => 'proj_selector') do %>

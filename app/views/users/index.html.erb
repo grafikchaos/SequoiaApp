@@ -1,7 +1,7 @@
 <% content_for :page_title, "Users" %>
-<% content_for :actions do %>
+<% content_for :main_action do %>
   <% if can? :create, User %>
-    <li><%= link_to 'New User', new_user_path %></li>
+    <%= link_to 'New User', new_user_path, :class => 'button' %>
   <% end %>
 <%- end %>
 
