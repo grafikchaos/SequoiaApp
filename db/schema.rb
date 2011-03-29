@@ -163,11 +163,10 @@ ActiveRecord::Schema.define(:version => 20110327053659) do
     t.string   "username",                                                :null => false
     t.string   "role",                :limit => 20,  :default => "staff", :null => false
     t.string   "email",                              :default => "",      :null => false
-    t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
-    t.string   "password_salt",                      :default => "",      :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "clearance",                          :default => 3,       :null => false
+    t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      :default => 0
@@ -175,11 +174,16 @@ ActiveRecord::Schema.define(:version => 20110327053659) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",                    :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
   add_foreign_key "entities", "entity_types", :name => "entities_entity_type_id_fk"
   add_foreign_key "entities", "projects", :name => "entities_project_id_fk", :dependent => :delete

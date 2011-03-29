@@ -17,3 +17,10 @@ Feature: Manage authentications
     Given I am logged in as a user
     When I follow "Logout"
     Then I should be on the login page
+
+  @lockable
+  Scenario: My account should be locked if I mess up 10 times
+    Given I am on the login page
+    And a user "user" exists
+    When I mess up logging in as "user" 11 times
+    Then I should see "Your account is locked."

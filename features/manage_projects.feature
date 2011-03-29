@@ -38,7 +38,7 @@ Feature: Manage projects
     And I follow "Edit"
     And I fill in "Project Name" with "A Project"
     And I fill in "Project Domain" with "google.com"
-    And I press "Update project"
+    And I press "Update Project"
     Then I should be on the client page for "ROR"
     And I should see "A Project"
     #And I should see "google.com"

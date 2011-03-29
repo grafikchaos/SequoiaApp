@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :unlock
 
   # GET /users
   # GET /users.xml
@@ -58,11 +58,26 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user.destroy if @user != current_user
-
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  # Break the lock on users.
+  def unlock
+    user = User.find(params[:user_id])
+    authorize! :edit, user
+    user.failed_attempts = 0
+    user.locked_at = nil
+    user.unlock_token = nil
+
+    respond_to do |format|
+      if user.save
+        format.html { redirect_to(users_url, :notice => 'User account has been unlocked.') }
+      else
+        format.html { redirect_to(users_url, :alert => 'User account was not unlocked.') }
+      end
     end
   end
 end
