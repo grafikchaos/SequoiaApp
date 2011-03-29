@@ -198,7 +198,6 @@ Feature: Abilities - Roles and Permissions
     And I should see "Poison"
     And I should have 1 entity_key
 
-
   @entityKeys @create @fail
   Scenario: Validate presence of the name attribute for EntityKey
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
@@ -334,6 +333,9 @@ Feature: Abilities - Roles and Permissions
     When I follow "delete-inigo"
     Then I should be on the list of Users
     And I should not see "inigo"
+
+  @users @lockable @wip
+  Scenario: Admins can unlock locked user accounts
 
   @users @edit
   Scenario: Admins can set a clearance level for a user
