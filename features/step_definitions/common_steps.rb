@@ -20,13 +20,17 @@ Given /^I have no (.*)$/ do |model|
 end
 
 When /^I delete the (\d+)\w{2} Entity Row$/ do |number|
-  within("#entity_rows_form .fieldset-wrapper .entity-row-field:nth-child(#{number})") do
+  # This will fail if we move the password generator link
+  within("#entity_rows_form .fieldset-wrapper .entity-row-field:nth-child(#{number.to_i + 1})") do
     click_link('Delete')
   end
 end
 
-When /^I undelete the (.*) "([^"]+)"$/ do |model, field|
-  set_hidden_field "#{field}", :to => 0
+When /^I undelete the (\d+)\w{2} Entity Row$/ do |number|
+  # This will fail if we move the password generator link
+  within("#entity_rows_form .fieldset-wrapper .entity-row-field:nth-child(#{number.to_i + 1})") do
+    click_link('Undo?')
+  end
 end
 
 Then /^I should have (\d*) (.*)$/ do |count, model|

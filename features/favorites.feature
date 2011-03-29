@@ -10,15 +10,14 @@ Feature: Favorites
     And the client "ROR" has a default project named "Intranet" with domain "intranet.com" 
     And I have no favorites
 
-  @delete @focus @javascript
-  Scenario: Viewing my bookmarks
+  @view @javascript
+  Scenario: I can see favorites link
     Given I am on the home page
-    Then I should see "Logout"
-    When I follow "Favorites"
-    And I follow "View favorites"
-    Then I should have 2 favorites
-    And I should see "AAI Company Name Here"
-    And I should see "ROR Company Name Here"
-    And I should not see "AA Company Name Here"
-    And I should not see "AAA Company Name Here"
+    Then I should see "Favorites" within "#user-navigation"
+
+  @javascript @new @wip
+  Scenario: Bookmark a client
+    Given I am on the home page
+    When I fill in "query" with "AAI"
+    And I press "Search"
     
