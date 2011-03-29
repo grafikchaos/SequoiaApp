@@ -19,6 +19,5 @@ class User < ActiveRecord::Base
   def role?(base_role)
     ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
-  
-  
+
 end

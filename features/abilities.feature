@@ -346,16 +346,16 @@ Feature: Abilities - Roles and Permissions
     And I press "Update User"
     Then I should be on the list of Users
     And I should see the following users
-      | buttercup              | Level 3 | staff   | Edit | Destroy |
-      | valerie                | Level 2 | staff   | Edit | Destroy |
-      | theimpressiveclergyman | Level 1 | staff   | Edit | Destroy |
-      | humperdinck            | Level 0 | staff   | Edit | Destroy |
-      | miraclemax             | Level 1 | manager | Edit | Destroy |
-      | vizzini                | Level 2 | manager | Edit | Destroy |
-      | sixfingeredman         | Level 3 | manager | Edit | Destroy |
-      | dreadpirateroberts     | Level 1 | admin   | Edit |         |
-      | inigo                  | Level 1 | admin   | Edit | Destroy |
-      | fezzik                 | Level 3 | admin   | Edit | Destroy |
+      | buttercup              | Level 3 | staff   | Edit Destroy |
+      | valerie                | Level 2 | staff   | Edit Destroy |
+      | theimpressiveclergyman | Level 1 | staff   | Edit Destroy |
+      | humperdinck            | Level 0 | staff   | Edit Destroy |
+      | miraclemax             | Level 1 | manager | Edit Destroy |
+      | vizzini                | Level 2 | manager | Edit Destroy |
+      | sixfingeredman         | Level 3 | manager | Edit Destroy |
+      | dreadpirateroberts     | Level 1 | admin   | Edit         |
+      | inigo                  | Level 1 | admin   | Edit Destroy |
+      | fezzik                 | Level 3 | admin   | Edit Destroy |
 
   @users @clearance
   Scenario: Admins cannot grant a clearance level greater than their own
