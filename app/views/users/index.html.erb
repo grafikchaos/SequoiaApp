@@ -26,8 +26,13 @@
           <td>Level <%= user.clearance %></td>
           <td><%= user.role %></td>
           <td>
-            <%= edit_link user %>
-            <%- if user != current_user %>
+            <%- if can? :edit, user %>
+              <%- if user.access_locked? %>
+                <%= unlock_link user %>
+              <%- end %>
+              <%= edit_link user %>
+            <%- end %>
+            <%- if can? :destroy, user %>
               <%= destroy_link user %>
             <%- end %>
           </td>

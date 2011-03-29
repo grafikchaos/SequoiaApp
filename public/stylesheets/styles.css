@@ -242,7 +242,6 @@ a.favorite-link.faved {
 a.edit-link {
   width: 16px; 
   height: 16px;
-  margin:0 16px 0 0;
   background: url(/images/icons/glyphicons_000_pencil.png) no-repeat;
   display: inline-block;
   text-indent: -9999px;
@@ -268,6 +267,14 @@ a.destroy-link {
   height: auto;
   text-indent: 0;
   background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat left center;
+}
+
+a.unlock-link {
+  width: 16px; 
+  height: 16px;
+  background: url(/images/icons/glyphicons_143_lock.png) no-repeat;
+  display: inline-block;
+  text-indent: -9999px;
 }
 
 /****************************
@@ -393,6 +400,10 @@ input:not([type]) {
 /****************************
   FIELDSETS
 ****************************/
+fieldset {
+  margin: 10px 0;
+}
+
 fieldset .fieldset-wrapper {
   padding: 10px;
 }

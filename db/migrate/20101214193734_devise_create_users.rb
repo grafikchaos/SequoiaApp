@@ -4,11 +4,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.database_authenticatable :null => false
       t.rememberable
       t.trackable
-
+      t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       t.timestamps
     end
 
     add_index :users, :email,                :unique => true
+    add_index :users, :unlock_token,         :unique => true    
   end
 
   def self.down

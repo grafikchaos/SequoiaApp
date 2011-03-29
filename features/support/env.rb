@@ -46,6 +46,10 @@ Capybara.default_selector = :css
 #
 ActionController::Base.allow_rescue = false
 
+# For JS test, we need transactions to be OFF
+# See: http://www.allenwei.cn/cucumber-capybara-what-we-need-for-rails-integration-test/
+Cucumber::Rails::World.use_transactional_fixtures = false
+
 # Remove this line if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
-DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.strategy = :truncation

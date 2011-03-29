@@ -72,7 +72,7 @@ Feature: Manage entity_rows
     And I should not see "12345"
 
  
-  @focus @javascript
+  @javascript
   Scenario: Delete entity rows from an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |
@@ -91,7 +91,7 @@ Feature: Manage entity_rows
     And I should see "username:"
     And I should see "fezzik"
 
-  
+  @javascript  
   Scenario: Undo delete entity rows from an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | level   |
@@ -103,7 +103,7 @@ Feature: Manage entity_rows
     And I am on the client page for "ROR"
     When I follow "edit-admin-login"
     And I delete the 1st Entity Row
-    And I undelete the Entity Row "entity_entity_rows_attributes_0__destroy"
+    And I undelete the 1st Entity Row
     And I press "Update Entity"
     Then I should be on the list of entities for "ROR"
     And I should see "password:"

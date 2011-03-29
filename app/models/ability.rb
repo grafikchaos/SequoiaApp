@@ -60,6 +60,9 @@ class Ability
     # ADMIN - MANAGES ALL
     if user.role? :admin
       can :manage, :all
+      cannot :destroy, User do |usr|
+        usr == user
+      end
     end
  
   end
