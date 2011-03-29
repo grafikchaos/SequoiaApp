@@ -18,9 +18,10 @@ Feature: Manage authentications
     When I follow "Logout"
     Then I should be on the login page
 
-  @lockable
+  @lockable @wip
   Scenario: My account should be locked if I mess up 10 times
     Given I am on the login page
     And a user "user" exists
-    When I mess up logging in as "user" 11 times
+    When I mess up logging in as "user" 30 times
+    Then show me the page
     Then I should see "Your account is locked."
