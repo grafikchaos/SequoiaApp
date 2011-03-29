@@ -27,7 +27,7 @@
           <td><%= user.role %></td>
           <td>
             <%- if can? :edit, user %>
-              <%- if user.locked_at %>
+              <%- if user.access_locked? %>
                 <%= unlock_link user %>
               <%- end %>
               <%= edit_link user %>

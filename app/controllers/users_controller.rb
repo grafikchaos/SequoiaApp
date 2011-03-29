@@ -68,12 +68,10 @@ class UsersController < ApplicationController
   def unlock
     user = User.find(params[:user_id])
     authorize! :edit, user
-    user.failed_attempts = 0
-    user.locked_at = nil
-    user.unlock_token = nil
+    user.unlock_access!
 
     respond_to do |format|
-      if user.save
+      if user.active?
         format.html { redirect_to(users_url, :notice => 'User account has been unlocked.') }
       else
         format.html { redirect_to(users_url, :alert => 'User account was not unlocked.') }
