@@ -1,4 +1,6 @@
 Factory.define :user do |u|
+  u.first_name Faker::Name.first_name
+  u.last_name Faker::Name.last_name
   u.username 'user'
   u.password 'test1234'
   u.password_confirmation { |p| "#{p.password}" }

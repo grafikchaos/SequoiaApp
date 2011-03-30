@@ -38,5 +38,8 @@ Then /^I should have (\d*) (.*)$/ do |count, model|
 end
 
 Then /^I should see the following (.*)$/ do |model, expected|
-  expected.diff!(tableish("table#" + model + " tr", "td").to_a)
+  html_table = tableish('table#' + model + ' tr', 'td,th')
+  html_table.map! { |r| r.map! { |c| c.gsub(/<.+?>/, '') } } # strip HTML from all cells
+  html_table.map! { |r| r.map! { |c| c.gsub(/[\r\n\t\s]+/, ' ') } } # strip line breaks and multiple spaces
+  expected.diff!(html_table)
 end
