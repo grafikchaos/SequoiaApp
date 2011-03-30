@@ -176,12 +176,22 @@ form .remove a.undo { margin-left: 3px; }
 ****************************/
 #sidebar #main-action {
   background: none;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 #sidebar #main-action > * {
   width: 94%;
   text-align: center;
 }
+
+#sidebar #main-action .button { 
+    font-size:24px; 
+    padding:8px; 
+    background:#40a8c2; 
+    color:#eee; 
+    border-radius:8px;
+}
+#sidebar #main-action .button:hover { background:#06829e; color:#fff; }
+#sidebar #main-action .button:active { background:#eb09c9; color:#fff; }
 
 #sidebar .favorites input#fav-filter {
   margin: 5px 0;

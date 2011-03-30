@@ -13,18 +13,20 @@
     <div class="inner">
       <table class="table">
         <tr>
-          <th class="first"></th>
+          <th class="first">ID</th>
           <th>Name</th>
           <th>Masked</th>
-          <th class="last"></th>
+          <th class="last crud-actions-header">Actions</th>
         </tr>
       <% @entity_keys.each do |entity_key| %>
         <tr class="<%= cycle "odd", "even" -%>">
           <td><%= entity_key.id %></td>
           <td><%= entity_key.name %></td>
           <td><%= entity_key.mask ? "Yes" : "No" %></div>
-          <td><%= edit_link entity_key %>
-          <%= destroy_link entity_key %></td>
+          <td style="width:5%;" class="crud-actions">
+            <%= edit_link entity_key %> 
+            <%= destroy_link entity_key %>
+          </td>
         </tr>
       <% end %>
       </table>
