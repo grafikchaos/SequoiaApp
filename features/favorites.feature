@@ -72,3 +72,36 @@ Feature: Favorites
     Then show me the page
     Then I should see "$aai $ror"
     And "user" should have 1 favorite
+
+  @edit
+  Scenario: I can edit my bookmarks
+    Given "user" has bookmarked the Client "ROR"
+    And "user" has bookmarked the Client "AAI"
+    When I go to the list of my favorites
+    And I follow "edit-ror_company_name_here"
+    And I fill in "Name" with "Ruby on Rails is cool"
+    And I press "Update Favorite"
+    Then I should be on the list of my favorites
+    And I should see "Ruby on Rails is cool"
+    And I should not see "ROR Company Name Here"
+    And I should have 2 favorites
+
+  @delete
+  Scenario: I can delete a bookmark
+    Given "user" has bookmarked the Client "ROR"
+    And "user" has bookmarked the Client "AAI"
+    When I go to the list of my favorites
+    And I follow "delete-ror_company_name_here"
+    Then I should be on the list of my favorites
+    And I should not see "ROR Company Name Here"
+    And I should have 1 favorites
+
+  @filtering @wip
+  Scenario: I can filter my bookmarks
+    Given "user" has bookmarked the Client "ROR"
+    And "user" has bookmarked the Client "AAI"
+    And I am on the home page
+    When I fill in "fav-filter" with "ROR"
+    Then I should see "ROR Company Name Here" within "#sidebar .favorites"
+    And I should not see "AAI Company Name Here" within "#sidebar .favorites"
+    And I should have 2 favorites

@@ -1,7 +1,9 @@
-Given /^I have bookmarked clients (.*)$/ do |codes|
-  codes.split(', ').each do |code|
-    client = Client.find_by_client_code(code)
-    Factory.create(:favorite, :favable_type => client.class.to_s, :favable_id => client.id, :note => client.name)
+Given /^"([^"]*)" has bookmarked the (.*) "([^"]*)"$/ do |username, type, name|
+  user = User.find_by_username(username)
+  case type
+    when "Client"
+      obj = Client.find_by_client_code(name)
+      Factory.create(:favorite, :favable_type => "Client", :favable_id => obj.id, :user_id => user.id, :note => obj.name)
   end
 end
 

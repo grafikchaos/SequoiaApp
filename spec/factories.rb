@@ -50,5 +50,6 @@ Factory.define :favorite do |fav|
   fav.favable_type 'Client'
   fav.favable_id 1
   fav.note 'Some favorite'
+  fav.name { |f| "#{f.note}" }
   fav.user_id 1
 end
