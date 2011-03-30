@@ -1,7 +1,7 @@
 <div class="flash">
   <% flash.each do |type, message| -%>
     <div class="message <%= type %>">
-      <p><%= message %><a href="javascript:void(0);" class="close">Close</a></p>
+      <p><%= raw(message) %><a href="javascript:void(0);" class="close">Close</a></p>
     </div>
   <% end -%>
 </div><!--/flash-->

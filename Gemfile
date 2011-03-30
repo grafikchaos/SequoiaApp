@@ -11,6 +11,7 @@ gem "paperclip"
 gem "meta_where"
 gem 'foreigner'
 gem 'active_link_to'
+gem 'paper_trail'
 
 # For processing text
 gem 'rdiscount'

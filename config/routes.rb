@@ -22,6 +22,11 @@ SequoiaApp::Application.routes.draw do
   # Our root URL is mapped to the search controller
   root :to => "search#start"
   
+  
+  # Versions
+  post "versions/:id/revert" => "versions#revert", :as => "revert_version"
+  
+  
   # Catch everything else and give it to the error controller
   match '*a', :to => 'errors#routing', :as => 'error'
   
