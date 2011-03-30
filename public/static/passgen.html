@@ -67,10 +67,16 @@
       value: 3,
       slide: function(event, ui) {
         var input = $(this).siblings('input');
-        input[0].val() == ui.value
-        console.log(input[0]); console.log(ui.value);
+        var text = $(this).siblings('div.value');
+        $(input[0]).val(ui.value);
+        $(text[0]).text(ui.value);
+        passGenReplace();
       }
     });
+    $('#passgen-length-container .slider')
+      .slider( "option", "min", 5 )
+      .slider( "option", "max", 24 )
+      .slider( "option", "value", 15 );
   });
 </script>
 
@@ -79,20 +85,20 @@
     <div id="passgen-placeholder-inner"><pre></pre></div>
   </div>
 
-  <div class="group">
-    <label class="label">Length</label>
+  <div id="passgen-length-container" class="group">
+    <label class="label">Length</label><div class="value">15</div>
     <div class="slider"></div>
     <input type="hidden" id="passgen-size" value="15" />
   </div>
 
   <div class="group">
-    <label class="label">Numbers</label>
+    <label class="label">Numbers</label><div class="value">3</div>
     <div class="slider"></div>
     <input type="hidden" id="passgen-numbers" value="3" />
   </div>
 
   <div class="group">
-    <label class="label">Special Characters</label>
+    <label class="label">Special Characters</label><div class="value">3</div>
     <div class="slider"></div>
     <input type="hidden" id="passgen-specialchar" value="3" />
   </div>
