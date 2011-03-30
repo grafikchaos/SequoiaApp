@@ -47,6 +47,7 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
   -webkit-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
   float: left;
+  width: 250px;
 }
 
 #big-search-form #main-search input[type=text] {
@@ -62,7 +63,7 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
   -webkit-border-radius: 0 3px 3px 0;
   border: 1px solid #aaa;
   box-shadow: none;
-  min-width: 0;
+  width: 24px;
   height: 23px;
   background: url(/images/icons/glyphicons_007_search_small.png) no-repeat center center;
   color: #000;
@@ -185,6 +186,7 @@ form .remove a.undo { margin-left: 3px; }
 
 #sidebar .favorites input#fav-filter {
   margin: 5px 0;
+  width: 96%;
 }
 
 /****************************

@@ -21,7 +21,7 @@
   <section class="block favorites">
     <header><h3>Favorites</h3></header>
     <section class="content">
-      <%= text_field_tag 'fav-filter', nil, :size => 34, :placeholder => 'Filter...' %>
+      <%= text_field_tag 'fav-filter', nil, :placeholder => 'Filter...' %>
       <ul class="navigation">
         <% current_user.favorites.each do |fav| %>
           <li><%= link_to_favorite fav %></li>
