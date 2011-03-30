@@ -51,6 +51,7 @@ module SequoiaApp
         web-app-theme/base 
         web-app-theme/themes/drastic-dark/style 
         web-app-theme/override
+        jquery-ui/jquery-ui 
         styles
       )
 
