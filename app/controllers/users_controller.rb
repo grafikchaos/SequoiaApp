@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def create
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(users_url, :notice => 'User was successfully created.') }
+        format.html { redirect_to(users_url, :notice => "User was successfully created. #{undo_link}") }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(users_url, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(users_url, :notice => "User was successfully updated. #{undo_link}") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to(users_url) }
+      format.html { redirect_to(users_url, :notice => "User was successfully destroyed. #{undo_link}") }
       format.xml  { head :ok }
     end
   end
@@ -79,4 +79,15 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  
+  ##########
+  # PRIVATE
+  ##########
+  private
+
+    def undo_link
+      view_context.link_to("undo", revert_version_path(@user.versions.scoped.last), :method => :post)
+    end
+
 end
