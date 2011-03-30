@@ -5,11 +5,11 @@
   <%- end -%>
 <% end %>
 
-<%= render 'form' %>
-<%= favable_link(@query_string) unless @results.empty? || @query_string.nil? %>
+<div id="search-container">
+  <%= render 'form' %>
+  <%= favable_link(@query_string) unless @results.empty? || @query_string.nil? %>
+</div>
 
-
-<div class="clear"></div>
 <%- if @results %>
   <div id="results-list">
     <%- if params[:query] && params[:query].first == '$' %>

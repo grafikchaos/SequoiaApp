@@ -114,11 +114,6 @@ EntityTypeAlias.create([
 ])
 
 FormConfig.create([
-  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'soap'},
-  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'web service'},
-  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'rest'},
-  { :entity_type_id => EntityType.find_by_name('API').id, :name => 'restful'},
-
   { :entity_type_id => EntityType.find_by_name('Computer').id, :entity_key_id => EntityKey.find_by_name('Username').id, :sort_order => 0},
   { :entity_type_id => EntityType.find_by_name('Computer').id, :entity_key_id => EntityKey.find_by_name('Password').id, :sort_order => 1},
 
