@@ -24,12 +24,10 @@
           <td><%= entity_type.id %></td>
           <td style="width:20%;"><%= entity_type.name %></td>
           <td>
-            <% entity_type.entity_type_aliases.each do |alli| %>
-              <%= alli.name + ", " %>
-            <% end %>
+            <%= entity_type.entity_type_aliases.collect { |x| x.name }.join(', ') %>
           </td>
           <td style="width:20%;">
-            <%= entity_type.form_configs.count > 0 ? 'Yes' : 'No' -%>
+            <%= entity_type.form_configs.empty? ? 'No' : 'Yes' -%>
           </td>
           <td style="width:5%;" class="crud-actions">
             <%- if can? :edit, EntityType -%>
