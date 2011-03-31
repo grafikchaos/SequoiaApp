@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330032919) do
+ActiveRecord::Schema.define(:version => 20110331032036) do
+
+  create_table "audits", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "message",         :null => false
+    t.string   "controller_info"
+    t.integer  "model_id"
+    t.string   "model_type"
+    t.integer  "version_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "audits", ["user_id"], :name => "audits_user_id_fk"
+  add_index "audits", ["version_id"], :name => "audits_version_id_fk"
 
   create_table "clients", :force => true do |t|
     t.string   "name",                            :null => false
@@ -167,7 +181,6 @@ ActiveRecord::Schema.define(:version => 20110330032919) do
     t.string   "last_name"
     t.integer  "clearance",                          :default => 3,       :null => false
     t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
-    t.string   "password_salt",                      :default => "",      :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      :default => 0
@@ -196,6 +209,9 @@ ActiveRecord::Schema.define(:version => 20110330032919) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  add_foreign_key "audits", "users", :name => "audits_user_id_fk", :dependent => :nullify
+  add_foreign_key "audits", "versions", :name => "audits_version_id_fk", :dependent => :nullify
 
   add_foreign_key "entities", "entity_types", :name => "entities_entity_type_id_fk"
   add_foreign_key "entities", "projects", :name => "entities_project_id_fk", :dependent => :delete
