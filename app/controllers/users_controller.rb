@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource :except => :unlock
+  load_and_authorize_resource :except => [:edit, :update, :unlock]
 
   # GET /users
   # GET /users.xml
@@ -21,6 +21,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:user_id] || current_user.id)
+    authorize! :update, @user
+
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.xml  { render :xml => @user }
+    end
   end
 
   # POST /users
@@ -40,6 +47,9 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
+    @user = User.find(params[:user_id] || current_user.id)
+    authorize! :update, @user
+
     if params[:user][:password].blank?
       [:password, :password_confirmation].collect{ |p| params[:user].delete(p) }
     end    
@@ -72,7 +82,7 @@ class UsersController < ApplicationController
   # Break the lock on users.
   def unlock
     user = User.find(params[:user_id])
-    authorize! :edit, user
+    authorize! :update, user
     user.unlock_access!
 
     respond_to do |format|

@@ -1,0 +1,27 @@
+<% content_for :page_title, "Audit Log" %>
+
+<div class="block">
+  <%= render 'shared/admin_tabs' %>
+
+  <div class="content">
+    <h2 class="title">Audit Log</h2>
+    <div class="inner">
+      <table id="audits" class="table">
+        <tr>
+          <th class="first">ID</th>
+          <th >Time</th>
+          <th>Message</th>
+          <th class="last">User</th>
+        </tr>
+      <% @audits.each do |audit| %>
+        <tr class="<%= cycle "odd", "even" -%>">
+          <td><%= audit.id %></td>
+          <td><%= audit.created_at %></td>
+          <td><%= audit.message %></td>
+          <td><%= audit.user_id %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

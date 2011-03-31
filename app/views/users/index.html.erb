@@ -25,9 +25,9 @@
         <tr class="<%= cycle "odd", "even" -%>">
           <td><%= user.id %></td>
           <td><%= user.role %></td>
-          <td><%=h user.username %></td>
-          <td><%=h user.email %></td>
-          <td><%=h user.full_name %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.full_name %></td>
           <td>Level <%= user.clearance %></td>
           <td style="width:5%;" class="crud-actions">
             <%- if can? :edit, user %>
