@@ -1,4 +1,6 @@
 Factory.define :user do |u|
+  u.first_name { Faker::Name.first_name }
+  u.last_name { Faker::Name.last_name }
   u.username 'user'
   u.password 'test1234'
   u.password_confirmation { |p| "#{p.password}" }
@@ -8,13 +10,13 @@ Factory.define :user do |u|
 end
 
 Factory.define :client do |c|
-  c.name 'Ruby on Rails'
-  c.client_code 'ROR'
+  c.name                    { Faker::Company.name }
+  c.sequence(:client_code)  { |n| "ROR#{n}" } # => ROR1 
 end
 
 Factory.define :project do |p|
   p.name 'Default'
-  p.domain 'example.com'
+  p.domain { Faker::Internet.domain_name }
   p.client_id 1
 end
 
