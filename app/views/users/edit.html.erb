@@ -2,7 +2,13 @@
 
 <section class="block">
   <section class="content">
-    <header><h2>Editing <%= @user.username %></h2></header>
+    <header><h2>
+      <% if @user.id == current_user.id %>
+        Edit Your Account
+      <% else %>
+        Editing <%= @user.username %>
+      <% end %>
+    </h2></header>
     <section class="inner">
       <%= render 'form' %>
     </section>

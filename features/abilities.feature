@@ -334,6 +334,20 @@ Feature: Abilities - Roles and Permissions
     Then I should be on the list of Users
     And I should not see "inigo"
 
+  @users @own @jake
+  Scenario: A user can edit their own account
+    Given I am logged in as "buttercup" with password "princess"
+    And I am on the home page
+    When I follow "Account"
+    Then I should see "Edit Your Account"
+    When I fill in "Last name" with "Robertson"
+    And I press "Update User"
+    Then I should be on the account page for "buttercup"
+    And the "Last name" field should contain "Robertson"
+
+  @users @own @jake @todo!
+  Scenario: Staff members cannot edit other users' accounts
+
   @users @lockable @wip
   Scenario: Admins can unlock locked user accounts
 
