@@ -334,7 +334,7 @@ Feature: Abilities - Roles and Permissions
     Then I should be on the list of Users
     And I should not see "inigo"
 
-  @users @own @jake
+  @users @own
   Scenario: A user can edit their own account
     Given I am logged in as "buttercup" with password "princess"
     And I am on the home page
@@ -345,8 +345,12 @@ Feature: Abilities - Roles and Permissions
     Then I should be on the account page for "buttercup"
     And the "Last name" field should contain "Robertson"
 
-  @users @own @jake @todo!
+  @users @own
   Scenario: Staff members cannot edit other users' accounts
+    Given I am logged in as "buttercup" with password "princess"
+    And I am on the home page
+    When I go to the account page of someone other than "buttercup"
+    Then I should see "Access Denied"
 
   @users @lockable @wip
   Scenario: Admins can unlock locked user accounts
