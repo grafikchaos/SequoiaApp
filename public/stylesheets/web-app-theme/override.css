@@ -1,2 +1,10 @@
 /* Override here any style defined by web-app-theme */
+.text_area.small { height:120px; padding:7px 5px; }
+.form input.text_field { padding:7px 5px; width:99%; }
+.column.left { border-right:1px solid #ddd; padding:0 25px 0 0; }
 
+.group.navform { margin:40px 0 0; background:#efefef; padding:20px; }
+
+.navform .button { background:#555; color:#fff; }
+.navform .button:hover { background:#1A1A1A; }
+.navform .button:active { background:#777; }

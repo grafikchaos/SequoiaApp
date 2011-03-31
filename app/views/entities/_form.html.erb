@@ -1,12 +1,4 @@
-<% if @entity.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @entity.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render "shared/form_errors", :f => f  %>
 
 <div class="group required">
   <%= f.label :project_id, :class => 'label' %>

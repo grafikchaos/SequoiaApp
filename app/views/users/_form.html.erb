@@ -1,62 +1,68 @@
 <%= form_for(@user, :html => { :class => 'form' }) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="group required">
-    <%= f.label :username, :class=> 'label' %>
-    <%= f.text_field :username %>
-  </div>
+  <%= render "shared/form_errors", :f => f  %>
 
-  <div class="group required">
-    <%= f.label :email, :class => 'label' %>
-    <%= f.email_field :email %>
-  </div>
+<section class="columns wat-cf">
+  <section class="column left">
 
-  <div class="group">
-    <%= f.label :first_name, :class=> 'label' %>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="group">
-    <%= f.label :last_name, :class=> 'label' %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <% if current_user.role?('manager') %>
     <div class="group required">
-      <%= f.label :role, :class => 'label' %>
-      <%= f.select :role, format_roles_select %>
+      <%= f.label :username, :class=> 'label' %>
+      <%= f.text_field :username, :class => 'text_field' %>
+      <span class="description">6 to 20 characters</span>
     </div>
 
     <div class="group required">
-      <%= f.label :clearance, :class => 'label' %>
-      <%= f.select :clearance, format_clearance_select %>
+      <%= f.label :email, :class => 'label' %>
+      <%= f.email_field :email, :class => 'text_field' %>
+      <span class="description">Ex: steve@example.com</span>
     </div>
-  <% end %>
 
-  <%= field_set_tag "Password", :class => "collapsible" do %>
-    <div class="fieldset-wrapper">
-      <%- if !@user.new_record? %>
-        <div class="description">Leave these blank if you don't want to change the user's password.</div>
-      <%- end %>
-      <div class="group">
-        <%= f.label :password, :class => 'label' %>
-        <%= f.password_field :password %>
-        <%= f.label :password_confirmation, :class => 'label' %>
-        <%= f.password_field :password_confirmation %>
+    <div class="group">
+      <%= f.label :full_name, :class=> 'label' %>
+      <%= f.text_field :full_name, :class => 'text_field' %>
+      <span class="description">Ex: Steve Roberts </span>
+    </div>
+  </section>
+
+  <section class="column right">
+    <% if current_user.role?('manager') %>
+      <div class="group required">
+        <%= f.label :role, :class => 'label' %>
+        <%= f.select :role, format_roles_select %>
       </div>
-    </div>
-  <%- end %>
+
+      <div class="group required">
+        <%= f.label :clearance, :class => 'label' %>
+        <%= f.select :clearance, format_clearance_select %>
+      </div>
+    <% end %>
+
+    <%= field_set_tag "Password", :class => "collapsible collapsed" do %>
+      <div class="fieldset-wrapper">
+        <%- if !@user.new_record? %>
+          <div class="description">Leave these blank if you don't want to change the user's password.</div>
+        <%- end %>
+        <div class="group">
+          <div class="group">
+            <%= f.label :password, :class=> 'label' %>
+            <%= f.password_field :password, :class => 'text_field' %>
+            <span class="description">Leave these blank if you don't want to change the user's password. </span>
+          </div>
+
+          <div class="group">
+            <%= f.label :password_confirmation, :class=> 'label' %>
+            <%= f.password_field :password_confirmation, :class => 'text_field' %>
+            <span class="description">Confirm your new password</span>
+          </div>
+        </div>
+        
+        
+        
+      </div>
+    <%- end %>
   
-  <div class="group">
-    <%= f.submit :class => 'button' %>
-  </div>
+  </section>
+</section>
+
+  <%= render "form_actions", :action => action %>  
 <% end %>
