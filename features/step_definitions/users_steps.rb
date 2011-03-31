@@ -20,3 +20,11 @@ Given /^I am logged in as "([^"]*)" with password "([^"]*)"$/ do |username, pass
   fill_in "user_password", :with => password
   click_button "Sign in"
 end
+
+Given /^the user "([^"]*)" is locked$/ do |username|
+  user = User.find_by_username(username)
+  user.locked_at = DateTime::now
+  user.failed_attempts = 10
+  user.unlock_token = 'wrfihwoihnwouh4o88h0'
+  user.save
+end

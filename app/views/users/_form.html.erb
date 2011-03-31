@@ -30,7 +30,7 @@
     <%= f.text_field :last_name %>
   </div>
 
-  <% unless current_user.role?('staff') %>
+  <% if current_user.role?('manager') %>
     <div class="group required">
       <%= f.label :role, :class => 'label' %>
       <%= f.select :role, format_roles_select %>

@@ -76,7 +76,7 @@ class UsersController < ApplicationController
     user.unlock_access!
 
     respond_to do |format|
-      if user.active?
+      if user.active_for_authentication?
         format.html { redirect_to(users_url, :notice => 'User account has been unlocked.') }
       else
         format.html { redirect_to(users_url, :alert => 'User account was not unlocked.') }

@@ -352,8 +352,15 @@ Feature: Abilities - Roles and Permissions
     When I go to the account page of someone other than "buttercup"
     Then I should see "Access Denied"
 
-  @users @lockable @wip
+  @users @lockable
   Scenario: Admins can unlock locked user accounts
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    And the user "buttercup" is locked
+    And I am on the list of Users
+    When I follow "Unlock"
+    Then I should be on the list of Users
+    And I should see "User account has been unlocked."
+    And I should not see "Unlock"
 
   @users @edit
   Scenario: Admins can set a clearance level for a user
