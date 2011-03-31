@@ -1,6 +1,7 @@
 <nav id="user-navigation">
   <ul class="wat-cf">
     <li><%= link_to "Favorites", favorites_path, :remote => true, :id => 'bookmarks-menu' %></li>
+    <li><%= link_to "Account", edit_user_path(current_user) %></li>
     <%- if current_user.role? :admin %>
       <li><%= link_to 'Admin', '/admin' %></li>
     <%- end %>

@@ -49,6 +49,9 @@ class Ability
       # Entities
       can [:read, :update, :destroy], Entity, :clearance => (user.clearance..3)
       can :create, Entity
+
+      # Own user account
+      can :update, User, :id => user.id
     end
 
     # Manager inherits abilities from Staff + ability to manage users (:read, :create, :update but no :delete)

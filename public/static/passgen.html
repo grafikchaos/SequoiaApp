@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
   function randomize(str) {
     str = str.split('');
     for (i = 0; i < 10; i++) {
@@ -10,7 +11,8 @@
   function randomSort(a, b) {
     return( parseInt( Math.random()*500 ) %2 );
   }
-  
+
+  // Generate a random password.
   function passGen(params) {
     // Determine the pool of characters to choose from.
     var letters = '';
@@ -42,45 +44,142 @@
     return randomize(output);
   }
 
-  function passGenReplace() {
-    $('#passgen-placeholder-inner pre').text(
-      passGen({
-        size: $('#passgen-size').val(),
-        numbers: $('#passgen-numbers').val(),
-        specialchars: $('#passgen-specialchar').val(),
-        allowUppercase: $('#passgen-allow-uppercase').attr('checked'),
-        allowLowercase: true,
-        allowUnfriendly: false
-      })
-    );
+  // Check out secure a password is.
+  function passwordStrength(password) {
+    score = 0 
+    
+    //password length
+    score += password.length * 4
+    score += ( checkRepetition(1,password).length - password.length ) * 1
+    score += ( checkRepetition(2,password).length - password.length ) * 1
+    score += ( checkRepetition(3,password).length - password.length ) * 1
+    score += ( checkRepetition(4,password).length - password.length ) * 1
+
+    //password has 3 numbers
+    if (password.match(/(.*[0-9].*[0-9].*[0-9])/))  score += 5 
+    
+    //password has 2 sybols
+    if (password.match(/(.*[!,@,#,$,%,^,&,*,?,_,~].*[!,@,#,$,%,^,&,*,?,_,~])/)) score += 5 
+    
+    //password has Upper and Lower chars
+    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  score += 10 
+    
+    //password has number and chars
+    if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/))  score += 15 
+    //
+    //password has number and symbol
+    if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([0-9])/))  score += 15 
+    
+    //password has char and symbol
+    if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([a-zA-Z])/))  score += 15 
+    
+    //password is just a nubers or chars
+    if (password.match(/^\w+$/) || password.match(/^\d+$/) )  score -= 10
+
+    return score;
   }
 
+  function strengthGetText(score) {
+    switch (true) {
+      case score < 40:
+        return 'Weak';
+      case score < 60:
+        return 'Moderate';
+      case score < 80:
+        return 'Pretty strong';
+      default:
+        return 'Very strong';
+    }
+  }
+
+  function checkRepetition(pLen,str) {
+    res = "";
+    for ( i=0; i<str.length ; i++ ) {
+      repeated = true;
+      for (j=0;j < pLen && (j+i+pLen) < str.length;j++)
+        repeated = repeated && (str.charAt(j+i)==str.charAt(j+i+pLen))
+      if (j<pLen) repeated = false
+      if (repeated) {
+        i += pLen - 1;
+        repeated = false;
+      }
+      else {
+        res += str.charAt(i);
+      }
+    }
+    return res;
+  }
+
+  // Do the text replacing.
+  function passGenReplace() {
+    var password = passGen({
+      size: $('#passgen-size').val(),
+      numbers: $('#passgen-numbers').val(),
+      specialchars: $('#passgen-specialchar').val(),
+      allowUppercase: $('#passgen-allow-uppercase').attr('checked'),
+      allowLowercase: true,
+      allowUnfriendly: false
+    })
+    $('#passgen-placeholder-inner pre').text(password);
+    var score = passwordStrength(password);
+    $('#passgen-strength-bar').progressbar('option', 'value', score);
+    $('#passgen-strength-words').text(strengthGetText(score));
+  }
+
+  // The document ready (finally).
   $(document).ready(function() {
-    passGenReplace();
-    $('#passgen-generate').click(function() {
+    $('#passgen-generate, #passgen-allow-uppercase').click(function() {
       passGenReplace();
     });
+    $('.passgen-container .slider').slider({
+      step: 1,
+      min: 0,
+      max: 15,
+      value: 3,
+      slide: function(event, ui) {
+        var input = $(this).siblings('input');
+        var text = $(this).siblings('div.value');
+        $(input[0]).val(ui.value);
+        $(text[0]).text(ui.value);
+        passGenReplace();
+      }
+    });
+    $('#passgen-length-container .slider')
+      .slider( "option", "min", 8 )
+      .slider( "option", "max", 24 )
+      .slider( "option", "value", 15 );
+    $('#passgen-strength-bar').progressbar();
+    passGenReplace();
   });
+
 </script>
 
-<div class="passgen-container">
+<div class="passgen-container form">
   <div id="passgen-placeholder">
     <div id="passgen-placeholder-inner"><pre></pre></div>
   </div>
-
   <div class="group">
-    <label for="passgen-size">Length</label>
-    <input type="number" id="passgen-size" value="15" />
+    <label class="label">Password Strength</label>
+    <div id="passgen-strength-words"></div>
+    <div id="passgen-strength-bar"></div>
+  </div>
+
+  <div id="passgen-length-container" class="group">
+    <label class="label">Length</label><div class="value">15</div>
+    <div class="slider"></div>
+    <input type="hidden" id="passgen-size" value="15" />
   </div>
 
   <div class="group">
-    <label for="passgen-numbers">Numbers</label>
-    <input type="number" id="passgen-numbers" value="3" />
+    <label class="label">Numbers</label><div class="value">3</div>
+    <div class="slider"></div>
+    <input type="hidden" id="passgen-numbers" value="3" />
   </div>
 
   <div class="group">
-    <label for="passgen-specialchar">Special Characters</label>
-    <input type="number" id="passgen-specialchar" value="3" />
+    <label class="label">Special Characters</label><div class="value">3</div>
+    <div class="slider"></div>
+    <input type="hidden" id="passgen-specialchar" value="3" />
   </div>
 
   <div class="group">

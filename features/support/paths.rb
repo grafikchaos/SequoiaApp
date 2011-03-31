@@ -17,6 +17,14 @@ module NavigationHelpers
     when /^the login page$/
       new_user_session_path
 
+    when /^the account page for "(.*)"$/i
+      user = User.find_by_username($1)
+      edit_user_path(user)
+
+    when /^the account page of someone other than "(.*)"$/i
+      user = User.where("username != ?", $1).order('RAND()').limit(1).first
+      edit_user_path(user)
+
     when /^the client page for "(.*)"$/i
       client_entities_path(Client.find($1))
 

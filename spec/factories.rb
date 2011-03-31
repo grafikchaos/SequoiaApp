@@ -1,12 +1,12 @@
 Factory.define :user do |u|
-  u.first_name { Faker::Name.first_name }
-  u.last_name { Faker::Name.last_name }
-  u.username 'user'
-  u.password 'test1234'
+  u.first_name            { Faker::Name.first_name }
+  u.last_name             { Faker::Name.last_name }
+  u.username              { Faker::Internet.user_name }
+  u.password              'test1234'
   u.password_confirmation { |p| "#{p.password}" }
-  u.role 'staff'
-  u.sequence(:email) {|n| "person#{n}@example.com".downcase } # => person1@example.com
-  u.clearance 3
+  u.role                  'staff'
+  u.sequence(:email)      {|n| "person#{n}@example.com".downcase } # => person1@example.com
+  u.clearance             3
 end
 
 Factory.define :client do |c|
@@ -52,5 +52,6 @@ Factory.define :favorite do |fav|
   fav.favable_type 'Client'
   fav.favable_id 1
   fav.note 'Some favorite'
+  fav.name { |f| "#{f.note}" }
   fav.user_id 1
 end

@@ -334,10 +334,28 @@ Feature: Abilities - Roles and Permissions
     Then I should be on the list of Users
     And I should not see "inigo"
 
+  @users @own
+  Scenario: A user can edit their own account
+    Given I am logged in as "buttercup" with password "princess"
+    And I am on the home page
+    When I follow "Account"
+    Then I should see "Edit Your Account"
+    When I fill in "Last name" with "Robertson"
+    And I press "Update User"
+    Then I should be on the account page for "buttercup"
+    And the "Last name" field should contain "Robertson"
+
+  @users @own
+  Scenario: Staff members cannot edit other users' accounts
+    Given I am logged in as "buttercup" with password "princess"
+    And I am on the home page
+    When I go to the account page of someone other than "buttercup"
+    Then I should see "Access Denied"
+
   @users @lockable @wip
   Scenario: Admins can unlock locked user accounts
 
-  @users @edit @focus
+  @users @edit
   Scenario: Admins can set a clearance level for a user
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the list of Users
@@ -346,16 +364,17 @@ Feature: Abilities - Roles and Permissions
     And I press "Update User"
     Then I should be on the list of Users
     And I should see the following users
-      | buttercup              | Level 3 | staff   | Edit this User Delete this User |
-      | valerie                | Level 2 | staff   | Edit this User Delete this User |
-      | theimpressiveclergyman | Level 1 | staff   | Edit this User Delete this User |
-      | humperdinck            | Level 0 | staff   | Edit this User Delete this User |
-      | miraclemax             | Level 1 | manager | Edit this User Delete this User |
-      | vizzini                | Level 2 | manager | Edit this User Delete this User |
-      | sixfingeredman         | Level 3 | manager | Edit this User Delete this User |
-      | dreadpirateroberts     | Level 1 | admin   | Edit this User                  |
-      | inigo                  | Level 1 | admin   | Edit this User Delete this User |
-      | fezzik                 | Level 3 | admin   | Edit this User Delete this User |
+      | Username               | Clearance | Role    | Actions                         |
+      | buttercup              | Level 3   | staff   | Edit this User Delete this User |
+      | valerie                | Level 2   | staff   | Edit this User Delete this User |
+      | theimpressiveclergyman | Level 1   | staff   | Edit this User Delete this User |
+      | humperdinck            | Level 0   | staff   | Edit this User Delete this User |
+      | miraclemax             | Level 1   | manager | Edit this User Delete this User |
+      | vizzini                | Level 2   | manager | Edit this User Delete this User |
+      | sixfingeredman         | Level 3   | manager | Edit this User Delete this User |
+      | dreadpirateroberts     | Level 1   | admin   | Edit this User                  |
+      | inigo                  | Level 1   | admin   | Edit this User Delete this User |
+      | fezzik                 | Level 3   | admin   | Edit this User Delete this User |
 
   @users @clearance
   Scenario: Admins cannot grant a clearance level greater than their own
