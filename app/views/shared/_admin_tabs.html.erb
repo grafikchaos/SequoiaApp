@@ -1,8 +1,9 @@
-<%- links = ['Entity Keys', 'Entity Types', 'Users'] %>
+<%- links = ['Entity Keys', 'Entity Types', 'Users', 'Audit Log'] %>
 <nav class="secondary-navigation">
   <ul class="wat-cf">
-    <%- links.each do |link| %>
-      <li class="<%= cycle_with_first_last(link, links) %>"><%= active_link_to link, '/admin/' + link.downcase.gsub(' ', '_') %></li>
-    <%- end %>
+    <li class="first odd"><%= active_link_to 'Entity Keys', entity_keys_path %></li>
+    <li class="even"><%= active_link_to 'Entity Types', entity_types_path %></li>
+    <li class="odd"><%= active_link_to 'Users', users_path %></li>
+    <li class="last even"><%= active_link_to 'Audit Log', audits_path %></li>
   </ul>
 </nav>

@@ -13,9 +13,11 @@ SequoiaApp::Application.routes.draw do
   # Administration for entity types and keys
   scope "/admin" do
     resources :entity_types, :entity_keys, :users, :except => 'show'
+    resources :audits, :only => 'index'
   end
   match '/admin' => redirect('/admin/entity_keys')
   match '/admin/users/:user_id/unlock' => 'users#unlock', :as => 'user_unlock'
+  match '/account' => 'users#edit', :as => 'my_account'
 
   match '/search' => 'search#results', :as => 'search_results'
 
