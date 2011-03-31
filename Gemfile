@@ -35,6 +35,7 @@ group :development, :test, :demo do
   gem 'culerity'
   gem 'celerity', :require => nil # JRuby only. Make it available but don't require it in any environment.
   # gem 'akephalos'
+  gem 'client_side_validations', '3.0.0'
   gem 'pickle'
   gem 'database_cleaner'
   gem 'rspec'

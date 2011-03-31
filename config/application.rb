@@ -43,6 +43,7 @@ module SequoiaApp
         tagsinput/jquery.tagsinput
         hotkeys/jquery.hotkeys
         rails
+        rails.validations
       )
 
     # CSS files to include

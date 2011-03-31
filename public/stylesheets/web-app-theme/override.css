@@ -8,3 +8,6 @@
 .navform .button { background:#555; color:#fff; }
 .navform .button:hover { background:#1A1A1A; }
 .navform .button:active { background:#777; }
+
+.field_with_errors input.text_field { border:2px solid #c30; }
+.field_with_errors label.label { color:#c30; }

@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   #
   ROLES = %w[staff manager admin]
   
+  validates_presence_of :username, :email, :full_name
+  
   # Role Inheritiance
   def role?(base_role)
     ROLES.index(base_role.to_s) <= ROLES.index(role)

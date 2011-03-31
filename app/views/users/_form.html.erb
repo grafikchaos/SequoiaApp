@@ -1,4 +1,4 @@
-<%= form_for(@user, :html => { :class => 'form' }) do |f| %>
+<%= form_for(@user, :html => { :class => 'form' }, :validate => true) do |f| %>
 
   <%= render "shared/form_errors", :f => f  %>
 
@@ -45,13 +45,13 @@
         <div class="group">
           <div class="group">
             <%= f.label :password, :class=> 'label' %>
-            <%= f.password_field :password, :class => 'text_field' %>
+            <%= f.password_field :password, :class => 'text_field', :validate => false %>
             <span class="description">Leave these blank if you don't want to change the user's password. </span>
           </div>
 
           <div class="group">
             <%= f.label :password_confirmation, :class=> 'label' %>
-            <%= f.password_field :password_confirmation, :class => 'text_field' %>
+            <%= f.password_field :password_confirmation, :class => 'text_field', :validate => false %>
             <span class="description">Confirm your new password</span>
           </div>
         </div>
