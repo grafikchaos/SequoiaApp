@@ -1,0 +1,7 @@
+<%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
+  <% options = @client.projects.collect { |p| [p.name + (p.domain.blank? ? '' : "|#{p.domain}"), p.id] } %>
+  <%= select_tag :project, options_for_select(options, params[:project]), :include_blank => 'All' %>
+  <noscript>
+    <%= submit_tag "Filter" %>
+  </noscript>
+<% end %>

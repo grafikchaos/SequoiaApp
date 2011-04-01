@@ -107,8 +107,17 @@ var initBookmarksMenu = function() {
  * Submitting the project selector form on change
  */
 var initProjectSelector = function() {
-  $('form#proj_selector select#project').change(function() {
-    $('form#proj_selector').submit();
+  $('form#proj_selector select#project').selectmenu({
+    width: 200,
+    change: function() {
+      $('form#proj_selector').submit();
+    },
+    format: function(str) {
+      str = '<span class="name">' + str;
+      str = str.replace('|', '</span><span class="domain">');
+      str += '</span>';
+      return str;
+    }
   });
 };
 

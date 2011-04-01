@@ -3,12 +3,7 @@
 
 <h2 class="title"><%= @client.name %></h2>
 <%= favable_link @client %>
-<%= form_tag('', :method => 'get', :id => 'proj_selector') do %>
-  <%= select_tag 'project', options_from_collection_for_select(@client.projects, :id, :name, params[:project]), :include_blank => 'All' %>
-  <noscript>
-    <%= submit_tag "Filter" %>
-  </noscript>
-<% end %>
+<%= render 'projects/filter' %>
 
 <div class="block">
   <%= render 'clients/tabs', :client => @client %>

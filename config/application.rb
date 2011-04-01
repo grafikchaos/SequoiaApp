@@ -38,6 +38,7 @@ module SequoiaApp
       %w(
         jquery/jquery 
         jquery-ui/jquery-ui 
+        jquery-ui-ext/jquery.ui.selectmenu 
         colorbox/jquery.colorbox 
         qtip/jquery.qtip 
         tagsinput/jquery.tagsinput
@@ -53,6 +54,7 @@ module SequoiaApp
         web-app-theme/themes/drastic-dark/style 
         web-app-theme/override
         jquery-ui/jquery-ui 
+        jquery-ui/jquery.ui.selectmenu 
         styles
       )
 
