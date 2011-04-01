@@ -28,6 +28,7 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
   STRUCTURE
 ****************************/
 #container { min-height: 100%; position: relative; }
+#wrapper { overflow: auto; padding-bottom: 33px; min-height: 100%; } 
 #main.no-sidebar {
   width: 100%;
 }
@@ -38,7 +39,6 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
 #big-search-form {
   width: 380px;
   margin: 21% auto;
-/*  margin: 0 auto;*/
 }
 
 #main-search input[type=text] {
@@ -239,10 +239,11 @@ form#new_entity_type div.description {
 ****************************/
 #footer {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0;
+  height: 33px;
+  margin-top: -33px;
+  position: relative;
+  padding: 0; 
+  clear: both;
 }
 
 #footer .block {

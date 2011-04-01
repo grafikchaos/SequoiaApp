@@ -1,9 +1,9 @@
 <% content_for :page_title, page_title(@client) %>
+<% content_for :title, @client.name %>
+<% content_for :header_area, render('projects/filter') %>
 <%= render 'sidebar', :client => @client %>
 
-<h2 class="title"><%= @client.name %></h2>
 <%= favable_link @client %>
-<%= render 'projects/filter' %>
 
 <div class="block">
   <%= render 'clients/tabs', :client => @client %>
