@@ -105,7 +105,7 @@ td.crud-actions { text-align:right; width:60px; text-indent:-9999px; font-size:0
   ENTITY LIST
 ****************************/
 .jump-menu {
-  background: #232C30;
+  background: #222222;
   color: #EAEAEA;
   padding: 5px;
 }
@@ -171,6 +171,15 @@ form .form-config-field div {
 }
 
 form .remove a.undo { margin-left: 3px; }
+
+form .form-config-field {
+  padding: 10px 0;
+  border-top: 1px solid #c9c9c9;
+}
+
+form#new_entity_type div.description {
+  margin-bottom: 10px;
+}
 
 /****************************
   SIDEBAR
@@ -306,6 +315,11 @@ a.unlock-link {
   text-indent: -9999px;
 }
 
+form a.add-more-link {
+  display: block;
+  margin: 10px 5px;
+}
+
 /****************************
   FLASH MESSAGES
 ****************************/
@@ -376,8 +390,8 @@ ul.bookmarks-list a {
 /****************************
   FORM ELEMENTS
 ****************************/
-form .field.required label:after {
-  content: '*';
+form .group.required label:after {
+  content: ' *';
 }
 
 /* Pulled from Google Chrome's source. Pretty, huh? */
@@ -463,8 +477,8 @@ fieldset.collapsible.collapsed legend {
 }
 
 .sortable .ui-sortable-placeholder {
-  border: 3px dashed #666;
-  height: 20px;
+  border: 2px dashed #c9c9c9;
+  height: 50px;
 }
 
 /****************************

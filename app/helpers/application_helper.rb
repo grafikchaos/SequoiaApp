@@ -25,7 +25,7 @@ module ApplicationHelper
         render association.to_s + "/form_fields", :f => builder
       end
     end
-    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => 'add-more-link')
   end  
 
   def favable_link(obj)

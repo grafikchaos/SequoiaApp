@@ -39,7 +39,7 @@
 
     <%= field_set_tag "Password", :class => "collapsible collapsed" do %>
       <div class="fieldset-wrapper">
-        <%- if !@user.new_record? %>
+        <%- unless @user.new_record? %>
           <div class="description">Leave these blank if you don't want to change the user's password.</div>
         <%- end %>
         <div class="group">

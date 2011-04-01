@@ -1,36 +1,40 @@
-<%= form_for(@entity_type, :html => { :class => 'form' }) do |f| %>
+<%= form_for(@entity_type, :html => { :class => 'form' }, :validate => true) do |f| %>
   <%= render "shared/form_errors", :f => f  %>
   
-  <div class="group required">
-    <%= f.label :name, "Name", :class => 'label' %>
-    <%= f.text_field :name %>
-  </div>
-  
-  <%= field_set_tag "Known Aliases", :class => "collapsible" do %>
-    <div class="fieldset-wrapper">
-      <div class="description">
-        Other terms this type might be known as. This is used both for namespacing (so that users can't create an entity type for "MySQL" when one for "Database" already exists, for example) and to aide in advanced searching.
+  <section class="columns wat-cf">
+    <section class="column left">
+      <div class="group required">
+        <%= f.label :name, "Name", :class => 'label' %>
+        <%= f.text_field :name, :class => 'text_field' %>
       </div>
-      <%= f.fields_for :entity_type_aliases do |alias_form| %>
-        <%= render 'entity_types/alias_form_fields', :f => alias_form %>
+      
+      <%= field_set_tag "Known Aliases", :class => "collapsible" do %>
+        <div class="fieldset-wrapper">
+          <div class="description">
+            Other terms this type might be known as. This is used both for namespacing (so that users can't create an entity type for "MySQL" when one for "Database" already exists, for example) and to aide in advanced searching.
+          </div>
+          <%= f.fields_for :entity_type_aliases do |alias_form| %>
+            <%= render 'alias_form_fields', :f => alias_form %>
+          <% end %>
+          <%= link_to_add_fields "Add another", f, :entity_type_aliases, 'entity_types/alias_form_fields' %>
+        </div>
       <% end %>
-      <%= link_to_add_fields "Add another", f, :entity_type_aliases, 'entity_types/alias_form_fields' %>
-    </div>
-  <% end %>
-  
-  <%= field_set_tag "Configuration", :class => "collapsible collapsed" do %>
-    <div class="fieldset-wrapper sortable">
-      <div class="description">
-        Any options you add here will appear as default fields when a user creates a new entity with this type.
-      </div>
-      <%= f.fields_for :form_configs do |rows_form| %>
-        <%= render 'entity_types/form_config_form_fields', :f => rows_form %>
-      <% end %>
-      <%= link_to_add_fields "Add another", f, :form_configs, 'entity_types/form_config_form_fields' %>
-    </div>
-  <% end %>
+    </section>
 
-  <div class="group">
-    <%= f.submit :class => 'button' %>
-  </div>
+    <section class="column right">
+      <%= field_set_tag "Configuration", :class => "collapsible collapsed" do %>
+        <div class="fieldset-wrapper sortable">
+          <div class="description">
+            Any options you add here will appear as default fields when a user creates a new entity with this type.
+          </div>
+          <%= f.fields_for :form_configs do |rows_form| %>
+            <%= render 'form_config_form_fields', :f => rows_form %>
+          <% end %>
+          <%= link_to_add_fields "Add another", f, :form_configs, 'entity_types/form_config_form_fields' %>
+        </div>
+      <% end %>
+    </section>
+  </section>
+
+  <%= render "form_actions", :action => action %>  
 <% end %>

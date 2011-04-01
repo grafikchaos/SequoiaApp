@@ -32,6 +32,7 @@ $(document).ready(function() {
  * Handle collapsible fieldsets.
  */
 var initCollapsibles = function() {
+  $('fieldset.collapsed .fieldset-wrapper').hide();
   $('fieldset.collapsible').each(function() {
     $('legend', this).click(function() {
       $(this).siblings().slideToggle();
