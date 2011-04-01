@@ -42,10 +42,10 @@ Feature: Favorites
         | wsdl url        |
       And I have no favorites
 
-  @view @javascript
+  @view
   Scenario: I can see favorites link
     Given I am on the home page
-    Then I should see "Favorites" within "#user-navigation"
+    Then I should see "View All" within "#sidebar .favorites"
 
   @javascript @new @josh
   Scenario: Bookmark a client

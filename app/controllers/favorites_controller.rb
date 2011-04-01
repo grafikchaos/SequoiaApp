@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.find_all_by_user_id(current_user.id)
 
     respond_to do |format|
-      format.js
+      format.js { render :partial => 'sidebar' }
       format.html # index.html.erb
       format.xml  { render :xml => @favorites }
     end

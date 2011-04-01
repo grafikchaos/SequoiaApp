@@ -22,6 +22,7 @@ $(document).ready(function() {
   initSortableLists();
   initHotKeys();
   initFavableLinks();
+  initFavoriteMenuListener();
   initFavFilter();
   initJumpLinks();
   initPassGen();
@@ -262,6 +263,14 @@ var initFavableLinks = function() {
   })
   .live('ajax:success', function(evt, data, status, xhr) {
     $('img.loader').replaceWith(data);
+  });
+};
+
+var initFavoriteMenuListener = function() {
+  $('a.favorite-link').live('ajax:success', function() {
+    $.get('/favorites', function(data) {
+      $('#sidebar .favorites ul').html(data);
+    });
   });
 };
 

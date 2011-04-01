@@ -19,13 +19,14 @@
 
 <%- unless current_user.favorites.empty? %>
   <section class="block favorites">
-    <header><h3>Favorites</h3></header>
+    <header>
+      <h3>Favorites</h3>
+      <%= link_to "View All", favorites_path %>
+    </header>
     <section class="content">
       <%= text_field_tag 'fav-filter', nil, :placeholder => 'Filter...' %>
       <ul class="navigation">
-        <% current_user.favorites.each do |fav| %>
-          <li><%= link_to_favorite fav %></li>
-        <% end %>
+        <%= render 'favorites/sidebar' %>
       </ul>
     </section>
   </section>
