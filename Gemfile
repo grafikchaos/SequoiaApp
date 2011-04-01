@@ -12,6 +12,7 @@ gem "meta_where"
 gem 'foreigner'
 gem 'active_link_to'
 gem 'paper_trail'
+gem 'client_side_validations', '3.0.0'
 
 # For processing text
 gem 'rdiscount'
