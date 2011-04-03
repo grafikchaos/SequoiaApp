@@ -8,17 +8,13 @@
     <div class="inner">
       <table id="audits" class="table">
         <tr>
-          <th class="first">ID</th>
-          <th >Time</th>
-          <th>Message</th>
-          <th class="last">User</th>
+          <th class="first">Time</th>
+          <th class="last">Message</th>
         </tr>
       <% @audits.each do |audit| %>
         <tr class="<%= cycle "odd", "even" -%>">
-          <td><%= audit.id %></td>
-          <td><%= audit.created_at %></td>
-          <td><%= audit.message %></td>
-          <td><%= audit.user_id %></td>
+          <td><%= audit.created_at.to_s(:short) %></td>
+          <td><%= sanitize audit.message_formatted(true) %></td>
         </tr>
       <% end %>
       </table>
