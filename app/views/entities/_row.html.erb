@@ -5,6 +5,7 @@
       <li><%= edit_link entity %></li>
       <li><%= destroy_link entity %></li>
     </ul>
+    <%= link_to "Controls", "javascript:void(0);", :class => 'control-link' %>
   </div>
   <div class="entity-rows">
     <%- entity.entity_rows.each do |entity_row| %>

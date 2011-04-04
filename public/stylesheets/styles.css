@@ -151,6 +151,10 @@ td.crud-actions { text-align:right; width:60px; text-indent:-9999px; font-size:0
   clear: both;
 }
 
+#entity-list .group .entity .entity-rows .entity-row {
+  padding: 3px;
+}
+
 span.exposed { display: none; }
 
 /****************************
@@ -272,8 +276,8 @@ textarea.note-field {
 .controls {
   padding: 5px;
   float: right;
-  background: #D7E0E5;
-  border-left: 1px solid #C5D3DC;
+  /*background: #D7E0E5;*/
+  /*border-left: 1px solid #C5D3DC;*/
 }
 
 .controls ul li {
@@ -286,8 +290,8 @@ textarea.note-field {
 }
 
 a.favorite-link {
-  width: 16px; height: 16px;
   background: url(/images/icons/glyphicons_024_dislikes.png) no-repeat;
+  width: 16px; height: 16px;
   display: block;
   text-indent: -9999px;
 }
@@ -297,9 +301,8 @@ a.favorite-link.faved {
 }
 
 a.edit-link {
-  width: 16px; 
-  height: 16px;
   background: url(/images/icons/glyphicons_000_pencil.png) no-repeat;
+  width: 16px; height: 16px;
   display: inline-block;
   text-indent: -9999px;
 }
@@ -312,9 +315,8 @@ a.edit-link {
 }
 
 a.destroy-link {
-  width: 16px; 
-  height: 16px;
   background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat;
+  width: 16px; height: 16px;
   display: inline-block;
   text-indent: -9999px;
 }
@@ -326,11 +328,18 @@ a.destroy-link {
   background: url(/images/icons/glyphicons_132_circle_remove.png) no-repeat left center;
 }
 
+a.control-link {
+  background: url(/images/icons/glyphicons_003_cogwheel.png) no-repeat;
+  opacity: 0.4;
+  width: 16px; height: 16px;
+  display: block;
+  text-indent: -9999px;
+}
+
 a.unlock-link {
-  width: 16px; 
-  height: 16px;
   background: url(/images/icons/glyphicons_143_lock.png) no-repeat;
-  display: inline-block;
+  width: 16px; height: 16px;
+  display: block;
   text-indent: -9999px;
 }
 

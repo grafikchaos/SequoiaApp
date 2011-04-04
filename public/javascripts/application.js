@@ -25,6 +25,7 @@ $(document).ready(function() {
   initFavoriteMenuListener();
   initFavFilter();
   initJumpLinks();
+  initEntityControlLinks();
   initPassGen();
 });
 
@@ -303,6 +304,13 @@ var initJumpLinks = function() {
     $('.links', this).fadeOut();
   });
 }
+
+var initEntityControlLinks = function() {
+  $('.entity .controls ul').hide();
+  $('.entity .controls a.control-link').click(function() {
+    $(this).siblings('ul').toggle();
+  });
+};
 
 var initPassGen = function() {
   $('a#passgen-link').click(function() {
