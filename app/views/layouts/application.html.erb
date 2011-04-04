@@ -21,11 +21,10 @@
     </header>    
 
     <div id="wrapper" class="wat-cf">
-      <%- unless flash.empty? %>
-        <%= render 'shared/flash', :flash => flash %>
-      <%- end %>
-
       <section id="main">
+        <%- unless flash.empty? %>
+          <%= render 'shared/flash', :flash => flash %>
+        <%- end %>
         <%= yield %>
       </section>
 

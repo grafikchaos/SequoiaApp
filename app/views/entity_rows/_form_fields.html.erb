@@ -9,7 +9,7 @@
   </div>
 
   <div class="field value">
-    <%= f.text_field :value, :placeholder => config.nil? ? '' : config.placeholder %>
+    <%= f.text_field :value, :placeholder => config.nil? ? '' : config.placeholder, :validate => false %>
   </div>
 
   <%= f.hidden_field :form_config_id %>

@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
 
   def add_audit
     obj = self.instance_variable_get("@#{controller_name.singularize}")
-    Audit.create(
-      :message => "#{controller_name.singularize.capitalize} #{action_name}d by %user", 
-      :controller_info => "#{controller_name}##{action_name}",
-      :user_id => current_user.id,
-      :model_id => obj.id,
-      :model_type => obj.class.to_s
-    )
+    audit = Audit.new
+    audit.message = "#{controller_name.singularize.capitalize} #{action_name.past_tense} by %user"
+    audit.controller_info = "#{controller_name}##{action_name}"
+    audit.user_id = current_user.id
+    audit.model_id = obj.id unless obj.nil?
+    audit.model_type = obj.class.to_s unless obj.nil?
+    audit.save
   end
 
 end

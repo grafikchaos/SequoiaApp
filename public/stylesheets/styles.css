@@ -492,6 +492,10 @@ fieldset.collapsible.collapsed legend {
   background: url(/images/icons/menu-collapsed.png) no-repeat left center;
 }
 
+.column fieldset:first-child {
+  margin-top: 0;
+}
+
 /****************************
   SORTABLE LISTS
 ****************************/

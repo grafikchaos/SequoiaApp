@@ -4,8 +4,8 @@
   <section class="content">
     <header><h2 class="title">Editing <%= @entity.name %></h2></header>
     <section class="inner">
-      <%= form_for(@entity, :html => { :class => 'form' }) do |f| %>
-        <%= render 'form', :f => f %>
+    <%= form_for(@entity, :html => { :class => 'form' }, :validate => true) do |f| %>
+        <%= render 'form', :f => f, :action => 'Update' %>
       <% end %>
     </section>
   </section>

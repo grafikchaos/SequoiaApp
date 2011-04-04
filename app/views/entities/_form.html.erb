@@ -1,36 +1,41 @@
 <%= render "shared/form_errors", :f => f  %>
 
-<div class="group required">
-  <%= f.label :project_id, :class => 'label' %>
-  <%= f.collection_select :project_id, @client.projects, :id, :name %>
-</div>
+<div class="columns wat-cf">
+  <div class="column left">
+    <div class="group required">
+      <%= f.label :project_id, :class => 'label' %>
+      <%= f.collection_select :project_id, @client.projects, :id, :name %>
+    </div>
 
-<div class="group required">
-  <%= f.label :name, :class => 'label' %>
-  <%= f.text_field :name %>
-</div>
+    <div class="group required">
+      <%= f.label :name, :class => 'label' %>
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
 
-<div class="group required">
-  <%= f.label :entity_type_id, :class => 'label' %>
-  <%= f.collection_select :entity_type_id, EntityType.all, :id, :name %>
-</div>
+    <div class="group required">
+      <%= f.label :entity_type_id, :class => 'label' %>
+      <%= f.collection_select :entity_type_id, EntityType.all, :id, :name %>
+    </div>
 
-<div class="group required">
-  <%= f.label :clearance, "Clearance Level", :class => 'label' %>
-  <%= f.select :clearance, format_clearance_select %>
-</div>
-
-<%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
-  <div class="fieldset-wrapper">
-    <a href="javascript:void(0);" id="passgen-link">Generate a Random Password</a>
-    <%= f.fields_for :entity_rows do |row_form| %>
-      <%= render 'entity_rows/form_fields', :f => row_form, :config => @form_config.select { |conf| conf.id == row_form.object.form_config_id }.first %>
-    <%- end %>
-    <%= link_to_add_fields "Add another", f, :entity_rows %>
+    <div class="group required">
+      <%= f.label :clearance, "Clearance Level", :class => 'label' %>
+      <%= f.select :clearance, format_clearance_select %>
+    </div>
   </div>
-<%- end %>
+  <div class="column right">
+    <%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
+      <div class="fieldset-wrapper">
+        <a href="javascript:void(0);" id="passgen-link">Generate a Random Password</a>
+        <%= f.fields_for :entity_rows do |row_form| %>
+          <%= render 'entity_rows/form_fields', :f => row_form, :config => @form_config.select { |conf| conf.id == row_form.object.form_config_id }.first %>
+        <%- end %>
+        <%= link_to_add_fields "Add another", f, :entity_rows %>
+      </div>
+    <%- end %>
+  </div>
+</div>
 
-<%= field_set_tag "Notes", :class => "collapsible" do %>
+<%= field_set_tag "Notes", :class => "collapsible collapsed" do %>
   <div class="fieldset-wrapper">
     <%= f.fields_for :notes do |note_form| %>
       <%= render 'notes/form_fields', :f => note_form %>
@@ -38,6 +43,4 @@
   </div>
 <% end %>
 
-<div class="group">
-  <%= f.submit :class => 'button' %>
-</div>
+<%= render "form_actions", :action => action %>  
