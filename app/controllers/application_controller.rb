@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def add_audit
     obj = self.instance_variable_get("@#{controller_name.singularize}")
     audit = Audit.new
-    audit.message = "#{controller_name.singularize.capitalize} #{action_name.past_tense} by %user"
+    audit.message = "#{controller_name.singularize.capitalize} #{action_name.past_tense} by #{current_user.username}"
     audit.controller_info = "#{controller_name}##{action_name}"
     audit.user_id = current_user.id
     audit.model_id = obj.id unless obj.nil?

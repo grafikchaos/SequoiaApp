@@ -14,7 +14,7 @@
       <% @audits.each do |audit| %>
         <tr class="<%= cycle "odd", "even" -%>">
           <td><%= audit.created_at.to_s(:short) %></td>
-          <td><%= sanitize audit.message_formatted(true) %></td>
+          <td><%= audit.message %></td>
         </tr>
       <% end %>
       </table>

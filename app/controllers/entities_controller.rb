@@ -1,7 +1,6 @@
 class EntitiesController < ApplicationController
   load_and_authorize_resource :except => :index
   before_filter :load_form_config, :only => [:new, :edit]
-  after_filter :add_audit, :only => [:create, :update, :destroy]
 
   def index
     @client = Client.find(params[:client_id])
