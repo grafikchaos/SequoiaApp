@@ -2,10 +2,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :authenticate_user!
+  before_filter :set_current_user
   
   rescue_from CanCan::AccessDenied do |exception|
     render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
   end 
+
+  def set_current_user
+    User.current_user = current_user
+  end
 
   def add_audit
     obj = self.instance_variable_get("@#{controller_name.singularize}")

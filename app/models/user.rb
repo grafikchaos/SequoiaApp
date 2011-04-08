@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :role, :email, :password, :clearance, :remember_me, :first_name, :last_name, :full_name
+
+  # Get the current user from the controller
+  cattr_accessor :current_user
   
   # validations
   validates_presence_of :username, :email, :full_name

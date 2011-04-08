@@ -15,9 +15,10 @@ class Auditor < ActiveRecord::Observer
 
   def add_audit(obj, action)
     Audit.create(
-      :message => "#{obj.class.to_s} \"#{obj.name}\" #{action}.",
+      :message => "#{obj.class.to_s} \"#{obj.name}\" was #{action} by #{User.current_user.username}",
       :model_id => obj.id,
-      :model_type => obj.class.to_s
+      :model_type => obj.class.to_s,
+      :user_id => User.current_user.id
     )
   end
 
