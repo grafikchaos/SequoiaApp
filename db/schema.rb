@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
     t.string   "last_name"
     t.integer  "clearance",                          :default => 3,       :null => false
     t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
+    t.string   "password_salt",                      :default => "",      :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      :default => 0
