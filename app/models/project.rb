@@ -16,6 +16,10 @@ class Project < ActiveRecord::Base
   # define which columns are mass-assignable
   attr_accessible :name, :client_id, :domain, :notes_attributes
 
+  # versioning
+  has_paper_trail :only => [:name, :domain, :client_id]
+
+
   def to_s
     self.name
   end

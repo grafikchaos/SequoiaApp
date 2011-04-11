@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to(@client, :notice => 'Project was successfully created.') }
+        format.html { redirect_to(@client, :notice => "Project was successfully created. #{undo_link}") }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(@project.client, :notice => 'Project was successfully updated.') }
+        format.html { redirect_to(@project.client, :notice => "Project was successfully updated. #{undo_link}") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -71,8 +71,19 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to(client_projects_url(@project.client)) }
+      format.html { redirect_to(client_projects_url(@project.client), :notice => "Project was successfully destroyed. #{undo_link}") }
       format.xml  { head :ok }
     end
   end
+  
+  ##########
+  # PRIVATE
+  ##########
+  private
+
+    def undo_link
+      view_context.link_to("Undo?", revert_version_path(@project.versions.scoped.last), :method => :post)
+    end
+  
+  
 end

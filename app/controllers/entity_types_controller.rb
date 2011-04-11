@@ -32,7 +32,7 @@ class EntityTypesController < ApplicationController
   def create
     respond_to do |format|
       if @entity_type.save
-        format.html { redirect_to(entity_types_path, :notice => 'Entity Type was successfully created') }
+        format.html { redirect_to(entity_types_path, :notice => "Entity Type was successfully created. #{undo_link}") }
         format.xml  { render :xml => @entity_type, :status => :created, :location => @entity_type }
       else
         format.html { render :action => "new" }
@@ -46,7 +46,7 @@ class EntityTypesController < ApplicationController
   def update
     respond_to do |format|
       if @entity_type.update_attributes(params[:entity_type])
-        format.html { redirect_to(entity_types_path, :notice => 'Entity Type was successfully updated') }
+        format.html { redirect_to(entity_types_path, :notice => "Entity Type was successfully updated. #{undo_link}") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -61,8 +61,18 @@ class EntityTypesController < ApplicationController
     @entity_type.destroy
 
     respond_to do |format|
-      format.html { redirect_to(entity_types_url, :notice => 'Entity Type was successfully deleted') }
+      format.html { redirect_to(entity_types_url, :notice => "Entity Type was successfully deleted. #{undo_link}") }
       format.xml  { head :ok }
     end
   end
+  
+  ##########
+  # PRIVATE
+  ##########
+  private
+
+    def undo_link
+      view_context.link_to("Undo?", revert_version_path(@entity_type.versions.scoped.last), :method => :post)
+    end
+  
 end

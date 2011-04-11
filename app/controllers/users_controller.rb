@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:user_id] || current_user.id)
+    @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
 
     respond_to do |format|
@@ -101,7 +101,7 @@ class UsersController < ApplicationController
   private
 
     def undo_link
-      view_context.link_to("undo", revert_version_path(@user.versions.scoped.last), :method => :post)
+      view_context.link_to("Undo?", revert_version_path(@user.versions.scoped.last), :method => :post)
     end
 
 end

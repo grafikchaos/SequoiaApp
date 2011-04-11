@@ -27,6 +27,10 @@ class Client < ActiveRecord::Base
   # columns open to mass-assignment
   attr_accessible :name, :client_code, :logo, :logo_file_name, :logo_content_type, :logo_size, :logo_updated_at, :projects_attributes, :notes_attributes
 
+  # versioning
+  has_paper_trail :only => [:name, :client_code]
+
+
   # friendly_id slug behavior
   has_friendly_id :client_code, 
                   :use_slug => true, 

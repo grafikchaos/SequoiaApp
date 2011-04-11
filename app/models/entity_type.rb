@@ -26,5 +26,9 @@ class EntityType < ActiveRecord::Base
                   :approximate_ascii => true,
                   :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
   
+  # versioning
+  has_paper_trail :only => [:name]
+  
+  
   default_scope includes(:entity_type_aliases, :form_configs).order(:entity_types => :name)
 end

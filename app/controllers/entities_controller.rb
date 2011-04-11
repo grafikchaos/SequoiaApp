@@ -46,7 +46,7 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       if @entity.save
-        format.html { redirect_to(client_entities_url(@client), :notice => 'Entity was successfully created.') }
+        format.html { redirect_to(client_entities_url(@client), :notice => "Entity was successfully created. #{undo_link}") }
         format.xml  { render :xml => @entity, :status => :created, :location => @entity }
       else
         # load in the form config so we can re-construct the form
@@ -66,7 +66,7 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       if @entity.update_attributes(params[:entity])
-        format.html { redirect_to(client_entities_url(@client), :notice => 'Entity was successfully updated.') }
+        format.html { redirect_to(client_entities_url(@client), :notice => "Entity was successfully updated. #{undo_link}") }
         format.xml  { head :ok }
       else
         # load in the form config so we can re-construct the form
@@ -85,7 +85,7 @@ class EntitiesController < ApplicationController
     @entity.destroy
 
     respond_to do |format|
-      format.html { redirect_to(client_entities_url(@client)) }
+      format.html { redirect_to(client_entities_url(@client), :notice => "Entity was successfully destroyed. #{undo_link}") }
       format.xml  { head :ok }
     end
   end
@@ -105,5 +105,15 @@ class EntitiesController < ApplicationController
       end
     end
   end
+  
+  ##########
+  # PRIVATE
+  ##########
+  private
+
+    def undo_link
+      view_context.link_to("Undo?", revert_version_path(@entity.versions.scoped.last), :method => :post)
+    end
+  
 
 end

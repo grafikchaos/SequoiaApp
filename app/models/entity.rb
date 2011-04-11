@@ -23,6 +23,11 @@ class Entity < ActiveRecord::Base
   # define which columns are mass-assignable
   attr_accessible :name, :project_id, :entity_type_id, :clearance, :entity_rows_attributes, :notes_attributes
   
+  # versioning
+  has_paper_trail :only => [:project_id, :entity_type_id, :name, :clearance]
+  
+  
+  
   # setting the default scope
   default_scope includes(:entity_rows).order(:project_id)
 

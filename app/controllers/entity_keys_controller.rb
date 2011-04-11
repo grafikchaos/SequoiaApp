@@ -28,7 +28,7 @@ class EntityKeysController < ApplicationController
   def create
     respond_to do |format|
       if @entity_key.save
-        format.html { redirect_to(entity_keys_path, :notice => 'Entity Key was successfully created') }
+        format.html { redirect_to(entity_keys_path, :notice => "Entity Key was successfully created. #{undo_link}") }
         format.xml  { render :xml => @entity_key, :status => :created, :location => @entity_key }
       else
         format.html { render :action => "new" }
@@ -42,7 +42,7 @@ class EntityKeysController < ApplicationController
   def update
     respond_to do |format|
       if @entity_key.update_attributes(params[:entity_key])
-        format.html { redirect_to(entity_keys_path, :notice => 'Entity Key was successfully updated') }
+        format.html { redirect_to(entity_keys_path, :notice => "Entity Key was successfully updated. #{undo_link}") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -57,8 +57,19 @@ class EntityKeysController < ApplicationController
     @entity_key.destroy
 
     respond_to do |format|
-      format.html { redirect_to(entity_keys_url, :notice => 'Entity Key was successfully deleted') }
+      format.html { redirect_to(entity_keys_url, :notice => "Entity Key was successfully deleted. #{undo_link}") }
       format.xml  { head :ok }
     end
   end
+  
+  ##########
+  # PRIVATE
+  ##########
+  private
+
+    def undo_link
+      view_context.link_to("Undo?", revert_version_path(@entity_key.versions.scoped.last), :method => :post)
+    end
+  
+  
 end

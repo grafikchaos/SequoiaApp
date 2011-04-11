@@ -8,7 +8,12 @@ class EntityRow < ActiveRecord::Base
 
   validates_presence_of :value, :if => :value_required?, :message => "is required"
 
+  # versioning
+  has_paper_trail :only => [:entity_id, :entity_key_id, :value, :encrypted_value]
+
+
   default_scope includes(:entity_key)
+
 
   ##############################
   # Private methods below here.
