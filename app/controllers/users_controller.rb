@@ -81,7 +81,7 @@ class UsersController < ApplicationController
 
   # Break the lock on users.
   def unlock
-    user = User.find(params[:id])
+    user = User.find(params[:user_id])
     authorize! :update, user
     user.unlock_access!
 

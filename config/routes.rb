@@ -7,6 +7,9 @@ SequoiaApp::Application.routes.draw do
     resources :projects, :except => 'show'
     resources :entities, :except => 'show'
   end
+
+  # Entity row value replacement
+  match '/ajax/entity_row_value/:entity_row_id' => 'entities#show_value', :as => 'entity_row_value'
   
   resources :favorites, :except => 'show'
 
@@ -24,10 +27,8 @@ SequoiaApp::Application.routes.draw do
   # Our root URL is mapped to the search controller
   root :to => "search#start"
   
-  
   # Versions
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
-  
   
   # Catch everything else and give it to the error controller
   match '*a', :to => 'errors#routing', :as => 'error'

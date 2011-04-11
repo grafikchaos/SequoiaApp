@@ -13,7 +13,6 @@ $(document).ready(function() {
   initCollapsibles();
   initSearch();
   initMessageCloseButton();
-  initBookmarksMenu();
   initQtips();
   initProjectSelector();
   initRemoveRows();
@@ -69,42 +68,6 @@ var initMessageCloseButton = function() {
 };
 
 /**
- * Bookmarks menu.
- */
-var initBookmarksMenu = function() {
-  $('a#bookmarks-menu')
-  .live('ajax:beforeSend', function() {
-    $(this).qtip({
-      content: {
-        prerender: true,
-        text: '<img src="/images/ajax-loader.gif" />'
-      },
-      show: {
-        when: false,      
-      },
-      hide: 'unfocus',
-      position: {
-        corner: {
-          target: 'bottomMiddle',
-          tooltip: 'topMiddle'
-        }
-      },
-      style: {
-        tip: 'topMiddle',
-        name: 'dark',
-        border: {
-          radius: 3
-        }
-      }
-    });
-    $(this).qtip('api').show();
-  })
-  .live('ajax:success', function(evt, data, status, xhr) {
-    $(this).qtip('api').updateContent(data);
-  });
-};
-
-/**
  * Submitting the project selector form on change
  */
 var initProjectSelector = function() {
@@ -147,10 +110,22 @@ var initRemoveRows = function() {
  * Toggles value field for masked entity rows.
  */
 var initToggleMasked = function() {
-  $('.entity-row .show-plaintext').live('click', function() {
-    $(this).siblings('span.value').toggle();
-    var text = $(this).text() == 'Show value' ? 'Hide value' : 'Show value';
-    $(this).text(text);
+  $('.entity-row a.show-plaintext').live('ajax:success', function(evt, data, status, xhr) {
+    var val_field = $(this).siblings('.value')[0];
+    if ($(val_field).hasClass('masked')) {
+      $(val_field).text(data);
+      $(val_field).removeClass('masked').addClass('shown');
+      $(this).text('Hide value');
+    } else {
+      var d_length = data.length;
+      var asterisks = '';
+      for (i = 1; i < d_length; i++) {
+        asterisks += '*';
+      }
+      $(val_field).text(asterisks);
+      $(val_field).removeClass('shown').addClass('masked');
+      $(this).text('Show value');
+    }
   });
 }
 
