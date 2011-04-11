@@ -40,5 +40,8 @@ class User < ActiveRecord::Base
       self.last_name = split.last  
   end
   
+  def to_s
+    self.username
+  end
 
 end

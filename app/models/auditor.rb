@@ -1,7 +1,7 @@
 class Auditor < ActiveRecord::Observer
   observe :entity, :client, :project, :user, :entity_type, :entity_key
 
-  def after_save(obj)
+  def after_create(obj)
     add_audit(obj, 'created')
   end
 
@@ -14,12 +14,14 @@ class Auditor < ActiveRecord::Observer
   end
 
   def add_audit(obj, action)
-    Audit.create(
-      :message => "#{obj.class.to_s} \"#{obj.name}\" was #{action} by #{User.current_user.username}",
-      :model_id => obj.id,
-      :model_type => obj.class.to_s,
-      :user_id => User.current_user.id
-    )
+    user = User.current_user
+    audit = Audit.new
+    audit[:message] = "#{obj.class.to_s} \"#{obj.to_s}\" was #{action}"
+    audit[:message] << " by #{user.username}" unless user.nil?
+    audit[:model_id] = obj.id unless obj.nil?
+    audit[:model_type] = obj.class.to_s unless obj.nil?
+    audit[:user_id] = User.current_user.id unless user.nil?
+    audit.save
   end
 
 end
