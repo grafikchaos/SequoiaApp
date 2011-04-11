@@ -21,6 +21,7 @@ class Auditor < ActiveRecord::Observer
     audit[:model_id] = obj.id unless obj.nil?
     audit[:model_type] = obj.class.to_s unless obj.nil?
     audit[:user_id] = User.current_user.id unless user.nil?
+    audit[:version_id] = obj.versions.last.id if obj.respond_to?('versions')
     audit.save
   end
 

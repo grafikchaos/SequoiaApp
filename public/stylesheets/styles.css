@@ -3,7 +3,6 @@
 ****************************/
 section, article, header, footer, nav, aside, hgroup { display: block; }
 
-
 /****************************
   TEXT
 ****************************/
@@ -202,6 +201,13 @@ form#new_entity_type div.description {
 #project-button span.domain {
   font-size: .8em;
 }
+
+/****************************
+  ADMIN AREA
+****************************/
+#audits h2 { float: left; width: auto; }
+#audits .search { float: right; margin-top: 17px; }
+#audits .search #audit-search { width: 200px; }
 
 /****************************
   SIDEBAR

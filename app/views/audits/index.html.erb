@@ -3,9 +3,12 @@
 <div class="block">
   <%= render 'shared/admin_tabs' %>
 
-  <div class="content">
+  <div class="content" id="audits">
     <h2 class="title">Audit Log</h2>
     <div class="inner">
+      <div class="search">
+        <%= render 'search_form' %>
+      </div>
       <table id="audits" class="table">
         <tr>
           <th class="first">Time</th>
