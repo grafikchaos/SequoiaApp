@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:user_id] || current_user.id)
+    @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
 
     respond_to do |format|
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:user_id] || current_user.id)
+    @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
 
     if params[:user][:password].blank?
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
 
   # Break the lock on users.
   def unlock
-    user = User.find(params[:user_id])
+    user = User.find(params[:id])
     authorize! :update, user
     user.unlock_access!
 
