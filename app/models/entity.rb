@@ -47,6 +47,10 @@ class Entity < ActiveRecord::Base
   }
   scope :advanced_search, lambda { |code, type, value| limit_client(code).limit_type(type).filter_by_row(value) }
 
+  def to_s
+    self.name
+  end
+
   ##############################
   # Private methods below here!
   ##############################
