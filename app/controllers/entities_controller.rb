@@ -112,8 +112,11 @@ class EntitiesController < ApplicationController
   private
 
     def undo_link
-      view_context.link_to("Undo?", revert_version_path(@entity.versions.scoped.last), :method => :post)
+      if @entity.versions.present?
+        view_context.link_to("Undo?", revert_version_path(@entity.versions.scoped.last), :method => :post)
+      else
+        ""
+      end
     end
-  
 
 end
