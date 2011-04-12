@@ -1,6 +1,6 @@
 <%- if entity_row.entity_key.mask %>
   <span class="value masked"><%= entity_row.value.gsub(/./, "*") %></span>
-  <%= link_to 'Show value', entity_row_value_path(entity_row), :remote => true, :method => :get, :class => 'show-plaintext' %>
+  <%= link_to 'Show value', entity_row_value_path(entity_row), :remote => true, :method => :get, :class => 'show-plaintext', 'data-id' => entity_row.id %>
 <%- else %>
   <%= entity_row.value %>
 <%- end %>

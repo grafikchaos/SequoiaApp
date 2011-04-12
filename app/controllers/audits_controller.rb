@@ -12,4 +12,18 @@ class AuditsController < ApplicationController
     end
   end
 
+  def create
+    @audit = Audit.new(params[:audit])
+    @audit[:user_id] = current_user.id
+
+    respond_to do |format|
+      if @audit.save
+        format.js { render :json => @audit }
+      else
+        format.js { render :json => 'Failed' }
+      end
+    end
+
+  end
+
 end

@@ -110,14 +110,11 @@ var initRemoveRows = function() {
  * Toggles value field for masked entity rows.
  */
 var initToggleMasked = function() {
-  $('.entity-row a.show-plaintext').live('ajax:success', function(evt, data, status, xhr) {
+  $('.entity-row a.show-plaintext')
+  .live('ajax:beforeSend', function(evt, xhr, settings) {
     var val_field = $(this).siblings('.value')[0];
-    if ($(val_field).hasClass('masked')) {
-      $(val_field).text(data);
-      $(val_field).removeClass('masked').addClass('shown');
-      $(this).text('Hide value');
-    } else {
-      var d_length = data.length;
+    if ($(val_field).hasClass('shown')) {
+      var d_length = $(val_field).text().length;
       var asterisks = '';
       for (i = 1; i < d_length; i++) {
         asterisks += '*';
@@ -125,6 +122,19 @@ var initToggleMasked = function() {
       $(val_field).text(asterisks);
       $(val_field).removeClass('shown').addClass('masked');
       $(this).text('Show value');
+      // Stop the AJAX request.
+      return false;
+    }
+  })  
+  .live('ajax:success', function(evt, data, status, xhr) {
+    var parsed = $.parseJSON(data);
+    var val_field = $(this).siblings('.value')[0];
+    if ($(val_field).hasClass('masked')) {
+      $(val_field).text(parsed.value);
+      $(val_field).removeClass('masked').addClass('shown');
+      $(this).text('Hide value');
+      // Create an audit too.
+      addAudit('EntityRow', $(this).data('id'), 'Sensitive information for Entity "'+parsed.entity.entity.name+'" under client "%client" accessed by %user');
     }
   });
 }
@@ -292,5 +302,22 @@ var initPassGen = function() {
     $.colorbox({
       href: '/static/passgen.html'
     });
+  });
+}
+
+function addAudit(modelType, modelID, message) {
+  var audit = {
+    model_type: modelType,
+    model_id: modelID,
+    message: message
+  }
+
+  $.ajax({
+    url: '/admin/audits',
+    data: { audit: audit },
+    type: 'POST',
+    success: function() {
+      console.log('Audit added');
+    }
   });
 }

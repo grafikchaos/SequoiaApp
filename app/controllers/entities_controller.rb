@@ -108,8 +108,7 @@ class EntitiesController < ApplicationController
   
   # Reveal a masked entity row value
   def show_value
-    row = EntityRow.find(params[:entity_row_id])
-    @value = row.value
+    @entity_row = EntityRow.find(params[:entity_row_id])
     respond_to do |format|
       format.js
     end
