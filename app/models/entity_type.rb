@@ -31,4 +31,9 @@ class EntityType < ActiveRecord::Base
   
   
   default_scope includes(:entity_type_aliases, :form_configs).order(:entity_types => :name)
+
+  def to_s
+    self.name
+  end
+
 end

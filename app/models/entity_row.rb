@@ -14,6 +14,9 @@ class EntityRow < ActiveRecord::Base
 
   default_scope includes(:entity_key)
 
+  def to_s
+    self.name
+  end
 
   ##############################
   # Private methods below here.

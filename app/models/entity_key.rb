@@ -17,5 +17,9 @@ class EntityKey < ActiveRecord::Base
                   
   # versioning
   has_paper_trail :only => [:name, :mask]
+
+  def to_s
+    self.name
+  end
   
 end

@@ -24,7 +24,7 @@ class Entity < ActiveRecord::Base
   attr_accessible :name, :project_id, :entity_type_id, :clearance, :entity_rows_attributes, :notes_attributes
   
   # versioning
-  has_paper_trail :only => [:project_id, :entity_type_id, :name, :clearance]
+  has_paper_trail :only => [ :project_id, :entity_type_id, :name, :clearance ]
   
   
   
@@ -46,6 +46,10 @@ class Entity < ActiveRecord::Base
     end
   }
   scope :advanced_search, lambda { |code, type, value| limit_client(code).limit_type(type).filter_by_row(value) }
+
+  def to_s
+    self.name
+  end
 
   ##############################
   # Private methods below here!
