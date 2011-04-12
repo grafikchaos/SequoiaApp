@@ -7,27 +7,28 @@ SequoiaApp::Application.routes.draw do
     resources :projects, :except => 'show'
     resources :entities, :except => 'show'
   end
+
+  # Entity row value replacement
+  get '/ajax/entity_row_value/:entity_row_id' => 'entities#show_value', :as => 'entity_row_value'
   
   resources :favorites, :except => 'show'
 
   # Administration for entity types and keys
   scope "/admin" do
     resources :entity_types, :entity_keys, :users, :except => 'show'
-    resources :audits, :only => 'index'
+    resources :audits, :only => ['index', 'create']
   end
   match '/admin' => redirect('/admin/entity_keys')
   match '/admin/users/:user_id/unlock' => 'users#unlock', :as => 'user_unlock'
-  match '/account' => 'users#edit', :as => 'my_account'
+  get '/account' => 'users#edit', :as => 'my_account'
 
-  match '/search' => 'search#results', :as => 'search_results'
+  get '/search' => 'search#results', :as => 'search_results'
 
   # Our root URL is mapped to the search controller
   root :to => "search#start"
   
-  
   # Versions
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
-  
   
   # Catch everything else and give it to the error controller
   match '*a', :to => 'errors#routing', :as => 'error'

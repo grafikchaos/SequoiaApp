@@ -1,5 +1,5 @@
 class EntitiesController < ApplicationController
-  load_and_authorize_resource :except => :index
+  load_and_authorize_resource :except => [:index, :show_value]
   before_filter :load_form_config, :only => [:new, :edit]
 
   def index
@@ -106,6 +106,14 @@ class EntitiesController < ApplicationController
     end
   end
   
+  # Reveal a masked entity row value
+  def show_value
+    @entity_row = EntityRow.find(params[:entity_row_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   ##########
   # PRIVATE
   ##########
