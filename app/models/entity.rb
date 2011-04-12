@@ -24,7 +24,7 @@ class Entity < ActiveRecord::Base
   attr_accessible :name, :project_id, :entity_type_id, :clearance, :entity_rows_attributes, :notes_attributes
   
   # versioning
-  has_paper_trail :only => [:project_id, :entity_type_id, :name, :clearance]
+  has_paper_trail :only => [ :project_id, :entity_type_id, :name, :clearance ]
   
   
   
