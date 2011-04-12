@@ -3,7 +3,7 @@ class EntityKey < ActiveRecord::Base
   
   # validation
   validates_uniqueness_of :name, :case_sensitive => false
-  validates_presence_of   :name
+  validates               :name, :presence => true, :length => (2..255)
 
   # define which columns are mass-assignable
   attr_accessible :name, :mask

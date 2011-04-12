@@ -1,17 +1,17 @@
-<%= form_for(@entity_key, :html => { :class => 'form' }) do |f| %>
+<%= form_for(@entity_key, :html => { :class => 'form' }, :validate => true) do |f| %>
   <%= render "shared/form_errors", :f => f  %>
 
   <div class="group required">
     <%= f.label :name, :class => 'label' %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'text_field' %>
   </div>
 
   <div class="checkbox group">
-    <%= f.label :mask, 'Mask these types of entries?', :class => 'tooltip label', 'data-tooltip' => 'Masking simply hides these values from view. Useful for passwords, etc.' %>
-    <%= f.check_box :mask %>
+    <%= f.label :mask, 'Mask these types of entries?', :class => 'label' %>
+    <%= f.check_box :mask %><br/>
+    <span class="description">Masking simply hides these values from view. Useful for passwords, etc.</span>
   </div>
 
-  <div class="group">
-    <%= f.submit :class => 'button' %>
-  </div>
+  <%= render "form_actions", :action => action %>  
+
 <% end %>

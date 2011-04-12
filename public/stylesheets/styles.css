@@ -19,6 +19,23 @@ pre.example { font-size:16px; font-weight:bold; color:#39c;}
 html, body { height: 100%; }
 blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #ddd; border-width:0 0 0 3px; }
 
+
+/****************************
+  FORMS
+****************************/
+#error_explanation {
+  float:left;
+  width:96%;
+  padding:2%;
+  margin:0 0 15px;
+  background:#ed9797;
+  border:2px solid #c30;
+}
+
+#error_explanation ul { padding:0 0 0 2%; }
+#error_explanation ul li { font-size:19px; font-weight:bold; }
+
+
 /****************************
   COLORS
 ****************************/
@@ -31,6 +48,9 @@ blockquote { margin:10px 0 10px 25px; padding:5px 0 5px 15px; border:1px solid #
 #main.no-sidebar {
   width: 100%;
 }
+
+
+
 
 /****************************
   SEARCH FORM

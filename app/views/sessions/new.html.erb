@@ -7,7 +7,7 @@
   <span>without signing in</span>
 </h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form' }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form' }, :validate => true) do |f| %>
   <p><%= f.text_field :username, :class => 'text_field', :placeholder => 'Username' %></p>
 
   <p><%= f.password_field :password, :class => 'text_field', :placeholder => 'Password' %></p>

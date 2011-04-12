@@ -1,6 +1,5 @@
 <% if f.object && f.object.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(f.object.errors.count, "error") %> prohibited this <%= f.object.class %> from being saved:</h2>
     <ul>
     <% f.object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

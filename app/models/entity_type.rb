@@ -4,8 +4,8 @@ class EntityType < ActiveRecord::Base
   has_many :form_configs
   
   # validations
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validates :name, :presence => true, :uniqueness => true, :length => (2..255)
+  
   # Make sure the record is not already an alias of another record
   validates_each :name do |record, attr, value|
     a = EntityTypeAlias.find_by_name(value)

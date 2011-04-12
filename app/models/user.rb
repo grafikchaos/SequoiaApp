@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   cattr_accessor :current_user
   
   # validations
-  validates_presence_of :username, :email, :full_name
+  validates :username, :presence => true, :uniqueness => true, :length => (6..255)
+  validates :email, :presence => true, :uniqueness => true, :length => (2..255), :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+  validates :full_name, :presence => true, :length => (2..255)
 
   # versioning
   has_paper_trail :only => [:username, :role, :email, :first_name, :last_name, :clearance]
