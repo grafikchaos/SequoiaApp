@@ -13,7 +13,7 @@ class Audit < ActiveRecord::Base
   private
 
   def format_message
-    self.message.gsub!('%user', User.find(self.user_id).username)
+    self.message.gsub!('%user', User.find(self.user_id).username) unless self.user_id.nil?
 
     if self.model_type == 'EntityRow'
       self.message.gsub!('%client', self.model_type.constantize.find(self.model_id).entity.project.client.name)

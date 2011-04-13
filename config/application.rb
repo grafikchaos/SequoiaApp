@@ -40,7 +40,6 @@ module SequoiaApp
         jquery-ui/jquery-ui 
         jquery-ui-ext/jquery.ui.selectmenu 
         colorbox/jquery.colorbox 
-        qtip/jquery.qtip 
         tagsinput/jquery.tagsinput
         hotkeys/jquery.hotkeys
         rails

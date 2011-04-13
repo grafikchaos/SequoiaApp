@@ -13,7 +13,6 @@ $(document).ready(function() {
   initCollapsibles();
   initSearch();
   initMessageCloseButton();
-  initQtips();
   initProjectSelector();
   initRemoveRows();
   initToggleMasked();
@@ -121,7 +120,7 @@ var initToggleMasked = function() {
       }
       $(val_field).text(asterisks);
       $(val_field).removeClass('shown').addClass('masked');
-      $(this).text('Show value');
+      $(this).text('Show');
       // Stop the AJAX request.
       return false;
     }
@@ -132,7 +131,7 @@ var initToggleMasked = function() {
     if ($(val_field).hasClass('masked')) {
       $(val_field).text(parsed.value);
       $(val_field).removeClass('masked').addClass('shown');
-      $(this).text('Hide value');
+      $(this).text('Hide');
       // Create an audit too.
       addAudit('EntityRow', $(this).data('id'), 'Sensitive information for Entity "'+parsed.entity.entity.name+'" under client "%client" accessed by %user');
     }
@@ -184,34 +183,6 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).before(content.replace(regexp, new_id));
 }
-
-/**
- * Tooltips.
- */
-var initQtips = function() {
-  $('.tooltip').each(function() {
-    // You can either use the 'data-tooltip' attribute or the title.
-    var tipContent = $(this).attr('data-tooltip') ? $(this).attr('data-tooltip') : $(this).attr('title');
-    $(this).qtip({
-      content: $(this).attr('data-tooltip'),
-      show: 'mouseover',
-      hide: 'mouseout',
-      position: {
-        corner: {
-          target: 'topMiddle',
-          tooltip: 'bottomMiddle'
-        }
-      },
-      style: {
-        tip: 'bottomMiddle', 
-        name: 'dark',
-        border: {
-          radius: 3
-        }
-      }
-    });
-  });
-};
 
 /**
  * Hotkeys.
@@ -316,8 +287,5 @@ function addAudit(modelType, modelID, message) {
     url: '/admin/audits',
     data: { audit: audit },
     type: 'POST',
-    success: function() {
-      console.log('Audit added');
-    }
   });
 }

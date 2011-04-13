@@ -31,9 +31,9 @@ module ApplicationHelper
   def favable_link(obj)
     fav = Favorite.find_by_user_id_and_favable_id_and_favable_type(current_user.id, obj.id, obj.class.to_s)
     if fav.nil?
-      link_to 'Favorite', favorites_path( :favorite => { :note => obj.to_s, :favable_type => obj.class.to_s, :favable_id => obj.id } ), :remote => true, :method => :post, :class => 'favorite-link tooltip', :title => 'Add as favorite'
+      link_to 'Favorite', favorites_path( :favorite => { :note => obj.to_s, :favable_type => obj.class.to_s, :favable_id => obj.id } ), :remote => true, :method => :post, :class => 'favorite-link', :title => 'Add as favorite'
     else
-      link_to 'Unfavorite', fav, :remote => true, :method => :delete, :class => 'favorite-link tooltip faved', :title => 'Remove favorite'
+      link_to 'Unfavorite', fav, :remote => true, :method => :delete, :class => 'favorite-link faved', :title => 'Remove favorite'
     end
   end
 
@@ -53,7 +53,7 @@ module ApplicationHelper
     sane            = obj.class.to_s.tableize.gsub('_', ' ').singularize.titleize
     options         = args.first || {}
     options[:id]    = 'edit-' + link_id(obj)
-    options[:class] = 'edit-link tooltip'
+    options[:class] = 'edit-link'
     options[:title] = 'Edit this ' + sane 
     path = 'edit_' + obj.class.to_s.tableize.singularize + '_path'
     link_to 'Edit this ' + sane, method(path).call(obj), options
@@ -63,7 +63,7 @@ module ApplicationHelper
     sane              = obj.class.to_s.tableize.gsub('_', ' ').singularize.titleize
     options           = args.first || {}
     options[:id]      = 'delete-' + link_id(obj)
-    options[:class]   = 'destroy-link tooltip'
+    options[:class]   = 'destroy-link'
     options[:title]   = 'Delete this ' + sane
     options[:confirm] = 'Are you sure?'
     options[:method]  = :delete
