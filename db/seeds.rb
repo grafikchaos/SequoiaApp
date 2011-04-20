@@ -6,6 +6,14 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+Role.create([
+  { :name => 'owner' },
+  { :name => 'admin' },
+  { :name => 'staff' },
+  { :name => 'financial' },
+  { :name => 'contractor' }
+])
+
 EntityType.create([
   { :name => 'API' },
   { :name => 'Application' },
