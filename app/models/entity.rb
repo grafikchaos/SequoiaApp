@@ -13,13 +13,6 @@ class Entity < ActiveRecord::Base
   # accept Note form fields/attributes
   accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true
 
-
-  # friendly_id slug behavior
-  has_friendly_id :name, 
-                  :use_slug => true, 
-                  :approximate_ascii => true,
-                  :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
-  
   # define which columns are mass-assignable
   attr_accessible :name, :project_id, :entity_type_id, :clearance, :entity_rows_attributes, :notes_attributes
   
