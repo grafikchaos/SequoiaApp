@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(:version => 20110331032036) do
 
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "role_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
+  add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
+
   create_table "audits", :force => true do |t|
     t.integer  "user_id"
     t.text     "message",         :null => false
@@ -45,12 +55,10 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
     t.integer  "entity_type_id",                :null => false
     t.string   "name",                          :null => false
     t.integer  "clearance",      :default => 3, :null => false
-    t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "entities", ["cached_slug"], :name => "index_entities_on_cached_slug"
   add_index "entities", ["entity_type_id"], :name => "index_entities_on_entity_type_id"
   add_index "entities", ["id"], :name => "index_entities_on_id"
   add_index "entities", ["name"], :name => "index_entities_on_name"
@@ -161,6 +169,14 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
 
   add_index "query_strings", ["string"], :name => "index_query_strings_on_string"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name"
+
   create_table "slugs", :force => true do |t|
     t.string   "name"
     t.integer  "sluggable_id"
@@ -174,13 +190,12 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",                                                :null => false
-    t.string   "role",                :limit => 20,  :default => "staff", :null => false
-    t.string   "email",                              :default => "",      :null => false
+    t.string   "username",                                           :null => false
+    t.string   "email",                              :default => "", :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "clearance",                          :default => 3,       :null => false
-    t.string   "encrypted_password",  :limit => 128, :default => "",      :null => false
+    t.integer  "clearance",                          :default => 3,  :null => false
+    t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                      :default => 0
@@ -209,6 +224,9 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  add_foreign_key "assignments", "roles", :name => "assignments_role_id_fk", :dependent => :delete
+  add_foreign_key "assignments", "users", :name => "assignments_user_id_fk", :dependent => :delete
 
   add_foreign_key "audits", "users", :name => "audits_user_id_fk", :dependent => :nullify
   add_foreign_key "audits", "versions", :name => "audits_version_id_fk", :dependent => :nullify

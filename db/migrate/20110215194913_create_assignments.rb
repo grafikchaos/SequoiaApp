@@ -1,7 +1,7 @@
 class CreateAssignments < ActiveRecord::Migration
   def self.up
     create_table :assignments do |t|
-      t.integer, :user_id, :role_id, :null => false
+      t.integer :user_id, :role_id, :null => false
       t.timestamps
     end
     add_index :assignments, :role_id
