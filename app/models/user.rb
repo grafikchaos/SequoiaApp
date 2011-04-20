@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :favorites
+  has_many :roles, :through => :assignments
   
   # Include devise modules.
   devise  :database_authenticatable, :rememberable, 
@@ -19,15 +20,9 @@ class User < ActiveRecord::Base
   # versioning
   has_paper_trail :only => [:username, :role, :email, :first_name, :last_name, :clearance]
   
-  #
-  # Define which roles will be utilized/authorized in this application. 
-  # They will be stored via a bitmap mask, so don't mix up the order, only append
-  #
-  ROLES = %w[staff manager admin]
   
-  # Role Inheritiance
-  def role?(base_role)
-    ROLES.index(base_role.to_s) <= ROLES.index(role)
+  def has_role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
   
   # GETTER - combine the first and last names
