@@ -14,7 +14,7 @@
       <table id="users" class="table">
         <tr>
           <th class="first">ID</th>
-          <th>Role</th>
+          <th>Role(s)</th>
           <th>Username</th>
           <th>Email</th>
           <th>Name</th>
@@ -24,7 +24,9 @@
       <% @users.each do |user| %>
         <tr class="<%= cycle "odd", "even" -%>">
           <td><%= user.id %></td>
-          <td><%= user.role %></td>
+          <td>
+            <%= user.roles.collect { |r| r.name }.join(", ").titleize %>
+          </td>
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td><%= user.full_name %></td>

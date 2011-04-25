@@ -28,7 +28,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     # Staff
-    if user.role? :staff
+    if user.has_role? :staff
       can [:read, :create, :update], [Client, Project]
       # can :destroy, Project # only if the project has entities with clearance levels less than or equal to the User's clearance
       can :manage, EntityRow
@@ -55,13 +55,13 @@ class Ability
     end
 
     # Manager inherits abilities from Staff + ability to manage users (:read, :create, :update but no :delete)
-    if user.role? :manager
+    if user.has_role? :manager
       can :manage, User
       cannot :destroy, User
     end
 
     # ADMIN - MANAGES ALL
-    if user.role? :admin
+    if user.has_role? :admin
       can :manage, :all
       cannot :destroy, User do |usr|
         usr == user

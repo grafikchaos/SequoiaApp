@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        if current_user.id == @user.id && current_user.role?('staff')
+        if current_user.id == @user.id && current_user.has_role?('staff')
           format.html { redirect_to(edit_user_url(@user), :notice => "Your account was successfully updated. #{undo_link}") }
         else
           format.html { redirect_to(users_url, :notice => "User was successfully updated. #{undo_link}") }

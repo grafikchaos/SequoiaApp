@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :favorites
+  has_many :assignments
   has_many :roles, :through => :assignments
   
   # Include devise modules.
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
   cattr_accessor :current_user
   
   # validations
-  validates :username, :presence => true, :uniqueness => true, :length => (6..255)
+  validates :username, :presence => true, :uniqueness => true, :length => (4..255)
   validates :email, :presence => true, :uniqueness => true, :length => (2..255), :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
   validates :full_name, :presence => true, :length => (2..255)
 

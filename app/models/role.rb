@@ -1,4 +1,5 @@
 class Role < ActiveRecord::Base
+  has_many :assignments
   has_many :users, :through => :assignments
   
   # define which columns are mass assignable

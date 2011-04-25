@@ -25,7 +25,7 @@
   </section>
 
   <section class="column right">
-    <% if current_user.role?('manager') %>
+    <% if current_user.has_role?('manager') %>
       <div class="group required">
         <%= f.label :role, :class => 'label' %>
         <%= f.select :role, format_roles_select %>
