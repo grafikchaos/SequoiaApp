@@ -1,9 +1,3 @@
-<% content_for :main_action do %>
-  <%- if can? :create, Entity -%>
-    <%= link_to 'New Entity', new_client_entity_path(client), :class => 'button' %>
-  <%- end -%>
-<% end %>
-
 <% content_for :actions do %>
   <%- if can? :update, Project %>
     <li><%= link_to 'Manage Projects', client_projects_path(client) %></li>
