@@ -1,6 +1,8 @@
 <% content_for :page_title, "Editing #{@user.username}" %>
 
 <section class="block">
+  <%= render 'shared/admin_tabs' %>
+  
   <section class="content">
     <header><h2>
       <% if @user.id == current_user.id %>

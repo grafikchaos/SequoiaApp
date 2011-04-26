@@ -11,4 +11,9 @@ class Role < ActiveRecord::Base
   # versioning
   has_paper_trail :only => [:name]
   
+  # for audit log entries
+  def to_s
+    self.name
+  end
+  
 end

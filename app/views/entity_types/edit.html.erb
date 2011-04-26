@@ -1,6 +1,8 @@
-<% content_for :page_title, "Editing #{@entity_type.name}" %>
+<% content_for :page_title, "Editing Entity Type: #{@entity_type.name}" %>
 
 <section class="block">
+  <%= render 'shared/admin_tabs' %>
+  
   <section class="content">
     <header><h2>Editing <%= @entity_type.name %></h2></header>
     <section class="inner">

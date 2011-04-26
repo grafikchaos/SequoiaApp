@@ -1,0 +1,44 @@
+<% content_for :page_title, "Roles" %>
+<% content_for :main_action do %>
+  <% if can? :create, Role %>
+    <%= link_to 'New Role', new_role_path, :class => 'button' %>
+  <% end %>
+<% end %>
+
+<section class="block">
+  <%= render 'shared/admin_tabs' %>
+
+  <section class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Roles</h2>
+    <section class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+          <th>
+            <%= t("activerecord.attributes.role.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>
+          <th><%= t("web-app-theme.created_at", :default => "Created At")  %></th>
+          <th class="last crud-actions-header">Actions</th>
+        </tr>
+        <% @roles.each do |role| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td><%= role.id %></td>
+          <td><%= link_to role.name, edit_role_path(role) %></td>
+          <td><%= role.created_at %></td>
+          <td style="width:5%;" class="crud-actions">
+            <%= edit_link role %> 
+            <%= destroy_link role %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <footer class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </footer>
+    </section>
+  </section>
+</section>
+
+<% content_for :sidebar, render('sidebar') %>

@@ -8,6 +8,8 @@ section, article, header, footer, nav, aside, hgroup { display: block; }
 ****************************/
 pre.example { font-size:16px; font-weight:bold; color:#39c;}
 
+p { line-height:1.5em; }
+
 /****************************
   UTILITIES
 ****************************/
@@ -263,6 +265,9 @@ form#new_entity_type div.description {
   margin: 5px 0;
   width: 97%;
 }
+
+#sidebar .block.notice ul { padding:0 0 0 2em; }
+#sidebar .block.notice h3 { font-size:18px;}
 
 /****************************
   FOOTER
