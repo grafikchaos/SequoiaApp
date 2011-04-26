@@ -25,7 +25,7 @@
         <tr class="<%= cycle "odd", "even" -%>">
           <td><%= user.id %></td>
           <td>
-            <%= user.roles.collect { |r| r.name }.join(", ").titleize %>
+            <%= user.roles.collect { |r| r.name.titleize }.join(", ") %>
           </td>
           <td><%= user.username %></td>
           <td><%= user.email %></td>

@@ -6,6 +6,7 @@ SequoiaApp::Application.routes.draw do
   resources :clients, :shallow => true, :except => 'index' do
     resources :projects, :except => 'show'
     resources :entities, :except => 'show'
+    resources :notes, :except => 'show'
   end
 
   # Entity row value replacement

@@ -115,7 +115,7 @@ var initToggleMasked = function() {
     if ($(val_field).hasClass('shown')) {
       var d_length = $(val_field).text().length;
       var asterisks = '';
-      for (i = 1; i < d_length; i++) {
+      for (i = 0; i < d_length; i++) {
         asterisks += '*';
       }
       $(val_field).text(asterisks);
@@ -123,6 +123,9 @@ var initToggleMasked = function() {
       $(this).text('Show');
       // Stop the AJAX request.
       return false;
+    } else {
+      // Create a loading image
+      $(this).html('<img src="/images/ajax-loader.gif" />');
     }
   })  
   .live('ajax:success', function(evt, data, status, xhr) {
