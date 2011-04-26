@@ -338,7 +338,7 @@ a.edit-link {
 }
 
 #sidebar .actions a.edit-link:hover {
-  background: #666 url(/images/icons/glyphicons_000_pencil.png) no-repeat left center;
+  background: #666 url(/images/icons/glyphicons_000_pencil_white.png) no-repeat left center;
 }
 
 a.destroy-link {
@@ -356,7 +356,7 @@ a.destroy-link {
 }
 
 #sidebar .actions a.destroy-link:hover {
-  background: #666 url(/images/icons/glyphicons_049_bin.png) no-repeat left center;
+  background: #666 url(/images/icons/glyphicons_049_bin_white.png) no-repeat left center;
 }
 
 a.control-link {
