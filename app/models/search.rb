@@ -60,6 +60,9 @@ class Search
       end
     end
 
+    # Filter out all entities that the user can't access.
+    @result.keep_if { |e| User.current_user.can? :read, e }
+
     # Save the query string if it returns some results.
     if self.result
       QueryString.create :string => self.query if QueryString.find_by_string(self.query).nil?
