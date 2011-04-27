@@ -50,10 +50,10 @@ class Client < ActiveRecord::Base
 
   
   # only allow access to Entitys if the User has the ability to read it
-  def sorted_entities(user, project = nil)
+  def sorted_entities(project = nil)
     project = project.blank? ? self.projects : project
     entities = Entity.includes(:entity_type).where(:project_id => project)
-    entities.keep_if { |e| user.can? :read, e }.group_by { |e| e.entity_type.name }
+    entities.keep_if { |e| User.current_user.can? :read, e }.group_by { |e| e.entity_type.name }
   end
 
   def to_s
