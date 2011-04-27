@@ -3,6 +3,7 @@ class Entity < ActiveRecord::Base
   belongs_to  :entity_type
   has_many    :entity_rows
   has_many    :notes, :as => :notable
+  has_and_belongs_to_many :roles, :join_table => :entity_roles
   
   # validations
   validates_presence_of :name, :project_id, :entity_type_id

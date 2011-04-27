@@ -24,7 +24,7 @@
   </section>
 
   <section class="column right">
-    <div class="group">
+    <%- if can? :assign_roles, User %>
       <%= field_set_tag "Roles", :class => "collapsible" do %>
         <div class="fieldset-wrapper">
           <%- Role.all.each do |role| %>
@@ -43,7 +43,7 @@
           <%- end %>
         </div>
       <%- end %>
-    </div>
+    <%- end %>
 
     <%= field_set_tag "Password", :class => "collapsible collapsed" do %>
       <div class="fieldset-wrapper">

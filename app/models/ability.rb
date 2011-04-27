@@ -30,7 +30,6 @@ class Ability
     # Staff
     if user.has_role? :staff
       can [:read, :create, :update], [Client, Project]
-      # can :destroy, Project # only if the project has entities with clearance levels less than or equal to the User's clearance
       can :manage, EntityRow
 
       # Favorites
@@ -60,6 +59,9 @@ class Ability
     if user.has_role? :manager
       can :manage, User
       can :assign_roles, User
+      cannot [:update, :destroy], User do |usr|
+        usr.has_role? :owner
+      end
       cannot :assign_admin_role, User
       cannot :destroy, User
     end
@@ -68,16 +70,21 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
       can :assign_roles, User
-      cannot :destroy, User, :id => user.id
+      cannot [:update, :destroy], User do |usr|
+        usr.has_role? :owner
+      end
       cannot :assign_owner_role, User
     end
 
     if user.has_role? :owner
       can :manage, :all
       can :assign_roles, User
-      cannot :destroy, User, :id => user.id
       can :assign_owner_role, User
     end
+
+    # User-wide abilities
+    cannot [:update, :destroy], Role, :is_system => true
+    cannot :destroy, User, :id => user.id
  
   end
 

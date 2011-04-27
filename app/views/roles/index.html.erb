@@ -23,11 +23,11 @@
         <% @roles.each do |role| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <td><%= role.id %></td>
-          <td><%= link_to role.name, edit_role_path(role) %></td>
+          <td><%= role.name %></td>
           <td><%= role.created_at %></td>
           <td style="width:5%;" class="crud-actions">
-            <%= edit_link role %> 
-            <%= destroy_link role %>
+            <%= edit_link role if can? :update, role %> 
+            <%= destroy_link role if can? :destroy, role %>
           </td>
         </tr>          
         <% end -%>

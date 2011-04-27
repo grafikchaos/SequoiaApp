@@ -50,7 +50,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
 
+    # Unset the stuff the user does not have permission to edit
     params[:user][:role_ids] ||= []
+    params[:user].delete(:role_ids) if cannot? :assign_roles, User
     if params[:user][:password].blank?
       [:password, :password_confirmation].collect{ |p| params[:user].delete(p) }
     end    
