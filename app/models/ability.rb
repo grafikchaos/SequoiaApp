@@ -27,6 +27,10 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
+    can :read, Entity do |entity|
+      entity.roles #TODO: Some sort of Array intersect method?
+    end
+
     # Staff
     if user.has_role? :staff
       can [:read, :create, :update], [Client, Project]
