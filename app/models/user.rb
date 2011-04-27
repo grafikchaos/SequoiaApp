@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
           :trackable, :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :roles, :email, :password, :remember_me, :first_name, :last_name, :full_name
+  attr_accessible :username, :roles, :role_ids, :email, :password, :remember_me, :first_name, :last_name, :full_name
 
   # Get the current user from the controller
   cattr_accessor :current_user

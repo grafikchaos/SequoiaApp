@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
 
+    params[:user][:role_ids] ||= []
     if params[:user][:password].blank?
       [:password, :password_confirmation].collect{ |p| params[:user].delete(p) }
     end    
