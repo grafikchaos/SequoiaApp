@@ -48,10 +48,12 @@ class Client < ActiveRecord::Base
   scope :simple_search, lambda { |query| includes(:projects).where('clients.name LIKE ? OR clients.client_code LIKE ? OR projects.domain LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%") }
   scope :ordered_by_client_code, order('clients.client_code ASC')
   
-  def sorted_entities(ability, project = nil)
+  #scope :sorted_entities, lambda { |user, project = nil| 
+  def sorted_entities(user, project = nil)
     project = project.blank? ? self.projects : project
     # Also include entity rows and keys for fewer queries.
-    Entity.accessible_by(ability).includes(:entity_type).where(:project_id => project).group_by { |e| e.entity_type.name }
+    entities = Entity.includes(:entity_type).where(:project_id => project)
+    entities.keep_if { |e| !(user.roles & e.roles).empty? }.group_by { |e| e.entity_type.name }
   end
 
   def to_s
