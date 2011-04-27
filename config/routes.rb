@@ -26,6 +26,9 @@ SequoiaApp::Application.routes.draw do
 
   get '/search' => 'search#results', :as => 'search_results'
 
+  # switch user route
+  match 'switch_user' => 'switch_user#set_current_user'
+
   # Our root URL is mapped to the search controller
   root :to => "search#start"
   
