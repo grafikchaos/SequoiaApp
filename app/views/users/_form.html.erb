@@ -28,12 +28,18 @@
       <%= field_set_tag "Roles", :class => "collapsible" do %>
         <div class="fieldset-wrapper">
           <%- Role.all.each do |role| %>
-            <div>
-              <label class="checkbox">
-                <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :class => 'checkbox' %>
-                <%= role.name.titleize %>
-              </label>
-            </div>
+            <%- if role.name == 'owner' && cannot?(:assign_owner_role, User) %>
+              <%- if @user.has_role? :owner %>
+                <%= hidden_field_tag "user[role_ids][]", role.id %>
+              <%- end %>
+            <%- else %>
+              <div>
+                <label class="checkbox">
+                  <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :class => 'checkbox' %>
+                  <%= role.name.titleize %>
+                </label>
+              </div>
+            <%- end %>
           <%- end %>
         </div>
       <%- end %>

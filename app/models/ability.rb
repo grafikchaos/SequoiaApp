@@ -52,20 +52,31 @@ class Ability
 
       # Own user account
       can :update, User, :id => user.id
+      cannot :assign_roles, User
+      cannot :assign_owner_role, User
     end
 
     # Manager inherits abilities from Staff + ability to manage users (:read, :create, :update but no :delete)
     if user.has_role? :manager
       can :manage, User
+      can :assign_roles, User
+      cannot :assign_admin_role, User
       cannot :destroy, User
     end
 
     # ADMIN - MANAGES ALL
     if user.has_role? :admin
       can :manage, :all
-      cannot :destroy, User do |usr|
-        usr == user
-      end
+      can :assign_roles, User
+      cannot :destroy, User, :id => user.id
+      cannot :assign_owner_role, User
+    end
+
+    if user.has_role? :owner
+      can :manage, :all
+      can :assign_roles, User
+      cannot :destroy, User, :id => user.id
+      can :assign_owner_role, User
     end
  
   end
