@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :favorites
-  has_many :assignments
-  has_many :roles, :through => :assignments
+  has_and_belongs_to_many :roles, :join_table => :user_roles
   
   # Include devise modules.
   devise  :database_authenticatable, :rememberable, 
