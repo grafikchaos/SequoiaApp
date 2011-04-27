@@ -47,13 +47,13 @@ class Client < ActiveRecord::Base
   scope :project_domain_like, lambda { |domain| where('projects.domain LIKE ?', "%#{domain}%") }
   scope :simple_search, lambda { |query| includes(:projects).where('clients.name LIKE ? OR clients.client_code LIKE ? OR projects.domain LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%") }
   scope :ordered_by_client_code, order('clients.client_code ASC')
+
   
-  #scope :sorted_entities, lambda { |user, project = nil| 
+  # only allow access to Entitys if the User has the ability to read it
   def sorted_entities(user, project = nil)
     project = project.blank? ? self.projects : project
-    # Also include entity rows and keys for fewer queries.
     entities = Entity.includes(:entity_type).where(:project_id => project)
-    entities.keep_if { |e| !(user.roles & e.roles).empty? }.group_by { |e| e.entity_type.name }
+    entities.keep_if { |e| user.can? :read, e }.group_by { |e| e.entity_type.name }
   end
 
   def to_s

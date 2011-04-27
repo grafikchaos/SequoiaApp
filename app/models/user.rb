@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # CanCan Ability checks
+  delegate :can?, :cannot?, :to => :ability
+  
   has_many :favorites
   has_and_belongs_to_many :roles, :join_table => :user_roles
   
@@ -20,6 +23,10 @@ class User < ActiveRecord::Base
   # versioning
   has_paper_trail :only => [:username, :roles, :email, :first_name, :last_name]
   
+  
+  def ability
+    @ability ||= Ability.new(self)
+  end
   
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
