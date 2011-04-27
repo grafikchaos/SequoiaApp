@@ -16,11 +16,6 @@
       <%= f.label :entity_type_id, :class => 'label' %>
       <%= f.collection_select :entity_type_id, EntityType.all, :id, :name %>
     </div>
-
-    <div class="group required">
-      <%= f.label :clearance, "Clearance Level", :class => 'label' %>
-      <%= f.select :clearance, format_clearance_select %>
-    </div>
   </div>
   <div class="column right">
     <%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>

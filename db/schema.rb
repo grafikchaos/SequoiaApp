@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426184405) do
+ActiveRecord::Schema.define(:version => 20110427004547) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -51,10 +51,9 @@ ActiveRecord::Schema.define(:version => 20110426184405) do
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
 
   create_table "entities", :force => true do |t|
-    t.integer  "project_id",                    :null => false
-    t.integer  "entity_type_id",                :null => false
-    t.string   "name",                          :null => false
-    t.integer  "clearance",      :default => 3, :null => false
+    t.integer  "project_id",     :null => false
+    t.integer  "entity_type_id", :null => false
+    t.string   "name",           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -195,7 +194,6 @@ ActiveRecord::Schema.define(:version => 20110426184405) do
     t.string   "email",                              :default => "", :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "clearance",                          :default => 3,  :null => false
     t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"

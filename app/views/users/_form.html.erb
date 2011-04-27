@@ -30,11 +30,6 @@
         <%= f.label :role, :class => 'label' %>
         <%= f.select :role, format_roles_select %>
       </div>
-
-      <div class="group required">
-        <%= f.label :clearance, :class => 'label' %>
-        <%= f.select :clearance, format_clearance_select %>
-      </div>
     <% end %>
 
     <%= field_set_tag "Password", :class => "collapsible collapsed" do %>

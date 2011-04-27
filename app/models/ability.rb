@@ -47,7 +47,7 @@ class Ability
       end
 
       # Entities
-      can [:read, :update, :destroy], Entity, :clearance => (user.clearance..3)
+      can [:read, :update, :destroy], Entity
       can :create, Entity
 
       # Own user account

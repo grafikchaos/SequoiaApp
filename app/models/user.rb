@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
           :trackable, :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :role, :email, :password, :clearance, :remember_me, :first_name, :last_name, :full_name
+  attr_accessible :username, :roles, :email, :password, :remember_me, :first_name, :last_name, :full_name
 
   # Get the current user from the controller
   cattr_accessor :current_user
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :full_name, :presence => true, :length => (2..255)
 
   # versioning
-  has_paper_trail :only => [:username, :role, :email, :first_name, :last_name, :clearance]
+  has_paper_trail :only => [:username, :roles, :email, :first_name, :last_name]
   
   
   def has_role?(role_sym)
