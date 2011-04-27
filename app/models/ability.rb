@@ -28,7 +28,8 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     can :read, Entity do |entity|
-      entity.roles #TODO: Some sort of Array intersect method?
+      intersection = entity.roles & user.roles
+      !intersection.empty?
     end
 
     # Staff
