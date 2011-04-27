@@ -4,7 +4,7 @@ class EntitiesController < ApplicationController
 
   def index
     @client = Client.find(params[:client_id])
-    @entities = @client.sorted_entities(current_user, params[:project])
+    @entities = @client.sorted_entities(params[:project])
 
     respond_to do |format|
       format.html
