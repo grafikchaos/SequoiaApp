@@ -6,17 +6,17 @@ Feature: Abilities - Roles and Permissions
 
   Background:
     Given the following user records
-      | username               | password           | role    | clearance |
-      | buttercup              | princess           | staff   | 3         |
-      | valerie                | imnotawitch        | staff   | 2         |
-      | theimpressiveclergyman | truwuv             | staff   | 1         |
-      | humperdinck            | tothedeath         | staff   | 0         |
-      | miraclemax             | toblave            | manager | 1         |
-      | vizzini                | inconceivable      | manager | 2         |
-      | sixfingeredman         | stopsayingthat     | manager | 3         |
-      | dreadpirateroberts     | asyouwish          | admin   | 1         |
-      | inigo                  | preparetodie       | admin   | 2         |
-      | fezzik                 | anybodywantapeanut | admin   | 3         |
+      | username               | password           | roles                 | clearance |
+      | buttercup              | princess           | staff                 | 3         |
+      | valerie                | imnotawitch        | staff                 | 2         |
+      | theimpressiveclergyman | truwuv             | staff                 | 1         |
+      | humperdinck            | tothedeath         | staff                 | 0         |
+      | miraclemax             | toblave            | contractor            | 1         |
+      | vizzini                | inconceivable      | staff, financial      | 2         |
+      | sixfingeredman         | stopsayingthat     | contractor, financial | 3         |
+      | dreadpirateroberts     | asyouwish          | admin, staff          | 1         |
+      | inigo                  | preparetodie       | admin, staff          | 2         |
+      | fezzik                 | anybodywantapeanut | admin, staff          | 3         |
     And the following entity_type records
       | name            |
       | api             |
