@@ -57,8 +57,8 @@ Feature: Manage entity_rows
 
   Scenario: Edit entity rows within an existing entity
     Given the following Entities exist
-      | client    |  project        | name            | type        | level   |
-      | ROR       |  Intranet       | Admin Login     | application | 3       |
+      | client    |  project        | name            | type        |
+      | ROR       |  Intranet       | Admin Login     | application |
     And the following Entity Rows exist
       | client    |  project        | entity          | key         | value   |
       | ROR       |  Intranet       | Admin Login     | password    | 12345   |
@@ -75,8 +75,8 @@ Feature: Manage entity_rows
   @javascript
   Scenario: Delete entity rows from an entity
     Given the following Entities exist
-      | client    |  project        | name            | type        | level   |
-      | ROR       |  Intranet       | Admin Login     | application | 3       |
+      | client    |  project        | name            | type        |
+      | ROR       |  Intranet       | Admin Login     | application |
     And the following Entity Rows exist
       | client    |  project        | entity          | key         | value   |
       | ROR       |  Intranet       | Admin Login     | password    | 12345   |
@@ -94,8 +94,8 @@ Feature: Manage entity_rows
   @javascript  
   Scenario: Undo delete entity rows from an entity
     Given the following Entities exist
-      | client    |  project        | name            | type        | level   |
-      | ROR       |  Intranet       | Admin Login     | application | 3       |
+      | client    |  project        | name            | type        |
+      | ROR       |  Intranet       | Admin Login     | application |
     And the following Entity Rows exist
       | client    |  project        | entity          | key         | value   |
       | ROR       |  Intranet       | Admin Login     | password    | 12345   |
@@ -114,8 +114,8 @@ Feature: Manage entity_rows
   @masking
   Scenario: Mask the value for keys so marked
     Given the following Entities exist
-      | client    |  project        | name            | type        | level   |
-      | ROR       |  Intranet       | Admin Login     | application | 3       |
+      | client    |  project        | name            | type        |
+      | ROR       |  Intranet       | Admin Login     | application |
     And the following Entity Rows exist
       | client    |  project        | entity          | key         | value   |
       | ROR       |  Intranet       | Admin Login     | port        | 12345   |
