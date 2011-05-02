@@ -4,7 +4,6 @@
 
 <section class="columns wat-cf">
   <section class="column left">
-
     <div class="group required">
       <%= f.label :username, :class=> 'label' %>
       <%= f.text_field :username, :class => 'text_field' %>
@@ -25,17 +24,26 @@
   </section>
 
   <section class="column right">
-    <% if current_user.role?('manager') %>
-      <div class="group required">
-        <%= f.label :role, :class => 'label' %>
-        <%= f.select :role, format_roles_select %>
-      </div>
-
-      <div class="group required">
-        <%= f.label :clearance, :class => 'label' %>
-        <%= f.select :clearance, format_clearance_select %>
-      </div>
-    <% end %>
+    <%- if can? :assign_roles, User %>
+      <%= field_set_tag "Roles", :class => "collapsible" do %>
+        <div class="fieldset-wrapper">
+          <%- Role.all.each do |role| %>
+            <%- if role.name == 'owner' && cannot?(:assign_owner_role, User) %>
+              <%- if @user.has_role? :owner %>
+                <%= hidden_field_tag "user[role_ids][]", role.id %>
+              <%- end %>
+            <%- else %>
+              <div>
+                <label class="checkbox">
+                  <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :class => 'checkbox' %>
+                  <%= role.name.titleize %>
+                </label>
+              </div>
+            <%- end %>
+          <%- end %>
+        </div>
+      <%- end %>
+    <%- end %>
 
     <%= field_set_tag "Password", :class => "collapsible collapsed" do %>
       <div class="fieldset-wrapper">
@@ -55,9 +63,6 @@
             <span class="description">Confirm your new password</span>
           </div>
         </div>
-        
-        
-        
       </div>
     <%- end %>
   

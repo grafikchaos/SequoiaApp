@@ -7,11 +7,11 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 Role.create([
-  { :name => 'owner' },
-  { :name => 'admin' },
-  { :name => 'staff' },
-  { :name => 'financial' },
-  { :name => 'contractor' }
+  { :name => 'owner', :is_system => true },
+  { :name => 'admin', :is_system => true},
+  { :name => 'staff', :is_system => true },
+  { :name => 'financial', :is_system => true },
+  { :name => 'contractor', :is_system => true }
 ])
 
 EntityType.create([

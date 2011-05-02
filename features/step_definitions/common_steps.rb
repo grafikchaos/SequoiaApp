@@ -1,18 +1,25 @@
 Given /^the following (.+) records?$/ do |factory, table|
   # table is a Cucumber::Ast::Table
   case factory
-  when 'entity_type_alias'
-    table.hashes.each do |row|
-      type = EntityType.find_by_name(row['type'])
-      row['aliases'].split(', ').each do |aka|
-        Factory.create(:entity_type_alias, :entity_type_id => type.id, :name => aka)
+    when 'user'
+      table.hashes.each do |row|
+        user = User.find_by_username(row['username'])
+        row['roles'].split(', ').each do |aka|
+          Factory.create(:entity_type_alias, :entity_type_id => type.id, :name => aka)
+        end
+      end
+    when 'entity_type_alias'
+      table.hashes.each do |row|
+        type = EntityType.find_by_name(row['type'])
+        row['aliases'].split(', ').each do |aka|
+          Factory.create(:entity_type_alias, :entity_type_id => type.id, :name => aka)
+        end
+      end
+    else
+      table.hashes.each do |hash|
+        Factory.create(factory, hash)
       end
     end
-  else
-    table.hashes.each do |hash|
-      Factory.create(factory, hash)
-    end
-  end
 end
 
 Given /^I have no (.*)$/ do |model|

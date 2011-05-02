@@ -1,25 +1,32 @@
 class User < ActiveRecord::Base
+  # CanCan Ability checks
+  delegate :can?, :cannot?, :to => :ability
+  
   has_many :favorites
-  has_many :roles, :through => :assignments
+  has_and_belongs_to_many :roles, :join_table => :user_roles
   
   # Include devise modules.
   devise  :database_authenticatable, :rememberable, 
           :trackable, :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :role, :email, :password, :clearance, :remember_me, :first_name, :last_name, :full_name
+  attr_accessible :username, :roles, :role_ids, :email, :password, :remember_me, :first_name, :last_name, :full_name
 
   # Get the current user from the controller
   cattr_accessor :current_user
   
   # validations
-  validates :username, :presence => true, :uniqueness => true, :length => (6..255)
+  validates :username, :presence => true, :uniqueness => true, :length => (4..255)
   validates :email, :presence => true, :uniqueness => true, :length => (2..255), :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
   validates :full_name, :presence => true, :length => (2..255)
 
   # versioning
-  has_paper_trail :only => [:username, :role, :email, :first_name, :last_name, :clearance]
+  has_paper_trail :only => [:username, :roles, :email, :first_name, :last_name]
   
+  
+  def ability
+    @ability ||= Ability.new(self)
+  end
   
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }

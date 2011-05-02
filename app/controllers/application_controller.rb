@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
   end 
 
+  def current_ability
+    current_user.ability
+  end
+
   def set_current_user
     User.current_user = current_user
   end

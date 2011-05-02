@@ -35,7 +35,6 @@ group :development, :test, :demo do
   gem 'capybara'
   gem 'culerity'
   gem 'celerity', :require => nil # JRuby only. Make it available but don't require it in any environment.
-  # gem 'akephalos'
   gem 'pickle'
   gem 'database_cleaner'
   gem 'rspec'
@@ -43,6 +42,7 @@ group :development, :test, :demo do
   gem 'launchy'
   gem 'slowgrowl'
   gem 'ffaker'
+  gem 'switch_user'
 end
 
 # Deploy with Capistrano

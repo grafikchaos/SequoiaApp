@@ -1,0 +1,11 @@
+<% content_for :actions do %>
+  <%- if can? :update, Project %>
+    <li><%= link_to 'Manage Projects', client_projects_path(client) %></li>
+  <%- end -%>
+  <%- if can? :edit, Client -%>
+    <li><%= edit_link client %></li>
+  <%- end -%>
+  <%- if can? :delete, Client -%>
+    <li><%= destroy_link client %></li>
+  <%- end -%>
+<% end %>

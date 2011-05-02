@@ -6,6 +6,7 @@ SequoiaApp::Application.routes.draw do
   resources :clients, :shallow => true, :except => 'index' do
     resources :projects, :except => 'show'
     resources :entities, :except => 'show'
+    resources :notes, :except => 'show'
   end
 
   # Entity row value replacement
@@ -17,12 +18,16 @@ SequoiaApp::Application.routes.draw do
   scope "/admin" do
     resources :entity_types, :entity_keys, :users, :except => 'show'
     resources :audits, :only => ['index', 'create']
+    resources :roles
   end
   match '/admin' => redirect('/admin/entity_keys')
   match '/admin/users/:user_id/unlock' => 'users#unlock', :as => 'user_unlock'
   get '/account' => 'users#edit', :as => 'my_account'
 
   get '/search' => 'search#results', :as => 'search_results'
+
+  # switch user route
+  match 'switch_user' => 'switch_user#set_current_user'
 
   # Our root URL is mapped to the search controller
   root :to => "search#start"

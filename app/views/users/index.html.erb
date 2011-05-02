@@ -14,21 +14,21 @@
       <table id="users" class="table">
         <tr>
           <th class="first">ID</th>
-          <th>Role</th>
+          <th>Role(s)</th>
           <th>Username</th>
           <th>Email</th>
           <th>Name</th>
-          <th>Clearance</th>
           <th class="last crud-actions-header">Actions</th>
         </tr>
       <% @users.each do |user| %>
         <tr class="<%= cycle "odd", "even" -%>">
           <td><%= user.id %></td>
-          <td><%= user.role %></td>
+          <td>
+            <%= user.roles.collect { |r| r.name.titleize }.join(", ") %>
+          </td>
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td><%= user.full_name %></td>
-          <td>Level <%= user.clearance %></td>
           <td style="width:5%;" class="crud-actions">
             <%- if can? :edit, user %>
               <%- if user.access_locked? %>

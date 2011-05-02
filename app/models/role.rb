@@ -1,5 +1,6 @@
 class Role < ActiveRecord::Base
-  has_many :users, :through => :assignments
+  has_and_belongs_to_many :users, :join_table => :user_roles
+  has_and_belongs_to_many :entities, :join_table => :entity_roles
   
   # define which columns are mass assignable
   attr_accessible :name
@@ -9,5 +10,10 @@ class Role < ActiveRecord::Base
   
   # versioning
   has_paper_trail :only => [:name]
+  
+  # for audit log entries
+  def to_s
+    self.name
+  end
   
 end

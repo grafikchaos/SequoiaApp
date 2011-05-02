@@ -50,13 +50,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
 
+    # Unset the stuff the user does not have permission to edit
+    params[:user][:role_ids] ||= []
+    params[:user].delete(:role_ids) if cannot? :assign_roles, User
     if params[:user][:password].blank?
       [:password, :password_confirmation].collect{ |p| params[:user].delete(p) }
     end    
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        if current_user.id == @user.id && current_user.role?('staff')
+        if current_user.id == @user.id && current_user.has_role?('staff')
           format.html { redirect_to(edit_user_url(@user), :notice => "Your account was successfully updated. #{undo_link}") }
         else
           format.html { redirect_to(users_url, :notice => "User was successfully updated. #{undo_link}") }

@@ -24,7 +24,7 @@
       <%= link_to "View All", favorites_path %>
     </header>
     <section class="content">
-      <%= text_field_tag 'fav-filter', nil, :placeholder => 'Filter...' %>
+      <%= text_field_tag 'fav-filter', nil, :placeholder => 'Filter...', :class => 'text_field' %>
       <ul class="navigation">
         <%= render 'favorites/sidebar' %>
       </ul>

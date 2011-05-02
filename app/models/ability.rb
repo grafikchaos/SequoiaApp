@@ -27,10 +27,10 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
+
     # Staff
-    if user.role? :staff
+    if user.has_role? :staff
       can [:read, :create, :update], [Client, Project]
-      # can :destroy, Project # only if the project has entities with clearance levels less than or equal to the User's clearance
       can :manage, EntityRow
 
       # Favorites
@@ -39,7 +39,7 @@ class Ability
         favorite.user_id == user.id
       end
 
-      # Projects
+      # TODO: DEPRECATED Projects 
       can :destroy, Project do |project|
         access = true
         project.entities.each { |ent| access = false if ent.clearance < user.clearance}
@@ -47,26 +47,42 @@ class Ability
       end
 
       # Entities
-      can [:read, :update, :destroy], Entity, :clearance => (user.clearance..3)
+      can [:read, :update, :destroy], Entity
       can :create, Entity
 
       # Own user account
       can :update, User, :id => user.id
+      cannot :assign_roles, User
+      cannot :assign_owner_role, User
     end
 
-    # Manager inherits abilities from Staff + ability to manage users (:read, :create, :update but no :delete)
-    if user.role? :manager
-      can :manage, User
-      cannot :destroy, User
-    end
-
-    # ADMIN - MANAGES ALL
-    if user.role? :admin
+    # TODO: DEPRECATED ADMIN - MANAGES ALL
+    if user.has_role? :admin
       can :manage, :all
-      cannot :destroy, User do |usr|
-        usr == user
+      can :assign_roles, User
+      cannot [:update, :destroy], User do |usr|
+        usr.has_role? :owner
       end
+      cannot :assign_owner_role, User
     end
+
+    # disable access to Entities if the Entity_Roles doesn't have access to it 
+    cannot :read, Entity do |entity|
+      intersection = entity.roles & user.roles
+      intersection.empty?
+    end
+    
+    # User-wide abilities
+    cannot [:update, :destroy], Role, :is_system => true
+    cannot :destroy, User, :id => user.id
+    
+    # OWNER
+    if user.has_role? :owner
+      can :manage, :all
+      can :assign_roles, User
+      can :assign_owner_role, User
+    end
+ 
  
   end
 

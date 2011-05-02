@@ -1,0 +1,26 @@
+<% content_for :page_title, page_title(@client) %>
+<% content_for :title, @client.name %>
+<% content_for :header_area, render('projects/filter') %>
+<%= render 'sidebar', :client => @client %>
+
+<%= favable_link @client %>
+
+<div class="block">
+  <%= render 'clients/tabs', :client => @client %>
+  
+  <div class="content">
+    <h2 class="title">Notes</h2>
+    <div class="inner">
+
+      <div id="notes-list">
+        <%- @notes.each do |note| %>
+          <div class="client-notes">
+            <h3>Client Notes:</h3>
+            <%= render note %>
+          </div>
+
+        <%- end %>
+      </div>
+    </div>
+  </div>
+</div>

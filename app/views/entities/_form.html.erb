@@ -1,7 +1,7 @@
 <%= render "shared/form_errors", :f => f  %>
 
-<div class="columns wat-cf">
-  <div class="column left">
+<section class="columns wat-cf">
+  <section class="column left">
     <div class="group required">
       <%= f.label :project_id, :class => 'label' %>
       <%= f.collection_select :project_id, @client.projects, :id, :name %>
@@ -17,12 +17,23 @@
       <%= f.collection_select :entity_type_id, EntityType.all, :id, :name %>
     </div>
 
-    <div class="group required">
-      <%= f.label :clearance, "Clearance Level", :class => 'label' %>
-      <%= f.select :clearance, format_clearance_select %>
-    </div>
-  </div>
-  <div class="column right">
+    <%- if can? :assign_roles, User %>
+      <%= field_set_tag "Roles", :class => "collapsible" do %>
+        <div class="fieldset-wrapper">
+          <div class="description">Selected roles will be able to access this entity.</div>
+          <%- Role.all.each do |role| %>
+            <div>
+              <label class="checkbox">
+                <%= check_box_tag "entity[role_ids][]", role.id, @entity.roles.include?(role), :class => 'checkbox' %>
+                <%= role.name.titleize %>
+              </label>
+            </div>
+          <%- end %>
+        </div>
+      <%- end %>
+    <%- end %>
+  </section>
+  <section class="column right">
     <%= field_set_tag "Entity Rows", :class => "collapsible", :id => "entity_rows_form" do %>
       <div class="fieldset-wrapper">
         <a href="javascript:void(0);" id="passgen-link">Generate a Random Password</a>
@@ -32,8 +43,8 @@
         <%= link_to_add_fields "Add another", f, :entity_rows %>
       </div>
     <%- end %>
-  </div>
-</div>
+  </section>
+</section>
 
 <%= field_set_tag "Notes", :class => "collapsible collapsed" do %>
   <div class="fieldset-wrapper">

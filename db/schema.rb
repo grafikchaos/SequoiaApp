@@ -10,17 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110331032036) do
-
-  create_table "assignments", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "role_id",    :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
-  add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
+ActiveRecord::Schema.define(:version => 20110427041320) do
 
   create_table "audits", :force => true do |t|
     t.integer  "user_id"
@@ -51,10 +41,9 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
   add_index "clients", ["cached_slug"], :name => "index_clients_on_cached_slug"
 
   create_table "entities", :force => true do |t|
-    t.integer  "project_id",                    :null => false
-    t.integer  "entity_type_id",                :null => false
-    t.string   "name",                          :null => false
-    t.integer  "clearance",      :default => 3, :null => false
+    t.integer  "project_id",     :null => false
+    t.integer  "entity_type_id", :null => false
+    t.string   "name",           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,6 +64,14 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
   add_index "entity_keys", ["cached_slug"], :name => "index_entity_keys_on_cached_slug"
   add_index "entity_keys", ["id"], :name => "index_entity_keys_on_id", :unique => true
   add_index "entity_keys", ["name"], :name => "index_entity_keys_on_name", :unique => true
+
+  create_table "entity_roles", :id => false, :force => true do |t|
+    t.integer "entity_id"
+    t.integer "role_id"
+  end
+
+  add_index "entity_roles", ["entity_id"], :name => "entity_roles_entity_id_fk"
+  add_index "entity_roles", ["role_id"], :name => "entity_roles_role_id_fk"
 
   create_table "entity_rows", :force => true do |t|
     t.integer  "entity_id",       :null => false
@@ -170,7 +167,8 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
   add_index "query_strings", ["string"], :name => "index_query_strings_on_string"
 
   create_table "roles", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",                          :null => false
+    t.boolean  "is_system",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -189,12 +187,19 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
+  create_table "user_roles", :id => false, :force => true do |t|
+    t.integer "user_id", :null => false
+    t.integer "role_id", :null => false
+  end
+
+  add_index "user_roles", ["role_id"], :name => "index_assignments_on_role_id"
+  add_index "user_roles", ["user_id"], :name => "index_assignments_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "username",                                           :null => false
     t.string   "email",                              :default => "", :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "clearance",                          :default => 3,  :null => false
     t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -225,14 +230,14 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
-  add_foreign_key "assignments", "roles", :name => "assignments_role_id_fk", :dependent => :delete
-  add_foreign_key "assignments", "users", :name => "assignments_user_id_fk", :dependent => :delete
-
   add_foreign_key "audits", "users", :name => "audits_user_id_fk", :dependent => :nullify
   add_foreign_key "audits", "versions", :name => "audits_version_id_fk", :dependent => :nullify
 
   add_foreign_key "entities", "entity_types", :name => "entities_entity_type_id_fk"
   add_foreign_key "entities", "projects", :name => "entities_project_id_fk", :dependent => :delete
+
+  add_foreign_key "entity_roles", "entities", :name => "entity_roles_entity_id_fk", :dependent => :delete
+  add_foreign_key "entity_roles", "roles", :name => "entity_roles_role_id_fk", :dependent => :delete
 
   add_foreign_key "entity_rows", "entities", :name => "entity_rows_entity_id_fk", :dependent => :delete
   add_foreign_key "entity_rows", "entity_keys", :name => "entity_rows_entity_key_id_fk"
@@ -243,5 +248,8 @@ ActiveRecord::Schema.define(:version => 20110331032036) do
   add_foreign_key "form_configs", "entity_types", :name => "form_configs_entity_type_id_fk", :dependent => :delete
 
   add_foreign_key "projects", "clients", :name => "projects_client_id_fk", :dependent => :delete
+
+  add_foreign_key "user_roles", "roles", :name => "assignments_role_id_fk", :dependent => :delete
+  add_foreign_key "user_roles", "users", :name => "assignments_user_id_fk", :dependent => :delete
 
 end
