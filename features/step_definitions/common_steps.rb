@@ -3,9 +3,11 @@ Given /^the following (.+) records?$/ do |factory, table|
   case factory
     when 'user'
       table.hashes.each do |row|
-        user = User.find_by_username(row['username'])
-        row['roles'].split(', ').each do |aka|
-          Factory.create(:entity_type_alias, :entity_type_id => type.id, :name => aka)
+        user = Factory.create(:user, :username => row['username'], :password => row['password'])
+        
+        row['roles'].split(', ').each do |role_name|
+          role = Role.find_or_create_by_name(role_name)
+          Factory.create(:user_role, :user_id => user.id, :role_id => role.id)
         end
       end
     when 'entity_type_alias'

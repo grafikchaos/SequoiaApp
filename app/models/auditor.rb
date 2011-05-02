@@ -14,17 +14,19 @@ class Auditor < ActiveRecord::Observer
   end
 
   def add_audit(obj, action)
-    user = User.current_user
-    audit = Audit.new
-    audit[:message]     = "#{obj.class.to_s} \"#{obj.to_s}\" was #{action}"
-    audit[:message] << " by #{user.username}" unless user.nil?
-    audit[:model_id]    = obj.id unless obj.nil?
-    audit[:model_type]  = obj.class.to_s unless obj.nil?
-    audit[:user_id]     = user.id unless user.nil?
-    if obj.respond_to?('versions')
-      audit[:version_id]  = obj.versions.last.id unless obj.versions.blank?
+    if Rails.env != 'test'
+      user = User.current_user
+      audit = Audit.new
+      audit[:message]     = "#{obj.class.to_s} \"#{obj.to_s}\" was #{action}"
+      audit[:message] << " by #{user.username}" unless user.nil?
+      audit[:model_id]    = obj.id unless obj.nil?
+      audit[:model_type]  = obj.class.to_s unless obj.nil?
+      audit[:user_id]     = user.id unless user.nil?
+      if obj.respond_to?('versions')
+        audit[:version_id]  = obj.versions.last.id unless obj.versions.blank?
+      end
+      audit.save
     end
-    audit.save
   end
 
 end

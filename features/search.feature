@@ -52,11 +52,11 @@ Feature: Searching
       | username        | false |
       | wsdl url        | false |
     And the following Entities exist
-      | client | project  | name              | type            | level |
-      | AAI    | Default  | external svn user | version control | 2     |
-      | ROR    | Intranet | SSH Credentials   | ssh             | 1     |
-      | ROR    | Intranet | Admin Login       | application     | 2     |
-      | ROR    | Intranet | User Login        | application     | 3     |
+      | client | project  | name              | type            |
+      | AAI    | Default  | external svn user | version control |
+      | ROR    | Intranet | SSH Credentials   | ssh             |
+      | ROR    | Intranet | Admin Login       | application     |
+      | ROR    | Intranet | User Login        | application     |
     And the following Entity Rows exist
       | client | project  | entity            | key      | value       |
       | AAI    | Default  | external svn user | username | deploy      |

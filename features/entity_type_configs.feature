@@ -1,5 +1,5 @@
 @entity_type_config
-Feature: Searching
+Feature: Entities should have a configurable form
   To make adding entities easier and to increase data integrity and consistency
   As a staff member
   I was to be able to define a set of rows that should appear per entity type
@@ -40,14 +40,14 @@ Feature: Searching
       | username        | false |
       | wsdl url        | false |
     And the following Entities exist
-      | client | project  | name              | type            | level |
-      | AAI    | Default  | external svn user | version control | 2     |
-      | ROR    | Intranet | SSH Credentials   | ssh             | 1     |
-      | ROR    | Intranet | Admin Login       | application     | 2     |
-      | ROR    | Intranet | User Login        | application     | 3     |
+      | client | project  | name              | type            |
+      | AAI    | Default  | external svn user | version control |
+      | ROR    | Intranet | SSH Credentials   | ssh             |
+      | ROR    | Intranet | Admin Login       | application     |
+      | ROR    | Intranet | User Login        | application     |
     And the following user records
-      | username               | password           | role    | clearance |
-      | dreadpirateroberts     | asyouwish          | admin   | 1         |
+      | username           | password  | roles        |
+      | dreadpirateroberts | asyouwish | admin, staff |
     And I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I am on the home page
     

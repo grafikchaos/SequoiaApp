@@ -4,9 +4,16 @@ Factory.define :user do |u|
   u.username              { Faker::Internet.user_name }
   u.password              'test1234'
   u.password_confirmation { |p| "#{p.password}" }
-  # u.role                  'staff'
   u.sequence(:email)      {|n| "person#{n}@example.com".downcase } # => person1@example.com
-  u.clearance             3
+end
+
+Factory.define :role do |r|
+  r.name 'staff'
+end
+
+Factory.define :user_role do |assign|
+  assign.user_id 1
+  assign.role_id 3
 end
 
 Factory.define :client do |c|
@@ -38,7 +45,6 @@ Factory.define :entity do |e|
   e.name 'An Entity'
   e.project_id 1
   e.entity_type_id 1
-  e.clearance 3
 end
 
 Factory.define :entity_row do |er|
