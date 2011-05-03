@@ -1,5 +1,5 @@
-<% content_for :page_title, "Results for #{truncate params[:query]}" %>
-<% content_for :main_action do %>
+<%= content_for :page_title, "Results for #{truncate params[:query]}" %>
+<%= content_for :main_action do %>
   <%- if can? :create, Client -%>
     <%= link_to 'New Client', new_client_path, :id => 'new-client', :class => 'button' %>
   <%- end -%>

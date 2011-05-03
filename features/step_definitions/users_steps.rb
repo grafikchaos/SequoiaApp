@@ -1,7 +1,7 @@
 Given /^I am logged in as a user$/ do
-  Factory.create(:user)
+  user = Factory.create(:user)
   visit(new_user_session_path)
-  fill_in("user[username]", :with => 'user' )
+  fill_in("user[username]", :with => user.username )
   fill_in("user[password]", :with => 'test1234' )
   click_button("Sign in")
 end

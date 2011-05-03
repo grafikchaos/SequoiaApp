@@ -5,7 +5,19 @@ Feature: Favorites
   I want to be able to flag query strings, clients, and projects
   
   Background: Make sure I'm logged in
-    Given I am logged in as a user
+    Given the following user records
+      | username               | password           | roles                 |
+      | buttercup              | princess           | staff                 |
+      | valerie                | imnotawitch        | staff                 |
+      | theimpressiveclergyman | truwuv             | staff                 |
+      | humperdinck            | tothedeath         | staff                 |
+      | miraclemax             | toblave            | contractor            |
+      | vizzini                | inconceivable      | staff, financial      |
+      | sixfingeredman         | stopsayingthat     | contractor, financial |
+      | dreadpirateroberts     | asyouwish          | admin, staff          |
+      | inigo                  | preparetodie       | admin, staff          |
+      | fezzik                 | anybodywantapeanut | admin, staff          |
+      And I am logged in as "dreadpirateroberts" with password "asyouwish"
       And I have client codes AA, AAA, AAI, ROR
       And the client "ROR" has a default project named "Intranet" with domain "intranet.com" 
       And the following entity_type records
@@ -40,42 +52,43 @@ Feature: Favorites
         | url             |
         | username        |
         | wsdl url        |
+      And the following Entities exist
+        | client | project  | name              | type            | roles |
+        | AAI    | Default  | external svn user | version control | staff |
+        | ROR    | Intranet | SSH Credentials   | ssh             | staff | 
+        | ROR    | Intranet | Admin Login       | application     | staff |
+        | ROR    | Intranet | User Login        | application     | staff |
       And I have no favorites
 
   @view
   Scenario: I can see favorites link
     Given I am on the home page
-    Then I should see "View All" within "#sidebar .favorites"
+    Then I should not see "Favorites" within "#sidebar"
 
-  @javascript @new @josh
+  @javascript @new @focus
   Scenario: Bookmark a client
     Given I am on the home page
     When I fill in "query" with "AAI"
       And I press "Search"
       And I favorite the 1st item in the list
       And I go to the list of my favorites
-    Then I should see "AAI Company Name Here"
-      And "user" should have 1 favorite
+    Then "dreadpirateroberts" should have 1 favorite
+      And show me the page
 
   @javascript @new
   Scenario: Bookmark a query string
     Given I am on the home page
-      And the following Entities exist
-        | client | project  | name            | type        | level |
-        | ROR    | Intranet | SSH Credentials | ssh         | 2     |
-        | ROR    | Intranet | Admin Login     | application | 3     |
-        | ROR    | Intranet | User Login      | application | 3     |
     When I fill in "query" with "$aai $ror"
       And I press "Search"
       And I favorite the query string
       And I go to the list of my favorites
-    Then I should see "$aai $ror"
-      And "user" should have 1 favorite
+    Then "dreadpirateroberts" should have 1 favorite
+      And I should see "$aai $ror"
 
   @edit
   Scenario: I can edit my bookmarks
-    Given "user" has bookmarked the Client "ROR"
-      And "user" has bookmarked the Client "AAI"
+    Given "dreadpirateroberts" has bookmarked the Client "ROR"
+      And "dreadpirateroberts" has bookmarked the Client "AAI"
     When I go to the list of my favorites
       And I follow "edit-ror_company_name_here"
       And I fill in "Name" with "Ruby on Rails is cool"
@@ -87,8 +100,8 @@ Feature: Favorites
 
   @delete
   Scenario: I can delete a bookmark
-    Given "user" has bookmarked the Client "ROR"
-      And "user" has bookmarked the Client "AAI"
+    Given "dreadpirateroberts" has bookmarked the Client "ROR"
+      And "dreadpirateroberts" has bookmarked the Client "AAI"
     When I go to the list of my favorites
       And I follow "delete-ror_company_name_here"
     Then I should be on the list of my favorites
@@ -97,8 +110,8 @@ Feature: Favorites
 
   @filtering @wip
   Scenario: I can filter my bookmarks
-    Given "user" has bookmarked the Client "ROR"
-      And "user" has bookmarked the Client "AAI"
+    Given "dreadpirateroberts" has bookmarked the Client "ROR"
+      And "dreadpirateroberts" has bookmarked the Client "AAI"
       And I am on the home page
     When I fill in "fav-filter" with "ROR"
     Then I should see "ROR Company Name Here" within "#sidebar .favorites"
