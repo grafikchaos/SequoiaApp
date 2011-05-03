@@ -4,7 +4,7 @@ Factory.define :user do |u|
   u.username              { Faker::Internet.user_name }
   u.password              'test1234'
   u.password_confirmation { |p| "#{p.password}" }
-  u.sequence(:email)      {|n| "person#{n}@example.com".downcase } # => person1@example.com
+  u.sequence(:email)      { |n| "person#{n}@example.com".downcase } # => person1@example.com
 end
 
 Factory.define :role do |r|

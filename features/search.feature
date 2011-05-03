@@ -97,7 +97,7 @@ Feature: Searching
       And I press "Search"
     Then I should see "ROR"
 
-  @advanced_search @focus
+  @advanced_search
   Scenario: Searching for an Entity by client code and Entity.name
     When I fill in "query" with "$ror login"
       And I press "Search"
