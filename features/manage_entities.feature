@@ -87,7 +87,6 @@ Feature: Manage entities
       | ROR       |  Intranet       | SSH Credentials | ssh         | admin |
       And I am on the client page for "ROR"
     When I follow "Manage Projects"
-    Then show me the page
     Then I should only see 1 delete link
 
   Scenario: Editing an entity

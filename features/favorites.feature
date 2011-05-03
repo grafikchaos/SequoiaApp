@@ -113,6 +113,5 @@ Feature: Favorites
       And I am on the home page
     When I fill in "fav-filter" with "ROR"
     Then I should see "ROR Company Name Here" within "#sidebar .favorites"
-    Then show me the page
       And I should not see "AAI Company Name Here" within "#sidebar .favorites"
       And I should have 2 favorites
