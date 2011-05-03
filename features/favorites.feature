@@ -65,15 +65,14 @@ Feature: Favorites
     Given I am on the home page
     Then I should not see "Favorites" within "#sidebar"
 
-  @javascript @new @focus
+  @javascript @new
   Scenario: Bookmark a client
     Given I am on the home page
     When I fill in "query" with "AAI"
       And I press "Search"
       And I favorite the 1st item in the list
       And I go to the list of my favorites
-    Then "dreadpirateroberts" should have 1 favorite
-      And show me the page
+    Then I should have 1 favorite
 
   @javascript @new
   Scenario: Bookmark a query string
@@ -82,8 +81,7 @@ Feature: Favorites
       And I press "Search"
       And I favorite the query string
       And I go to the list of my favorites
-    Then "dreadpirateroberts" should have 1 favorite
-      And I should see "$aai $ror"
+    Then I should have 1 favorite
 
   @edit
   Scenario: I can edit my bookmarks
@@ -108,12 +106,13 @@ Feature: Favorites
       And I should not see "ROR Company Name Here"
       And I should have 1 favorites
 
-  @filtering @wip
+  @javascript @filtering
   Scenario: I can filter my bookmarks
     Given "dreadpirateroberts" has bookmarked the Client "ROR"
       And "dreadpirateroberts" has bookmarked the Client "AAI"
       And I am on the home page
     When I fill in "fav-filter" with "ROR"
     Then I should see "ROR Company Name Here" within "#sidebar .favorites"
+    Then show me the page
       And I should not see "AAI Company Name Here" within "#sidebar .favorites"
       And I should have 2 favorites
