@@ -1,11 +1,23 @@
 @entity_rows
 Feature: Manage entity_rows
   In order to be able to add things to Entities 
-  A user
-  wants [behaviour]
+  As a staff member
+  I want to be able to add more information that defines an Entity
   
   Background: Entity Keys exist, etc.
-    Given the following entity_type records
+    Given the following user records
+      | username               | password           | roles                 |
+      | buttercup              | princess           | staff                 |
+      | valerie                | imnotawitch        | staff                 |
+      | theimpressiveclergyman | truwuv             | staff                 |
+      | humperdinck            | tothedeath         | staff                 |
+      | miraclemax             | toblave            | contractor            |
+      | vizzini                | inconceivable      | staff, financial      |
+      | sixfingeredman         | stopsayingthat     | contractor, financial |
+      | dreadpirateroberts     | asyouwish          | admin, staff          |
+      | inigo                  | preparetodie       | admin, staff          |
+      | fezzik                 | anybodywantapeanut | admin, staff          |
+    And the following entity_type records
       | name            |
       | api             |
       | application     |
@@ -37,9 +49,16 @@ Feature: Manage entity_rows
       | url             | false |
       | username        | false |
       | wsdl url        | false |
+    And I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I have client codes "ROR"
-    And I am logged in as a user with Level 2 clearance
     And the client "ROR" has a project named "Intranet" with domain "intranet.com"
+    And the following Entities exist
+      | client    |  project        | name            | type        | roles |
+      | ROR       |  Intranet       | Admin Login     | application | staff |
+    And the following Entity Rows exist
+      | client    |  project        | entity          | key         | value   |
+      | ROR       |  Intranet       | Admin Login     | password    | 12345   |
+      | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
 
 
   Scenario: Add new entity rows when adding a new entity
@@ -56,12 +75,6 @@ Feature: Manage entity_rows
 
 
   Scenario: Edit entity rows within an existing entity
-    Given the following Entities exist
-      | client    |  project        | name            | type        |
-      | ROR       |  Intranet       | Admin Login     | application |
-    And the following Entity Rows exist
-      | client    |  project        | entity          | key         | value   |
-      | ROR       |  Intranet       | Admin Login     | password    | 12345   |
     And I am on the client page for "ROR"
     When I follow "edit-admin-login"
     And I fill in "entity[entity_rows_attributes][0][value]" with "67890"
@@ -74,13 +87,6 @@ Feature: Manage entity_rows
  
   @javascript
   Scenario: Delete entity rows from an entity
-    Given the following Entities exist
-      | client    |  project        | name            | type        |
-      | ROR       |  Intranet       | Admin Login     | application |
-    And the following Entity Rows exist
-      | client    |  project        | entity          | key         | value   |
-      | ROR       |  Intranet       | Admin Login     | password    | 12345   |
-      | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
     And I am on the client page for "ROR"
     When I follow "edit-admin-login"
     And I delete the 1st Entity Row
@@ -93,13 +99,6 @@ Feature: Manage entity_rows
 
   @javascript  
   Scenario: Undo delete entity rows from an entity
-    Given the following Entities exist
-      | client    |  project        | name            | type        |
-      | ROR       |  Intranet       | Admin Login     | application |
-    And the following Entity Rows exist
-      | client    |  project        | entity          | key         | value   |
-      | ROR       |  Intranet       | Admin Login     | password    | 12345   |
-      | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
     And I am on the client page for "ROR"
     When I follow "edit-admin-login"
     And I delete the 1st Entity Row
@@ -113,13 +112,6 @@ Feature: Manage entity_rows
 
   @masking
   Scenario: Mask the value for keys so marked
-    Given the following Entities exist
-      | client    |  project        | name            | type        |
-      | ROR       |  Intranet       | Admin Login     | application |
-    And the following Entity Rows exist
-      | client    |  project        | entity          | key         | value   |
-      | ROR       |  Intranet       | Admin Login     | port        | 12345   |
-      | ROR       |  Intranet       | Admin Login     | username    | fezzik  |
     When I go to the client page for "ROR"
     Then I should see "port:"
     And I should see "*****"
