@@ -5,7 +5,19 @@ Feature: Searching
   I want to be able to make complex searches against clients, projects, and entities
   
   Background: Make sure I'm logged in
-    Given I am logged in as a user
+    Given the following user records
+      | username               | password           | roles                 |
+      | buttercup              | princess           | staff                 |
+      | valerie                | imnotawitch        | staff                 |
+      | theimpressiveclergyman | truwuv             | staff                 |
+      | humperdinck            | tothedeath         | staff                 |
+      | miraclemax             | toblave            | contractor            |
+      | vizzini                | inconceivable      | staff, financial      |
+      | sixfingeredman         | stopsayingthat     | contractor, financial |
+      | dreadpirateroberts     | asyouwish          | admin, staff          |
+      | inigo                  | preparetodie       | admin, staff          |
+      | fezzik                 | anybodywantapeanut | admin, staff          |
+    And I am logged in as "dreadpirateroberts" with password "asyouwish"
     And I have client codes AA, AAA, AAI, ROR
     And the client "ROR" has a default project named "Intranet" with domain "intranet.com" 
     And the following entity_type records
@@ -52,11 +64,11 @@ Feature: Searching
       | username        | false |
       | wsdl url        | false |
     And the following Entities exist
-      | client | project  | name              | type            |
-      | AAI    | Default  | external svn user | version control |
-      | ROR    | Intranet | SSH Credentials   | ssh             |
-      | ROR    | Intranet | Admin Login       | application     |
-      | ROR    | Intranet | User Login        | application     |
+      | client | project  | name              | type            | roles |
+      | AAI    | Default  | external svn user | version control | staff |
+      | ROR    | Intranet | SSH Credentials   | ssh             | staff |
+      | ROR    | Intranet | Admin Login       | application     | staff |
+      | ROR    | Intranet | User Login        | application     | staff |
     And the following Entity Rows exist
       | client | project  | entity            | key      | value       |
       | AAI    | Default  | external svn user | username | deploy      |
@@ -73,33 +85,33 @@ Feature: Searching
   @clients
   Scenario: Search Clients by client code
     When I fill in "query" with "AA"
-    And I press "Search"
+      And I press "Search"
     Then I should see "AA"
-    And I should see "AAA"
-    And I should see "AAI"
-    And I should not see "ROR"
+      And I should see "AAA"
+      And I should see "AAI"
+      And I should not see "ROR"
   
   @projects
   Scenario: Searching for a client by project domain name
     When I fill in "query" with "intran"
-    And I press "Search"
+      And I press "Search"
     Then I should see "ROR"
 
-  @advanced_search
+  @advanced_search @focus
   Scenario: Searching for an Entity by client code and Entity.name
     When I fill in "query" with "$ror login"
-    And I press "Search"
+      And I press "Search"
     Then I should see "ROR"
-    And I should see "Admin Login"
-    And I should see "User Login"
+      And I should see "Admin Login"
+      And I should see "User Login"
 
   @advanced_search @invalid
   Scenario Outline: Invalid Advanced Search: Searching for an Entity by client code with a symbol other than '$' in front of client code
     When I fill in "query" with "<search string>"
-    And I press "Search"
+      And I press "Search"
     Then I should not see "ROR"
-    And I should not see "Admin Login"
-    And I should not see "User Login"
+      And I should not see "Admin Login"
+      And I should not see "User Login"
     
     Examples:
       | search string |
@@ -135,83 +147,36 @@ Feature: Searching
   @advanced_search
   Scenario: Searching for an Entity by client code and EntityRow.value (:encrypted_value)
     When I fill in "query" with "$ror admin"
-    And I press "Search"
+      And I press "Search"
     Then I should see "ROR"
-    And I should see "Admin Login"
-    And I should see "admin"
+      And I should see "Admin Login"
+      And I should see "admin"
     
   @advanced_search
   Scenario: Searching for an Entity by client code and EntityType.name
     When I fill in "query" with "$ror #ssh"
-    And I press "Search"
+      And I press "Search"
     Then I should see "ROR"
-    And I should see "SSH Credentials"
-    And I should see "rubyonrails"
+      And I should see "SSH Credentials"
+      And I should see "rubyonrails"
 
   @advanced_search
   Scenario: Searching for an Entities by one client code and multiple EntityTypes
     When I fill in "query" with "$ror #ssh #application"
-    And I press "Search"
+      And I press "Search"
     Then I should see "ROR"
-    And I should see "SSH Credentials"
-    And I should see "rubyonrails"
-    And I should see "Admin Login"
-    And I should see "admin"
-    And I should see "User Login"
-    And I should see "roruser"
+      And I should see "SSH Credentials"
+      And I should see "rubyonrails"
+      And I should see "Admin Login"
+      And I should see "admin"
+      And I should see "User Login"
+      And I should see "roruser"
   
   @advanced_search
   Scenario: Searching for an Entities by one client code and multiple EntityTypes and filtering by Entity name of last EntityType
     When I fill in "query" with "$ror #ssh #application admin"
-    And I press "Search"
-    Then I should see "ROR"
-    And I should see "SSH Credentials"
-    And I should see "rubyonrails"
-    And I should see "Admin Login"
-    And I should see "admin"
-    And I should not see "User Login"
-    And I should not see "roruser"
-
-  @advanced_search
-  Scenario: Searching for an Entities by one client code and multiple EntityTypes and filtering by Entity name of first EntityType
-    When I fill in "query" with "$ror #application admin #ssh"
-    And I press "Search"
-    Then I should see "ROR"
-    And I should see "SSH Credentials"
-    And I should see "rubyonrails"
-    And I should see "Admin Login"
-    And I should see "admin"
-    And I should not see "User Login"
-    And I should not see "roruser"
-  
-  @advanced_search
-  Scenario: Searching for an Entity by client code and EntityTypeAlias.name
-    When I fill in "query" with "$ror #shell"
-    And I press "Search"
-    Then I should see "ROR"
-    And I should see "SSH Credentials"
-    And I should see "rubyonrails"
-  
-  @advanced_search
-  Scenario: Searching for all Entities with multiple client codes
-    When I fill in "query" with "$aai $ror"
-    And I press "Search"
-    Then I should see "AAI"
-    And I should see "ROR"
-    And I should see "external svn user"
-    And I should see "deploy"
-    And I should see "SSH Credentials"
-    And I should see "rubyonrails"
-    And I should see "Admin Login"
-    And I should see "admin"
-    And I should see "User Login"
-    And I should see "roruser"
-
-  @advanced_search @todo
-    Scenario: Searching for an Entities by one client code and Entity Type second
-      When I fill in "query" with "$ror admin #ssh"
       And I press "Search"
-      Then I should see "ROR"
+    Then I should see "ROR"
       And I should see "SSH Credentials"
       And I should see "rubyonrails"
       And I should see "Admin Login"
@@ -219,16 +184,63 @@ Feature: Searching
       And I should not see "User Login"
       And I should not see "roruser"
 
+  @advanced_search
+  Scenario: Searching for an Entities by one client code and multiple EntityTypes and filtering by Entity name of first EntityType
+    When I fill in "query" with "$ror #application admin #ssh"
+      And I press "Search"
+    Then I should see "ROR"
+      And I should see "SSH Credentials"
+      And I should see "rubyonrails"
+      And I should see "Admin Login"
+      And I should see "admin"
+      And I should not see "User Login"
+      And I should not see "roruser"
+  
+  @advanced_search
+  Scenario: Searching for an Entity by client code and EntityTypeAlias.name
+    When I fill in "query" with "$ror #shell"
+      And I press "Search"
+    Then I should see "ROR"
+      And I should see "SSH Credentials"
+      And I should see "rubyonrails"
+  
+  @advanced_search
+  Scenario: Searching for all Entities with multiple client codes
+    When I fill in "query" with "$aai $ror"
+      And I press "Search"
+    Then I should see "AAI"
+      And I should see "ROR"
+      And I should see "external svn user"
+      And I should see "deploy"
+      And I should see "SSH Credentials"
+      And I should see "rubyonrails"
+      And I should see "Admin Login"
+      And I should see "admin"
+      And I should see "User Login"
+      And I should see "roruser"
+
+  @advanced_search @todo
+    Scenario: Searching for an Entities by one client code and Entity Type second
+      When I fill in "query" with "$ror admin #ssh"
+        And I press "Search"
+      Then I should see "ROR"
+        And I should see "SSH Credentials"
+        And I should see "rubyonrails"
+        And I should see "Admin Login"
+        And I should see "admin"
+        And I should not see "User Login"
+        And I should not see "roruser"
+
   @advanced_search @now
     Scenario: Advanced searches should save a QueryString object
       Given I have no query_strings
       When I fill in "query" with "$ror #ssh"
-      And I press "Search"
+        And I press "Search"
       Then I should have 1 query_string
 
   @advanced_search @now
     Scenario: Regular searches should not save a QueryString object
       Given I have no query_strings
       When I fill in "query" with "aai"
-      And I press "Search"
+        And I press "Search"
       Then I should have 0 query_strings

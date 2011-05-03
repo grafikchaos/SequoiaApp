@@ -4,10 +4,15 @@ end
 
 Given /^the following Entities exist$/ do |table|
   table.hashes.each do |row|
-    client = Client.find(row['client'])
-    project = Project.find_by_name_and_client_id(row['project'], client.id)
+    client      = Client.find(row['client'])
+    project     = Project.find_by_name_and_client_id(row['project'], client.id)
     entity_type = EntityType.find_by_name(row['type'])
-    Factory.create(:entity, :name => row['name'], :project_id => project.id, :entity_type_id => entity_type.id, :clearance => row['level'])
+    entity      = Factory.create(:entity, :name => row['name'], :project_id => project.id, :entity_type_id => entity_type.id)
+    
+    row['roles'].split(', ').each do |role_name|
+      role = Role.find_or_create_by_name(role_name)
+      Factory.create(:entity_role, :entity_id => entity.id, :role_id => role.id)
+    end
   end
 end
 

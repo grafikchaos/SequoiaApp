@@ -17,6 +17,7 @@ Given /^the following (.+) records?$/ do |factory, table|
           Factory.create(:entity_type_alias, :entity_type_id => type.id, :name => aka)
         end
       end
+  
     else
       table.hashes.each do |hash|
         Factory.create(factory, hash)

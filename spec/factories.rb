@@ -16,6 +16,12 @@ Factory.define :user_role do |assign|
   assign.role_id 3
 end
 
+Factory.define :entity_role do |er|
+  er.entity_id 1
+  er.role_id 3
+end
+
+
 Factory.define :client do |c|
   c.name                    { Faker::Company.name }
   c.sequence(:client_code)  { |n| "ROR#{n}" } # => ROR1 
