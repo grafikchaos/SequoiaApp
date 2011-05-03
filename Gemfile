@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails'
 
-gem 'mysql2'
+gem 'mysql2', '< 0.3'
 gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
