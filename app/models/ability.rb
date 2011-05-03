@@ -39,16 +39,15 @@ class Ability
         favorite.user_id == user.id
       end
 
+      # Entities
+      can :manage, Entity
+
       # TODO: DEPRECATED Projects 
       can :destroy, Project do |project|
         access = true
-        project.entities.each { |ent| access = false if ent.clearance < user.clearance}
+        project.entities.each { |ent| access = false if cannot?(:destroy, ent) }
         access
       end
-
-      # Entities
-      can [:read, :update, :destroy], Entity
-      can :create, Entity
 
       # Own user account
       can :update, User, :id => user.id
@@ -67,7 +66,7 @@ class Ability
     end
 
     # disable access to Entities if the Entity_Roles doesn't have access to it 
-    cannot :read, Entity do |entity|
+    cannot [:read, :update, :destroy], Entity do |entity|
       intersection = entity.roles & user.roles
       intersection.empty?
     end

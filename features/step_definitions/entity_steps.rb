@@ -9,9 +9,11 @@ Given /^the following Entities exist$/ do |table|
     entity_type = EntityType.find_by_name(row['type'])
     entity      = Factory.create(:entity, :name => row['name'], :project_id => project.id, :entity_type_id => entity_type.id)
     
-    row['roles'].split(', ').each do |role_name|
-      role = Role.find_or_create_by_name(role_name)
-      Factory.create(:entity_role, :entity_id => entity.id, :role_id => role.id)
+    unless row['roles'].nil?
+      row['roles'].split(', ').each do |role_name|
+        role = Role.find_or_create_by_name(role_name)
+        Factory.create(:entity_role, :entity_id => entity.id, :role_id => role.id)
+      end
     end
   end
 end
