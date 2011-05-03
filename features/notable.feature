@@ -8,12 +8,12 @@ Feature: Notable
     Given I am logged in as a user
       And I have client codes ROR
       And the following entity_type records
-        | name            |
-        | VPN             |
+        | name |
+        | VPN  |
 
   @clients
   Scenario: Client form should have a Note text area
-    Given I am on the search results page
+    Given I am on the home page
     When I follow "New Client"
     Then I should see "Notes"
   
@@ -29,7 +29,8 @@ Feature: Notable
       And I should see "Client was successfully created"
       And I should see "APPL"
       And I should see "OS X LIGER" within "#project"
-      And I should see "It's pretty much my favorite animal." within "#sidebar"
+    When I follow "Notes"
+    Then I should see "It's pretty much my favorite animal."
 
   @projects
   Scenario: Project form should have a Note text area
@@ -48,7 +49,8 @@ Feature: Notable
     Then I should see "Project was successfully created"
       And I should be on the client page for "APPL"
       And I should see "Sabertooth" within "#project"
-      And I should see "Filepath is /var/www/path/to/application" within "#sidebar"
+    When I follow "Notes"
+    Then I should see "Filepath is /var/www/path/to/application"
 
   @entities
   Scenario: Entity form should have a Note text area
@@ -83,8 +85,9 @@ Feature: Notable
       And I should see "Client was successfully created"
       And I should see "APPL"
       And I should see "OS X LIGER" within "#project"
-      And I should see "bold text" within "#sidebar"
-      And I should not see "**bold text**" within "#sidebar"
+    When I follow "Notes"
+    Then I should see "bold text"
+      And I should not see "**bold text**"
 
   @clients @textile
   Scenario: Notes render textile correctly
@@ -99,5 +102,6 @@ Feature: Notable
       And I should see "Client was successfully created"
       And I should see "APPL"
       And I should see "OS X LIGER" within "#project"
-      And I should see "Superscript" within "#sidebar"
-      And I should not see "^Superscript^" within "#sidebar"
+    When I follow "Notes"
+    Then I should see "Superscript"
+      And I should not see "^Superscript^"

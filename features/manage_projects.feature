@@ -1,3 +1,4 @@
+@projects
 Feature: Manage projects
   In order to quickly view entities related to a client's project
   As a staff member
@@ -8,7 +9,7 @@ Feature: Manage projects
       And I have client codes ROR
       And I am on the client page for "ROR"
 
-  @clients @projects @staff
+  @clients @staff
   Scenario: Create a valid project for a client
     Given the client "ROR" does not have a project named "Intranet"
     When I follow "Manage Projects"
@@ -21,7 +22,7 @@ Feature: Manage projects
       And I should see "Intranet"
       #And I should see "intranet.ror.local"
 
-  @clients @projects @staff
+  @clients @staff
   Scenario: Adding a project with no project name
     Given the client "ROR" does not have a project named "Intranet"
     When I follow "Manage Projects"
@@ -33,7 +34,7 @@ Feature: Manage projects
       And the client "ROR" should not have a project named "Intranet"
       And the client "ROR" should have a project named "Default"
 
-  @projects @staff
+  @staff
   Scenario: Editing a project
     Given the client "ROR" has a default project named "Intranet" with domain "intranet.com"
     When I follow "Manage Projects"
@@ -45,7 +46,7 @@ Feature: Manage projects
       And I should see "A Project"
       #And I should see "google.com"
 
-  @projects @staff
+  @staff
   Scenario: Deleting a project
     Given the client "ROR" has a project named "Intranet" with domain "intranet.com"
       And the client "ROR" has 2 projects
