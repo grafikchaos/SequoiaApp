@@ -10,6 +10,7 @@ Given /^the following (.+) records?$/ do |factory, table|
           Factory.create(:user_role, :user_id => user.id, :role_id => role.id)
         end
       end
+
     when 'entity_type_alias'
       table.hashes.each do |row|
         type = EntityType.find_by_name(row['type'])
@@ -17,6 +18,7 @@ Given /^the following (.+) records?$/ do |factory, table|
           Factory.create(:entity_type_alias, :entity_type_id => type.id, :name => aka)
         end
       end
+  
     else
       table.hashes.each do |hash|
         Factory.create(factory, hash)
