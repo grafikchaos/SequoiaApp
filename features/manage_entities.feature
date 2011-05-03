@@ -1,4 +1,4 @@
-@jake
+@entities
 Feature: Manage entities
   In order to store the sensitive or hard-to-remember information about a client's project
   As a staff member
@@ -24,12 +24,12 @@ Feature: Manage entities
     And I am logged in as a user
     And the client "ROR" has a project named "Intranet" with domain "intranet.com"
   
-  @entities @authenticate
+  @authenticate
   Scenario: New Entity button is present on the client's show template
     When I go to the client page for "ROR"
     Then I should see "New Entity"
 
-  @wip @entities @authenticate
+  @wip @authenticate
   Scenario: Default Entity form has Entity Row subform fields
     Given I am on the client page for "ROR"
     When I follow "New Entity"
@@ -38,7 +38,6 @@ Feature: Manage entities
       And "form#new_entity" should have 3 "/entity[entity_rows_attributes][\d+][entity_key_id]"
       And "form#new_entity" should have 3 "/entity[entity_rows_attributes][\d+][value]"
 
-  @entities 
   Scenario: Add an entity to an existing project
     Given I am on the client page for "ROR"
     When I follow "New Entity"
@@ -49,7 +48,6 @@ Feature: Manage entities
       And I should see "Entity was successfully created"
       And the project "Intranet" for the client "ROR" should have 1 entity
 
-  @entities
   Scenario: Filtering entities by project
     Given the client "ROR" has a project named "Client App" with domain "tester.com"
       And the client "ROR" has a project named "Wordpress Blog" with domain "blog.tester.com"
@@ -70,7 +68,7 @@ Feature: Manage entities
       And I should not see "SSH Credentials"
       And I should not see "Admin Login"
 
-  @entities @clearance
+  @clearance
   Scenario: Restricting access to entities based on clearance level
     Given the following Entities exist
       | client    |  project        | name            | type        | roles |
@@ -82,7 +80,7 @@ Feature: Manage entities
       And I should see "User Login"
       And I should not see "SSH Credentials"
 
-  @entities @projects @clearance
+  @projects @clearance
   Scenario: User can't delete project containing entities with higher clearance
     Given the following Entities exist
       | client    |  project        | name            | type        | roles |
@@ -92,7 +90,6 @@ Feature: Manage entities
     Then show me the page
     Then I should only see 1 delete link
 
-  @entities
   Scenario: Editing an entity
     Given the following Entities exist
       | client    |  project        | name            | type        | roles |
@@ -104,7 +101,6 @@ Feature: Manage entities
     Then I should be on the list of entities for "ROR"
       And I should see "New SSH Credentials"
 
-  @entities
   Scenario: Deleting an entity
     Given the client "ROR" has a project named "Client App" with domain "tester.com"
       And the client "ROR" has a project named "Wordpress Blog" with domain "blog.tester.com"
