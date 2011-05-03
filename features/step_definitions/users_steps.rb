@@ -1,5 +1,7 @@
 Given /^I am logged in as a user$/ do
   user = Factory.create(:user)
+  role = Factory.create(:role)
+  Factory.create(:user_role, :user_id => user.id, :role_id => role.id)
   visit(new_user_session_path)
   fill_in("user[username]", :with => user.username )
   fill_in("user[password]", :with => 'test1234' )
