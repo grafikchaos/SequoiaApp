@@ -10,6 +10,7 @@ Given /^the following (.+) records?$/ do |factory, table|
           Factory.create(:user_role, :user_id => user.id, :role_id => role.id)
         end
       end
+
     when 'entity_type_alias'
       table.hashes.each do |row|
         type = EntityType.find_by_name(row['type'])

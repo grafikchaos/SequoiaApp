@@ -40,11 +40,11 @@ Feature: Entities should have a configurable form
       | username        | false |
       | wsdl url        | false |
     And the following Entities exist
-      | client | project  | name              | type            |
-      | AAI    | Default  | external svn user | version control |
-      | ROR    | Intranet | SSH Credentials   | ssh             |
-      | ROR    | Intranet | Admin Login       | application     |
-      | ROR    | Intranet | User Login        | application     |
+      | client | project  | name              | type            | roles |
+      | AAI    | Default  | external svn user | version control | staff |
+      | ROR    | Intranet | SSH Credentials   | ssh             | staff | 
+      | ROR    | Intranet | Admin Login       | application     | staff |
+      | ROR    | Intranet | User Login        | application     | staff |
     And the following user records
       | username           | password  | roles        |
       | dreadpirateroberts | asyouwish | admin, staff |
@@ -55,14 +55,14 @@ Feature: Entities should have a configurable form
   Scenario: Admins can add a configuration to an entity type
     Given I am on the list of Entity Types
     When I follow "New Entity Type"
-    And I fill in "Name" with "Test Type"
-    And I select "protocol" from "entity_type[form_configs_attributes][0][entity_key_id]"
-    And I select "wsdl url" from "entity_type[form_configs_attributes][1][entity_key_id]"
-    And I select "token" from "entity_type[form_configs_attributes][2][entity_key_id]"
-    And I press "Create Entity type"
-    And I should see "Entity Type was successfully created"
-    And I go to "ROR"'s new Entity page for entity type "Test Type"
+      And I fill in "Name" with "Test Type"
+      And I select "protocol" from "entity_type[form_configs_attributes][0][entity_key_id]"
+      And I select "wsdl url" from "entity_type[form_configs_attributes][1][entity_key_id]"
+      And I select "token" from "entity_type[form_configs_attributes][2][entity_key_id]"
+      And I press "Create Entity Type"
+      And I should see "Entity Type was successfully created"
+      And I go to "ROR"'s new Entity page for entity type "Test Type"
     Then I should see "protocol" within "#entity_rows_form"
-    And I should see "wsdl url" within "#entity_rows_form"
-    And I should see "token" within "#entity_rows_form"
-    And I should not see "transaction key" within "#entity_rows_form"
+      And I should see "wsdl url" within "#entity_rows_form"
+      And I should see "token" within "#entity_rows_form"
+      And I should not see "transaction key" within "#entity_rows_form"
