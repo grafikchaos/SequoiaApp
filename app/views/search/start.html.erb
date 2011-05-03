@@ -1,5 +1,11 @@
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
 <%= content_for :page_title, 'Home' %>
+<%= content_for :sidebar, render('sidebar') -%>
+<%= content_for :main_action do %>
+  <%- if can? :create, Client -%>
+    <%= link_to 'New Client', new_client_path, :id => 'new-client', :class => 'button' %>
+  <%- end -%>
+<% end %>
+
 
 <div id="big-search-form">
   <%= render 'form' %>

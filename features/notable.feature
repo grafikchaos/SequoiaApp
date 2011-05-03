@@ -8,12 +8,12 @@ Feature: Notable
     Given I am logged in as a user
       And I have client codes ROR
       And the following entity_type records
-        | name            |
-        | VPN             |
+        | name |
+        | VPN  |
 
-  @clients
+  @clients @focus
   Scenario: Client form should have a Note text area
-    Given I am on the search results page
+    Given I am on the home page
     When I follow "New Client"
     Then I should see "Notes"
   
