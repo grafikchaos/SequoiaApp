@@ -9,6 +9,7 @@ end
 
 Factory.define :role do |r|
   r.name 'staff'
+  r.is_system false
 end
 
 Factory.define :user_role do |assign|
