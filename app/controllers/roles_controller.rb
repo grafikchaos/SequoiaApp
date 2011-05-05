@@ -10,15 +10,6 @@ class RolesController < ApplicationController
     end
   end
 
-  # GET /roles/1
-  # GET /roles/1.xml
-  def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @role }
-    end
-  end
-
   # GET /roles/new
   # GET /roles/new.xml
   def new
