@@ -59,6 +59,8 @@ module NavigationHelpers
           entity_keys_path
         when "users"
           users_path
+        when 'roles'
+          roles_path
       end
 
     when /the new (.*) page$/i

@@ -30,6 +30,10 @@ Given /^I have no (.*)$/ do |model|
   model.pluralize.singularize.camelcase.constantize.delete_all
 end
 
+Given /^there are no (.*) to begin with$/ do |model|
+  model.pluralize.singularize.camelcase.constantize.delete_all
+end
+
 When /^I delete the (\d+)\w{2} Entity Row$/ do |number|
   # This will fail if we move the password generator link
   within("#entity_rows_form .fieldset-wrapper .entity-row-field:nth-child(#{number.to_i + 1})") do
