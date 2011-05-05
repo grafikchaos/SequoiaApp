@@ -108,3 +108,43 @@ Feature: CRUDding user and entity roles
     When I go to the edit role page for "Driver" 
     Then I should see "Edit Role"
 
+  @assign_roles
+  Scenario: Newly created role is available to assign when editing users
+    Given I am logged in as "inigo" with password "preparetodie"
+      And I am on the list of roles
+    When I follow "New Role"
+      And I fill in "Name" with "sales"
+      And I press "Create Role"
+    Then I should be on the list of roles
+      And I should see "sales"
+    When I go to the list of users
+      And I follow "edit-fezzik"
+      And I check "Sales"
+      And I press "Update User"
+    Then I should be on the list of users
+      And "fezzik" should have the "sales" role
+      And "fezzik" should have the "admin" role
+      And "fezzik" should have the "staff" role
+  
+  
+  @assign_roles
+  Scenario: Assign multiple roles to user
+    Given I am logged in as "inigo" with password "preparetodie"
+      And I am on the list of roles
+    When I follow "New Role"
+      And I fill in "Name" with "sales"
+      And I press "Create Role"
+    Then I should be on the list of roles
+      And I should see "sales"
+    When I go to the list of users
+      And I follow "edit-valerie"
+      And I check "Financial"
+      And I check "Sales"
+      And I press "Update User"
+    Then I should be on the list of users
+      And "valerie" should have the "sales" role
+      And "valerie" should have the "financial" role
+      And "valerie" should have the "staff" role
+  
+  
+
