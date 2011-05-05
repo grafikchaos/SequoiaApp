@@ -59,7 +59,7 @@ module NavigationHelpers
           entity_keys_path
         when "users"
           users_path
-        when 'roles'
+        when "roles"
           roles_path
       end
 
@@ -76,8 +76,14 @@ module NavigationHelpers
       class_name = $1.downcase
       case class_name
         when "entity type"
-          @entity = EntityType.find("#{$2}".downcase)
-          edit_entity_type_path(@entity)
+          entity = EntityType.find("#{$2}".downcase)
+          edit_entity_type_path(entity)
+        when "role"
+          role = Role.find_by_name($2)
+          edit_role_path(role)
+        when "user"
+          user = User.find_by_username($2)
+          edit_user_path(user)
       end
       
     when /^a non-existent page$/i

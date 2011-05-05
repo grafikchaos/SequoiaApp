@@ -1,4 +1,4 @@
-@roles @jake
+@roles
 Feature: CRUDding user and entity roles
   In order to restrict what resources users may create, read, update or delete
   As a fan of flexible ACLs
@@ -83,7 +83,7 @@ Feature: CRUDding user and entity roles
       And I should see "customer service"
       And I should see "Role was successfully updated"
   
-  @admin
+  @system_roles @admin
   Scenario: Admins can't edit roles that are  system roles
     Given I am logged in as "inigo" with password "preparetodie"
       And I am on the list of roles
@@ -92,4 +92,19 @@ Feature: CRUDding user and entity roles
       And I should not see "edit-staff"
       And I should not see "edit-financial"
       And I should not see "edit-contractor"
-  
+
+  @system_roles
+  Scenario: Not even owners can edit/delete system roles
+    Given I am logged in as "buttercup" with password "princess"
+      And the following role records
+        | name    | is_system |
+        | Tester  | true      |
+        | Biker   | true      |
+        | Driver  | false     |
+    When I go to the edit role page for "Tester" 
+    Then I should see "Access Denied"
+    When I go to the edit role page for "Biker" 
+    Then I should see "Access Denied"
+    When I go to the edit role page for "Driver" 
+    Then I should see "Edit Role"
+

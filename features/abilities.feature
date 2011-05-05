@@ -17,6 +17,7 @@ Feature: Abilities - Roles and Permissions
       | dreadpirateroberts     | asyouwish          | admin, staff          |
       | inigo                  | preparetodie       | admin, staff          |
       | fezzik                 | anybodywantapeanut | admin, staff          |
+      | theinvisibleman        | ellison            | owner                 |
     And the following entity_type records
       | name            |
       | api             |
@@ -217,7 +218,6 @@ Feature: Abilities - Roles and Permissions
       And I press "Create Entity Key"
     Then I should see "Name has already been taken"
   
-
   @entityKeys @edit
   Scenario: Admins can edit Entity Keys
     Given I am logged in as "dreadpirateroberts" with password "asyouwish"
@@ -268,7 +268,6 @@ Feature: Abilities - Roles and Permissions
       And I press "Create User"
     Then I should be on the list of Users
       And I should see "tester"
-    
 
   @users @fail
   Scenario: Form re-renders correctly when the create fails
@@ -300,6 +299,14 @@ Feature: Abilities - Roles and Permissions
     Then I should be on the list of Users
       And I should see "mandypatinkin"
       And I should not see "inigo"
+
+  @users @edit @owner
+  Scenario: No one can edit owners except owners
+    Given I am logged in as "dreadpirateroberts" with password "asyouwish"
+    When I go to the edit user page for "theinvisibleman"
+    Then I should see "Access Denied"
+    When I go to the edit user page for "buttercup"
+    Then I should see "Editing buttercup"
     
   @users @fail
   Scenario: Form re-renders correctly when the create fails

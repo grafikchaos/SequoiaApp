@@ -71,10 +71,6 @@ class Ability
       intersection.empty?
     end
     
-    # User-wide abilities
-    cannot [:update, :destroy], Role, :is_system => true
-    cannot :destroy, User, :id => user.id
-    
     # OWNER
     if user.has_role? :owner
       can :manage, :all
@@ -82,6 +78,9 @@ class Ability
       can :assign_owner_role, User
     end
  
+    # User-wide abilities
+    cannot [:update, :destroy], Role, :is_system => true
+    cannot :destroy, User, :id => user.id
  
   end
 
