@@ -173,7 +173,7 @@ ActiveRecord::Schema.define(:version => 20110427041320) do
     t.datetime "updated_at"
   end
 
-  add_index "roles", ["name"], :name => "index_roles_on_name"
+  add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

@@ -222,7 +222,18 @@ Feature: CRUDding user and entity roles
       And I should not see "Quickbooks Web"
       And I should not see "Safari Bookshelf"
   
-  
-  
-  
-  
+  @jake
+  Scenario: Staffpeople can assign roles to an entity
+    Given I am logged in as "inigo" with password "preparetodie"
+      And I have client codes "AAI"
+      And the client "AAI" has a project named "Office" with domain "augustash.com"
+      And the following entity_type records
+        | name    |
+        | ssh     |
+        | website |
+    When I go to the client page for "AAI"
+      And I follow "New Entity"
+    Then I should see "Roles"
+      And I should see "Admin"
+      And I should see "Staff"
+      And I should see "Financial"
