@@ -97,10 +97,10 @@ Feature: CRUDding user and entity roles
   Scenario: Not even owners can edit/delete system roles
     Given I am logged in as "buttercup" with password "princess"
       And the following role records
-        | name    | is_system |
-        | Tester  | true      |
-        | Biker   | true      |
-        | Driver  | false     |
+        | name   | is_system |
+        | Tester | true      |
+        | Biker  | true      |
+        | Driver | false     |
     When I go to the edit role page for "Tester" 
     Then I should see "Access Denied"
     When I go to the edit role page for "Biker" 
@@ -145,6 +145,73 @@ Feature: CRUDding user and entity roles
       And "valerie" should have the "sales" role
       And "valerie" should have the "financial" role
       And "valerie" should have the "staff" role
+      
+  Scenario: New roles should not have access to any Entity by default
+    Given I am logged in as "inigo" with password "preparetodie"
+      And I have client codes "AAI"
+      And the client "AAI" has a project named "Office" with domain "augustash.com"
+      And the following entity_type records
+        | name    |
+        | ssh     |
+        | website |
+      And the following Entities exist
+        | client | project | name             | type    | roles     |
+        | AAI    | Office  | WHISKEY          | ssh     | admin     |
+        | AAI    | Office  | Quickbooks Web   | website | financial |
+        | AAI    | Office  | Safari Bookshelf | website | staff     |
+        | AAI    | Office  | Sugar CRM Login  | website | staff     |
+      And I am on the list of roles
+    When I follow "New Role"
+      And I fill in "Name" with "sales"
+      And I press "Create Role"
+    Then I should be on the list of roles
+      And I should see "sales"
+    When I go to the list of users
+      And I follow "edit-inigo"
+      And I uncheck "Staff"
+      And I check "Sales"
+      And I press "Update User"
+    Then I should be on the list of users
+      And "inigo" should have the "sales" role
+      And "inigo" should have the "admin" role
+      And "inigo" should not have the "staff" role
+    When I go to the client page for "AAI"
+    Then I should see "WHISKEY"
+      And I should not see "Quickbooks Web"
+      And I should not see "Safari Bookshelf"
+      And I should not see "Sugar CRM Login"
+    
+  
+  Scenario: New roles may only read Entities that have allowed access to the new role
+    Given I am logged in as "inigo" with password "preparetodie"
+      And I have client codes "AAI"
+      And the client "AAI" has a project named "Office" with domain "augustash.com"
+      And the following entity_type records
+        | name    |
+        | ssh     |
+        | website |
+      And the following Entities exist
+        | client | project | name             | type    | roles        |
+        | AAI    | Office  | WHISKEY          | ssh     | admin, staff |
+        | AAI    | Office  | Quickbooks Web   | website | financial    |
+        | AAI    | Office  | Safari Bookshelf | website | staff        |
+        | AAI    | Office  | Sugar CRM Login  | website | sales        |
+    When I go to the list of users
+      And I follow "edit-inigo"
+      And I uncheck "Staff"
+      And I check "Sales"
+      And I press "Update User"
+    Then I should be on the list of users
+      And "inigo" should have the "sales" role
+      And "inigo" should have the "admin" role
+      And "inigo" should not have the "staff" role
+    When I go to the client page for "AAI"
+    Then I should see "WHISKEY"
+      And I should see "Sugar CRM Login"
+      And I should not see "Quickbooks Web"
+      And I should not see "Safari Bookshelf"
   
   
-
+  
+  
+  

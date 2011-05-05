@@ -69,7 +69,7 @@ Feature: Manage entities
       And I should not see "Admin Login"
 
   @clearance
-  Scenario: Restricting access to entities based on clearance level
+  Scenario: Restricting access to entities based on the user's role
     Given the following Entities exist
       | client    |  project        | name            | type        | roles |
       | ROR       |  Intranet       | SSH Credentials | ssh         | admin |
@@ -79,15 +79,6 @@ Feature: Manage entities
     Then I should see "Admin Login"
       And I should see "User Login"
       And I should not see "SSH Credentials"
-
-  @projects @clearance
-  Scenario: User can't delete project containing entities with higher clearance
-    Given the following Entities exist
-      | client    |  project        | name            | type        | roles |
-      | ROR       |  Intranet       | SSH Credentials | ssh         | admin |
-      And I am on the client page for "ROR"
-    When I follow "Manage Projects"
-    Then I should only see 1 delete link
 
   Scenario: Editing an entity
     Given the following Entities exist
