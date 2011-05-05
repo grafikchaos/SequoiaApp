@@ -13,6 +13,7 @@ Feature: CRUDding user and entity roles
         | staff      | true      |
         | financial  | true      |
         | contractor | true      |
+        | newrole    | false     |
       And the following user records
         | username               | password           | roles                 |
         | buttercup              | princess           | owner                 |
@@ -84,14 +85,26 @@ Feature: CRUDding user and entity roles
       And I should see "Role was successfully updated"
   
   @system_roles @admin
-  Scenario: Admins can't edit roles that are  system roles
+  Scenario: Admins can't edit roles that are system roles
     Given I am logged in as "inigo" with password "preparetodie"
       And I am on the list of roles
-    Then I should not see "edit-owner"
-      And I should not see "edit-admin"
-      And I should not see "edit-staff"
-      And I should not see "edit-financial"
-      And I should not see "edit-contractor"
+    Then I should not see the CSS "#edit-owner"
+      And I should not see the CSS "#edit-admin"
+      And I should not see the CSS "#edit-staff"
+      And I should not see the CSS "#edit-financial"
+      And I should not see the CSS "#edit-contractor"
+      And I should see the CSS "#edit-newrole"
+
+  @system_roles @admin
+  Scenario: Admins can't delete roles that are system roles
+    Given I am logged in as "inigo" with password "preparetodie"
+      And I am on the list of roles
+    Then I should not see the CSS "#delete-owner"
+      And I should not see the CSS "#delete-admin"
+      And I should not see the CSS "#delete-staff"
+      And I should not see the CSS "#delete-financial"
+      And I should not see the CSS "#delete-contractor"
+      And I should see the CSS "#delete-newrole"
 
   @system_roles
   Scenario: Not even owners can edit/delete system roles
@@ -125,7 +138,6 @@ Feature: CRUDding user and entity roles
       And "fezzik" should have the "sales" role
       And "fezzik" should have the "admin" role
       And "fezzik" should have the "staff" role
-  
   
   @assign_roles
   Scenario: Assign multiple roles to user
@@ -168,19 +180,18 @@ Feature: CRUDding user and entity roles
       And I should see "sales"
     When I go to the list of users
       And I follow "edit-inigo"
-      And I uncheck "Staff"
-      And I check "Sales"
-      And I press "Update User"
-    Then I should be on the list of users
-      And "inigo" should have the "sales" role
-      And "inigo" should have the "admin" role
-      And "inigo" should not have the "staff" role
-    When I go to the client page for "AAI"
-    Then I should see "WHISKEY"
-      And I should not see "Quickbooks Web"
-      And I should not see "Safari Bookshelf"
-      And I should not see "Sugar CRM Login"
-    
+        And I uncheck "Staff"
+        And I check "Sales"
+        And I press "Update User"
+      Then I should be on the list of users
+        And "inigo" should have the "sales" role
+        And "inigo" should have the "admin" role
+        And "inigo" should not have the "staff" role
+      When I go to the client page for "AAI"
+      Then I should see "WHISKEY"
+        And I should not see "Quickbooks Web"
+        And I should not see "Safari Bookshelf"
+        And I should not see "Sugar CRM Login"
   
   Scenario: New roles may only read Entities that have allowed access to the new role
     Given I am logged in as "inigo" with password "preparetodie"
