@@ -81,6 +81,9 @@ module NavigationHelpers
         when "role"
           role = Role.find_by_name($2)
           edit_role_path(role)
+        when "user"
+          user = User.find_by_username($2)
+          edit_user_path(user)
       end
       
     when /^a non-existent page$/i

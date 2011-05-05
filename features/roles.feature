@@ -39,7 +39,7 @@ Feature: CRUDding user and entity roles
     Then I should be on the list of Users
       And "valerie" should have the "Owner" role
 
-  @system_roles @jake
+  @system_roles
   Scenario: Not even owners can edit/delete system roles
     Given I am logged in as "buttercup" with password "princess"
       And the following role records
