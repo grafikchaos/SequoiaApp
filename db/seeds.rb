@@ -54,7 +54,7 @@ EntityTypeAlias.create([
   { :entity_type_id => EntityType.find_by_name('API').id, :name => 'rest'},
   { :entity_type_id => EntityType.find_by_name('API').id, :name => 'restful'},
 
-  { :entity_type_id => EntityType.find_by_name('Application').id, :name => 'app'},
+  { :entity_type_id => EntityType.find_by_name('Software').id, :name => 'app'},
 
   { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'machine'},
   { :entity_type_id => EntityType.find_by_name('Computer').id, :name => 'pc'},
