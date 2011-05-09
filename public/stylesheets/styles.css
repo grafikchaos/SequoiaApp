@@ -335,6 +335,7 @@ a.edit-link {
   width: 16px; height: 16px;
   display: inline-block;
   text-indent: -9999px;
+  margin:0 15px 0 0;
 }
 
 #sidebar .actions a.edit-link {
