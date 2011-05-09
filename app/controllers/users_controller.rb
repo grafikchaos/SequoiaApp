@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
+    @users = User.order('id').page(params[:page])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }

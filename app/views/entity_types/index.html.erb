@@ -5,10 +5,10 @@
   <% end %>
 <%- end %>
 
-<div class="block">
+<section class="block">
   <%= render 'shared/admin_tabs' %>
 
-  <div class="content">
+  <section class="content">
     <h2 class="title">Entity Types</h2>
     <div class="inner">
       <table class="table">
@@ -40,6 +40,11 @@
         </tr>
       <% end %>
       </table>
+
+      <footer class="actions-bar wat-cf">
+          <%= paginate @entity_types %>
+      </footer>
+      
     </div>
-  </div>
-</div>
+  </section>
+</section>

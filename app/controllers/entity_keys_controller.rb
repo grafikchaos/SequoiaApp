@@ -4,6 +4,8 @@ class EntityKeysController < ApplicationController
   # GET /entity_keys
   # GET /entity_keys.xml
   def index
+    @entity_keys = EntityKey.order('id').page(params[:page])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @entity_keys }

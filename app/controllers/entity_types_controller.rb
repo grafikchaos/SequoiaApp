@@ -4,6 +4,8 @@ class EntityTypesController < ApplicationController
   # GET /entity_types
   # GET /entity_types.xml
   def index
+    @entity_types = EntityType.order('id').page(params[:page])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @entity_types }
