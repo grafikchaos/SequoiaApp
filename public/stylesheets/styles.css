@@ -335,7 +335,6 @@ a.edit-link {
   width: 16px; height: 16px;
   display: inline-block;
   text-indent: -9999px;
-  margin:0 15px 0 0;
 }
 
 #sidebar .actions a.edit-link {
@@ -354,6 +353,7 @@ a.destroy-link {
   width: 16px; height: 16px;
   display: inline-block;
   text-indent: -9999px;
+  margin:0 0 0 15px;
 }
 
 #sidebar .actions a.destroy-link {
@@ -386,6 +386,8 @@ form a.add-more-link {
   display: block;
   margin: 10px 5px;
 }
+
+.pagination span.current { background: #36393D; border: 1px solid #1A1A1A; color: #fff; }
 
 /****************************
   FLASH MESSAGES
