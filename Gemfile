@@ -13,6 +13,7 @@ gem 'foreigner'
 gem 'active_link_to'
 gem 'paper_trail'
 gem 'client_side_validations'
+gem 'kaminari'
 
 # For processing text
 gem 'rdiscount'
