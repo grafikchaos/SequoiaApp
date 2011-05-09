@@ -1,9 +1,9 @@
 <% content_for :page_title, "Audit Log" %>
 
-<div class="block">
+<section class="block">
   <%= render 'shared/admin_tabs' %>
 
-  <div class="content" id="audits">
+  <section class="content" id="audits">
     <h2 class="title">Audit Log</h2>
     <div class="search">
       <%= render 'search_form' %>
@@ -22,9 +22,9 @@
         </tr>
       <% end %>
       </table>
-      <div class="actions-bar wat-cf">
-        <%= paginate @audits %>
-      </div>
+      <footer class="actions-bar wat-cf">
+        <%= paginate @audits, :outer_window => 1, :window => 2 %>
+      </footer>
     </div>
-  </div>
-</div>
+  </section>
+</section>
