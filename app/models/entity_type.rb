@@ -1,4 +1,6 @@
 class EntityType < ActiveRecord::Base
+
+  # relationships
   has_many :entities
   has_many :entity_type_aliases
   has_many :form_configs
@@ -29,7 +31,7 @@ class EntityType < ActiveRecord::Base
   # versioning
   has_paper_trail :only => [:name]
   
-  
+  # default scope
   default_scope includes(:entity_type_aliases, :form_configs).order(:entity_types => :name)
 
   def to_s

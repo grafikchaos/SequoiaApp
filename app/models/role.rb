@@ -1,6 +1,6 @@
 class Role < ActiveRecord::Base
-  # has_and_belongs_to_many :users, :join_table => :user_roles
-  # has_and_belongs_to_many :entities, :join_table => :entity_roles
+
+  # relationships
   has_many :user_roles
   has_many :users, :through => :user_roles
   has_many :entity_roles

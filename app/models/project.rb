@@ -1,11 +1,14 @@
 class Project < ActiveRecord::Base
-  has_many    :entities
+
+  # relationships
   belongs_to  :client
+  has_many    :entities
   has_many    :notes, :as => :notable
   
   # For bookmarking
   acts_as_favable
 
+  # validations
   validates_presence_of   :client_id
   validates_presence_of   :name
   validates_uniqueness_of :name, :scope => [:client_id], :case_sensitive => false
@@ -18,7 +21,6 @@ class Project < ActiveRecord::Base
 
   # versioning
   has_paper_trail :only => [:name, :domain, :client_id]
-
 
   def to_s
     self.name
