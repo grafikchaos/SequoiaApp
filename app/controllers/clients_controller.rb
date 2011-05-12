@@ -17,7 +17,6 @@ class ClientsController < ApplicationController
     
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @client }
     end
   end
 
@@ -35,10 +34,8 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.save
         format.html { redirect_to(@client, :notice => "Client was successfully created. #{undo_link}") }
-        format.xml  { render :xml => @client, :status => :created, :location => @client }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -51,10 +48,8 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.update_attributes(params[:client])
         format.html { redirect_to(@client, :notice => "Client was successfully updated. #{undo_link}") }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -67,7 +62,6 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(search_results_url, :notice => "Client was successfully destroyed. #{undo_link}") }
-      format.xml  { head :ok }
     end
   end
   

@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @users }
     end
   end
 
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
   def new
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @user }
     end
   end
 
@@ -28,7 +26,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # edit.html.erb
-      format.xml  { render :xml => @user }
     end
   end
 
@@ -38,10 +35,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to(users_url, :notice => "User was successfully created. #{undo_link}") }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -66,10 +61,8 @@ class UsersController < ApplicationController
         else
           format.html { redirect_to(users_url, :notice => "User was successfully updated. #{undo_link}") }
         end
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -80,7 +73,6 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to(users_url, :notice => "User was successfully destroyed. #{undo_link}") }
-      format.xml  { head :ok }
     end
   end
 

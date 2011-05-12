@@ -8,7 +8,6 @@ class EntityTypesController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @entity_types }
     end
   end
 
@@ -20,7 +19,6 @@ class EntityTypesController < ApplicationController
     
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @entity_type }
     end
   end
 
@@ -35,10 +33,8 @@ class EntityTypesController < ApplicationController
     respond_to do |format|
       if @entity_type.save
         format.html { redirect_to(entity_types_path, :notice => "Entity Type was successfully created. #{undo_link}") }
-        format.xml  { render :xml => @entity_type, :status => :created, :location => @entity_type }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @entity_type.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -49,10 +45,8 @@ class EntityTypesController < ApplicationController
     respond_to do |format|
       if @entity_type.update_attributes(params[:entity_type])
         format.html { redirect_to(entity_types_path, :notice => "Entity Type was successfully updated. #{undo_link}") }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @entity_type.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,7 +58,6 @@ class EntityTypesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(entity_types_url, :notice => "Entity Type was successfully deleted. #{undo_link}") }
-      format.xml  { head :ok }
     end
   end
   

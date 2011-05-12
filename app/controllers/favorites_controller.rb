@@ -9,7 +9,6 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       format.js { render :partial => 'sidebar' }
       format.html # index.html.erb
-      format.xml  { render :xml => @favorites }
     end
   end
 
@@ -39,10 +38,8 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       if @favorite.update_attributes(params[:favorite])
         format.html { redirect_to(favorites_path, :notice => 'Favorite was successfully updated.') }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @favorite.errors, :status => :unprocessable_entity }
       end
     end
   end

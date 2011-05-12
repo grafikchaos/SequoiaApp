@@ -8,7 +8,6 @@ class EntityKeysController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @entity_keys }
     end
   end
 
@@ -17,7 +16,6 @@ class EntityKeysController < ApplicationController
   def new
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @entity_key }
     end
   end
 
@@ -31,10 +29,8 @@ class EntityKeysController < ApplicationController
     respond_to do |format|
       if @entity_key.save
         format.html { redirect_to(entity_keys_path, :notice => "Entity Key was successfully created. #{undo_link}") }
-        format.xml  { render :xml => @entity_key, :status => :created, :location => @entity_key }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @entity_key.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -45,10 +41,8 @@ class EntityKeysController < ApplicationController
     respond_to do |format|
       if @entity_key.update_attributes(params[:entity_key])
         format.html { redirect_to(entity_keys_path, :notice => "Entity Key was successfully updated. #{undo_link}") }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @entity_key.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -60,7 +54,6 @@ class EntityKeysController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(entity_keys_url, :notice => "Entity Key was successfully deleted. #{undo_link}") }
-      format.xml  { head :ok }
     end
   end
   

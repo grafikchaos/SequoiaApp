@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @projects }
     end
   end
 
@@ -21,7 +20,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @project }
     end
   end
 
@@ -40,10 +38,8 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         format.html { redirect_to(@client, :notice => "Project was successfully created. #{undo_link}") }
-        format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,10 +52,8 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to(@project.client, :notice => "Project was successfully updated. #{undo_link}") }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -72,7 +66,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(client_projects_url(@project.client), :notice => "Project was successfully destroyed. #{undo_link}") }
-      format.xml  { head :ok }
     end
   end
   
