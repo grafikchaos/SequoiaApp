@@ -18,6 +18,9 @@ gem 'client_side_validations'
 gem 'rdiscount'
 gem 'RedCloth'
 
+# Deploy with Capistrano
+gem 'capistrano'
+
 # For bookmarking
 gem 'acts_as_favable'
 
@@ -44,6 +47,3 @@ group :development, :test, :demo do
   gem 'ffaker'
   gem 'switch_user'
 end
-
-# Deploy with Capistrano
-gem 'capistrano'
