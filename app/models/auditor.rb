@@ -13,11 +13,20 @@ class Auditor < ActiveRecord::Observer
     add_audit(obj, 'deleted')
   end
 
+  # TODO: clean up the Law of Demeter violations with some delegation
   def add_audit(obj, action)
     if Rails.env != 'test'
       user = User.current_user
       audit = Audit.new
-      audit[:message]     = "#{obj.class.to_s} \"#{obj.to_s}\" was #{action}"
+      
+      case obj.class.to_s
+        when 'Entity'
+          audit[:message]     = "#{obj.class.to_s} for Client: \"#{obj.project.client.to_s}\" \"#{obj.to_s}\" was #{action}"
+        when 'Project'
+          audit[:message]     = "#{obj.class.to_s} for Client: \"#{obj.client.to_s}\" \"#{obj.to_s}\" was #{action}"
+        else
+          audit[:message]     = "#{obj.class.to_s} \"#{obj.to_s}\" was #{action}"
+      end
       audit[:message] << " by #{user.username}" unless user.nil?
       audit[:model_id]    = obj.id unless obj.nil?
       audit[:model_type]  = obj.class.to_s unless obj.nil?
