@@ -226,9 +226,10 @@ form#new_entity_type div.description {
 /****************************
   ADMIN AREA
 ****************************/
-#audits h2 { float: left; width: 65%; }
-#audits .search { float: right; margin: 17px 15px 0 0; }
+#audits h2 { float: left; width: 48%; }
+#audits .search { float: left; display:inline; position:relative; top:17px; left:10px; width:23%; overflow:auto; }
 #audits .search #audit-search { width: 200px; }
+#audits header .pager { float:right; width:23%; padding:1px; margin:17px 15px 0 0; }
 
 /****************************
   SIDEBAR
@@ -353,6 +354,7 @@ a.destroy-link {
   width: 16px; height: 16px;
   display: inline-block;
   text-indent: -9999px;
+  margin:0 0 0 15px;
 }
 
 #sidebar .actions a.destroy-link {
@@ -385,6 +387,8 @@ form a.add-more-link {
   display: block;
   margin: 10px 5px;
 }
+
+.pagination span.current { background: #36393D; border: 1px solid #1A1A1A; color: #fff; }
 
 /****************************
   FLASH MESSAGES

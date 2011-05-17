@@ -21,14 +21,7 @@
       <%= field_set_tag "Roles", :class => "collapsible" do %>
         <div class="fieldset-wrapper">
           <div class="description">Selected roles will be able to access this entity.</div>
-          <%- Role.all.each do |role| %>
-            <div>
-              <label class="checkbox">
-                <%= check_box_tag "entity[role_ids][]", role.id, @entity.roles.include?(role), :class => 'checkbox' %>
-                <%= role.name.titleize %>
-              </label>
-            </div>
-          <%- end %>
+          <%= default_assigned_roles_checkbox(@entity) %>
         </div>
       <%- end %>
     <%- end %>

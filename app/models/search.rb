@@ -11,10 +11,12 @@ class Search
   ### PRIVATE METHODS BELOW ###
   private
 
+  # For simple searching
   def simple
     @result = Client.simple_search(self.query)
   end
 
+  # Massive method for advanced searches
   def advanced
 
     # Remove the first $ to make our split cleaner.

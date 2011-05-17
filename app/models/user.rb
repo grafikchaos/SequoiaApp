@@ -5,13 +5,12 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :user_roles
   has_many :roles, :through => :user_roles
-  # has_and_belongs_to_many :roles, :join_table => :user_roles
   
   # Include devise modules.
-  devise  :database_authenticatable, :rememberable, 
-          :trackable, :validatable, :lockable
+  devise  :database_authenticatable, :rememberable, :trackable, :validatable, :lockable
 
   # Setup accessible (or protected) attributes for your model
+  # Is having :roles and :role_ids here a security risk?
   attr_accessible :username, :roles, :role_ids, :email, :password, :remember_me, :first_name, :last_name, :full_name
 
   # Get the current user from the controller

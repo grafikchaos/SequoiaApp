@@ -26,7 +26,6 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @entity }
     end
   end
 
@@ -47,13 +46,11 @@ class EntitiesController < ApplicationController
     respond_to do |format|
       if @entity.save
         format.html { redirect_to(client_entities_url(@client), :notice => "Entity was successfully created. #{undo_link}") }
-        format.xml  { render :xml => @entity, :status => :created, :location => @entity }
       else
         # load in the form config so we can re-construct the form
         load_form_config
 
         format.html { render :action => "new" }
-        format.xml  { render :xml => @entity.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -67,13 +64,11 @@ class EntitiesController < ApplicationController
     respond_to do |format|
       if @entity.update_attributes(params[:entity])
         format.html { redirect_to(client_entities_url(@client), :notice => "Entity was successfully updated. #{undo_link}") }
-        format.xml  { head :ok }
       else
         # load in the form config so we can re-construct the form
         load_form_config
 
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @entity.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -86,7 +81,6 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(client_entities_url(@client), :notice => "Entity was successfully destroyed. #{undo_link}") }
-      format.xml  { head :ok }
     end
   end
 

@@ -1,4 +1,6 @@
 class EntityKey < ActiveRecord::Base
+
+  # relationships
   has_many :entity_rows
   
   # validation

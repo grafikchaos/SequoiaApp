@@ -10,7 +10,7 @@
 
   <section class="content">          
     <h2 class="title">Roles</h2>
-    <section class="inner">
+    <div class="inner">
       <table class="table">
         <tr>             
           <th class="first">ID</th>
@@ -33,11 +33,9 @@
         <% end -%>
       </table>
       <footer class="actions-bar wat-cf">
-        <div class="actions">
-        </div>
-        
+          <%= paginate @roles %>
       </footer>
-    </section>
+    </div>
   </section>
 </section>
 

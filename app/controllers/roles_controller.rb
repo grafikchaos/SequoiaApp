@@ -4,9 +4,10 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.xml
   def index
+    @roles = Role.order('id').page(params[:page])
+    
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @roles }
     end
   end
 
@@ -15,7 +16,6 @@ class RolesController < ApplicationController
   def new
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @role }
     end
   end
 
@@ -29,10 +29,8 @@ class RolesController < ApplicationController
     respond_to do |format|
       if @role.save
         format.html { redirect_to(roles_url, :notice => 'Role was successfully created.') }
-        format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @role.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class RolesController < ApplicationController
     respond_to do |format|
       if @role.update_attributes(params[:role])
         format.html { redirect_to(roles_url, :notice => 'Role was successfully updated.') }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @role.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -58,7 +54,6 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(roles_url) }
-      format.xml  { head :ok }
     end
   end
 end

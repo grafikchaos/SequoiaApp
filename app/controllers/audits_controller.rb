@@ -3,12 +3,11 @@ class AuditsController < ApplicationController
   # GET /audits
   # GET /audits.xml
   def index
-    @audits = params[:search] ? Audit.message_contains?(params[:search]) : Audit.all
+    @audits = params[:search] ? Audit.message_contains?(params[:search]).page(params[:page]) : Audit.order('created_at DESC').page(params[:page])
     authorize! :read, Audit
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @audits }
     end
   end
 

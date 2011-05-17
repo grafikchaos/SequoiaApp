@@ -1,11 +1,12 @@
 class Entity < ActiveRecord::Base
+
+  # relationships
   belongs_to  :project
   belongs_to  :entity_type
   has_many    :entity_rows
   has_many    :notes, :as => :notable
   has_many    :entity_roles
   has_many    :roles, :through => :entity_roles
-  # has_and_belongs_to_many :roles, :join_table => :entity_roles
   
   # validations
   validates_presence_of :name, :project_id, :entity_type_id
@@ -17,14 +18,13 @@ class Entity < ActiveRecord::Base
   accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true
 
   # define which columns are mass-assignable
+  # TODO: Is having :roles and :role_ids here a security risk?
   attr_accessible :name, :roles, :role_ids, :project_id, :entity_type_id, :entity_rows_attributes, :notes_attributes
   
   # versioning
   has_paper_trail :only => [ :project_id, :entity_type_id, :name ]
   
-  
-  
-  # setting the default scope
+  # default scope
   default_scope includes(:entity_rows).order(:project_id)
 
   # Named scopes

@@ -1,6 +1,9 @@
 class EntityTypeAlias < ActiveRecord::Base
+
+  # relationsips
   belongs_to :entity_type
 
+  # validations
   validates_uniqueness_of :name
   validates_presence_of :name
   # Make sure the record is not already an entity type

@@ -138,6 +138,22 @@ Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   end
 end
 
+Then /^(?:|I )should see the CSS "([^"]*)"$/ do |selector|
+  if page.respond_to? :should
+    page.should have_css(selector)
+  else
+    assert page.has_no_css?(selector)
+  end
+end
+
+Then /^(?:|I )should not see the CSS "([^"]*)"$/ do |selector|
+  if page.respond_to? :should
+    page.should have_no_css(selector)
+  else
+    assert page.has_no_css?(selector)
+  end
+end
+
 Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
   with_scope(parent) do
     field = find_field(field)

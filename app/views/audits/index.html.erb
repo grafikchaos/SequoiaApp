@@ -1,13 +1,18 @@
 <% content_for :page_title, "Audit Log" %>
 
-<div class="block">
+<section class="block">
   <%= render 'shared/admin_tabs' %>
 
-  <div class="content" id="audits">
-    <h2 class="title">Audit Log</h2>
-    <div class="search">
-      <%= render 'search_form' %>
-    </div>
+  <section class="content" id="audits">
+    <header>
+      <h2 class="title">Audit Log</h2>
+      <div class="search">
+        <%= render 'search_form' %>
+      </div>
+      <div class="actions-bar pager">
+        <%= paginate @audits %>
+      </div>
+    </header>
     <div class="clear"></div>
     <div class="inner">
       <table id="audits" class="table">
@@ -22,6 +27,9 @@
         </tr>
       <% end %>
       </table>
+      <footer class="actions-bar wat-cf">
+        <%= paginate @audits %>
+      </footer>
     </div>
-  </div>
-</div>
+  </section>
+</section>

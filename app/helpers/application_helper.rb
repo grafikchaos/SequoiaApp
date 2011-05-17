@@ -78,4 +78,23 @@ module ApplicationHelper
     cycle(options[:odd], options[:even]) + addition
   end
 
+  
+  # set the checkbox to default to Staff if the Entity/User is a new record
+  # otherwise use the databse values to set the checked attribute
+  def default_assigned_roles_checkbox(obj)
+    str = ""
+    Role.all.each do |role|
+      str += "<div><label class='checkbox'>"
+      if obj.new_record?
+        str += check_box_tag "#{obj.class.to_s.downcase}[role_ids][]", role.id, obj.roles.include?(role), :class => 'checkbox', :checked => role.name == 'staff'
+      else
+        str += check_box_tag "#{obj.class.to_s.downcase}[role_ids][]", role.id, obj.roles.include?(role), :class => 'checkbox'
+      end
+      str += role.name.titleize + "</label></div>"
+    end
+    
+    # give back the raw HTML  
+    raw(str)
+  end
+
 end

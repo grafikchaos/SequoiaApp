@@ -35,7 +35,11 @@
             <%- else %>
               <div>
                 <label class="checkbox">
-                  <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :class => 'checkbox' %>
+                  <%- if f.object.new_record? -%>
+                    <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :class => 'checkbox', :checked => role.name == 'staff' %>
+                  <%- else -%>
+                    <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :class => 'checkbox' %>
+                  <%- end -%>
                   <%= role.name.titleize %>
                 </label>
               </div>

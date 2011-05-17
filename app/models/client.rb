@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
   # paperclip behavior
   has_attached_file :logo, :styles => { :mini => "24x24>", :small => "64x64>", :medium => "96x96>", :big => "200x200>" }
 
+  # Relationships
   has_many  :projects
   has_many  :entities, :through => :projects
   has_many  :notes, :as => :notable
@@ -15,6 +16,7 @@ class Client < ActiveRecord::Base
   # accept Note form fields/attributes
   accepts_nested_attributes_for :notes, :reject_if => lambda { |note| note[:content].blank? }, :allow_destroy => true
   
+  # validations
   validates_presence_of   :name, :on => :create, :message => "client name can't be blank"
   validates_presence_of   :client_code
   validates_uniqueness_of :client_code, :case_sensitive => false
@@ -37,18 +39,13 @@ class Client < ActiveRecord::Base
                   :approximate_ascii => true,
                   :reserved_words => ['index', 'new', 'create', 'show', 'edit', 'update', 'delete', 'client', 'project', 'contact']
                   
-  #------------
   # named scopes 
-  #   allows chaining of scopes together
-  #   essentially linking statements together with 'AND'
-  #------------
   scope :client_name_like, lambda { |name| where('clients.name LIKE ?', "%#{name}%") }
   scope :client_code_like, lambda { |code| where('clients.client_code LIKE ?', "%#{code}%") }
   scope :project_domain_like, lambda { |domain| where('projects.domain LIKE ?', "%#{domain}%") }
   scope :simple_search, lambda { |query| includes(:projects).where('clients.name LIKE ? OR clients.client_code LIKE ? OR projects.domain LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%") }
   scope :ordered_by_client_code, order('clients.client_code ASC')
 
-  
   # only allow access to Entitys if the User has the ability to read it
   def sorted_entities(project = nil)
     project = project.blank? ? self.projects : project
@@ -61,12 +58,12 @@ class Client < ActiveRecord::Base
   end
 
   ##############################
-  # PROTECTED METHODS BELOW HERE
+  # PRIVATE METHODS BELOW HERE
   ##############################
-  protected
+  private
 
   def capitalize_client_code
-     self.client_code.upcase! if self.client_code
+     self.client_code.upcase!
   end
 
   def add_default_project
