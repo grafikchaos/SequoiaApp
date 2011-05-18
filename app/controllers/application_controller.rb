@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :authenticate_user!
   before_filter :set_current_user
+  before_filter :sidebar_visibility
   
   rescue_from CanCan::AccessDenied do |exception|
     render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
@@ -27,6 +28,10 @@ class ApplicationController < ActionController::Base
       audit.model_type = obj.class.to_s unless obj.nil?
       audit.save
     end
+  end
+
+  def sidebar_visibility
+    @show_sidebar = cookies[:sequoia_sidebar]
   end
 
 end

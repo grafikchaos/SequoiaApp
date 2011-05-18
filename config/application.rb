@@ -42,6 +42,7 @@ module SequoiaApp
         colorbox/jquery.colorbox 
         tagsinput/jquery.tagsinput
         hotkeys/jquery.hotkeys
+        jquery.cookie
         rails
         rails.validations
       )

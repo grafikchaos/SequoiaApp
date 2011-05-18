@@ -27,7 +27,7 @@ gem 'acts_as_favable'
 
 # For encrypting entity rows
 # Fetching from github for Ruby 1.9 compatibility
-gem 'attr_encrypted', :git => 'git://github.com/cgod/attr_encrypted.git'
+gem 'attr_encrypted', :git => 'git://github.com/shuber/attr_encrypted.git'
 
 group :development, :test, :demo do
   gem 'cover_me'

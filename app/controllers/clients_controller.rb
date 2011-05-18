@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  respond_to :html
   
   # Just redirects to the clients entity index page.
   # The action is here so that we can keep the flash messages.
@@ -13,17 +14,14 @@ class ClientsController < ApplicationController
     @client = Client.new
     1.times { @client.projects.build }
     1.times { @client.notes.build }
-
-    
-    respond_to do |format|
-      format.html # new.html.erb
-    end
+    respond_with(@client)
   end
 
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
     1.times { @client.notes.build } if @client.notes.empty?
+    respond_with(@client)
   end
 
   # POST /clients
@@ -34,9 +32,8 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.save
         format.html { redirect_to(@client, :notice => "Client was successfully created. #{undo_link}") }
-      else
-        format.html { render :action => "new" }
       end
+      respond_with(@client)
     end
   end
 
