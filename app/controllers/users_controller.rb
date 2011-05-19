@@ -1,48 +1,37 @@
 class UsersController < ApplicationController
   load_and_authorize_resource :except => [:edit, :update, :unlock]
 
+  # Define which formats actions are able to respond with
+  respond_to :html
+
   # GET /users
-  # GET /users.xml
   def index
     @users = User.order('id').page(params[:page])
-    
-    respond_to do |format|
-      format.html # index.html.erb
-    end
+    respond_with @users
   end
 
   # GET /users/new
-  # GET /users/new.xml
   def new
-    respond_to do |format|
-      format.html # new.html.erb
-    end
+    respond_with @user
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
-
-    respond_to do |format|
-      format.html # edit.html.erb
-    end
+    respond_with @user
   end
 
   # POST /users
-  # POST /users.xml
   def create
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(users_url, :notice => "User was successfully created. #{undo_link}") }
-      else
-        format.html { render :action => "new" }
-      end
+    if @user.save
+      respond_with(@user, :notice => "User was successfully created. #{undo_link}", :location => users_url )
+    else
+      render "new"
     end
   end
 
   # PUT /users/1
-  # PUT /users/1.xml
   def update
     @user = User.find(params[:id] || current_user.id)
     authorize! :update, @user
@@ -54,16 +43,14 @@ class UsersController < ApplicationController
       [:password, :password_confirmation].collect{ |p| params[:user].delete(p) }
     end    
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        if current_user.id == @user.id && current_user.has_role?('staff')
-          format.html { redirect_to(edit_user_url(@user), :notice => "Your account was successfully updated. #{undo_link}") }
-        else
-          format.html { redirect_to(users_url, :notice => "User was successfully updated. #{undo_link}") }
-        end
+    if @user.update_attributes(params[:user])
+      if current_user.id == @user.id && current_user.has_role?('staff')
+        respond_with(@user, :notice => "Your account was successfully updated. #{undo_link}", :location => edit_user_url(@user) )
       else
-        format.html { render :action => "edit" }
+        respond_with(@user, :notice => "User was successfully updated. #{undo_link}", :location => users_url )
       end
+    else
+      render "edit"
     end
   end
 
@@ -71,9 +58,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to(users_url, :notice => "User was successfully destroyed. #{undo_link}") }
-    end
+    respond_with( @user, :notice => "User was successfully destroyed. #{undo_link}", :location => users_url )
   end
 
   # Break the lock on users.
@@ -82,12 +67,10 @@ class UsersController < ApplicationController
     authorize! :update, user
     user.unlock_access!
 
-    respond_to do |format|
-      if user.active_for_authentication?
-        format.html { redirect_to(users_url, :notice => 'User account has been unlocked.') }
-      else
-        format.html { redirect_to(users_url, :alert => 'User account was not unlocked.') }
-      end
+    if user.active_for_authentication?
+      respond_with( @user, :notice => "User account has been unlocked.", :location => users_url )
+    else
+      respond_with( @user, :notice => "User account was not unlocked", :location => users_url )
     end
   end
   
@@ -97,8 +80,8 @@ class UsersController < ApplicationController
   ##########
   private
 
-    def undo_link
-      view_context.link_to("Undo?", revert_version_path(@user.versions.scoped.last), :method => :post)
-    end
+  def undo_link
+    view_context.link_to("Undo?", revert_version_path(@user.versions.scoped.last), :method => :post)
+  end
 
 end
