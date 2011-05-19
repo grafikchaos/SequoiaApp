@@ -22,16 +22,14 @@
       </div>
 
       <div id="entity-list">
-        <%- @entities.each do |name, rows| %>
-          <div id="<%= name.tableize.singularize %>" class="group">
+        <%- @entities.each do |group, entities| %>
+          <div id="<%= group.tableize.singularize %>" class="group">
             <div class="bar">
-              <h3><%= name %></h3>
+              <h3><%= group %></h3>
               <%= link_to "Back to top", :anchor => 'wrapper' %>
             </div>
             <div class="clear"></div>
-            <%- rows.each do |entity| %>
-              <%= render 'row', :entity => entity %>
-            <%- end %>
+            <%= render entities %>
           </div>
         <%- end %>
       </div>

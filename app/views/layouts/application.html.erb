@@ -28,7 +28,7 @@
         <%= yield %>
       </section>
 
-      <section id="sidebar">
+      <section id="sidebar"<%= ' class="hidden"' unless @show_sidebar %>>
         <%= render 'shared/sidebar' %>
       </section>
     </div>
