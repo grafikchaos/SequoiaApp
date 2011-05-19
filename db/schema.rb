@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427041320) do
+ActiveRecord::Schema.define(:version => 20110519174925) do
 
   create_table "audits", :force => true do |t|
     t.integer  "user_id"
@@ -229,6 +229,12 @@ ActiveRecord::Schema.define(:version => 20110427041320) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  create_table "welcome_messages", :force => true do |t|
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   add_foreign_key "audits", "users", :name => "audits_user_id_fk", :dependent => :nullify
   add_foreign_key "audits", "versions", :name => "audits_version_id_fk", :dependent => :nullify

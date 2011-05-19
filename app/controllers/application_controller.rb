@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :authenticate_user!
-  before_filter :set_current_user
-  before_filter :sidebar_visibility
+  before_filter :authenticate_user!,
+                :set_current_user, 
+                :sidebar_visibility, 
+                :welcome_message
   
   rescue_from CanCan::AccessDenied do |exception|
     render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
@@ -32,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def sidebar_visibility
     @show_sidebar = cookies[:sequoia_sidebar]
+  end
+
+  def welcome_message
+    @welcome_message = WelcomeMessage.random
   end
 
 end
